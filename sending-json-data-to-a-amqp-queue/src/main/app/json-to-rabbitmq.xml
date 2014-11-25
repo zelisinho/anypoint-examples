@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd">
+    <amqp:connector name="AMQP_Connector" validateConnections="true" doc:name="AMQP Connector"/>
+    <flow name="json-to-rabbitmqFlow1" doc:name="json-to-rabbitmqFlow1">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8081" doc:name="Recieve HTTP request"/>
+        <logger message="payload to be sent: #[new String(payload)]" level="INFO" doc:name="Log the message content to be sent"/>
+        <amqp:outbound-endpoint exchangeName="sales_exchange" queueName="sales_queue" responseTimeout="10000" exchange-pattern="request-response" doc:name="Send to AMQP queue"/>
+    </flow>
+</mule>

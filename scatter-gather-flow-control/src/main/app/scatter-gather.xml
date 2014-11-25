@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:context="http://www.springframework.org/schema/context" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+    <smtp:gmail-connector name="Gmail"    validateConnections="true" doc:name="Gmail"/>
+   
+    <flow name="scatter-gatherFlow1" doc:name="scatter-gatherFlow1">
+        <http:inbound-endpoint exchange-pattern="one-way" host="localhost" port="8081" doc:name="Recieve HTTP request"/>
+        <json:json-to-object-transformer returnClass="java.util.HashMap" doc:name="Convert JSON to Object"/>
+        <scatter-gather doc:name="Scatter-Gather">
+            <logger message="Processing finished: #[payload]" level="INFO" doc:name="Log Batch Result"/>
+            <processor-chain>
+                <object-to-string-transformer doc:name="Convert Object to String"/>
+                <smtp:outbound-endpoint host="${smtp.host}" port="${smtp.port}" user="${smtp.user}" password="${smtp.password}" connector-ref="Gmail" to="${mail.to}" from="${mail.from}" subject="${mail.subject}" responseTimeout="10000" doc:name="Send an email via SMTP"/>
+            </processor-chain>
+             </scatter-gather>
+ 
+    </flow>
+</mule>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="janet" created="Mon Apr 08 14:06:23 PDT 2013" guiVersion="3.3.2" id="1365455481440" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Mon Apr 08 14:06:23 PDT 2013" modifiedBy="janet" name="datamapper_grf" preview-file="${Project_Home}/src/main/resources/companies.csv" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __referenceCounter="1" __sourcePath="{}/Account" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="da00e391-6e43-4ce8-a4d5-615b8a12df0a">
+<Record fieldDelimiter="|" name="Account" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/Account/BillingState" containerType="SINGLE" label="BillingState" name="BillingState" type="string"/>
+<Field __sourcePath="{}/Account/BillingPostalCode" containerType="SINGLE" label="BillingPostalCode" name="BillingPostalCode" type="string"/>
+<Field __sourcePath="{}/Account/Region__c" containerType="SINGLE" label="Region__c" name="Region__c" type="string"/>
+<Field __sourcePath="{}/Account/BillingStreet" containerType="SINGLE" label="BillingStreet" name="BillingStreet" type="string"/>
+<Field __sourcePath="{}/Account/Name" containerType="SINGLE" label="Name" name="Name" type="string"/>
+<Field __sourcePath="{}/Account/BillingCity" containerType="SINGLE" label="BillingCity" name="BillingCity" type="string"/>
+</Record>
+</Metadata>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="80f8458b-0b2b-468c-89e6-28bc6033e8e0">
+<Record fieldDelimiter="," name="companies2" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="company_name" name="company_name" size="10" type="string"/>
+<Field containerType="SINGLE" label="company_address" name="company_address" size="10" type="string"/>
+<Field containerType="SINGLE" label="company_city" name="company_city" size="10" type="string"/>
+<Field containerType="SINGLE" label="company_state" name="company_state" size="10" type="string"/>
+<Field containerType="SINGLE" label="company_zip" name="company_zip" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="has_given_contact_permission" name="has_given_contact_permission" size="10" type="string"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata _type="Lookup" id="0ab1d43c-19c9-41fd-a1c4-287e3cca16ac">
+<Record fieldDelimiter="|" name="LookUpSalesRegion" recordDelimiter="\n" type="delimited">
+<Field containerType="SINGLE" label="state" name="state" type="string"/>
+<Field containerType="SINGLE" label="region" name="region" type="string"/>
+</Record>
+</Metadata>
+<LookupTable flow-ref="LookUpSalesRegionFlow" id="LookUpSalesRegion" key="state" metadata="0ab1d43c-19c9-41fd-a1c4-287e3cca16ac" name="LookUpSalesRegion" type="muleFlowLookup">
+<attr name="lookupType"><![CDATA[FlowRef]]></attr>
+</LookupTable>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="CSV READER" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+<attr name="__dataSourceDefinition"><![CDATA[/Users/janet/Desktop/companies2.csv]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="Map&lt;k,v&gt; WRITER" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="Account" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="0">
+    <BillingState>$0.BillingState</BillingState>
+    <BillingPostalCode>$0.BillingPostalCode</BillingPostalCode>
+    <clover:element clover:name="Region__c">$0.Region__c</clover:element>
+    <BillingStreet>$0.BillingStreet</BillingStreet>
+    <Name>$0.Name</Name>
+    <BillingCity>$0.BillingCity</BillingCity>
+  </item>
+</clover:collection>]]></attr>
+<attr name="__typeName"><![CDATA[Account]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/create]]></attr>
+<attr name="__connectorName"><![CDATA[Salesforce]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'companies2' -&gt; 'Account'" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.Name = input.company_name;
+output.BillingStreet = input.company_address;
+output.BillingCity = input.company_city;
+output.BillingState = input.company_state;
+output.BillingPostalCode = input.company_zip;
+output.Region__c = (isnull(lookup(LookUpSalesRegion).get([input.company_state])) ? null : lookup(LookUpSalesRegion).get([input.company_state]).region);]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="80f8458b-0b2b-468c-89e6-28bc6033e8e0" outPort="Port 0 (output)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="da00e391-6e43-4ce8-a4d5-615b8a12df0a" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>

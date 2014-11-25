@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:context="http://www.springframework.org/schema/context" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
+    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" username="${sfdc.user}">
+    	<sfdc:connection-pooling-profile exhaustedAction="WHEN_EXHAUSTED_GROW" initialisationPolicy="INITIALISE_ONE"/>
+    </sfdc:config>
+    
+    <batch:job name="watermarkingBatch">
+        <batch:threading-profile poolExhaustedAction="WAIT"/>
+        <batch:process-records>
+            <batch:step name="Batch_Step">
+                <logger message="Contact recently modified: #[payload]" level="INFO" doc:name="Log each contact"/>
+            </batch:step>
+        </batch:process-records>
+    </batch:job>
+    <flow name="triggerFlow" doc:name="triggerFlow" processingStrategy="synchronous">
+        <poll doc:name="Poll">
+            <fixed-frequency-scheduler frequency="10" timeUnit="SECONDS"/>
+            <watermark variable="timestamp" default-expression="#[groovy: new Date(System.currentTimeMillis() - 10000).format(&quot;yyyy-MM-dd'T'HH:mm:ss.SSS'Z'&quot;, TimeZone.getTimeZone('UTC'))]" selector="MAX" selector-expression="#[payload.LastModifiedDate]"/>
+            <sfdc:query config-ref="Salesforce" query="dsql:SELECT Id,Name,LastModifiedDate FROM Contact WHERE LastModifiedDate &gt; #[flowVars['timestamp']]" doc:name="Query Salesforce every 10 seconds"/>
+        </poll>
+        <batch:execute name="watermarkingBatch" doc:name="Batch Execute"/>
+    </flow>
+</mule>
