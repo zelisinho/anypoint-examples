@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:context="http://www.springframework.org/schema/context" xmlns:pop3="http://www.mulesoft.org/schema/mule/pop3" xmlns:pop3s="http://www.mulesoft.org/schema/mule/pop3s" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/pop3s http://www.mulesoft.org/schema/mule/pop3s/current/mule-pop3s.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
-http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
-    <pop3s:connector name="POP3" validateConnections="true" doc:name="POP3" checkFrequency="100"  />         	
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:pop3="http://www.mulesoft.org/schema/mule/pop3" xmlns:pop3s="http://www.mulesoft.org/schema/mule/pop3s" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/pop3s http://www.mulesoft.org/schema/mule/pop3s/current/mule-pop3s.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+    <pop3s:connector checkFrequency="100" doc:name="POP3" name="POP3" validateConnections="true"/>         	
     
-    <data-mapper:config name="CSV_To_XML" transformationGraphPath="csv_to_xml_2.grf" doc:name="CSV_To_XML"/>
-    <flow name="pop-to-xmlFlow1" doc:name="pop-to-xmlFlow1">
-        <pop3s:inbound-endpoint host="${pop3.host}" port="995" user="${pop3.user}" password="${pop3.password}" connector-ref="POP3" responseTimeout="10000" doc:name="Poll emails"/>
+    <data-mapper:config doc:name="CSV_To_XML" name="CSV_To_XML" transformationGraphPath="csv_to_xml_2.grf"/>
+    <flow doc:name="pop-to-xmlFlow1" name="pop-to-xmlFlow1">
+        <pop3s:inbound-endpoint connector-ref="POP3" doc:name="Poll emails" host="${pop3.host}" password="${pop3.password}" port="995" responseTimeout="10000" user="${pop3.user}"/>
         <expression-transformer doc:name="Put Attachments to Payload">
-			<return-argument evaluator="attachments-list" expression="*" />
+			<return-argument evaluator="attachments-list" expression="*"/>
 		</expression-transformer>
-		<set-payload value="#[payload[0].getContent()]" doc:name="Set Payload to content"/>
+		<set-payload doc:name="Set Payload to content" value="#[payload[0].getContent()]"/>
         <data-mapper:transform config-ref="CSV_To_XML" doc:name="CSV To XML"/>        
         <byte-array-to-string-transformer doc:name="Convert Byte Array to String"/>
-        <logger message="recieved: #[payload]" level="INFO" doc:name="Log the converted XML"/>
-        <file:outbound-endpoint path="src/test/resources/output" responseTimeout="10000" doc:name="File"/>
+        <logger doc:name="Log the converted XML" level="INFO" message="recieved: #[payload]"/>
+        <file:outbound-endpoint doc:name="File" path="src/test/resources/output" responseTimeout="10000"/>
     </flow>
 </mule>
