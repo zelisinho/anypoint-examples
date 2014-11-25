@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
-<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
-    <flow name="main" doc:name="main">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" responseTimeout="60000" doc:name="Receive HTTP Requests From Apps" encoding="UTF-8"/>
-        <cxf:proxy-service port="ShopServicePTPort" namespace="http://predic8.com/wsdl/shop/1/" service="ShopService" payload="envelope" wsdlLocation="http://www.predic8.com:8080/shop/ShopService?wsdl" enableMuleSoapHeaders="false" doc:name="Check WSDL"/>
-        <flow-ref name="copy-headers" doc:name="Copy HTTP Headers"/>
-        <cxf:proxy-client doc:name="Proxy Client" payload="envelope" enableMuleSoapHeaders="false"/>
-        <http:outbound-endpoint exchange-pattern="request-response" host="www.predic8.com" port="8080" method="POST" doc:name="Send Requests to API" path="shop/ShopService" responseTimeout="60000" encoding="UTF-8"/>
-        <flow-ref name="copy-headers" doc:name="Copy HTTP Headers"/>
-        <remove-property propertyName="Connection" doc:name="Remove Connection Header"/>
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <flow doc:name="main" name="main">
+        <http:inbound-endpoint doc:name="Receive HTTP Requests From Apps" encoding="UTF-8" exchange-pattern="request-response" host="localhost" port="8081" responseTimeout="60000"/>
+        <cxf:proxy-service doc:name="Check WSDL" enableMuleSoapHeaders="false" namespace="http://predic8.com/wsdl/shop/1/" payload="envelope" port="ShopServicePTPort" service="ShopService" wsdlLocation="http://www.predic8.com:8080/shop/ShopService?wsdl"/>
+        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
+        <cxf:proxy-client doc:name="Proxy Client" enableMuleSoapHeaders="false" payload="envelope"/>
+        <http:outbound-endpoint doc:name="Send Requests to API" encoding="UTF-8" exchange-pattern="request-response" host="www.predic8.com" method="POST" path="shop/ShopService" port="8080" responseTimeout="60000"/>
+        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
+        <remove-property doc:name="Remove Connection Header" propertyName="Connection"/>
     </flow>
-    <sub-flow name="copy-headers" doc:name="copy-headers">
+    <sub-flow doc:name="copy-headers" name="copy-headers">
         <expression-component doc:name="Copy all HTTP Headers"><![CDATA[message.outboundProperties.putAll(message.inboundProperties['http.headers']);]]></expression-component>
-        <remove-property propertyName="Content-Length" doc:name="Remove Content Length"/>
-        <remove-property propertyName="MULE_*" doc:name="Remove MULE Properties"/>
-        <remove-property propertyName="X_MULE*" doc:name="Remove X_MULE Properties"/>
+        <remove-property doc:name="Remove Content Length" propertyName="Content-Length"/>
+        <remove-property doc:name="Remove MULE Properties" propertyName="MULE_*"/>
+        <remove-property doc:name="Remove X_MULE Properties" propertyName="X_MULE*"/>
     </sub-flow>
 </mule>

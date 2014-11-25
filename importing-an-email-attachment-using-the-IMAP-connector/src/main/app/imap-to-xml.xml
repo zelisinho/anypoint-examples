@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:file="http://www.mulesoft.org/schema/mule/file"
-	xmlns:imaps="http://www.mulesoft.org/schema/mule/imaps" xmlns:context="http://www.springframework.org/schema/context" xmlns:imap="http://www.mulesoft.org/schema/mule/imap" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/imap http://www.mulesoft.org/schema/mule/imap/current/mule-imap.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
-http://www.mulesoft.org/schema/mule/imaps http://www.mulesoft.org/schema/mule/imaps/current/mule-imaps.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
-http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:imap="http://www.mulesoft.org/schema/mule/imap" xmlns:imaps="http://www.mulesoft.org/schema/mule/imaps" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/imap http://www.mulesoft.org/schema/mule/imap/current/mule-imap.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/imaps http://www.mulesoft.org/schema/mule/imaps/current/mule-imaps.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
 
   
-	<imaps:connector
-        name="imapsConnector"        
-        checkFrequency="100"     
-               
-        doc:name="IMAP" validateConnections="true">        
+	<imaps:connector checkFrequency="100" doc:name="IMAP" name="imapsConnector" validateConnections="true">        
     </imaps:connector>
-    <data-mapper:config name="CSV_To_XML" transformationGraphPath="csv_to_xml_1.grf" doc:name="CSV_To_XML"/>
+    <data-mapper:config doc:name="CSV_To_XML" name="CSV_To_XML" transformationGraphPath="csv_to_xml_1.grf"/>
     
 
-    <flow name="imap-to-csvFlow1" doc:name="imap-to-csvFlow1">
-        <imaps:inbound-endpoint host="${imap.host}" port="993" user="${imap.user}" password="${imap.password}" responseTimeout="10000" doc:name="Poll emails"
-    	   connector-ref="imapsConnector" />
+    <flow doc:name="imap-to-csvFlow1" name="imap-to-csvFlow1">
+        <imaps:inbound-endpoint connector-ref="imapsConnector" doc:name="Poll emails" host="${imap.host}" password="${imap.password}" port="993" responseTimeout="10000" user="${imap.user}"/>
         <expression-transformer doc:name="Put Attachments to Payload">
-			<return-argument evaluator="attachments-list" expression="*" />
+			<return-argument evaluator="attachments-list" expression="*"/>
 		</expression-transformer>
 
-        <set-payload value="#[payload[0].getContent()]" doc:name="Set Payload to Attachment content"/>
+        <set-payload doc:name="Set Payload to Attachment content" value="#[payload[0].getContent()]"/>
         <data-mapper:transform config-ref="CSV_To_XML" doc:name="CSV To XML"/>
         <byte-array-to-string-transformer doc:name="Convert Byte Array to String"/>
-        <logger message="recieved: #[payload]" level="INFO" doc:name="Log the converted XML"/>
-        <file:outbound-endpoint path="src/test/resources/output" responseTimeout="10000" doc:name="File"/>
+        <logger doc:name="Log the converted XML" level="INFO" message="recieved: #[payload]"/>
+        <file:outbound-endpoint doc:name="File" path="src/test/resources/output" responseTimeout="10000"/>
     </flow>
 </mule>

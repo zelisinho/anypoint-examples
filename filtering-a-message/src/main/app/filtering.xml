@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
-    <flow name="filteringFlow1" doc:name="filteringFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="Recieve HTTP request"/>
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <flow doc:name="filteringFlow1" name="filteringFlow1">
+        <http:inbound-endpoint doc:name="Recieve HTTP request" exchange-pattern="request-response" host="localhost" port="8081"/>
         <and-filter doc:name="Filter by Payload Type and HTTP method">
-        	<payload-type-filter expectedType="org.apache.commons.httpclient.ContentLengthInputStream" doc:name="Payload"/>
-        	<message-property-filter pattern="http.method=post" caseSensitive="false" scope="inbound" doc:name="Message Property"/>
+        	<payload-type-filter doc:name="Payload" expectedType="org.apache.commons.httpclient.ContentLengthInputStream"/>
+        	<message-property-filter caseSensitive="false" doc:name="Message Property" pattern="http.method=post" scope="inbound"/>
         </and-filter>
         
         <json:json-to-object-transformer doc:name="Convert JSON to HashMap" returnClass="java.util.HashMap"/>
         <custom-filter class="org.mule.examples.filters.FreeMembershipDiscountFilter" doc:name="Perform custom filtering"/>
-        <set-payload value="the discount was granted." doc:name="Set Payload to the filtering outcome message"/>
-        <logger message="#[payload]" level="INFO" doc:name="Logg the filtering outcome"/>
-        <http:response-builder status="200" contentType="text/plain" doc:name="Build HTTP Response"/>
+        <set-payload doc:name="Set Payload to the filtering outcome message" value="the discount was granted."/>
+        <logger doc:name="Logg the filtering outcome" level="INFO" message="#[payload]"/>
+        <http:response-builder contentType="text/plain" doc:name="Build HTTP Response" status="200"/>
     </flow>
 </mule>

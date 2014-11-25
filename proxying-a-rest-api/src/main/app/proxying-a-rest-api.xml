@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.2"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd">
-    <https:connector name="HTTP_HTTPS" cookieSpec="netscape" validateConnections="true" sendBufferSize="0" receiveBufferSize="0" receiveBacklog="0" clientSoTimeout="10000" serverSoTimeout="10000" socketSoLinger="0" doc:name="HTTP-HTTPS">        
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd">
+    <https:connector clientSoTimeout="10000" cookieSpec="netscape" doc:name="HTTP-HTTPS" name="HTTP_HTTPS" receiveBacklog="0" receiveBufferSize="0" sendBufferSize="0" serverSoTimeout="10000" socketSoLinger="0" validateConnections="true">        
     </https:connector>
-    <flow name="rest-api-proxyFlow1" doc:name="rest-api-proxyFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="Receive HTTP requests from apps"/>
-        <set-property propertyName="http.disable.status.code.exception.check" value="true" doc:name="Disable exception check"/>
-        <flow-ref name="copy-headers" doc:name="Copy HTTP Headers"/>
-        <https:outbound-endpoint exchange-pattern="request-response" method="POST" connector-ref="HTTP_HTTPS" address="https://api.box.com#[message.inboundProperties['http.request']]" doc:name="Send requests to API"/>
-        <flow-ref name="copy-headers" doc:name="Copy HTTP Headers"/>
+    <flow doc:name="rest-api-proxyFlow1" name="rest-api-proxyFlow1">
+        <http:inbound-endpoint doc:name="Receive HTTP requests from apps" exchange-pattern="request-response" host="localhost" port="8081"/>
+        <set-property doc:name="Disable exception check" propertyName="http.disable.status.code.exception.check" value="true"/>
+        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
+        <https:outbound-endpoint address="https://api.box.com#[message.inboundProperties['http.request']]" connector-ref="HTTP_HTTPS" doc:name="Send requests to API" exchange-pattern="request-response" method="POST"/>
+        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
     </flow>
-    <sub-flow name="copy-headers" doc:name="copy-headers">
-        <copy-properties propertyName="*" doc:name="Copy All HTTP Headers"/>
-        <remove-property propertyName="Content-Length" doc:name="Remove Content Length"/>
-        <remove-property propertyName="MULE_*" doc:name="Remove MULE Properties"/>
-        <remove-property propertyName="X_MULE*" doc:name="Remove X_MULE Properties"/>
+    <sub-flow doc:name="copy-headers" name="copy-headers">
+        <copy-properties doc:name="Copy All HTTP Headers" propertyName="*"/>
+        <remove-property doc:name="Remove Content Length" propertyName="Content-Length"/>
+        <remove-property doc:name="Remove MULE Properties" propertyName="MULE_*"/>
+        <remove-property doc:name="Remove X_MULE Properties" propertyName="X_MULE*"/>
 
     </sub-flow>
 </mule>

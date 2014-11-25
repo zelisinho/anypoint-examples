@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.2"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
-http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
-    <flow name="choice-error-handlingFlow1" doc:name="choice-error-handlingFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="Recieve HTTP requests"/>
-        <json:json-to-object-transformer returnClass="java.util.HashMap" doc:name="Convert JSON to HashMap"/>
+<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
+    <flow doc:name="choice-error-handlingFlow1" name="choice-error-handlingFlow1">
+        <http:inbound-endpoint doc:name="Recieve HTTP requests" exchange-pattern="request-response" host="localhost" port="8081"/>
+        <json:json-to-object-transformer doc:name="Convert JSON to HashMap" returnClass="java.util.HashMap"/>
         <custom-filter class="org.mule.examples.InputDataValidator" doc:name="Perform custom validation"/>
-        <set-variable variableName="order" value="#[payload]" doc:name="Set variable 'order'"/>
-        <set-payload value="#[payload['email']]" doc:name="Set payload to Email"/>
-        <regex-filter pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" doc:name="Validate email"/>
-        <set-payload value="Input data validation passed." doc:name="Set Payload"/>
+        <set-variable doc:name="Set variable 'order'" value="#[payload]" variableName="order"/>
+        <set-payload doc:name="Set payload to Email" value="#[payload['email']]"/>
+        <regex-filter doc:name="Validate email" pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
+        <set-payload doc:name="Set Payload" value="Input data validation passed."/>
         <choice-exception-strategy doc:name="Choice Exception Strategy">
             <catch-exception-strategy doc:name="Catch Invalid Data" when="#[exception.causedBy(java.lang.IllegalArgumentException)]">
-                <set-payload value="Invalid input data: #[payload]" doc:name="Set Payload"/>
-                <http:response-builder status="400" doc:name="HTTP Response Builder"/>
+                <set-payload doc:name="Set Payload" value="Invalid input data: #[payload]"/>
+                <http:response-builder doc:name="HTTP Response Builder" status="400"/>
             	
             </catch-exception-strategy>
-            <catch-exception-strategy when="#[exception.causedBy(java.lang.NullPointerException)]" doc:name="Catch Missing Data">
-                <set-payload value="Missing input data: #[payload]" doc:name="Set Payload"/>
-                <http:response-builder status="400" doc:name="HTTP Response Builder"/>
+            <catch-exception-strategy doc:name="Catch Missing Data" when="#[exception.causedBy(java.lang.NullPointerException)]">
+                <set-payload doc:name="Set Payload" value="Missing input data: #[payload]"/>
+                <http:response-builder doc:name="HTTP Response Builder" status="400"/>
             </catch-exception-strategy>
             
         </choice-exception-strategy>
