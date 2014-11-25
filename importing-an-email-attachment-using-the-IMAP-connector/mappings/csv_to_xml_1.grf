@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="Admin" created="Thu Jun 26 08:10:13 CEST 2014" description="CSV To XML" guiVersion="3.4.3.P" id="1403768927901" licenseCode="Unlicensed" licenseType="Unknown" modified="Thu Jun 26 08:10:13 CEST 2014" modifiedBy="Admin" name="CSV_To_XML" preview-file="${Project_Home}/src/main/resources/input.csv" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="883d52c9-b001-47b2-b72c-e33ed1dbb6ce">
+<Record fieldDelimiter="," name="input" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="orderId" name="orderId" size="10" type="string"/>
+<Field containerType="SINGLE" label="name" name="name" size="10" type="string"/>
+<Field containerType="SINGLE" label="units" name="units" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="pricePerUnit" name="pricePerUnit" size="10" type="string"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __schemaType="ordersType" __sourcePath="{}/orders" _dataStructure="OBJECT" _id="__id" _type="Output" id="67447dc4-6d91-4e4d-b679-d3bf4a054b19">
+<Record fieldDelimiter="," name="orders" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __schemaType="orderType" __sourcePath="{}/orders/order/orderId" containerType="SINGLE" label="orderId" name="orderId" type="string"/>
+<Field __index="1" __schemaType="orderType" __sourcePath="{}/orders/order/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="2" __schemaType="orderType" __sourcePath="{}/orders/order/units" containerType="SINGLE" label="units" name="units" type="string"/>
+<Field __index="3" __schemaType="orderType" __sourcePath="{}/orders/order/pricePerUnit" containerType="SINGLE" label="pricePerUnit" name="pricePerUnit" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="CSV READER" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+<attr name="__dataSourceDefinition"><![CDATA[${Project_Home}/src/main/resources/input.csv]]></attr>
+</Node>
+<Node cacheInMemory="true" charset="UTF-8" enabled="enabled" fileURL="dict:outputPayload" guiName="XML WRITER" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER" xmlSchemaURL="./src/test/resources/orders.xsd">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <order>
+    <orderId>$0.orderId</orderId>
+    <name>$0.name</name>
+    <units>$0.units</units>
+    <pricePerUnit>$0.pricePerUnit</pricePerUnit>
+  </order>
+</orders>]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[orders]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Orders" guiX="460" guiY="20" id="FOREACH_INPUT_ORDERS" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.orderId = input.orderId;
+output.name = input.name;
+output.units = input.units;
+output.pricePerUnit = input.pricePerUnit;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="883d52c9-b001-47b2-b72c-e33ed1dbb6ce" outPort="Port 0 (output)" toNode="FOREACH_INPUT_ORDERS:0"/>
+<Edge debugMode="true" fromNode="FOREACH_INPUT_ORDERS:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="67447dc4-6d91-4e4d-b679-d3bf4a054b19" outPort="Port 0 (out)" toNode="EXT_XML_WRITER0:0"/>
+</Phase>
+</Graph>

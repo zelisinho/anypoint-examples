@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="Admin" created="Mon Jun 23 08:49:35 CEST 2014" description="CSV To Map" guiVersion="3.4.3.P" id="1403525285159" licenseCode="Unlicensed" licenseType="Unknown" modified="Mon Jun 23 08:49:35 CEST 2014" modifiedBy="Admin" name="CSV_To_Map" preview-file="C:/incoming/customers - Copy.csv" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="5bce8347-0bc0-40a0-842c-cd087b4d59b7">
+<Record fieldDelimiter=";" name="customers_Copy" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="firstname" name="firstname" size="10" type="string"/>
+<Field containerType="SINGLE" label="surname" name="surname" size="10" type="string"/>
+<Field containerType="SINGLE" label="phone" name="phone" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="state" name="state" size="10" type="string"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/customers_x005fCopy" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="00700984-2405-46ff-8809-f7b3936500eb">
+<Record fieldDelimiter="," name="customers_Copy" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/customers_x005fCopy/firstname" containerType="SINGLE" label="firstname" name="firstname" type="string"/>
+<Field __index="2" __sourcePath="{}/customers_x005fCopy/phone" containerType="SINGLE" label="phone" name="phone" type="string"/>
+<Field __index="3" __sourcePath="{}/customers_x005fCopy/state" containerType="SINGLE" label="state" name="state" type="string"/>
+<Field __index="1" __sourcePath="{}/customers_x005fCopy/surname" containerType="SINGLE" label="surname" name="surname" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="CSV READER" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+<attr name="__dataSourceDefinition"><![CDATA[C:/incoming/customers - Copy.csv]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'customers_Copy' -&gt; 'customers_x005fCopy'" guiX="460" guiY="20" id="FOREACH_CUSTOMERS_COPY_CUSTOMERS_X005F_COPY" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.firstname = input.firstname;
+output.surname = input.surname;
+output.phone = input.phone;
+output.state = input.state;
+]]></attr>
+</Node>
+<Node cacheInMemory="true" enabled="enabled" fileURL="dict:outputPayload" guiName="Map&lt;k,v&gt; WRITER" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="customers_Copy" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="0">
+    <firstname>$0.firstname</firstname>
+    <surname>$0.surname</surname>
+    <phone>$0.phone</phone>
+    <state>$0.state</state>
+  </item>
+</clover:collection>]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5bce8347-0bc0-40a0-842c-cd087b4d59b7" outPort="Port 0 (output)" toNode="FOREACH_CUSTOMERS_COPY_CUSTOMERS_X005F_COPY:0"/>
+<Edge debugMode="true" fromNode="FOREACH_CUSTOMERS_COPY_CUSTOMERS_X005F_COPY:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="00700984-2405-46ff-8809-f7b3936500eb" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="Admin" created="Wed Jul 02 07:23:42 CEST 2014" description="List&lt;Map&gt; To CSV" guiVersion="3.4.4.P" id="1404279338571" licenseCode="Unlicensed" licenseType="Unknown" modified="Wed Jul 02 07:23:42 CEST 2014" modifiedBy="Admin" name="List_Map__To_CSV" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Output" id="1d079b1f-2893-498f-9979-f7175ad0cb91">
+<Record fieldDelimiter="," name="employee" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="first_name" name="first_name" size="10" type="string"/>
+<Field containerType="SINGLE" label="last_name" name="last_name" size="10" type="string"/>
+<Field containerType="SINGLE" label="gender" name="gender" size="10" type="string"/>
+<Field containerType="SINGLE" label="dob" name="dob" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="hire_date" name="hire_date" size="10" type="string"/>
+<Field __artificialType="_id" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/Map" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Input" id="5616f466-a716-45fe-90b1-5deb2956b076">
+<Record fieldDelimiter="," name="Map" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __implementationClass="java.sql.Date" __index="3" __sourcePath="{}/Map/dob" containerType="SINGLE" label="dob" name="dob" type="date"/>
+<Field __implementationClass="java.lang.String" __index="0" __sourcePath="{}/Map/first_x005fname" containerType="SINGLE" label="first_name" name="first_name" type="string"/>
+<Field __implementationClass="java.lang.String" __index="5" __sourcePath="{}/Map/gender" containerType="SINGLE" label="gender" name="gender" type="string"/>
+<Field __implementationClass="java.sql.Date" __index="1" __sourcePath="{}/Map/hire_x005fdate" containerType="SINGLE" label="hire_date" name="hire_date" type="date"/>
+<Field __implementationClass="java.lang.String" __index="4" __sourcePath="{}/Map/last_x005fname" containerType="SINGLE" label="last_name" name="last_name" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiName="Map&lt;k,v&gt; READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="dob" trim="true" xpath="dob"/>
+  <Mapping cloverField="first_name" trim="true" xpath="first_x005fname"/>
+  <Mapping cloverField="gender" trim="true" xpath="gender"/>
+  <Mapping cloverField="hire_date" trim="true" xpath="hire_x005fdate"/>
+  <Mapping cloverField="last_name" trim="true" xpath="last_x005fname"/>
+</Context>
+]]></attr>
+<attr name="__typeName"><![CDATA[select * from employees where first_name = '#[payload.getText().split(" ")[0]]' and last_name = '#[payload.getText().split(" ")[1]]']]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/db/select]]></attr>
+<attr name="__connectorName"><![CDATA[MySQL_Configuration]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" excludeFields="__id" fileURL="dict:outputPayload" guiName="CSV WRITER" guiX="900" guiY="20" id="DATA_WRITER0" outputFieldNames="true" quotedStrings="true" type="DATA_WRITER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'Map' -&gt; 'employee'" guiX="460" guiY="20" id="FOREACH_MAP_EMPLOYEE" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = str2long(input.__id);
+//END -> DO NOT REMOVE
+output.dob = date2str(input.dob, "yyyy/MM/dd");
+output.first_name = input.first_name;
+output.gender = input.gender;
+output.hire_date = date2str(input.hire_date, "yyyy/MM/dd");
+output.last_name = input.last_name;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5616f466-a716-45fe-90b1-5deb2956b076" outPort="Port 0 (out)" toNode="FOREACH_MAP_EMPLOYEE:0"/>
+<Edge debugMode="true" fromNode="FOREACH_MAP_EMPLOYEE:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="1d079b1f-2893-498f-9979-f7175ad0cb91" outPort="Port 0 (out)" toNode="DATA_WRITER0:0"/>
+</Phase>
+</Graph>
