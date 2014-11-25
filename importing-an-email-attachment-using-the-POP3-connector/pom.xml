@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.mule.examples</groupId>
 		<artifactId>examples-catalog</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<dependencies>
@@ -167,8 +167,7 @@
 				<configuration>
 				<tasks>
 				<!-- Using an ant task to deflate cloveretl-engine.zip -->
-				<unzip src="${project.build.testOutputDirectory}/cloveretl-engine.zip"
-				dest="${project.build.testOutputDirectory}" />
+				<unzip src="${project.build.testOutputDirectory}/cloveretl-engine.zip" dest="${project.build.testOutputDirectory}" />
 				</tasks>
 				</configuration>
 				<goals>
