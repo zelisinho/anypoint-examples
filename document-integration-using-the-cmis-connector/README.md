@@ -1,4 +1,4 @@
-# Docuemnt integration using the CMIS Connector #
+# Document integration using the CMIS Connector #
 
 This application demonstrates how to connect to CMIS system. Based on the simple use case, the application loads a locally stored file and uploads it to an active CMIS account. 
 
