@@ -10,7 +10,7 @@ This document assumes that you are familiar with Mule ESB and the [Anypoint Stud
 
 ### Example Use Case ###
 
-This example application receives the order in JSON format for filtering. It employs And, Message property, Payload and Custom filters to validate some order properties. The Message property filter filters out messages based on whether they are HTTP POSTs or not while the Payload filter filters messages that are of the data type: ContentLengthInputStream. The AND filter combines the Message Property filter and the Payload filter and allows only those messages that satisfy both the conditions to pass by. The Custom filter uses a JAVA class to filter order messages that meet a specific criteeria.
+This example application receives the order in JSON format for filtering. It employs And, Message property, Payload and Custom filters to validate some order properties. The Message property filter filters out messages based on whether they are HTTP POSTs or not while the Payload filter filters messages that are of the data type: ContentLengthInputStream. The AND filter combines the Message Property filter and the Payload filter and allows only those messages that satisfy both the conditions to pass by. The Custom filter uses a JAVA class to filter order messages that meet a specific criteria.
 
 ### Set Up and Run the Example ###
 
