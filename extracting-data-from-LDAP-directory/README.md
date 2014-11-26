@@ -42,7 +42,7 @@ The example application connects to the LDAP directory and retrieves a list of L
 
 7. Click **File > Import... > LDIF into LDAP** and then click *Next*. 
 
-8. Set a path to *ldap.ldif* located in the *scr/test/resources* directory of this project. Set *Import into* to *local LDAP*. Click Finish to finish the import process. 
+8. Set a path to *ldap.ldif* located in the *scr/main/resources* directory of this project. Set *Import into* to *local LDAP*. Click Finish to finish the import process. 
 
 9. If you click on ROOT DSE in the panel LDAP browser, you should see the imported data structure.
 
