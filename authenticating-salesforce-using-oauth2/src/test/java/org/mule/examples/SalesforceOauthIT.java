@@ -11,6 +11,7 @@ package org.mule.examples;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
@@ -20,6 +21,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -70,10 +72,13 @@ public class SalesforceOauthIT extends FunctionalTestCase
     }
     
     private void loginToSalesforce() {
+    	ArrayList<String> cliArgsCap = new ArrayList<String>();
 		DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
 		capabilities.setCapability("phantomjs.binary.path", System.getProperty("phantomjs.binary"));
 		capabilities.setJavascriptEnabled(true);
-				
+		cliArgsCap.add("--ssl-protocol=any");
+    	capabilities.setCapability(
+    	    PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);               
 		driver = new PhantomJSDriver(capabilities);
 		driver.get("https://emea.salesforce.com/");
 		WebDriverWait waitForScreen = new WebDriverWait(driver, 30);
