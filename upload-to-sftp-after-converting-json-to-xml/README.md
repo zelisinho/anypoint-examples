@@ -6,7 +6,7 @@ This example application illustrates the concept of datamapping to convert JSON 
 In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the datamapper transformer after which the message payload is uploaded to the SFTP folder. 
 
 ###Set up and run the example
-1. Import the project into yopur workspace and run the project as a mule application.
+1. Import the project into your workspace and run the project as a mule application.
 
 2. Make a POST request using Postman to http://localhost:8081 with following JSON message body:
 
