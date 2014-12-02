@@ -54,12 +54,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <eclipsePluginVersion>2.8</eclipsePluginVersion>
-        <jdkName>JavaSE-1.6</jdkName>
-        <jdk.version>1.6</jdk.version>
+        <jdkName>JavaSE-1.7</jdkName>
+        <jdk.version>1.7</jdk.version>
         <assembly-descriptor-version>1.0.5</assembly-descriptor-version>
-        <muleServerId>org.mule.tooling.server.3.5.2.ee</muleServerId>
-        <muleConfigVersion>EE-3.5.2</muleConfigVersion>
-        <mule.version>3.5.2</mule.version>
+        <muleServerId>org.mule.tooling.server.3.6.0.ee</muleServerId>
+        <muleConfigVersion>EE-3.6.0</muleConfigVersion>
+        <mule.version>3.6.0-M2</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
 		<sfdc.version>5.4.8</sfdc.version>
     </properties>
