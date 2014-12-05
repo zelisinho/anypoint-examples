@@ -20,7 +20,7 @@ Order data in JSON format is sent through an HTTP endpoint to a Ruby transformer
 
 5. Click on **Start** to deploy your application on Cloudhub.
 
-7. Use Postman to make a POST request using JSON to **http://(your domain).cloudhub.io**:
+7. Use Postman to make a POST request using JSON to **http://(your domain).cloudhub.io/customBusinessEvents**:
 
        {
        "email": "aaa@abc.sk", 
