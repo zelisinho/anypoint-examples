@@ -86,7 +86,7 @@ public class ScatterGatherFlowControlIT extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        MuleMessage result = client.send("http://localhost:8081/", MESSAGE, props);
+        MuleMessage result = client.send("http://localhost:8081/scatterGather", MESSAGE, props);
         Thread.sleep(10000);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
