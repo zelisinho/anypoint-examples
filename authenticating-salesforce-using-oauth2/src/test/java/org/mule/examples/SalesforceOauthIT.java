@@ -66,7 +66,7 @@ public class SalesforceOauthIT extends FunctionalTestCase
     	loginToSalesforce();
     	// wait till the login process is complete
     	Thread.sleep(5000);                
-        driver.get("http://localhost:8081/");
+        driver.get("http://localhost:8082/");
         assertTrue(driver.getPageSource().contains(MESSAGE));
         driver.quit();
     }
