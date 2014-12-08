@@ -1,4 +1,4 @@
-# Authenticating Salesforce using OAuth2 #
+﻿# Authenticating Salesforce using OAuth2 #
 
 This example shows you how to connect to Salesforce using OAuth as the security protocol 
 
@@ -22,11 +22,11 @@ This application employs Salesforce (OAuth) connector to enable OAuth authentica
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Build** heading, click to expand the **Create** folder. 
 1. Click **Apps**. Under **Connected Apps** click **New**.
-1. Fill in all the required fields. Check *Enable OAuth Settings*. Set Callback URL to *http://localhost:8081/oauth2callback*. Move *Full Access (full)* to Selected OAuth scopes. Click **Save**. Stay on this page.
+1. Fill in all the required fields. Check *Enable OAuth Settings*. Set Callback URL to *http://localhost:8082/oauth2callback*. Move *Full Access (full)* to Selected OAuth scopes. Click **Save**. Stay on this page.
 1. In your application in Studio, click the **Global Elements** tab and add Salesforce (OAuth) connector, if does not already exist.
 1. Now, paste the **Consumer Key** and **Consumer Secret** in the common.properties file under src/main/resources. ( Another option is to Double-click the Salesforce (OAuth) global element to open its **Global Element Properties** panel. In the **Consumer Key** and **Consumer Secret** fields, paste the values from Salesforce App form. Alternatively, configure the global element in the XML Editor. Then click **OK** to save your changes.)
 1. In the **Package Explorer**, right-click the *authenticating-salesforce-using-oauth2* project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
-2. Open your browser and put *http://localhost:8081* in the address bar. You will redirected to Salesforce Login page and asked for your credentials. Allow access for this app.  
+2. Open your browser and put *http://localhost:8082* in the address bar. You will redirected to Salesforce Login page and asked for your credentials. Allow access for this app.  
 3. Go back to Anypoint Studio and the console log should contain lines like these:
 
 		INFO  2014-10-27 12:49:25,779 [[authenticating-salesforce-using-oauth2].connector.http.mule.default.receiver.02] org.mule.examples.LoggerIterator: contact: {LastModifiedDate=2014-08-25T13:21:00.000Z, Id=0032000001INNfoAAH, LastName=Pickwick, type=Contact}
