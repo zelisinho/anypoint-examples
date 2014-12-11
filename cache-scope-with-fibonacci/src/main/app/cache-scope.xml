@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
  
     <configuration doc:name="Configuration">
         <expression-language>
@@ -7,18 +12,23 @@
                 def fibonacciRequest(n, cached)
                 {
                     import org.mule.DefaultMuleMessage;
-                    import org.mule.RequestContext;
+                    import org.mule.module.client.MuleClient;
+                    import java.util.Map;
+                    import java.util.HashMap; 					
  
                     request = new DefaultMuleMessage("Fibonacci: " + n, app.registry['_muleContext']);
- 
-                    request.setOutboundProperty("n", Integer.toString(n));
- 
+                     
+                    Map map = new HashMap();
+                    map.put("n", Integer.toString(n));
+                    request.setOutboundProperty("http.query.params", map);
+ 					
                     if (!cached)
                     {
                         request.setOutboundProperty("nocache", true);
                     }
- 
-                    RequestContext.getEventContext().sendEvent(request, "vm://fibonacci");
+					
+					MuleClient client = new MuleClient(app.registry['_muleContext']);
+					client.send("vm://fibonacci", request);
                 }
             </global-functions>
         </expression-language>
@@ -27,24 +37,25 @@
         <spring:bean class="com.mulesoft.mule.cache.FibonacciResponseGenerator" id="responseGenerator"/>
     </spring:beans>
  
-    <ee:object-store-caching-strategy doc:name="Caching Strategy" keyGenerationExpression="#[message.inboundProperties['n']]" name="Caching_Strategy" responseGenerator-ref="responseGenerator"/>
+    <ee:object-store-caching-strategy doc:name="Caching Strategy" keyGenerationExpression="#[message.inboundProperties['http.query.params'].n]" name="Caching_Strategy" responseGenerator-ref="responseGenerator"/>
  
     <vm:connector doc:name="VM" name="vmConnector">
         <dispatcher-threading-profile maxThreadsActive="200"/>
     </vm:connector>
+    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
  
  
-    <flow doc:name="cache-exampleFlow1" name="cache-exampleFlow1">
-        <http:inbound-endpoint doc:name="Recieve HTTP request" exchange-pattern="request-response" host="localhost" path="fibonacci" port="8081"/>
+    <flow  name="cache-exampleFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="fibonacci" doc:name="HTTP"/>
  <message-filter doc:name="Filter favicon">
             <not-filter>
                 <wildcard-filter caseSensitive="true" pattern="/favicon.ico"/>
             </not-filter>
         </message-filter>
  <choice doc:name="Choice">
-            <when expression="message.inboundProperties['n'] &lt; 20">
+            <when expression="message.inboundProperties['http.query.params'].n &lt; 20">
                 <flow-ref doc:name="Call calculateFibonacci flow" name="calculateFibonacci"/>
- <expression-component doc:name="Set the calculation output"><![CDATA[payload= "Fibonacci(" + message.inboundProperties['n'] + ") = " + payload +"\nCOST: " + message.outboundProperties['cost']]]></expression-component>
+ <expression-component doc:name="Set the calculation output"><![CDATA[payload= "Fibonacci(" + message.inboundProperties['http.query.params'].n + ") = " + payload +"\nCOST: " + message.outboundProperties['cost']]]></expression-component>
             </when>
             <otherwise>
                 <expression-component doc:name="Input is too high"><![CDATA[payload= "ERROR: n must be less than 20"]]></expression-component>
@@ -52,25 +63,25 @@
         </choice>
     </flow>
  
-    <flow doc:name="calculateFibonacci" name="calculateFibonacci">
+    <flow  name="calculateFibonacci">
         <vm:inbound-endpoint doc:name="VM" exchange-pattern="request-response" path="fibonacci"/>
  <ee:cache cachingStrategy-ref="Caching_Strategy" doc:name="Cache scope" filterExpression="#[groovy:message.getInboundProperty('nocache') == null]">
-            <logger doc:name="Log the input" level="INFO" message="#[payload]"/>
+            <logger doc:name="Log the input" level="INFO" message="aaa: #[]"/>
             <expression-component doc:name="Perform calculation"><![CDATA[
-                n = message.inboundProperties['n'];
-                if (n < 2)
-                {
-                    payload = n;
-                    message.outboundProperties["cost"] = 1;
-                } else {
-                    boolean cached = message.inboundProperties['nocache'] == null;
-                    import org.mule.api.MuleMessage;
-                    MuleMessage fib1 = fibonacciRequest(n-1, cached);
-                    MuleMessage fib2 = fibonacciRequest(n-2, cached);
- message.outboundProperties["cost"] = fib1.getInboundProperty("cost") + fib2.getInboundProperty("cost") + 1;
-                    payload = Long.parseLong(fib1.getPayload()) + Long.parseLong(fib2.getPayload());
-                }
-            ]]>
+                 n = message.inboundProperties['http.query.params'].n; 
+                 if (n < 2) 
+                 { 
+                     payload = n; 
+                     message.outboundProperties["cost"] = 1; 
+                 } else { 
+                     boolean cached = message.inboundProperties['http.query.params'].nocache == null; 
+                     import org.mule.api.MuleMessage; 
+                     MuleMessage fib1 = fibonacciRequest(n-1, cached);                      
+					 MuleMessage fib2 = fibonacciRequest(n-2, cached);
+					 message.outboundProperties["cost"] = fib1.getInboundProperty("cost") + fib2.getInboundProperty("cost") + 1;
+					 payload = Long.parseLong(fib1.getPayload()) + Long.parseLong(fib2.getPayload());
+                 } 
+             ]]> 
             </expression-component>
         </ee:cache>
     </flow>
