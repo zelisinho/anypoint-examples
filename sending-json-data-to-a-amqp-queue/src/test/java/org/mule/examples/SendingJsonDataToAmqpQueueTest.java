@@ -45,7 +45,7 @@ public class SendingJsonDataToAmqpQueueTest extends FunctionalTestCase {
 	private static final String QUEUE_NAME = "sales_queue";
 	private static String HOST;
 	
-	private static final String REPLY_OK = "/message";
+	private static final String REPLY_OK = "test";
 	 
 	private Channel channel;
 	private Connection connection;
@@ -58,12 +58,12 @@ public class SendingJsonDataToAmqpQueueTest extends FunctionalTestCase {
     }
 
     @Test	    
-    public void httpGetToFlowUrlEchoesSentMessage() throws Exception
+    public void testFlow() throws Exception
     {	    		    
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
-        props.put("http.method", "GET");
-        client.dispatch("http://localhost:8081/message", "", props);
+        props.put("http.method", "POST");
+        client.dispatch("http://localhost:8081/", REPLY_OK, props);
         recieveMessage();
         Thread.sleep(5000);
         assertNotNull(messagebody);
