@@ -24,7 +24,7 @@ import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 
-public class FilteringMessageTest extends FunctionalTestCase
+public class FilteringMessageIT extends FunctionalTestCase
 {
 
     private static String MESSAGE;

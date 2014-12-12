@@ -37,12 +37,13 @@ The application contains several [filter components](http://www.mulesoft.org/doc
 The following steps outline the process to build this application.
 
 1. Create a new Mule Project by going to **File > New... > Mule Project** and name it **Filtering a Message**.
-2. Drag an **HTTP endpoint** into a new flow. This is an inbound endpoint for your application and receives all the requests that reference its address.
+2. Drop an HTTP Connector to the flow. 
+2. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
 
-		Display Name	Receive HTTP Requests From Apps
-		Host			localhost
-		Port			8081
-		Path	
+		Host 	localhost
+		Port 	8081 
+   Click Ok button.	
+2. Set *Path* attribute to */* value and *Allowed Methods* to *POST*.
 3. Drag an **And Filter**. 
 4. Add a **Message Property Filter** to the **And Filter**.
 
