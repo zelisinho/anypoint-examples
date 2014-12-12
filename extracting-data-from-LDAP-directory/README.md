@@ -98,13 +98,12 @@ An [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Co
 The following steps outline the process to build this application:
 
 1. Create a new Mule Project by going to **File > New... > Mule Project** and name it **Importing data from an LDAP Directory**.
-2. Drag an **HTTP endpoint** into a new flow. This is an inbound endpoint for your proxy application and receives all the requests that reference its address. Setits properties as follows:
+2. Drag an **HTTP endpoint** into a new flow. This is an inbound endpoint for your proxy application and receives all the requests that reference its address. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
 
-		Display Name	Receive HTTP Request
-		Host			localhost
-		Port			8081
-		Path	 
-		
+		Host 	localhost
+		Port 	8081 
+   Click Ok button.	
+2. Set *Path* attribute to */* value.		
 3. Drag **LDAP Connector**. Click + sign next to the Configuration Reference to add a LDAP Configuration. Configure it as follows:
 
 		Principal DN	cn=Manager,dc=my-domain,dc=com
