@@ -21,7 +21,7 @@ import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
 
-public class ContentBasedRoutingTest extends FunctionalTestCase
+public class ContentBasedRoutingIT extends FunctionalTestCase
 {
 
     private static String MESSAGE = "Spanish";
