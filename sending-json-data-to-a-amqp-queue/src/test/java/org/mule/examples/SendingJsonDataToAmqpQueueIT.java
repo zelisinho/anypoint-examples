@@ -36,10 +36,10 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DefaultConsumer;
 
-public class SendingJsonDataToAmqpQueueTest extends FunctionalTestCase {
+public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(SendingJsonDataToAmqpQueueTest.class); 
+	private static final Logger log = LoggerFactory.getLogger(SendingJsonDataToAmqpQueueIT.class); 
 	
 	private static final String EXCHNAGE_NAME = "sales_exchange";
 	private static final String QUEUE_NAME = "sales_queue";
