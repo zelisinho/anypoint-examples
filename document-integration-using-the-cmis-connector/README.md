@@ -44,7 +44,13 @@ The request-response inbound [HTTP endpoint](http://www.mulesoft.org/documentati
 
 The following steps outline the process to build this application. 
 
-1. Drop an HTTP Connector to the flow. Set Path to *cmis*.
+1. Drop an HTTP Connector to the flow. 
+2. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
+
+		Host 	localhost
+		Port 	8081 
+   Click Ok button.	
+2. Set *Path* attribute to *cmis* value.
 6. Add Groovy Component and set Script Text to:
 		
 		import java.io.FileInputStream;
