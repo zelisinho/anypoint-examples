@@ -11,7 +11,7 @@ This document describes the details of the example within the context of Anypoin
 
 In the Mule application, an inbound HTTP connector listens for HTTP GET requests with the form: http://<host>:8081/?lastname=<parameter>. The HTTP connector passes the value of <parameter> as one of the message properties to a database connector. The database connector is configured to extract this value and use it for the SQL query listed below.
 
-	select first_name from employees where last_name = #[message.inboundProperties['lastname']] 
+	select first_name from employees where last_name = "#[message.inboundProperties['http.query.params'].lastname]" 
 
 As you can see, the MEL expression in the SQL query references the value of the parameter passed to the HTTP connector. So if the HTTP connector receives http://localhost:8081/?lastname=Smith, the SQL query will be select first_name from employees where last_name = Smith.
 
@@ -19,12 +19,12 @@ The database connector instructs the database server to run the SQL query, retri
 
 ###Set Up and Run the Example
 
-1. [** Download and setup the MySQL driver**](http://dev.mysql.com/doc/refman/5.7/en/installing.html) in it's default location. You can even check out some of the YouTube videos for assistance with this step.
+1. **[Download and setup the MySQL driver](http://dev.mysql.com/doc/refman/5.7/en/installing.html)** in it's default location. You can even check out some of the YouTube videos for assistance with this step.
 
 2. **Start the MySQL server** from System Preferences
    
 
-3. **Creating the MySQL Database **: Visit [this](http://www.mulesoft.org/documentation/display/current/Database+Connector+Examples#DatabaseConnectorExamples-script) page and click on **View the script for copy-paste** to copy the script. Navigate to the MySQL driver on the command terminal and then paste the script to create a MySQL database called Company which has tables for employees and roles. The script also creates a password protected user and grants it access to the database. 
+3. **Creating the MySQL Database**: Visit [this](http://www.mulesoft.org/documentation/display/current/Database+Connector+Examples#DatabaseConnectorExamples-script) page and click on **View the script for copy-paste** to copy the script. Navigate to the MySQL driver on the command terminal and then paste the script to create a MySQL database called Company which has tables for employees and roles. The script also creates a password protected user and grants it access to the database. 
    
         username: generatedata; password:generatedata
  
