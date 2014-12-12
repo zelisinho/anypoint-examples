@@ -31,7 +31,13 @@ The request-response inbound [HTTP endpoint](http://www.mulesoft.org/documentati
 
 The following steps outline the process to build this application.
     
-1. Drop an HTTP Connector to the flow. 
+1. 1. Drop an HTTP Connector to the flow. 
+2. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
+
+		Host 	localhost
+		Port 	8081 
+   Click Ok button.	
+2. Set *Path* attribute to */* value and *Allowed methods* to *POST* value.
 2. Add a Byte Array to String transformer.
 3. Add a Javascript transformer with the following script:
 
