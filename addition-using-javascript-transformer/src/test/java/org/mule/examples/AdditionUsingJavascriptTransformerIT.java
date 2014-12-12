@@ -21,7 +21,7 @@ import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
 
-public class AdditionUsingJavascriptTransformerTest extends FunctionalTestCase
+public class AdditionUsingJavascriptTransformerIT extends FunctionalTestCase
 {
 
     private static String MESSAGE = "{ \"a\" : 1, \"b\": 2 }";
