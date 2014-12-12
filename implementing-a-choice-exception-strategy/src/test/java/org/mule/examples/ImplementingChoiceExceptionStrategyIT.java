@@ -25,7 +25,7 @@ import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
 
-public class ImplementingChoiceExceptionStrategyTest extends FunctionalTestCase
+public class ImplementingChoiceExceptionStrategyIT extends FunctionalTestCase
 {
 	private static String MESSAGE;
 	private static String MESSAGE_WRONG;
