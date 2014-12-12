@@ -20,9 +20,7 @@ Complete the following procedure to create, then run this example in your own in
        INFO: Starting - inspect logfiles specified in logging.properties and  log4j.properties to get details
        INFO: pidfile created : . . . 
        
-3. Configure the project build path by adding the activeMQ jar file to the project folder. 
-    Right click on the project folder in the Package Explorer, then click on  “Properties --> Java Build Path”. Under the “Libraries” tab, click on “Add External Jars”. Now browse to the ActiveMQ home directory and add the jar file named “activemq-all-5.4.3.jar”(The activeMQ version at the time of building this documentation was 5.4.4). Click on “Open --> Ok” to do so. 
-    
+3. Click on json-to-jms.xml in the Package Explorer and open its Global Elements tab. Doubleclick on Active MQ item and edit Broker URL to your Active MQ broker URL. The default installation value is **tcp://localhost:61616**. If blank, the JMS elements will act using vm protocol.    
 4. In the Package Explorer, right-click on the project, then select Run As > Mule Application. Studio runs the application on the embedded server and connects to the localhost on the port to which the HTTP end-point is configured.
 
 5. Send JSON Data to the url using REST Console. You could even use curl to do so. Use the following screenshot as a guide to fill in the required details within the REST Console. Click on the Send button to send the JSON data as an HTTP request to your localhost server. 

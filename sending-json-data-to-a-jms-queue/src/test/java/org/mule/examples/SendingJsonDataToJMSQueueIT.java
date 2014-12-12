@@ -40,7 +40,7 @@ public class SendingJsonDataToJMSQueueIT extends FunctionalTestCase
     {
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
-        props.put("http.method", "GET");
+        props.put("http.method", "POST");
         MuleMessage result = client.send("http://localhost:8081/sales", MESSAGE, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
