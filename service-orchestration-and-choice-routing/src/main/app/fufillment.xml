@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jbossts="http://www.mulesoft.org/schema/mule/jbossts" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/jbossts http://www.mulesoft.org/schema/mule/jbossts/current/mule-jbossts.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jbossts="http://www.mulesoft.org/schema/mule/jbossts" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd
+http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/jbossts http://www.mulesoft.org/schema/mule/jbossts/current/mule-jbossts.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
 	<http:connector doc:name="HTTP\HTTPS" name="HttpConnector"/>
 	<jms:activemq-xa-connector brokerURL="vm://localhost" doc:name="Active MQ" name="Active_MQ" validateConnections="true"/>
 	<cxf:configuration doc:description="Global CXF Configuration" doc:name="CXF Configuration" initializeStaticBusInstance="false"/>
@@ -23,8 +37,14 @@
 		<mulexml:namespace prefix="ord" uri="http://orders.se.mulesoft.com/"/>
 	</mulexml:namespace-manager>
     <db:generic-config dataSource-ref="Derby_Data_Source" doc:name="Generic Database Configuration" name="Generic_Database_Configuration"/>
-	<flow doc:name="orderService" name="orderService">
-		<http:inbound-endpoint connector-ref="HttpConnector" doc:description="Process HTTP reqests or responses." doc:name="/orders" exchange-pattern="request-response" host="localhost" path="orders" port="1080"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8091" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration1" host="localhost" port="9090" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration2" host="localhost" port="9999" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration4" host="localhost" port="9999" doc:name="HTTP Request Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration1" host="localhost" port="9090" doc:name="HTTP Request Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration3" host="localhost" port="1080" doc:name="HTTP Listener Configuration"/>
+	<flow  name="orderService">
+        <http:listener config-ref="HTTP_Listener_Configuration3" path="orders" allowedMethods="POST" doc:name="/orders"/>
 		<cxf:jaxws-service doc:description="Make a web service available via CXF" doc:name="Order WebService" serviceClass="com.mulesoft.se.orders.IProcessOrder"/>
 		<set-session-variable doc:name="totalValue=0" value="0" variableName="totalValue"/>
 		<foreach collection="#[payload.orderItems]" doc:name="For each Order Item">
@@ -45,7 +65,7 @@
 			<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 		</catch-exception-strategy>
 	</flow>
-	<flow doc:name="samsungOrder" name="samsungOrder">
+	<flow  name="samsungOrder">
 		<vm:inbound-endpoint doc:name="samsungOrder" exchange-pattern="request-response" path="samsungOrder"/>
 		<data-mapper:transform config-ref="OrderItemToOrderRequest" doc:name="OrderItem to OrderRequest"/>
 		<flow-ref doc:name="Invoke Samsung WebService" name="samsungWebServiceClient"/>
@@ -66,18 +86,18 @@ return receipt;]]></scripting:text>
 			</scripting:transformer>
 		</catch-exception-strategy>
 	</flow>
-	<sub-flow doc:name="samsungWebServiceClient" name="samsungWebServiceClient">
+	<sub-flow  name="samsungWebServiceClient">
 		<cxf:jaxws-client clientClass="com.mulesoft.se.samsung.SamsungServiceService" doc:name="Samsung Webservice Client" operation="purchase" port="SamsungServicePort"/>
-		<http:outbound-endpoint doc:name="/samsung/orders" exchange-pattern="request-response" host="localhost" path="samsung/orders" port="9090"/>
+        <http:request config-ref="HTTP_Request_Configuration1" path="samsung/orders" method="POST" doc:name="/samsung/orders"/>        
 	</sub-flow>
-	<flow doc:name="inhouseOrder" name="inhouseOrder">
+	<flow  name="inhouseOrder">
 		<jms:inbound-endpoint connector-ref="Active_MQ" doc:name="inhouseOrder" queue="inhouseOrder">
 			<xa-transaction action="ALWAYS_BEGIN"/>
 		</jms:inbound-endpoint>
         <set-variable doc:name="Initialise Price" value="0" variableName="price"/>
 		<enricher doc:name="Enrich with price" target="#[price]">
 			<ee:cache cachingStrategy-ref="Caching_Strategy" doc:name="Cache the Price">
-				<http:outbound-endpoint disableTransportTransformer="true" doc:name="Invoke Price Service" exchange-pattern="request-response" host="localhost" method="GET" path="api/prices/#[payload.productId]" port="9999"/>
+                <http:request config-ref="HTTP_Request_Configuration4" path="api/prices/#[payload.productId]" method="GET" doc:name="Invoke Price Service"/>
 				<object-to-string-transformer doc:name="Object to String"/>
 			</ee:cache>
 		</enricher>
@@ -99,12 +119,12 @@ return receipt;]]></scripting:text>
 		</scripting:transformer>
 		<rollback-exception-strategy doc:name="Rollback Exception Strategy" maxRedeliveryAttempts="3">
 			<logger doc:name="Logger" level="INFO" message="#[payload]"/>
-			<on-redelivery-attempts-exceeded doc:name="Redelivery exhausted">
+			<on-redelivery-attempts-exceeded >
 				<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 			</on-redelivery-attempts-exceeded>
 		</rollback-exception-strategy>
 	</flow>
-	<flow doc:name="auditService" name="auditService">
+	<flow  name="auditService">
 		<vm:inbound-endpoint doc:name="audit" exchange-pattern="one-way" mimeType="text/plain" path="audit" responseTimeout="10000">
 			<xa-transaction action="ALWAYS_BEGIN"/>
 		</vm:inbound-endpoint>
@@ -112,29 +132,30 @@ return receipt;]]></scripting:text>
             <db:parameterized-query><![CDATA[insert into order_audits values(default, #[payload.orderId], #[totalValue])]]></db:parameterized-query>
         </db:insert>
 		<choice-exception-strategy doc:name="Choice Exception Strategy">
-			<rollback-exception-strategy doc:name="Rollback Exception Strategy" when="#[sessionVars.totalValue] > 5000"/>
-			<catch-exception-strategy doc:name="Catch Exception Strategy">
+			<rollback-exception-strategy doc:name="Rollback Exception Strategy" when="#[sessionVars.totalValue] > 5000" />
+			<catch-exception-strategy doc:name="Catch Exception Strategy" >
 				<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 			</catch-exception-strategy>
 		</choice-exception-strategy>
 	</flow>
-	<flow doc:name="priceService" name="priceService">
-		<http:inbound-endpoint connector-ref="HttpConnector" doc:name="/prices" exchange-pattern="request-response" host="localhost" path="api" port="9999"/>
+	<flow  name="priceService">
+        <http:listener config-ref="HTTP_Listener_Configuration2" path="api" allowedMethods="POST" doc:name="HTTP"/>
 		<jersey:resources doc:name="Price Service">
 			<component class="com.mulesoft.se.orders.ProductPrice"/>
 		</jersey:resources>
 	</flow>
-	<flow doc:name="samsungService" name="samsungService">
-		<http:inbound-endpoint connector-ref="HttpConnector" doc:description="Process HTTP reqests or responses." doc:name="/samsung/orders" exchange-pattern="request-response" host="localhost" path="samsung/orders" port="9090"/>
+	<flow  name="samsungService">
+        <http:listener config-ref="HTTP_Listener_Configuration1" path="samsung/orders" allowedMethods="POST" doc:name="samsung/orders"/>
+        <logger message="aaaa" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-service doc:description="Make a web service available via CXF" doc:name="Order WebService" serviceClass="com.mulesoft.se.samsung.SamsungService"/>
 		<component class="com.mulesoft.se.samsung.SamsungServiceImpl" doc:name="Samsung Service Impl"/>
 	</flow>
-	<sub-flow doc:name="defaultErrorHandler" name="defaultErrorHandler">
+	<sub-flow  name="defaultErrorHandler">
 		<logger doc:name="Log Error" level="INFO" message="Error occurred: #[payload]"/>
 
 	</sub-flow>
-	<flow doc:name="databaseInitialisation" name="databaseInitialisation">
-		<http:inbound-endpoint connector-ref="HttpConnector" doc:name="HTTP" exchange-pattern="request-response" host="localhost" path="populate" port="8091"/>
+	<flow  name="databaseInitialisation">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="populate" doc:name="HTTP" allowedMethods="GET"/>
         <db:execute-ddl config-ref="Generic_Database_Configuration" doc:name="Create orders Table">
             <db:dynamic-query><![CDATA[CREATE TABLE orders (i int generated always as identity, product_id varchar(256), name varchar(256), manufacturer varchar(256), quantity integer, price integer)]]></db:dynamic-query>
 
