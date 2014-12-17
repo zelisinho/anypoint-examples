@@ -9,7 +9,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <data-mapper:config doc:name="DataMapper" name="FulfillmentOrder2LegacyCSV_map" transformationGraphPath="fulfillmentorder2legacycsv_map.grf"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="1080" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="1080" doc:name="HTTP Listener Configuration"/>
     <flow doc:description="This is a simple Mule Studio project that illustrates a Legacy System Modernization use case."  name="Fulfillment_LegacySystemModernization">
         <http:listener config-ref="HTTP_Listener_Configuration" path="OrderFulfillment" allowedMethods="POST" doc:name="HTTP"/>
 
