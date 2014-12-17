@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
 
     <spring:beans>
         <spring:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="property-placeholder">
@@ -16,31 +22,36 @@
     <data-mapper:config doc:name="DataMapper" name="upsert_patient_response_to_create_episode" transformationGraphPath="upsert_patient_response_to_create_episode.grf"/>
     <object-to-string-transformer doc:name="Object to String" name="Object_to_String"/>
     <data-mapper:config doc:name="DataMapper" name="create_episode_response_to_admit_subject_response" transformationGraphPath="create_episode_response_to_admit_subject_response.grf"/>
-    <flow doc:description="AdmssionService SOAP Web service which accepts calls and processes request to perform pre-admissions activities in the hospital's systems." doc:name="admitPatientService" name="admitPatientService">
-        <http:inbound-endpoint doc:name="AdmissionService" exchange-pattern="request-response" host="localhost" path="AdmissionService" port="${http.port}"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" host="0.0.0.0" port="${http.port}" doc:name="HTTP Request Configuration"/>
+    <flow doc:description="AdmssionService SOAP Web service which accepts calls and processes request to perform pre-admissions activities in the hospital's systems."  name="admitPatientService">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="AdmissionService" doc:name="AdmissionService"/>
+
         <cxf:proxy-service doc:name="Proxy service" namespace="http://www.mule-health.com/SOA/service/admission/1.0" payload="body" port="AdmissionPort" service="AdmissionService" wsdlLocation="service/AdmissionService.wsdl"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
         <flow-ref doc:name="Upsert Patient" name="upsertPatient"/>
         <flow-ref doc:name="Create Episode" name="createEpisode"/>
         <data-mapper:transform config-ref="create_episode_response_to_admit_subject_response" doc:name="&lt;createEpisodeResponse /> to &lt;admitSubjectResponse />"/>
     </flow>
-    <sub-flow doc:description="Uploads and inserts patient data into a hospital system." doc:name="upsertPatient" name="upsertPatient">
+    <sub-flow doc:description="Uploads and inserts patient data into a hospital system."  name="upsertPatient">
         <data-mapper:transform config-ref="admit_subject_to_upsert_patient" doc:name="&amp;lt;admitSubject /&amp;gt; to &amp;lt;upsertPatient /&amp;gt;"/>
         <flow-ref doc:name="Invoke Patient Service" name="invokePatientService"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
     </sub-flow>
-    <sub-flow doc:description="Submits calls to the PatientService Web service." doc:name="invokePatientService" name="invokePatientService">
+    <sub-flow doc:description="Submits calls to the PatientService Web service."  name="invokePatientService">
         <cxf:proxy-client doc:name="Proxy client" payload="body"/>
-        <http:outbound-endpoint doc:name="PatientService" exchange-pattern="request-response" host="localhost" password="hello123" path="PatientService" port="${http.port}" user="nialdarbey"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="PatientService" method="POST" doc:name="PatientService"/>
+
     </sub-flow>
-    <sub-flow doc:description="Creates new episodes for patient pre-admission into the hospital systems." doc:name="createEpisode" name="createEpisode">
+    <sub-flow doc:description="Creates new episodes for patient pre-admission into the hospital systems."  name="createEpisode">
         <data-mapper:transform config-ref="upsert_patient_response_to_create_episode" doc:name="&amp;lt;upsertPatientResponse /&amp;gt; to &amp;lt;createEpisode /&amp;gt;"/>
         <flow-ref doc:name="Invoke EHR Service" name="invokeEHRService"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
     </sub-flow>
-    <sub-flow doc:description="Submits calls to the EHR Web service." doc:name="invokeEHRService" name="invokeEHRService">
+    <sub-flow doc:description="Submits calls to the EHR Web service."  name="invokeEHRService">
         <cxf:proxy-client doc:name="Proxy client" payload="body"/>
-        <http:outbound-endpoint doc:name="EHRService" exchange-pattern="request-response" host="localhost" path="EHRService" port="${http.port}"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="EHRService" method="POST" doc:name="EHRService"/>
+
     </sub-flow>
 
 </mule>
