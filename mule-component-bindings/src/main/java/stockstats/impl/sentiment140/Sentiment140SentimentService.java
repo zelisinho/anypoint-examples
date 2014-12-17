@@ -14,9 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -24,9 +21,12 @@ import stockstats.Sentiment;
 import stockstats.impl.SentimentService;
 import stockstats.impl.Tweet;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * A SentimentService implementation that delegates to the Sentiment140 cloud API.
@@ -39,13 +39,13 @@ public class Sentiment140SentimentService implements SentimentService {
 	
 	public Sentiment140SentimentService(String appId) {
 		this.appId = appId;
-		client = Client.create();
+		client = ClientBuilder.newClient();
 	}
 
 	@Override
 	public void classify(List<Tweet> tweets) {
 		
-		WebResource webResource = client.resource(BASE_URL + "bulkClassifyJson");
+		WebTarget webTarget = client.target(BASE_URL + "bulkClassifyJson");
 		
 		BulkClassifyRequest bulkRequest = new BulkClassifyRequest();
 		Map<String,Tweet> idToTweet = new HashMap<String, Tweet>();
@@ -59,16 +59,15 @@ public class Sentiment140SentimentService implements SentimentService {
 		}
 		bulkRequest.setData(data);
 		
-		ClientResponse response = webResource.queryParam("appid", appId)
-				.type(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)
-				.post(ClientResponse.class, bulkRequest);
+		Response response = webTarget.request(MediaType.APPLICATION_JSON)
+				.header("appid", appId)
+				.post(Entity.text(bulkRequest));
 		
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new RuntimeException("Sentiment140 returned status " + response.getStatus());
 		}
 		
-		String jsonStr = response.getEntity(String.class);
+		String jsonStr = response.getEntity().toString();
 		
 		try {
 			ObjectMapper mapper = new ObjectMapper();

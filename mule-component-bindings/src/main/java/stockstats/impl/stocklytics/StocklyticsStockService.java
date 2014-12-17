@@ -14,6 +14,9 @@ import java.util.Date;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -21,10 +24,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import stockstats.StockStats;
 import stockstats.impl.InvalidStockSymbol;
 import stockstats.impl.StockService;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
 
 /**
  * A StockService implementation that delegates to the Stocklytics cloud API.
@@ -38,7 +37,7 @@ public class StocklyticsStockService implements StockService {
 	
 	public StocklyticsStockService(String apiKey) {
 		this.apiKey = apiKey;
-		client = Client.create();
+		client = ClientBuilder.newClient();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -48,22 +47,21 @@ public class StocklyticsStockService implements StockService {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String closingDateStr = df.format(closingDate);
 		
-		WebResource webResource = client.resource(BASE_URL + "historicalPrices/1.0");
+		WebTarget webTarget = client.target(BASE_URL + "historicalPrices/1.0");
 		
-		ClientResponse response = webResource.queryParam("api_key", apiKey)
-				.queryParam("format", FORMAT)
-				.queryParam("stock", stock)
-				.queryParam("start", closingDateStr)
-				.queryParam("end", closingDateStr)
-				.type(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)
-				.get(ClientResponse.class);
+		Response response = webTarget.request(MediaType.APPLICATION_JSON)
+				.header("api_key", apiKey)
+				.header("format", FORMAT)
+				.header("stock", stock)
+				.header("start", closingDateStr)
+				.header("end", closingDateStr)
+				.get();
 		
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new RuntimeException("Stockylitics returned status " + response.getStatus());
 		}
 		
-		String jsonStr = response.getEntity(String.class);
+		String jsonStr = response.getEntity().toString();
 		
 		// A 200 status is sent back for invalid stocks
 		if (jsonStr.contains("Error: Stocklytics doesn't have data for that stock.")) {
