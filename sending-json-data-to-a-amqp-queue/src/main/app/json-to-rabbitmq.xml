@@ -5,7 +5,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd">
     <amqp:connector doc:name="AMQP Connector" name="AMQP_Connector" validateConnections="true"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
     <flow  name="json-to-rabbitmqFlow1">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="POST" doc:name="Recieve HTTP request"/>
 
