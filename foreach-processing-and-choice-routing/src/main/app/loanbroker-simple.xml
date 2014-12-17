@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_1" port="11081"/>
+    <http:request-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Request Configuration" host="localhost" name="HTTP_Request_Configuration_1" port="18080"/>
+    <http:request-config basePath="#[flowVars.bankUri.getPath()]" doc:name="HTTP Request Configuration" host="#[flowVars.bankUri.getHost()]" name="HTTP_Request_Configuration_2" port="#[flowVars.bankUri.getPort()]"/>
+    <http:listener-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_2" port="18080"/>
+    <http:listener-config basePath="/mule/TheBank1" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_3" port="10080"/>
+    <http:listener-config basePath="/mule/TheBank2" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_4" port="20080"/>
+    <http:listener-config basePath="/mule/TheBank3" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_5" port="30080"/>
+    <http:listener-config basePath="/mule/TheBank4" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_6" port="40080"/>
+    <http:listener-config basePath="/mule/TheBank5" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_7" port="50080"/>
 
-	<description>
-		This Synchronous variant of loan broker example is modeled on the
-		Enterprise integration Patterns book sample.
-		See: http://www.eaipatterns.com/ComposedMessagingExample.html
-	</description>
+<!-- 	<description> -->
+<!-- 		This Synchronous variant of loan broker example is modeled on the -->
+<!-- 		Enterprise integration Patterns book sample. -->
+<!-- 		See: http://www.eaipatterns.com/ComposedMessagingExample.html -->
+<!-- 	</description> -->
 
-	<flow doc:description=" The main loanbroker flow that: i) Receives a customer request ii) Performs a lookup of the customer credit profile using a component binding iii) Determines the bank that should be used to request quotes iv) Sends the request to the selected banks and aggregates responses v) Selects the lowest quote from the list of quotes vi) Returns the response to the client   " doc:name="loan-broker-sync" name="loan-broker-sync">
-		<description>
-			The main loanbroker flow that:
-			i) Receives a customer request
-			ii) Performs a lookup of the customer credit profile using a component
-			binding
-			iii) Determines the bank that should be used to request quotes
-			iv) Sends the request to the selected banks and aggregates responses
-			v) Selects the lowest quote from the list of quotes
-			vi) Returns the response to the client
-		</description>
+	<flow doc:description=" The main loanbroker flow that: i) Receives a customer request ii) Performs a lookup of the customer credit profile using a component binding iii) Determines the bank that should be used to request quotes iv) Sends the request to the selected banks and aggregates responses v) Selects the lowest quote from the list of quotes vi) Returns the response to the client   " name="loan-broker-sync">
+        <http:listener config-ref="HTTP_Listener_Configuration_1" doc:name="Recieve HTTP request" path="/*"/>
 
-		<http:inbound-endpoint address="http://0.0.0.0:11081" doc:name="Recieve HTTP request" exchange-pattern="request-response"/>
-
-		<http:body-to-parameter-map-transformer doc:name="Convert Body to Parameter Map"/>
+		<expression-component doc:name="Convert Body to Flow Variables"><![CDATA[flowVars.name = message.inboundProperties['http.query.params'].name;
+flowVars.ssn = message.inboundProperties['http.query.params'].ssn;
+flowVars.amount = message.inboundProperties['http.query.params'].amount;
+flowVars.term = message.inboundProperties['http.query.params'].term;]]></expression-component>
 
 		<choice doc:name="Filter all the required customer fields">
-			<when expression="!(payload.name == null || payload.ssn == null || payload.amount == null || payload.term==null)">
+			<when expression="!(flowVars.name == null || flowVars.ssn == null || flowVars.amount == null || flowVars.term==null)">
 				<expression-component doc:name="Create customer request"><![CDATA[import org.mule.example.loanbroker.message.CustomerQuoteRequest;
 import org.mule.example.loanbroker.model.Customer;
 
-payload = new CustomerQuoteRequest(new Customer(payload.name,
-Integer.parseInt(payload.ssn)),
-Integer.parseInt(payload.amount),
-Integer.parseInt(payload.term));]]></expression-component>
+payload = new CustomerQuoteRequest(new Customer(flowVars.name,
+Integer.parseInt(flowVars.ssn)),
+Integer.parseInt(flowVars.amount),
+Integer.parseInt(flowVars.term));]]></expression-component>
 
 				<enricher doc:name="Enrich with creditProfile" source="#[payload]" target="#[flowVars.creditProfile]">
 					<flow-ref doc:name="LookupCustomerCreditProfile" name="lookupCustomerCreditProfile"/>
@@ -62,26 +63,19 @@ Integer.parseInt(payload.term));]]></expression-component>
 		</catch-exception-strategy>
 	</flow>
 
-	<sub-flow doc:description="    Returns the customer credit profile obtained form the Credit Agency   " doc:name="lookupCustomerCreditProfile" name="lookupCustomerCreditProfile">
-		<description>
-			Returns the customer credit profile obtained form the Credit Agency
-		</description>
+	<sub-flow doc:description="Returns the customer credit profile obtained form the Credit Agency" name="lookupCustomerCreditProfile">
 
 		<set-payload doc:name="Customer" value="#[payload.customer]"/>
 
 		<processor-chain doc:name="Processor Chain">
 			<cxf:jaxws-client doc:name="GetCreditProfile" operation="getCreditProfile" serviceClass="org.mule.example.loanbroker.creditagency.CreditAgencyService"/>
-			<http:outbound-endpoint address="http://localhost:18080/mule/TheCreditAgencyService" doc:name="HTTP"/>
+            <http:request config-ref="HTTP_Request_Configuration_1" doc:name="HTTP" method="POST" path="/*" responseTimeout="10000"/>
 		</processor-chain>
 
 		<logger doc:name="creditProfile" level="INFO" message="Credit profile: #[payload]"/>
 	</sub-flow>
 
-	<sub-flow doc:description="    Returns the list of banks to contact and returns it as a flow variable    'banks'   " doc:name="lookupBanks" name="lookupBanks">
-		<description>
-			Returns the list of banks to contact and returns it as a flow variable
-			'banks'
-		</description>
+	<sub-flow doc:description="Returns the list of banks to contact and returns it as a flow variable 'banks'" name="lookupBanks">
 
 		<choice doc:name="Choice">
 			<when expression="payload.getLoanAmount() >= 20000">
@@ -98,10 +92,7 @@ Integer.parseInt(payload.term));]]></expression-component>
 		<logger doc:name="Banks" level="INFO" message="Banks to contact: #[payload]"/>
 	</sub-flow>
 
-	<sub-flow doc:description="    Returns a loanQuote from a given bank's URI   " doc:name="lookupLoanQuote" name="lookupLoanQuote">
-		<description>
-			Returns a loanQuote from a given bank's URI
-		</description>
+	<sub-flow doc:description="Returns a loanQuote from a given bank's URI" name="lookupLoanQuote">
 
 		<set-variable doc:name="BankUri" value="#[payload]" variableName="bankUri"/>
 
@@ -113,15 +104,12 @@ payload = bqr;]]></expression-component>
 
 		<processor-chain doc:name="Processor Chain">
 			<cxf:jaxws-client doc:name="GetLoanQuote" operation="getLoanQuote" serviceClass="org.mule.example.loanbroker.bank.BankService"/>
-			<http:outbound-endpoint address="http://#[flowVars.bankUri.getHost()]:#[flowVars.bankUri.getPort()]#[flowVars.bankUri.getPath()]" doc:name="HTTP"/>
+            <http:request config-ref="HTTP_Request_Configuration_2" doc:name="HTTP" method="POST" path="/*" responseTimeout="10000"/>
 		</processor-chain>
 		<logger doc:name="Quote" level="INFO" message="LoanQuote from #[flowVars.bankUri]: #[payload]"/>
 	</sub-flow>
 
-	<sub-flow doc:description="    Returns the loan quote with the lowest interest rate   " doc:name="findLowestLoanQuote" name="findLowestLoanQuote">
-		<description>
-			Returns the loan quote with the lowest interest rate
-		</description>
+	<sub-flow doc:description="Returns the loan quote with the lowest interest rate" name="findLowestLoanQuote">
 
 		<expression-component doc:name="Expression"><![CDATA[import org.mule.example.loanbroker.model.LoanQuote;
 
@@ -146,24 +134,16 @@ payload = lowestQuote;]]></expression-component>
 
 	<!-- MOCK SERVICES -->
 
-	<flow doc:description="    The credit agency service will get the credit profile for a customer   " doc:name="TheCreditAgencyService" name="TheCreditAgencyService">
-		<description>
-			The credit agency service will get the credit profile for a customer
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:18080/mule/TheCreditAgencyService" doc:name="Recieve HTTP request" exchange-pattern="request-response"/>
+	<flow doc:description="The credit agency service will get the credit profile for a customer" name="TheCreditAgencyService">
+        <http:listener config-ref="HTTP_Listener_Configuration_2" doc:name="Recieve HTTP request" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.creditagency.DefaultCreditAgency"/>
 		<component doc:name="CreditAgency">
 			<singleton-object class="org.mule.example.loanbroker.creditagency.DefaultCreditAgency"/>
 		</component>
 	</flow>
 
-	<flow doc:description="    Mock flow representing Bank 1   " doc:name="Bank1Flow" name="Bank1Flow">
-		<description>
-			Mock flow representing Bank 1
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:10080/mule/TheBank1" doc:name="HTTP" exchange-pattern="request-response"/>
+	<flow doc:description="Mock flow representing Bank 1" name="Bank1Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration_3" doc:name="HTTP" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.bank.Bank"/>
 		<component doc:name="Bank 1">
 			<singleton-object class="org.mule.example.loanbroker.bank.Bank">
@@ -172,12 +152,8 @@ payload = lowestQuote;]]></expression-component>
 		</component>
 	</flow>
 
-	<flow doc:description="    Mock flow representing Bank 2   " doc:name="Bank2Flow" name="Bank2Flow">
-		<description>
-			Mock flow representing Bank 2
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:20080/mule/TheBank2" doc:name="HTTP" exchange-pattern="request-response"/>
+	<flow doc:description="Mock flow representing Bank 2" name="Bank2Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration_4" doc:name="HTTP" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.bank.Bank"/>
 
 		<component doc:name="Bank 2">
@@ -187,12 +163,8 @@ payload = lowestQuote;]]></expression-component>
 		</component>
 	</flow>
 
-	<flow doc:description="    Mock flow representing Bank 3   " doc:name="Bank3Flow" name="Bank3Flow">
-		<description>
-			Mock flow representing Bank 3
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:30080/mule/TheBank3" doc:name="HTTP" exchange-pattern="request-response"/>
+	<flow doc:description="Mock flow representing Bank 3" name="Bank3Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration_5" doc:name="HTTP" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.bank.Bank"/>
 		<component doc:name="Bank 3">
 			<singleton-object class="org.mule.example.loanbroker.bank.Bank">
@@ -201,12 +173,8 @@ payload = lowestQuote;]]></expression-component>
 		</component>
 	</flow>
 
-	<flow doc:description="    Mock flow representing Bank 4   " doc:name="Bank4Flow" name="Bank4Flow">
-		<description>
-			Mock flow representing Bank 4
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:40080/mule/TheBank4" doc:name="HTTP" exchange-pattern="request-response"/>
+	<flow doc:description="Mock flow representing Bank 4" name="Bank4Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration_6" doc:name="HTTP" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.bank.Bank"/>
 		<component doc:name="Bank 4">
 			<singleton-object class="org.mule.example.loanbroker.bank.Bank">
@@ -215,12 +183,8 @@ payload = lowestQuote;]]></expression-component>
 		</component>
 	</flow>
 
-	<flow doc:description="    Mock flow representing Bank 5   " doc:name="Bank5Flow" name="Bank5Flow">
-		<description>
-			Mock flow representing Bank 5
-		</description>
-
-		<http:inbound-endpoint address="http://localhost:50080/mule/TheBank5" doc:name="HTTP" exchange-pattern="request-response"/>
+	<flow doc:description="Mock flow representing Bank 5" name="Bank5Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration_7" doc:name="HTTP" path="/*"/>
 		<cxf:jaxws-service doc:name="SOAP" serviceClass="org.mule.example.loanbroker.bank.Bank"/>
 		<component doc:name="Bank 5">
 			<singleton-object class="org.mule.example.loanbroker.bank.Bank">
