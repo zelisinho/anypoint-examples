@@ -16,7 +16,7 @@
         <dependency>
 			<groupId>com.mulesoft.muleesb.modules</groupId>
 			<artifactId>mule-module-spring-config-ee</artifactId>
-			<version>3.5.1</version>
+			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
