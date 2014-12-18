@@ -11,7 +11,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <sftp:connector doc:name="SFTP" name="SFTP" validateConnections="true"/>
     <data-mapper:config doc:name="JSON_To_XML" name="JSON_To_XML" transformationGraphPath="json_to_xml_9.grf"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
      <flow  name="main">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="Receive HTTP Requests"/>
         <data-mapper:transform config-ref="JSON_To_XML" doc:name="JSON To XML"/>
