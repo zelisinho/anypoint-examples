@@ -36,7 +36,7 @@ public class HelloWorldIT extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081/helloWorld", "", props);
+        MuleMessage result = client.send("http://0.0.0.0:8081/helloWorld", "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("Hello World", result.getPayloadAsString());
