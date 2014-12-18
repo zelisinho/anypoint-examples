@@ -37,14 +37,14 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<mulexml:namespace prefix="ord" uri="http://orders.se.mulesoft.com/"/>
 	</mulexml:namespace-manager>
     <db:generic-config dataSource-ref="Derby_Data_Source" doc:name="Generic Database Configuration" name="Generic_Database_Configuration"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8091" doc:name="HTTP Listener Configuration"/>
-    <http:listener-config name="HTTP_Listener_Configuration1" host="localhost" port="9090" doc:name="HTTP Listener Configuration"/>
-    <http:listener-config name="HTTP_Listener_Configuration2" host="localhost" port="9999" doc:name="HTTP Listener Configuration"/>
-    <http:request-config name="HTTP_Request_Configuration4" host="localhost" port="9999" doc:name="HTTP Request Configuration"/>
-    <http:request-config name="HTTP_Request_Configuration1" host="localhost" port="9090" doc:name="HTTP Request Configuration"/>
-    <http:listener-config name="HTTP_Listener_Configuration3" host="localhost" port="1080" doc:name="HTTP Listener Configuration"/>
-	<flow  name="orderService">
-        <http:listener config-ref="HTTP_Listener_Configuration3" path="orders" allowedMethods="POST" doc:name="/orders"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8091"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration1" port="9090"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration2" port="9999"/>
+    <http:request-config doc:name="HTTP Request Configuration" host="0.0.0.0" name="HTTP_Request_Configuration4" port="9999"/>
+    <http:request-config doc:name="HTTP Request Configuration" host="0.0.0.0" name="HTTP_Request_Configuration1" port="9090"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration3" port="1080"/>
+	<flow name="orderService">
+        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration3" doc:name="/orders" path="orders"/>
 		<cxf:jaxws-service doc:description="Make a web service available via CXF" doc:name="Order WebService" serviceClass="com.mulesoft.se.orders.IProcessOrder"/>
 		<set-session-variable doc:name="totalValue=0" value="0" variableName="totalValue"/>
 		<foreach collection="#[payload.orderItems]" doc:name="For each Order Item">
@@ -65,7 +65,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 		</catch-exception-strategy>
 	</flow>
-	<flow  name="samsungOrder">
+	<flow name="samsungOrder">
 		<vm:inbound-endpoint doc:name="samsungOrder" exchange-pattern="request-response" path="samsungOrder"/>
 		<data-mapper:transform config-ref="OrderItemToOrderRequest" doc:name="OrderItem to OrderRequest"/>
 		<flow-ref doc:name="Invoke Samsung WebService" name="samsungWebServiceClient"/>
@@ -86,18 +86,18 @@ return receipt;]]></scripting:text>
 			</scripting:transformer>
 		</catch-exception-strategy>
 	</flow>
-	<sub-flow  name="samsungWebServiceClient">
+	<sub-flow name="samsungWebServiceClient">
 		<cxf:jaxws-client clientClass="com.mulesoft.se.samsung.SamsungServiceService" doc:name="Samsung Webservice Client" operation="purchase" port="SamsungServicePort"/>
-        <http:request config-ref="HTTP_Request_Configuration1" path="samsung/orders" method="POST" doc:name="/samsung/orders"/>        
+        <http:request config-ref="HTTP_Request_Configuration1" doc:name="/samsung/orders" method="POST" path="samsung/orders"/>        
 	</sub-flow>
-	<flow  name="inhouseOrder">
+	<flow name="inhouseOrder">
 		<jms:inbound-endpoint connector-ref="Active_MQ" doc:name="inhouseOrder" queue="inhouseOrder">
 			<xa-transaction action="ALWAYS_BEGIN"/>
 		</jms:inbound-endpoint>
         <set-variable doc:name="Initialise Price" value="0" variableName="price"/>
 		<enricher doc:name="Enrich with price" target="#[price]">
 			<ee:cache cachingStrategy-ref="Caching_Strategy" doc:name="Cache the Price">
-                <http:request config-ref="HTTP_Request_Configuration4" path="api/prices/#[payload.productId]" method="GET" doc:name="Invoke Price Service"/>
+                <http:request config-ref="HTTP_Request_Configuration4" doc:name="Invoke Price Service" method="GET" path="api/prices/#[payload.productId]"/>
 				<object-to-string-transformer doc:name="Object to String"/>
 			</ee:cache>
 		</enricher>
@@ -119,12 +119,12 @@ return receipt;]]></scripting:text>
 		</scripting:transformer>
 		<rollback-exception-strategy doc:name="Rollback Exception Strategy" maxRedeliveryAttempts="3">
 			<logger doc:name="Logger" level="INFO" message="#[payload]"/>
-			<on-redelivery-attempts-exceeded >
+			<on-redelivery-attempts-exceeded>
 				<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 			</on-redelivery-attempts-exceeded>
 		</rollback-exception-strategy>
 	</flow>
-	<flow  name="auditService">
+	<flow name="auditService">
 		<vm:inbound-endpoint doc:name="audit" exchange-pattern="one-way" mimeType="text/plain" path="audit" responseTimeout="10000">
 			<xa-transaction action="ALWAYS_BEGIN"/>
 		</vm:inbound-endpoint>
@@ -132,30 +132,30 @@ return receipt;]]></scripting:text>
             <db:parameterized-query><![CDATA[insert into order_audits values(default, #[payload.orderId], #[totalValue])]]></db:parameterized-query>
         </db:insert>
 		<choice-exception-strategy doc:name="Choice Exception Strategy">
-			<rollback-exception-strategy doc:name="Rollback Exception Strategy" when="#[sessionVars.totalValue] > 5000" />
-			<catch-exception-strategy doc:name="Catch Exception Strategy" >
+			<rollback-exception-strategy doc:name="Rollback Exception Strategy" when="#[sessionVars.totalValue] > 5000"/>
+			<catch-exception-strategy doc:name="Catch Exception Strategy">
 				<flow-ref doc:name="Invoke defaultErrorHandler" name="defaultErrorHandler"/>
 			</catch-exception-strategy>
 		</choice-exception-strategy>
 	</flow>
-	<flow  name="priceService">
-        <http:listener config-ref="HTTP_Listener_Configuration2" path="api" allowedMethods="POST" doc:name="HTTP"/>
+	<flow name="priceService">
+        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration2" doc:name="HTTP" path="api"/>
 		<jersey:resources doc:name="Price Service">
 			<component class="com.mulesoft.se.orders.ProductPrice"/>
 		</jersey:resources>
 	</flow>
-	<flow  name="samsungService">
-        <http:listener config-ref="HTTP_Listener_Configuration1" path="samsung/orders" allowedMethods="POST" doc:name="samsung/orders"/>
-        <logger message="aaaa" level="INFO" doc:name="Logger"/>
+	<flow name="samsungService">
+        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration1" doc:name="samsung/orders" path="samsung/orders"/>
+        <logger doc:name="Logger" level="INFO" message="aaaa"/>
 		<cxf:jaxws-service doc:description="Make a web service available via CXF" doc:name="Order WebService" serviceClass="com.mulesoft.se.samsung.SamsungService"/>
 		<component class="com.mulesoft.se.samsung.SamsungServiceImpl" doc:name="Samsung Service Impl"/>
 	</flow>
-	<sub-flow  name="defaultErrorHandler">
+	<sub-flow name="defaultErrorHandler">
 		<logger doc:name="Log Error" level="INFO" message="Error occurred: #[payload]"/>
 
 	</sub-flow>
-	<flow  name="databaseInitialisation">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="populate" doc:name="HTTP" allowedMethods="GET"/>
+	<flow name="databaseInitialisation">
+        <http:listener allowedMethods="GET" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="populate"/>
         <db:execute-ddl config-ref="Generic_Database_Configuration" doc:name="Create orders Table">
             <db:dynamic-query><![CDATA[CREATE TABLE orders (i int generated always as identity, product_id varchar(256), name varchar(256), manufacturer varchar(256), quantity integer, price integer)]]></db:dynamic-query>
 
