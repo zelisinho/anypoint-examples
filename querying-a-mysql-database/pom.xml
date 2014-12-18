@@ -16,13 +16,13 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId> 
 			<artifactId>mule-module-db</artifactId> 
-			<version>3.5.0</version>
+			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId> 
 			<artifactId>mule-module-json</artifactId> 
-			<version>3.5.0</version>
+			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
