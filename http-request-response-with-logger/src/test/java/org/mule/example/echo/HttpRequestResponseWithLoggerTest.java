@@ -39,7 +39,7 @@ public class HttpRequestResponseWithLoggerTest extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8084/" + MESSAGE, "", props);
+        MuleMessage result = client.send("http://0.0.0.0:8084/" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("/" + MESSAGE, result.getPayloadAsString());
