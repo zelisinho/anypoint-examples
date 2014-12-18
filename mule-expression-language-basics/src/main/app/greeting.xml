@@ -7,13 +7,13 @@ http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schem
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
     <data-mapper:config doc:name="map_to_csv" name="map_to_csv" transformationGraphPath="map_to_csv.grf"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <!-- Example 1 Start  How to access properties using MEL, how to set a payload dynamically -->   
     <flow  name="greetingFlow1">
         <http:listener config-ref="HTTP_Listener_Configuration" path="greet1" doc:name="HTTP"/>
 
-        <set-payload doc:name="Set Payload using username" value="Hello #[message.inboundProperties.username]"/>
+        <set-payload doc:name="Set Payload using username" value="Hello #[message.inboundProperties['http.query.params'].username]"/>
     </flow>
 <!-- Example 1 End -->
   
@@ -22,11 +22,11 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <http:listener config-ref="HTTP_Listener_Configuration" path="greet2" doc:name="HTTP"/>
 
         <choice doc:name="Choice">
-            <when expression="#[message.inboundProperties.username == empty]">
+            <when expression="#[message.inboundProperties['http.query.params'].username == empty]">
                 <set-payload doc:name="Set Payload for invalid username" value="#['No username provided']"/>
             </when>
             <otherwise>
-                <set-payload doc:name="Set Payload for valid username" value="Hello #[message.inboundProperties.username]"/>
+                <set-payload doc:name="Set Payload for valid username" value="Hello #[message.inboundProperties['http.query.params'].username]"/>
             </otherwise>
         </choice>
     </flow>
@@ -36,8 +36,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <flow  name="docs-greetingFlow3">
         <http:listener config-ref="HTTP_Listener_Configuration" path="greet3" doc:name="HTTP"/>
 
-        <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties.username]]></expression-component>
-        <set-payload doc:name="Set Payload of output file" value="#[message.inboundProperties.username], #[message.inboundProperties.age], #[message.inboundProperties.age>18]"/>
+        <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
+        <set-payload doc:name="Set Payload of output file" value="#[message.inboundProperties['http.query.params'].username], #[message.inboundProperties['http.query.params'].age], #[message.inboundProperties['http.query.params'].age &gt;18]"/>
         <file:outbound-endpoint doc:name="Save output file to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
         <set-payload doc:name="Set Payload to Hello 'username'" value="Hello #[flowVars.username]"/>
     </flow>
@@ -47,8 +47,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <flow  name="docs-greetingFlow4">
         <http:listener config-ref="HTTP_Listener_Configuration" path="greet4" doc:name="HTTP"/>
 
-        <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties.username]]></expression-component>
-        <set-payload doc:name="Set Payload to formatted output" value="#[['username' : message.inboundProperties.username, 'age' : message.inboundProperties.age]]"/>
+        <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
+        <set-payload doc:name="Set Payload to formatted output" value="#[['username' : message.inboundProperties['http.query.params'].username, 'age' : message.inboundProperties['http.query.params'].age]]"/>
         <data-mapper:transform config-ref="map_to_csv" doc:name="Map To CSV"/>
         <file:outbound-endpoint doc:name="Save to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
         <byte-array-to-string-transformer doc:name="Byte Array to String"/>
@@ -73,7 +73,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 
         <json:json-to-object-transformer doc:name="Convert JSON to Object" returnClass="java.lang.Object"/>
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.payload.username]]></expression-component>
-        <set-payload doc:name="Set PayloadaSet Payload to formatted output" value="#[message.payload.username], #[message.payload.age], #[message.payload.age > 18]"/>
+        <set-payload doc:name="Set Payload to formatted output" value="#[message.payload.username], #[message.payload.age], #[message.payload.age > 18]"/>
         <file:outbound-endpoint doc:name="Save to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
         <set-payload doc:name="Set Payload to Hello 'username'" value="Hello #[flowVars.username]"/>
     </flow>
