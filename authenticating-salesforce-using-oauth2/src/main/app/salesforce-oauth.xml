@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <sfdc:config-with-oauth consumerKey="${sfdc.key}" consumerSecret="${sfdc.secret}" doc:name="Salesforce (OAuth)" name="Salesforce__OAuth_">
         <sfdc:oauth-callback-config domain="localhost" localPort="8081" path="oauth2callback"/>
     </sfdc:config-with-oauth>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8082" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8082" doc:name="HTTP Listener Configuration"/>
 
     
     <flow  name="salesforce-oauthFlow1">
