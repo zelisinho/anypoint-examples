@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_1" port="11081"/>
-    <http:request-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Request Configuration" host="localhost" name="HTTP_Request_Configuration_1" port="18080"/>
+    <http:request-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Request Configuration" host="0.0.0.0" name="HTTP_Request_Configuration_1" port="18080"/>
     <http:request-config basePath="#[flowVars.bankUri.getPath()]" doc:name="HTTP Request Configuration" host="#[flowVars.bankUri.getHost()]" name="HTTP_Request_Configuration_2" port="#[flowVars.bankUri.getPort()]"/>
-    <http:listener-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_2" port="18080"/>
-    <http:listener-config basePath="/mule/TheBank1" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_3" port="10080"/>
-    <http:listener-config basePath="/mule/TheBank2" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_4" port="20080"/>
-    <http:listener-config basePath="/mule/TheBank3" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_5" port="30080"/>
-    <http:listener-config basePath="/mule/TheBank4" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_6" port="40080"/>
-    <http:listener-config basePath="/mule/TheBank5" doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration_7" port="50080"/>
+    <http:listener-config basePath="/mule/TheCreditAgencyService" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_2" port="18080"/>
+    <http:listener-config basePath="/mule/TheBank1" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_3" port="10080"/>
+    <http:listener-config basePath="/mule/TheBank2" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_4" port="20080"/>
+    <http:listener-config basePath="/mule/TheBank3" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_5" port="30080"/>
+    <http:listener-config basePath="/mule/TheBank4" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_6" port="40080"/>
+    <http:listener-config basePath="/mule/TheBank5" doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration_7" port="50080"/>
 
 <!-- 	<description> -->
 <!-- 		This Synchronous variant of loan broker example is modeled on the -->
@@ -79,13 +79,13 @@ Integer.parseInt(flowVars.term));]]></expression-component>
 
 		<choice doc:name="Choice">
 			<when expression="payload.getLoanAmount() >= 20000">
-				<expression-component doc:name="Bank1, Bank2"><![CDATA[payload=[new	java.net.URI('http://localhost:10080/mule/TheBank1'), new java.net.URI('http://localhost:20080/mule/TheBank2')]]]></expression-component>
+				<expression-component doc:name="Bank1, Bank2"><![CDATA[payload=[new	java.net.URI('http://0.0.0.0:10080/mule/TheBank1'), new java.net.URI('http://0.0.0.0:20080/mule/TheBank2')]]]></expression-component>
 			</when>
 			<when expression="payload.getLoanAmount() >= 10000 || payload.getLoanAmount() &lt;= 19999">
-				<expression-component doc:name="Bank3, Bank4"><![CDATA[payload=[new java.net.URI('http://localhost:30080/mule/TheBank3'), new java.net.URI('http://localhost:40080/mule/TheBank4')]]]></expression-component>
+				<expression-component doc:name="Bank3, Bank4"><![CDATA[payload=[new java.net.URI('http://0.0.0.0:30080/mule/TheBank3'), new java.net.URI('http://0.0.0.0:40080/mule/TheBank4')]]]></expression-component>
 			</when>
 			<otherwise>
-				<expression-component doc:name="Bank5"><![CDATA[payload=[new java.net.URI('http://localhost:50080/mule/TheBank5')]]]></expression-component>
+				<expression-component doc:name="Bank5"><![CDATA[payload=[new java.net.URI('http://0.0.0.0:50080/mule/TheBank5')]]]></expression-component>
 			</otherwise>
 		</choice>
 
