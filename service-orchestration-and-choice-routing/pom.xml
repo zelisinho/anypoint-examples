@@ -82,6 +82,7 @@
 		    <groupId>xml-apis</groupId>
 		    <artifactId>xml-apis</artifactId>
 		    <version>1.4.01</version>
+		    <scope>test</scope>
 		</dependency>		
 		<dependency>
 		<groupId>com.cloveretl</groupId>
@@ -151,7 +152,6 @@
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<version>10.9.1.0</version>
-			<scope>test</scope>
 		</dependency>
 		        
     <dependency>
