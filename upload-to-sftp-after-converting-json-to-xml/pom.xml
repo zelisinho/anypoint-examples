@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>org.mule.transports</groupId> 
 			<artifactId>mule-transport-sftp</artifactId> 
-			<version>3.5.0</version>
+			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>	
 		<dependency>
