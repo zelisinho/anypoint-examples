@@ -14,7 +14,7 @@ This document describes the details of the example within the context of Anypoin
 
 In this example, an user calls the Mule application by submitting a request via his browser (i.e. entering a specific URL, http://localhost:8084/echo). The application receives the request, set request path as payload and returns the payload, or "echoes" the response, to the end user. In other words, when an user types http://localhost:8084/echo into the address bar of her browser, Mule returns a message in the browser that reads, /echo (see image below, left); if she enters http://localhost:8084/moon, Mule responds with /moon (below, right).  
 
-There are two functions the Echo example application illustrates:
+There are two functions the HTTP Request-Response with Logger example application illustrates:
 
 1. it receives [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_message) and returns [HTTP responses](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Response_message)
 2. it logs the payload
@@ -45,11 +45,10 @@ Then the HTTP request path is set to message payload in [Set Payload Transformer
 
 Next, the flow uses a [Logger Component](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference) to log the message payload in the application’s log files. The logger component uses a [MEL Expression](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL) to determine what information in, or about, the message it should log. In this case, because it needs to log the message payload, the instructions to log read About to echo #[message.payload]. 
 
-Finally, Mule moves the message to an [Echo Component](http://www.mulesoft.org/documentation/display/current/Echo+Component+Reference) which simply returns the message payload as the response to an end user. In other words, the response echoes the request.
+Finally, Mule moves the message back to the [HTTP Inbound Endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) which simply returns the message payload as the response to an end user. In other words, the response echoes the request.
 
 ### Go Further
 
 - Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
 - Learn more about the [Set Payload Transformer](http://http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
 - Learn more about the [Logger component](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference).
-- Learn more about the [Echo component](http://www.mulesoft.org/documentation/display/current/Echo+Component+Reference).
