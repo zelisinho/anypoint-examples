@@ -38,7 +38,7 @@ public class ServiceOrchestrationAndChoiceRoutingIT extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "fufillment.xml,mule-config.xml";
+        return "fulfillment.xml,mule-config.xml";
     }
             
     @BeforeClass
