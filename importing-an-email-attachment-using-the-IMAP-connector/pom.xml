@@ -22,7 +22,7 @@
 		<dependency>
 		<groupId>com.cloveretl</groupId>
 		<artifactId>cloveretl-engine</artifactId>
-		<version>3.5.0</version>
+		<version>${mule.version}</version>
 		<scope>provided</scope>
 			<exclusions>
 				<exclusion>
@@ -157,7 +157,7 @@
 				<artifactItem>
 				<groupId>com.cloveretl</groupId>
 				<artifactId>cloveretl-engine</artifactId>
-				<version>3.5.0</version> 
+				<version>${mule.version}</version> 
 				
 				<type>zip</type>
 				</artifactItem>
