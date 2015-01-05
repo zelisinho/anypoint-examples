@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId> 
 			<artifactId>mule-module-mongo</artifactId> 
-			<version>3.5.0</version>
+			<version>${mule.version}</version>
 			<scope>provided</scope> 			
 		</dependency>
 		
@@ -153,7 +153,7 @@
 				<artifactItem>
 				<groupId>com.cloveretl</groupId>
 				<artifactId>cloveretl-engine</artifactId>
-				<version>3.5.0</version> 
+				<version>${mule.version}</version> 
 				
 				<type>zip</type>
 				</artifactItem>
