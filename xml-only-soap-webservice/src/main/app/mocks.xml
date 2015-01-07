@@ -10,11 +10,11 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
     <data-mapper:config doc:name="DataMapper" name="get_patient_to_get_patient_response" transformationGraphPath="get_patient_to_get_patient_response.grf"/>
     <data-mapper:config doc:name="DataMapper" name="create_episode_to_create_episode_response" transformationGraphPath="create_episode_to_create_episode_response.grf"/>
     <data-mapper:config doc:name="DataMapper" name="find_episodes_to_find_episodes_response" transformationGraphPath="find_episodes_to_find_episodes_response.grf"/>
-    <flow doc:description="Creates or locates existing patient records in the hospital's system."  name="PatientService">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="PatientService" doc:name="PatientService"/>
+    <flow doc:description="Creates or locates existing patient records in the hospital's system." name="PatientService">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="PatientService" path="PatientService"/>
         <cxf:proxy-service doc:name="Proxy service" namespace="http://www.mule-health.com/SOA/service/patient/1.0" payload="body" port="PatientPort" service="PatientService" wsdlLocation="service/PatientService.wsdl"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML"/>
-        <set-variable doc:name="operation" value="#[xpath('fn:local-name(/*)')]" variableName="operation"/>
+        <set-variable variableName="operation" value="#[xpath('fn:local-name(/*)')]" doc:name="operation"/>
         <choice doc:name="Choice">
             <when expression="#[flowVars.operation == 'upsertPatient']">
                 <data-mapper:transform config-ref="upsert_patient_to_upsert_patient_response" doc:name="&lt;upsertPatientRequest /> to &lt;upsertPatientResponse />"/>
@@ -24,8 +24,8 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
             </otherwise>
         </choice>
     </flow>
-    <flow doc:description="Creates or locates existing patient episodes in the hospital's system."  name="EHRService">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="EHRService" doc:name="EHRService"/>
+    <flow doc:description="Creates or locates existing patient episodes in the hospital's system." name="EHRService">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="EHRService" path="EHRService"/>
         <cxf:proxy-service doc:name="Proxy service" namespace="http://www.mule-health.com/SOA/service/ehr/1.0" payload="body" port="EHRPort" service="EHRService" wsdlLocation="service/EHRService.wsdl"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML"/>
         <set-variable doc:name="operation" value="#[xpath('fn:local-name(/*)')]" variableName="operation"/>
