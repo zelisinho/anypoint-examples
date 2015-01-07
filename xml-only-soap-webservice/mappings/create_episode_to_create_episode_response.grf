@@ -24,7 +24,7 @@
 </Dictionary>
 </Global>
 <Phase number="0">
-<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="XML WRITER" guiWidth="0" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER" xmlSchemaURL="./src/main/resources/service/xsd/SOA-Message-1.0.xsd">
+<Node enabled="enabled" recordsPerFile="1" fileURL="dict:outputPayload" guiHeight="0" guiName="XML WRITER" guiWidth="0" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER" xmlSchemaURL="./src/main/resources/service/xsd/SOA-Message-1.0.xsd">
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <ns0:createEpisodeResponse xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" xmlns:ns0="http://www.mule-health.com/SOA/message/1.0" clover:inPort="0">
   <ns1:Episode xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
