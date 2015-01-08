@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.5.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd">
-    <https:connector clientSoTimeout="10000" cookieSpec="netscape" doc:name="HTTP-HTTPS" name="HTTP_HTTPS" receiveBacklog="0" receiveBufferSize="0" sendBufferSize="0" serverSoTimeout="10000" socketSoLinger="0" validateConnections="true">        
-    </https:connector>
-    <flow doc:name="rest-api-proxyFlow1" name="rest-api-proxyFlow1">
-        <http:inbound-endpoint doc:name="Receive HTTP requests from apps" exchange-pattern="request-response" host="localhost" port="8081"/>
+<mule xmlns:tcp="http://www.mulesoft.org/schema/mule/tcp" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" />
+    
+    <http:request-config name="HTTP_Request_Configuration" protocol="HTTPS" host="api.box.com" doc:name="HTTP Request Configuration" port="443">        
+        <tls:context>
+            <tls:key-store path="keystore.jks" password="${keystore.key}" keyPassword="${keystore.password}"/>
+        </tls:context>
+    </http:request-config>
+    
+    <flow  name="rest-api-proxyFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/*" doc:name="Receive HTTP requests from apps"/>
         <set-property doc:name="Disable exception check" propertyName="http.disable.status.code.exception.check" value="true"/>
         <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
-        <https:outbound-endpoint address="https://api.box.com#[message.inboundProperties['http.request']]" connector-ref="HTTP_HTTPS" doc:name="Send requests to API" exchange-pattern="request-response" method="POST"/>
-        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="#[message.inboundProperties['http.request.uri']]" method="#[message.inboundProperties['http.method']]" doc:name="Send requests to API" />                    
+        <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>        
     </flow>
-    <sub-flow doc:name="copy-headers" name="copy-headers">
+    
+    <sub-flow  name="copy-headers">
         <copy-properties doc:name="Copy All HTTP Headers" propertyName="*"/>
         <remove-property doc:name="Remove Content Length" propertyName="Content-Length"/>
-        <remove-property doc:name="Remove MULE Properties" propertyName="MULE_*"/>
+        <remove-property doc:name="Remove MULE Properties" propertyName="MULE_*"/>        
         <remove-property doc:name="Remove X_MULE Properties" propertyName="X_MULE*"/>
-
-    </sub-flow>
+    </sub-flow>    
 </mule>
