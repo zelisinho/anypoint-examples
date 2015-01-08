@@ -15,8 +15,6 @@ import org.mule.api.routing.filter.Filter;
 
 public class FreeMembershipDiscountFilter implements Filter {
 
-	
-	@Override
 	public boolean accept(MuleMessage message) {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> payloadMap = (Map<String, Object>) message.getPayload();
