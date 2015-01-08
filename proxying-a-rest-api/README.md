@@ -31,6 +31,12 @@ The steps below are only needed in this particular example so that you can test 
 
 Leave the box developer portal open for now, as you will return here later to request an OAuth token. Because the OAuth token expires very quickly, it's best to build the flow before you request it.
 
+If you're using HTTPS, as the Box API requires, you must create a keystore file to certify the communication. This can be done using the keytool provided by Java, found in the bin directory of your Java installation. Navigate to this directory on your machine using the command line, then execute the following command to create a keystore file:
+
+		keytool -genkey -alias mule -keyalg RSA -keystore keystore.jks
+
+You will be prompted to create two passwords. Remember these. The command creates a .jks file in the local directory called keystore.jks. Drag this file into the */src/main/resources* directory in Mule Studio's Package Explorer.
+
 #### Building the Proxy in Studio ####
 
 Next, build your proxy application in Mule Studio. Your proxy application needs to:
@@ -43,7 +49,8 @@ Next, build your proxy application in Mule Studio. Your proxy application needs 
 
 The following steps describe how to obtain a token for the Box API and use it to test the proxy you have just built by simulating an API call from an application.
 
-1. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
+1. Firstly, open proxying-a-rest-api.xml in Anypoint Studio. Replace the values *${keystore.key}* and *${keystore.password}* with the corresponding data you entered while creating keystore using the commandline - see the previous section.  
+2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
 2. In any Web browser, enter the following URL: 
 
 		http://localhost:8081/oauth2/authorize?response_type=code&client_id=<CLIENT_ID>
@@ -59,12 +66,12 @@ Be ready to send **http://localhost:8081/oauth2/token** as an HTTP **POST** requ
 		client_id		<client_id provided by Box when you registered your app>
 		client_secret	<client_secret provided by Box when you registered your app>
 
-	To send this request, use a browser extension such as [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. If using Postman, click **x-www-form-urlencoded** tab and insert the aforementioned key/value pairs.
+	To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. 
 
 5. Once you have prepared for the next step, go back to the browser page where you entered your Box credentials and click **Grant access to Box**.
 6. The browser is redirected to the page you set as the redirect on your Box app. For this exercise, the page itself is irrelevant, but the full URL will include an extra parameter named code. For example:
 
-		https://www.google.com/?state=&code=<CODE>
+		https://www.bing.com/?state=&code=<CODE>
 
 7. Copy the value of &lt;CODE&gt; from the URL and paste it into your POST request so that its properties are the following:
 	
@@ -100,29 +107,30 @@ Follow the anatomy described here to build a proxy application in Mule Studio th
 Follow the instructions below to build the proxy application, using either the visual drag-and-drop editor or the XML editor, or some combination. Instructions for both editors are provided below.
 
 1. Create a new Mule Project by going to **File > New... > Mule Project**, naming it **proxying-a-rest-api**.
-2. Drag an **HTTP endpoint** into a new flow. This is an inbound endpoint for your proxy application and receives all the requests that reference its address. 
-	
-	If you click on the HTTP icon, Studio opens the endpoint's properties editor in the console below the canvas. Here, you can configure the inbound endpoint to be reached through a custom address by setting the host and port, or switching to the advanced tab and specifying an address. For the purposes of this example, keep all the default settings, except for the **Display Name**, which you can change to Receive *HTTP requests from apps*.
+2. Drag an **HTTP endpoint** into a new flow. This is an inbound endpoint for your proxy application and receives all the requests that reference its address.
+2. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
 
-		Display Name	Receive HTTP requests from apps
-		Host			localhost
-		Port			8081
-		Path	 
-
-	Setting a path for an inbound endpoint is not recommended on a proxy. If your inbound endpoint is reached through an address that includes a path  (ex: through *http://somehost:someport/flow1*), then this path will form part of the property http.request, which is needed later. The *http.request* property will only resolve correctly if it does not include a /path.
+		Host 			0.0.0.0
+		Port 			8081 
+   Click Ok button.	
+2. Set *Path* attribute to */** value.		
 3. Drag a second **HTTP endpoint** into the same flow. This second endpoint acts as an outbound endpoint and passes requests to the Box API, receives responses from the API, and passes the responses back to the application that initiated the API call.
-4. Click on the HTTP icon to open its properties editor. In the General tab, change the **Display Name** to *Send requests to API*.
-5. Check the box to **Enable HTTPS**. The Box API requires all incoming calls be through the HTTPS protocol. This might not be the case for your API.
-6. Delete the default value that appears in the **Host** field, leaving it blank.
-7. In the **Advanced** tab, set the address to:
+4. Click on the HTTP icon to open its properties editor. In the General tab, change the **Display Name** to *Send requests to API*. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Request Configuration will be displayed. Fill in:
 
-		https://api.box.com#[message.inboundProperties['http.request']]
-	
-	The **http.request** inbound property references the URI subpath of the request that reaches the HTTP inbound endpoint. If your proxy application receives an HTTP request through http://localhost:8081/2.0/folders/0 then http.request contains the value *2.0/folders/0*. As this is a REST API, the requests that apps send to the API include arguments as part of the URI. By appending  *#[message.inboundProperties['http.request']]* onto the end of the URL, your proxy application captures these arguments and forwards them to the Box API.
-
-8. In the **References** tab, add a new Connector Reference by clicking on the green plus sign next to the field. This will create a global element, which encapsulates reusable connection settings.
-9. On the Choose Global Type window, select **HTTP\HTTPS**, then click **OK**.
-1. Studio opens the Global Element Properties window and prompts you to name your global element. Name it **httpConnector**.
+		Host 			api.box.com
+		Port 			443
+   Check HTTPS radio button. 
+5. In the TLS/SSL tab, check **Use TLS config** and in the Key Store Configuration fill in:
+6. 
+		Path			keystore.jks
+		Password		<password>
+		Key Password 	<key_password>
+You entered these two passwords while creating the keystore from the commandline. 
+ Click Ok button.	
+2. Then set:
+3.  
+		Path			#[message.inboundProperties['http.request.uri']]
+		Method  		#[message.inboundProperties['http.method']]
 1. Drag a **Property** transformer in between the two HTTP endpoints. Configure it as shown:
 
 		Display Name	Disable exception check

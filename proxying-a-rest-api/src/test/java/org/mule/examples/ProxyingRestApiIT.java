@@ -74,11 +74,14 @@ public class ProxyingRestApiIT extends FunctionalTestCase
     	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
-    	}
+    	}    	
     	USERNAME = props.getProperty("box.user");
     	PASSWORD = props.getProperty("box.password");
     	CLIENT_ID = props.getProperty("box.id");
     	CLIENT_SECRET = props.getProperty("box.secret");
+    	System.setProperty("keystore.key", props.getProperty("keystore.key"));
+    	System.setProperty("keystore.password", props.getProperty("keystore.password"));
+    	
     }
 
     @Before
