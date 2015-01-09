@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
@@ -24,6 +25,7 @@ import org.mule.util.IOUtils;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
@@ -37,7 +39,9 @@ public class ImportCSVfileIntoMongoDBIT extends FunctionalTestCase
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	private static String DB_NAME = "customers";
 	private static DB db;
-    	   
+    
+	private static final String MONGO_USER = "test_user";
+	private static final String MONGO_PASSWORD = "test_password";
 	private static final String MONGO_HOST = "localhost";
     private static final int MONGO_PORT = 27017;
     
@@ -57,12 +61,22 @@ public class ImportCSVfileIntoMongoDBIT extends FunctionalTestCase
         MongodStarter runtime = MongodStarter.getDefaultInstance();
         mongodExe = runtime.prepare(new MongodConfig(Version.V2_0_5, MONGO_PORT, Network.localhostIsIPv6()));
         mongod = mongodExe.start();
-        mongo = new Mongo(MONGO_HOST, MONGO_PORT);        
+        mongo = new MongoClient(MONGO_HOST, MONGO_PORT);        
         db = mongo.getDB(DB_NAME);
+        db.addUser(MONGO_USER, MONGO_PASSWORD.toCharArray());
+    }
+    
+    @BeforeClass
+	public static void init() {
+    	System.setProperty("database.user", MONGO_USER);
+    	System.setProperty("database.password", MONGO_PASSWORD);
+    	System.setProperty("database.name", DB_NAME);
     }
     
     @After
     public void teardown() {
+    	db.command("{ dropUser: \"" + MONGO_USER + "\"}");
+    	
         if (mongod != null) {
         	try{
         		mongod.stop();

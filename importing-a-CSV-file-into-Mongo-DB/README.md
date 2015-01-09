@@ -47,15 +47,17 @@ In this example we transform a sample CSV file containing sales data into a Map 
 
 4  **Open** this example application in Studio
 
-5 **Create a folder** called *input* under src/main/resources and copy the input.csv file into the input folder
+5 Locate the properties file mule.dev.properties in src/main/resources and set the recently created user with password and database name
 
-6 Click on the File Connector and **edit path** to the path of the input folder as follows:
+6 **Create a folder** called *input* under src/main/resources and copy the input.csv file into the input folder
+
+7 Click on the File Connector and **edit path** to the path of the input folder as follows:
   
     	Path = src/main/resources/input
 
-7 **Run** the example project as a mule application
+8 **Run** the example project as a mule application
 
-8 **Go to the mongDB console** (the second command terminal window) and type:
+9 **Go to the mongDB console** (the second command terminal window) and type:
 	
 	db.customers.find()
 	
