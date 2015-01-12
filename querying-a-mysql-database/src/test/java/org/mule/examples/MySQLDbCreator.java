@@ -15,10 +15,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class MySQLDbCreator {
-	private static final Logger log = Logger.getLogger(MySQLDbCreator.class);
+	private static final Logger log = LogManager.getLogger(MySQLDbCreator.class);
 	private String databaseName;
 	private String databaseUrl;
 	private String databaseWithNameUrl;
@@ -45,7 +46,7 @@ public class MySQLDbCreator {
 	
 	public void setUpDatabase() {
 		
-		System.out.println("******************************** Populate MySQL DB **************************");
+		log.info("******************************** Populate MySQL DB **************************");
 		Connection conn = null;
 		
 		try {
@@ -66,7 +67,7 @@ public class MySQLDbCreator {
 			stmt.addBatch("INSERT INTO employees (no,dob,first_name,last_name,gender,hire_date) VALUES (1066,'1971-10-21','Quentin','Puckett','F','08-09-15');");
 			stmt.addBatch("INSERT INTO employees (no,dob,first_name,last_name,gender,hire_date) VALUES (1067,'1950-09-26','Mona','Sosa','M','07-11-27');");
 			stmt.executeBatch();
-			System.out.println("Success");
+			log.info("Success");
 			
 		} catch (SQLException ex) {
 		    // handle any errors
@@ -79,7 +80,7 @@ public class MySQLDbCreator {
 	}
 	
 	public void tearDownDataBase() {
-		System.out.println("******************************** Delete Tables from MySQL DB **************************");
+		log.info("******************************** Delete Tables from MySQL DB **************************");
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
