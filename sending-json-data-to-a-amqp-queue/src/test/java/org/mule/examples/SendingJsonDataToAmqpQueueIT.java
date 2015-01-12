@@ -27,8 +27,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -39,7 +39,7 @@ import com.rabbitmq.client.DefaultConsumer;
 public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(SendingJsonDataToAmqpQueueIT.class); 
+	private static final Logger log = LogManager.getLogger(SendingJsonDataToAmqpQueueIT.class); 
 	
 	private static final String EXCHNAGE_NAME = "sales_exchange";
 	private static final String QUEUE_NAME = "sales_queue";
