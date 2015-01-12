@@ -19,7 +19,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 
 import stockstats.StockStats;
 import stockstats.StockStatsResource;
@@ -27,7 +26,6 @@ import stockstats.StockStatsResource;
 
 public class StockStatsResourceImpl implements StockStatsResource {
 	
-	private final Logger LOG = Logger.getLogger(StockStatsResourceImpl.class);
 	private static final String DATE_FORMAT = "yyyy-MM-dd";
 	private StockService stockService;
 	private TwitterService twitterService;
