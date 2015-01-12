@@ -36,15 +36,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.config.MuleProperties;
 import org.mule.tck.junit4.FunctionalTestCase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.sun.mail.imap.IMAPFolder;
 
 public class ImportingAnEmailAttachmentUsingThePOP3ConnectorIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(ImportingAnEmailAttachmentUsingThePOP3ConnectorIT.class); 
+	private static final Logger log = LogManager.getLogger(ImportingAnEmailAttachmentUsingThePOP3ConnectorIT.class); 
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";	
 	private static String TEST_DIR_PATH = "./src/test/resources/output";
 		
@@ -125,7 +125,7 @@ public class ImportingAnEmailAttachmentUsingThePOP3ConnectorIT extends Functiona
 	       message.setContent(multipart);
            
            Transport.send(message);
-           System.out.println("Sent message successfully....");
+           log.info("Sent message successfully....");
         }catch (MessagingException mex) {
            mex.printStackTrace();
         }        
