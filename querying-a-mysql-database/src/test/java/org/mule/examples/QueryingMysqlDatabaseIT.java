@@ -24,13 +24,13 @@ import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class QueryingMysqlDatabaseIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(QueryingMysqlDatabaseIT.class); 
+	private static final Logger log = LogManager.getLogger(QueryingMysqlDatabaseIT.class); 
 	
 	private static MySQLDbCreator DB = null;
 	
