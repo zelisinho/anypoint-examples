@@ -9,17 +9,17 @@ http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
     <smtp:gmail-connector doc:name="Gmail" name="Gmail" validateConnections="true"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     <flow name="scatter-gatherFlow1">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="scatterGather" doc:name="Recieve HTTP request"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP request" path="scatterGather"/>
         <json:json-to-object-transformer doc:name="Convert JSON to Object" returnClass="java.util.HashMap"/>
         <scatter-gather doc:name="Scatter-Gather">
-            <logger doc:name="Log Batch Result" level="INFO" message="Processing finished: #[payload]"/>
+            <logger doc:name="Log" level="INFO" message="Processing finished: #[payload]"/>
             <processor-chain>
                 <object-to-string-transformer doc:name="Convert Object to String"/>
                 <smtp:outbound-endpoint connector-ref="Gmail" doc:name="Send an email via SMTP" from="${mail.from}" host="${smtp.host}" password="${smtp.password}" port="${smtp.port}" responseTimeout="10000" subject="${mail.subject}" to="${mail.to}" user="${smtp.user}"/>
             </processor-chain>
         </scatter-gather>
-        <set-payload value="Email sent" doc:name="Set response"/>
+        <set-payload doc:name="Set response" value="Email sent"/>
     </flow>
 </mule>
