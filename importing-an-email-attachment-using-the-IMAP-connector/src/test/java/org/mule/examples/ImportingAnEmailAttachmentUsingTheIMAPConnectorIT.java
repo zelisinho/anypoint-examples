@@ -33,9 +33,14 @@ import org.junit.Test;
 import org.mule.api.config.MuleProperties;
 import org.mule.tck.junit4.FunctionalTestCase;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ImportingAnEmailAttachmentUsingTheIMAPConnectorIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
+	private static final Logger log = LogManager.getLogger(ImportingAnEmailAttachmentUsingTheIMAPConnectorIT.class);
 	
 	private static String MAPPINGS_FOLDER_PATH = "./mappings";
 	private static String USER;
@@ -56,7 +61,7 @@ public class ImportingAnEmailAttachmentUsingTheIMAPConnectorIT extends Functiona
 		try {
 			props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
 		} catch (Exception e) {
-			//log.error("Error occured while reading mule.test.properties", e);
+			log.error("Error occured while reading mule.test.properties", e);
 		}
 		
 		PASSWORD = props.getProperty("smtp.password");
@@ -105,7 +110,7 @@ public class ImportingAnEmailAttachmentUsingTheIMAPConnectorIT extends Functiona
 			multipart.addBodyPart(attachmentPart);
 			message.setContent(multipart);
 			Transport.send(message);
-			System.out.println("Sent message successfully....");
+			log.info("Sent message successfully....");
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
