@@ -30,7 +30,7 @@ public abstract class AbstractTemplateTestCase extends FunctionalTestCase {
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	private static final String MULE_DEPLOY_PROPERTIES_PATH = "./src/main/app/mule-deploy.properties";
 	
-	private static final Logger log = LogManager.getLogger(SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT.class);
+	private static final Logger log = LogManager.getLogger(AbstractTemplateTestCase.class);
 
 	protected static final int TIMEOUT_SEC = 120;
 	protected static final String POLL_FLOW_NAME = "triggerFlow";
@@ -76,7 +76,7 @@ public abstract class AbstractTemplateTestCase extends FunctionalTestCase {
 	}
 
 	protected void waitForPollToRun() {
-		log.info("Waiting for poll to run ones...");
+		log.info("Waiting for poll to run once...");
 		pollProber.check(new ListenerProbe(pipelineListener));
 		log.info("Poll flow done");
 	}
