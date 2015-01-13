@@ -18,19 +18,19 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class UploadToSftpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(UploadToSftpAfterConvertingJsonToXmlIT.class); 
+	private static final Logger log = LogManager.getLogger(UploadToSftpAfterConvertingJsonToXmlIT.class); 
 	
 	private static String PASSWORD;
 	private static String USER;
