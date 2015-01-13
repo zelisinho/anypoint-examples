@@ -27,14 +27,14 @@ import org.mule.module.client.MuleClient;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.util.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ImportContactsToSfdcIT extends FunctionalTestCase
 {
 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(ImportContactsToSfdcIT.class); 
+	private static final Logger log = LogManager.getLogger(ImportContactsToSfdcIT.class); 
 	
 	private final String EMAIL1 = "john.doe@texasComp.com";
 	private final String EMAIL2 = "jane.doe@texasComp.com";
