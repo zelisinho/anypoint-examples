@@ -11,12 +11,12 @@ package org.mule.examples.integration;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.mulesoft.module.batch.BatchTestHelper;
 
@@ -24,7 +24,7 @@ import com.mulesoft.module.batch.BatchTestHelper;
 public class SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT extends AbstractTemplateTestCase {
 	protected static final int TIMEOUT = 60;
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT.class); 
+	private static final Logger log = LogManager.getLogger(SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT.class); 
 	
 	private BatchTestHelper helper;
 		
@@ -44,6 +44,7 @@ public class SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT 
 
 	@Before
 	public void setUp() throws Exception {
+		
 		stopFlowSchedulers(POLL_FLOW_NAME);
 		registerListeners();
 		helper = new BatchTestHelper(muleContext);
