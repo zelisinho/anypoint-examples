@@ -21,6 +21,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -29,8 +31,6 @@ import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import stockstats.StockStats;
 import stockstats.impl.SentimentService;
@@ -42,7 +42,7 @@ import stockstats.impl.TwitterService;
 public class MuleComponentBindingsIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(MuleComponentBindingsIT.class); 
+	private static final Logger log = LogManager.getLogger(MuleComponentBindingsIT.class); 
 	
 	private static final String BEAN_NAME = "stackStatsResource";
 	private StockService stockService = Mockito.mock(StockService.class);
