@@ -3,10 +3,9 @@
     <cmis:config baseUrl="http://demo.openkm.com/OpenKM/cmis/atom" doc:name="CMIS" name="openkm" password="pass3" repositoryId="default" username="user3"/>
     <flow doc:name="CMIS" name="CMIS">
         <http:inbound-endpoint doc:name="Recieve HTTP request" exchange-pattern="request-response" host="localhost" path="cmis" port="8081"/>
-
         <scripting:component doc:name="Load file">
             <scripting:script engine="Groovy"><![CDATA[import java.io.FileInputStream;
-				return new FileInputStream("./src/test/resources/mulesoft-logo.jpg");]]></scripting:script>
+				return new FileInputStream("./src/main/resources/mulesoft-logo.jpg");]]></scripting:script>
         </scripting:component>
         <cmis:create-document-by-path-from-content config-ref="openkm" doc:name="Create document from local file" filename="pic#[System.currentTimeMillis()].jpg" folderPath="/okm:root/" mimeType="image/jpg" objectType="cmis:document" versioningState="NONE"/>
         <json:object-to-json-transformer doc:name="Convert object to JSON for output"/>
