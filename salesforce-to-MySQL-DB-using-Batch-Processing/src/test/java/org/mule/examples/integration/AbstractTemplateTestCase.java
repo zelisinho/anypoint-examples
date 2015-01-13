@@ -32,10 +32,14 @@ import org.mule.tck.probe.PollingProber;
 import org.mule.tck.probe.Prober;
 import org.mule.transport.NullPayload;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public abstract class AbstractTemplateTestCase extends FunctionalTestCase {
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	private static final String TEST_FLOWS_FOLDER_PATH = "./src/test/resources/testflows/";
 	private static final String MULE_DEPLOY_PROPERTIES_PATH = "./src/main/app/mule-deploy.properties";
+	private static final Logger log = LogManager.getLogger(AbstractTemplateTestCase.class);
 
 	protected static final int TIMEOUT_SEC = 120;
 	protected static final String POLL_FLOW_NAME = "triggerFlow";
@@ -102,9 +106,9 @@ public abstract class AbstractTemplateTestCase extends FunctionalTestCase {
 	}
 
 	protected void waitForPollToRun() {
-		System.out.println("Waiting for poll to run ones...");
+		log.info("Waiting for poll to run once...");
 		pollProber.check(new ListenerProbe(pipelineListener));
-		System.out.println("Poll flow done");
+		log.info("Poll flow done");
 	}
 
 	@SuppressWarnings("unchecked")

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,6 +27,9 @@ import org.mule.examples.db.MySQLDbCreator;
 import org.mule.modules.salesforce.bulk.EnrichedUpsertResult;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.mulesoft.module.batch.BatchTestHelper;
 
 
@@ -37,7 +39,7 @@ import com.mulesoft.module.batch.BatchTestHelper;
  */
 public class SalesforceToMySQLDBUsingBatchProcessingIT extends AbstractTemplateTestCase {
 	protected static final int TIMEOUT = 60;
-	private static final Logger log = Logger.getLogger(SalesforceToMySQLDBUsingBatchProcessingIT.class);
+	private static final Logger log = LogManager.getLogger(SalesforceToMySQLDBUsingBatchProcessingIT.class);
 	private static final String CONTACT_NAME = "Contact Test Name";
 	
 	private BatchTestHelper helper;
