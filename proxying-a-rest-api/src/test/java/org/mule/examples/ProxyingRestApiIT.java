@@ -29,6 +29,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
@@ -46,14 +48,12 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ProxyingRestApiIT extends FunctionalTestCase
 {
 	private static final String HTTP_ENDPOINT = "http://localhost:8081/oauth2/authorize?response_type=code&client_id=";
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(ProxyingRestApiIT.class); 
+	private static final Logger log = LogManager.getLogger(ProxyingRestApiIT.class); 
 	
 	private static String USERNAME;
 	private static String PASSWORD;
