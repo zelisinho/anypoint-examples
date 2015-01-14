@@ -30,15 +30,15 @@ import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.util.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.sun.mail.imap.IMAPFolder;
 
 public class SendingACsvFileThroughEmailUsingSmtpIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LoggerFactory.getLogger(SendingACsvFileThroughEmailUsingSmtpIT.class); 
+	private static final Logger log = LogManager.getLogger(SendingACsvFileThroughEmailUsingSmtpIT.class); 
 	
 	private static String USER;
 	private static String PASSWORD;
