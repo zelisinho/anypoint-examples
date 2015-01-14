@@ -22,28 +22,28 @@
 		<module>http-request-response-with-logger</module>
 		<module>implementing-a-choice-exception-strategy</module>
 		<module>import-contacts-into-salesforce</module>
-		<module>importing-a-CSV-file-into-Mongo-DB</module>
+<!-- 	<module>importing-a-CSV-file-into-Mongo-DB</module> -->
 		<module>importing-an-email-attachment-using-the-IMAP-connector</module>
 		<module>importing-an-email-attachment-using-the-POP3-connector</module>
-		<module>jms-message-rollback-and-redelivery</module>
+<!--	<module>jms-message-rollback-and-redelivery</module> -->
 		<module>legacy-modernization</module>
-		<module>mule-component-bindings</module>
+<!-- 	<module>mule-component-bindings</module> -->
 		<module>mule-expression-language-basics</module>
 		<module>proxying-a-rest-api</module>
 		<module>proxying-a-soap-api</module>
-		<module>querying-a-db-and-attaching-results-to-an-email</module>
+<!-- 	<module>querying-a-db-and-attaching-results-to-an-email</module> -->
 		<module>querying-a-mysql-database</module>
-		<module>rest-api-with-apikit</module>
+<!--	<module>rest-api-with-apikit</module> -->
 		<module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
 		<module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
 		<module>scatter-gather-flow-control</module>
 		<module>sending-a-csv-file-through-email-using-smtp</module>
 		<module>sending-json-data-to-a-amqp-queue</module>
 		<module>sending-json-data-to-a-jms-queue</module>
-		<module>service-orchestration-and-choice-routing</module>
+<!-- 	<module>service-orchestration-and-choice-routing</module> -->
 		<module>soap-webservice-security</module>
 		<module>track-a-custom-business-event</module>
-		<module>upload-to-sftp-after-converting-json-to-xml</module>
+<!-- 	<module>upload-to-sftp-after-converting-json-to-xml</module> -->
 		<module>using-transactional-scope-in-jms-to-database</module>
 		<module>web-service-consumer</module>
 		<module>websphere-mq</module>
@@ -258,24 +258,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<tasks>
-										<delete>
-											<fileset dir="${project.build.directory}" includes="examples-catalog*.zip" />
-										</delete>
-									</tasks>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>					
                 </plugins>
             </build>
         </profile>
