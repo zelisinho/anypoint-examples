@@ -9,7 +9,7 @@
     </spring:beans>
     <flow name="retrieveAllPersonsFlow">
         <http:listener allowedMethods="GET" config-ref="HttpListenerConfiguration" doc:name="Retrieve all persons" path="/person"/>
-        <set-payload doc:name="Set payload with all persons" value="#[app.registry['personDataStore'].values()]"/>
+        <set-payload doc:name="Set payload with all persons" value="#[app.registry.'personDataStore'.values()]"/>
         <json:object-to-json-transformer doc:name="Convert person list to JSON"/>
 	</flow>
     <flow name="storePersonFlow">
@@ -19,8 +19,8 @@
             </http:response-builder>
         </http:listener>
         <json:json-to-object-transformer doc:name="Convert to person object" returnClass="org.mule.examples.Person"/>
-        <set-variable doc:name="Lookup next person id" value="#[app.registry['personId'].incrementAndGet()]" variableName="personId"/>
-        <expression-component doc:name="Store person"><![CDATA[app.registry['personDataStore'].put(personId, payload);]]></expression-component>
+        <set-variable doc:name="Lookup next person id" value="#[app.registry.'personId'.incrementAndGet()]" variableName="personId"/>
+        <expression-component doc:name="Store person"><![CDATA[app.registry.'personDataStore'.put(personId, payload);]]></expression-component>
         <set-payload doc:name="Set success response" value="{ &quot;status&quot;: &quot;success&quot;, &quot;statusDescription&quot;: &quot;person created successfully&quot;}"/>
     </flow>
     
@@ -28,12 +28,12 @@
         <http:listener allowedMethods="GET" config-ref="HttpListenerConfiguration" doc:name="Retrieve person" path="/person/{personId}">
             <http:error-response-builder reasonPhrase="#[errorReasonPhrase]" statusCode="#[errorStatusCode]"/>
         </http:listener> 
-        <set-variable doc:name="Variable" value="#[Integer.valueOf(message.inboundProperties['http.uri.params']['personId'])]" variableName="personId"/>
+        <set-variable doc:name="Variable" value="#[Integer.valueOf(message.inboundProperties.'http.uri.params'.personId)]" variableName="personId"/>
         <logger doc:name="Logger" level="ERROR" message="Person id is #[personId]"/>         
         <message-filter doc:name="Fail if person does not exists" throwOnUnaccepted="true">
-            <expression-filter expression="#[app.registry['personDataStore'].containsKey(personId)]"/>
+            <expression-filter expression="#[app.registry.'personDataStore'.containsKey(personId)]"/>
         </message-filter>
-        <set-payload doc:name="Lookup person and set as payload" value="#[app.registry['personDataStore'].get(personId)]"/>
+        <set-payload doc:name="Lookup person and set as payload" value="#[app.registry.'personDataStore'.get(personId)]"/>
         <choice-exception-strategy doc:name="Choice Exception Strategy">
             <rollback-exception-strategy doc:name="Rollback Exception Strategy" when="#[exception.causedBy(org.mule.api.routing.filter.FilterUnacceptedException)]">
                 <set-variable doc:name="Set status code" value="404" variableName="errorStatusCode"/>
