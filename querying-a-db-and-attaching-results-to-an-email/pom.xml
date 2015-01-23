@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 <modelVersion>4.0.0</modelVersion>
@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.mule.examples</groupId>
         <artifactId>examples-catalog</artifactId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>1.2.1-SNAPSHOT</version>
     </parent>
 
 	<dependencies>
@@ -106,7 +106,13 @@
 			<version>2.7.1</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>	
+	<dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-module-http</artifactId>
+            <version>${mule.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>	
 		
 	<build>
 		<plugins>
@@ -167,7 +173,7 @@
 				<configuration>
 				<tasks>
 				<!-- Using an ant task to deflate cloveretl-engine.zip -->
-				<unzip src="${project.build.testOutputDirectory}/cloveretl-engine.zip" dest="${project.build.testOutputDirectory}" />
+				<unzip dest="${project.build.testOutputDirectory}" src="${project.build.testOutputDirectory}/cloveretl-engine.zip"/>
 				</tasks>
 				</configuration>
 				<goals>
