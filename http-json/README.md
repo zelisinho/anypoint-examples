@@ -1,6 +1,6 @@
-# HTTP with JSON Example
+# Exposing a RESTful resource using the HTTP connector Example
 
-This example application illustrates how to use Mule ESB to build a simple HTTP request-response application. After reading this document, and creating and running the example in Mule, you should be able to leverage what you have learned to create a very simple HTTP request-response application that is able to process incoming HTTP requests containing JSON data.
+This example application illustrates how to use Mule ESB to expose a RESTful resource using the HTTP connector. After reading this document, creating and running the example in Mule, you should be able to leverage what you have learned to create a simple HTTP request-response application that is able to expose a RESTful resource by providing different verbs (HTTP methods) using JSON data.
 
 ### JSON processing
 
@@ -19,7 +19,7 @@ In this example, a user calls the Mule application by submitting a request via R
 
 ### Set Up and Run the Example
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the HTTP with JSON application.
 
@@ -27,8 +27,8 @@ Follow the procedure below to create, then run the HTTP with JSON application.
 1. Send a POST request to **http://localhost:8081/person** with the body equals to:
 		
 		{
-		 	"firstname":"Tito",
-		 	"lastname":"Lamela",
+		 	"firstname":"John",
+		 	"lastname":"Doe",
 		 	"age": "12",
 		 	"address": 
 		    {
@@ -44,7 +44,7 @@ Follow the procedure below to create, then run the HTTP with JSON application.
 1. Send a GET request to **http://localhost:8081/person/1**
 1. You should recieve a response with the person data:
 
-		{"firstname":"Tito","lastname":"Lamela","address":{"streetAddress":"Lincoln St.","city":"San Francisco","state":"CA","zipCode":"90401"},"age":12}
+		{"firstname":"John","lastname":"Doe","address":{"streetAddress":"Lincoln St.","city":"San Francisco","state":"CA","zipCode":"90401"},"age":12}
 
 1. Send a GET request to **http://localhost:8081/person**
 2. You should recieve a response with all created persons. If you inserted only 1 person from Step 2, then you should get only that one. 
@@ -62,7 +62,7 @@ This flow makes use of three [building blocks](http://www.mulesoft.org/documenta
 
 Then the Set Payload Transformer uses a [MEL Expression](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL) to extract all persons from the data store. In this case, the expression is:
 
-	 #[app.registry['personDataStore'].values()]
+	 #[app.registry.'personDataStore'.values()]
 
 Next, the flow uses a Convert Object to JSON to convert a persons' list to JSON format.
 
@@ -86,7 +86,7 @@ This flow is responsible for retrieving a specific person data based on the prov
 
 Then, it extracts a person ID from the request URL using MEL and stores it in the flow variable named *personId*:
 
-	#[Integer.valueOf(message.inboundProperties['http.uri.params']['personId'])]
+	#[Integer.valueOf(message.inboundProperties.'http.uri.params'.personId)]
 
 The logger prints the simple message with the person id to the console:
 
