@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 	<groupId>org.mule.examples</groupId>
-	<artifactId>http-json</artifactId>
+	<artifactId>exposing-a-restful-resource-using-the-HTTP-connector</artifactId>
 	<packaging>mule</packaging>
 
 	<parent>
