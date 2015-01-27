@@ -6,22 +6,21 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
     <http:request-config name="HTTP_Request_Configuration" host="www.predic8.com" port="8080" doc:name="HTTP Request Configuration"/>
-    <flow name="old-http-connector-request">
-        <http:outbound-endpoint exchange-pattern="request-response" host="www.predic8.com" port="8080" path="shop/ShopService" method="POST" encoding="UTF-8" responseTimeout="60000" doc:name="Send Requests to API"/>
-    </flow>
-    <flow  name="main">
+    <flow name="main">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="Receive HTTP Requests From Apps"/>
         <cxf:proxy-service doc:name="Check WSDL" enableMuleSoapHeaders="false" namespace="http://predic8.com/wsdl/shop/1/" payload="envelope" port="ShopServicePTPort" service="ShopService" wsdlLocation="http://www.predic8.com:8080/shop/ShopService?wsdl"/>
         <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
         <cxf:proxy-client doc:name="Proxy Client" enableMuleSoapHeaders="false" payload="envelope"/>
         <http:request config-ref="HTTP_Request_Configuration" path="shop/ShopService" method="POST" doc:name="Send Requests to API"/>
         <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
-        <remove-property doc:name="Remove Connection Header" propertyName="Connection"/>
     </flow>
-    <sub-flow  name="copy-headers">
-        <expression-component doc:name="Copy all HTTP Headers"><![CDATA[message.outboundProperties.putAll(message.inboundProperties);]]></expression-component>
-        <remove-property doc:name="Remove Content Length" propertyName="Content-Length"/>
-        <remove-property doc:name="Remove MULE Properties" propertyName="MULE_*"/>
-        <remove-property doc:name="Remove X_MULE Properties" propertyName="X_MULE*"/>
+    <sub-flow name="copy-headers">
+        <copy-properties propertyName="*" doc:name="Copy HTTP headers" />
+        <remove-property doc:name="Remove host property" propertyName="Host"/>
+        <remove-property doc:name="Remove Content Length Header" propertyName="Content-Length"/>
+		<remove-property doc:name="Remove HTTP synthetic properties" propertyName="http.*"/>
+        <remove-property doc:name="Remove MULE properties" propertyName="MULE_*"/>
+        <remove-property doc:name="Remove Connection Header" propertyName="Connection"/>
+        <remove-property doc:name="Remove Transfer-encoding Header" propertyName="transfer-encoding"/>
     </sub-flow>
 </mule>
