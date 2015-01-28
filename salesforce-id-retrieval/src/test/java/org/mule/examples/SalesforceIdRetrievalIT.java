@@ -3,20 +3,18 @@ package org.mule.examples;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
-
-import com.opensymphony.util.FileUtils;
-
-import de.schlichtherle.io.FileInputStream;
 
 public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
@@ -25,15 +23,11 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 	private static String REPLY;
 	
 	@BeforeClass
-	public static void init(){
-		REPLY = FileUtils.readFile(new File(TEST_DIR + "/reply.txt")).replace("\n", "");
+	public static void init() throws IOException{
+		REPLY = FileUtils.readFileToString(new File(TEST_DIR + "/reply.txt")).replace("\n", "");
 		
 		Properties props = new Properties();
-		try {
-			props.load(new FileInputStream(TEST_DIR + "/mule.test.properties"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		props.load(new FileInputStream(TEST_DIR + "/mule.test.properties"));
 		
 		System.setProperty("sfdc.username", props.getProperty("sfdc.username"));
     	System.setProperty("sfdc.securityToken", props.getProperty("sfdc.securityToken"));
