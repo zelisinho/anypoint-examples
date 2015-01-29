@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule xmlns:jetty="http://www.mulesoft.org/schema/mule/jetty" version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/jetty http://www.mulesoft.org/schema/mule/jetty/current/mule-jetty.xsd">
     <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" url="https://login.salesforce.com/services/Soap/u/28.0" username="${sfdc.username}"/>
+    
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
-    <flow name="salesforceIdRetrievalFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/"/>
-        <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="SELECT name, #[message.inboundProperties['http.query.params'].field == null ? &quot;Id&quot; : message.inboundProperties['http.query.params'].field] from #[message.inboundProperties['http.query.params'].object] where #[message.inboundProperties['http.query.params'].searchKey] like '%#[message.inboundProperties['http.query.params'].searchValue]%'"/>
+    
+    <flow name="showFormFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <sfdc:describe-global config-ref="Salesforce" doc:name="Salesforce"/>
+        <expression-component doc:name="Expression"><![CDATA[html = "";
+
+for (obj : payload.sobjects){
+  html += "<option value=\"" + obj.name + "\">" + obj.label + "</option>";
+}
+
+payload = html;]]></expression-component>
+        <parse-template location="./src/main/resources/retrieval/index.html" doc:name="Parse Template"/>
+    </flow>
+    <flow name="salesforceDataRetrievalFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/" allowedMethods="POST"/>
+        <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="SELECT name, #[payload.field == null ? &quot;Id&quot; : payload.field] from #[payload.object] where #[payload.searchKey] like '%#[payload.searchValue]%'"/>
         <expression-component doc:name="Expression"><![CDATA[list = new ArrayList();
 
 while (payload.hasNext()){
@@ -14,5 +33,8 @@ while (payload.hasNext()){
 payload = list;]]></expression-component>
         <logger doc:name="Logger" level="INFO" message="list of objects: #[payload]"/>
         <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <set-payload value="Invalid Salesforce query." doc:name="Set Payload"/>
+        </catch-exception-strategy>
     </flow>
 </mule>

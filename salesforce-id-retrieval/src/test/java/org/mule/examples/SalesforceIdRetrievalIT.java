@@ -26,13 +26,13 @@ import org.mule.tck.junit4.FunctionalTestCase;
 
 public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
-	private static final String PARAMS = "?object=user&searchKey=name&searchValue=mule";
 	private static final String TEST_DIR = "./src/test/resources";
-	private static String REPLY;
+	private static String REPLY, HTML;
 	
 	@BeforeClass
 	public static void init() throws IOException{
 		REPLY = FileUtils.readFileToString(new File(TEST_DIR + "/reply.txt")).replace("\n", "");
+		HTML = FileUtils.readFileToString(new File(TEST_DIR + "/index.html"));
 		
 		Properties props = new Properties();
 		props.load(new FileInputStream(TEST_DIR + "/mule.test.properties"));
@@ -50,11 +50,25 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
     }
 	
 	@Test
-	public void testGetData() throws Exception {
+	public void testDisplayData() throws Exception {
 		MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081/" + PARAMS, "", props);
+        MuleMessage result = client.send("http://localhost:8081", "", props);
+        assertEquals(result.getPayloadAsString(), HTML);
+	}
+	
+	@Test
+	public void testGetData() throws Exception {
+		MuleClient client = new MuleClient(muleContext);
+        Map<String, Object> props = new HashMap<String, Object>();
+        props.put("http.method", "POST");
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("object", "user");
+        params.put("field", "id");
+        params.put("searchKey", "name");
+        params.put("searchValue", "mule");
+        MuleMessage result = client.send("http://localhost:8081/", params, props);
         assertEquals(result.getPayloadAsString(), REPLY);
 	}
 }
