@@ -12,6 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ import javax.mail.Store;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
+import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transport.NullPayload;
@@ -40,6 +42,8 @@ public class ScatterGatherFlowControlIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(ScatterGatherFlowControlIT.class); 
+	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
+
 	
 	private static String USER;
 	private static String USER_ENC;
@@ -51,6 +55,19 @@ public class ScatterGatherFlowControlIT extends FunctionalTestCase
     {
         return "scatter-gather.xml";
     }
+    
+    @Override
+   	protected Properties getStartUpProperties() {
+   		Properties properties = new Properties(super.getStartUpProperties());
+
+   		String pathToResource = MAPPINGS_FOLDER_PATH;
+   		File graphFile = new File(pathToResource);
+
+   		properties.put(MuleProperties.APP_HOME_DIRECTORY_PROPERTY,
+   				graphFile.getAbsolutePath());
+
+   		return properties;   	
+   	}
 
     @BeforeClass
 	public static void init() {
