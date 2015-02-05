@@ -9,7 +9,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case
 
-In this example a sample data is prepared using the Expression component as follows, which serve as a input for aggregation of the Scatter-Gather component. Then the report is transformed to the CSV format  and it is also sent to an email address using the SMTP connector. This example has been configured for gmail.
+In this example a sample data is prepared using the Expression component, which serve as a input for aggregation of the Scatter-Gather component. Then the report is transformed to the CSV format  and it is also sent to an email address using the SMTP connector. This example has been configured for gmail.
 
 ### Set Up and Run this Example
 
