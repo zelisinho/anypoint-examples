@@ -16,7 +16,7 @@ To follow along with the steps in this example, you must have a [box.com](https:
 
 #### Registering an App in the Box Developer Portal ####
 
-The steps below are only needed in this particular example so that you can test your finished proxy for the Box API by simulating an API call from an application. They don't necessarily match the steps you need to carry out to test your own API.
+The steps below are only needed in this particular example so that you can test your finished application. 
 
 1. Go to Box's developer portal: [developers.box.com](https://developers.box.com/)
 1. If you do not have an account, you need to create one [here](https://app.box.com/signup/personal). If you have one, click **My apps** in the upper-right corner of the [page](https://developers.box.com/).
