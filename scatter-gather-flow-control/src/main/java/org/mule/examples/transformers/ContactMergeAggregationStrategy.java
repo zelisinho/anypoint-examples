@@ -43,9 +43,9 @@ public class ContactMergeAggregationStrategy implements AggregationStrategy {
 		List<Map<String, String>> listB = getContactsList(muleEventsWithoutException, 1);
 
 		ContactMerge contactMerge = new ContactMerge();
-		List<Map<String, String>> mergedLeadList = (List<Map<String, String>>) contactMerge.mergeList(listA, listB);
+		List<Map<String, String>> mergedContactList = (List<Map<String, String>>) contactMerge.mergeList(listA, listB);
 
-		message.setPayload(mergedLeadList.iterator());
+		message.setPayload(mergedContactList.iterator());
 
 		return new DefaultMuleEvent(message, originalEvent);
 	}

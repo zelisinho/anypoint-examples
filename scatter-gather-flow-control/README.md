@@ -1,7 +1,36 @@
-# Scatter Gather flow control to email and Logger
+# Scatter Gather flow control to email
 
 
-This example shows us the usage of the scatter-gather flow to aggregate data in parallel and send the report message to a gmail account. 
+This example shows us the usage of the scatter-gather flow to aggregate data in parallel and send the report message to a gmail account. The example uses prepared data as an input for two resources, which should be aggregated. The data represents contacts information with structure as follows:
+
+	sourceA:
+		firstContact  "Id": 	 "1"
+					  "Name": 	 "vlado";
+					  "Email":	 "vlado@email.com"
+		secondContact "Id": 	 "2"
+					  "Name": 	 "michal";
+					  "Email":	 "michal@email.com"
+and
+
+	sourceB:
+		firstContact  "Id": 	 "1"
+					  "Name": 	 "peter";
+					  "Email":	 "peter@email.com"
+		secondContact "Id": 	 "2"
+					  "Name": 	 "vlado";
+					  "Email":	 "vlado@email.com"
+
+For the aggregation is used [Java Transformer](http://www.mulesoft.org/documentation/display/current/Java+Transformer+Reference).
+Transformer receives a Mule Message with the two Invocation variables to result in List of Maps with keys: Name, Email, IDInA, IDInB.
+
+Contacts will be matched by Email, that is to say, a record in both data sources with the same Email is considered the same contact.
+The result of aggregation for our input data should looks like as follows:
+   
+	Email				Name		IDInA	IDInB
+	vlado@email.com		vlado		1		2
+	michal@email.com	michal		2	
+	peter@email.com		peter				1
+	
 
 ### Assumptions
 
@@ -47,6 +76,8 @@ In this example a sample data is prepared using the Expression component, which 
 * Read more about the [Expression Component](http://www.mulesoft.org/documentation/display/current/Expression+Component+Reference)
 
 * Read more about the [Scatter Gather Flow Control](http://www.mulesoft.org/documentation/display/current/Scatter-Gather)
+
+* Read more about the [Java Transformer](http://www.mulesoft.org/documentation/display/current/Java+Transformer+Reference) 
 
 * Check out this [blog](http://blogs.mulesoft.org/parallel-multicasting-simplified/) on Parallel Processing in Mule.
 
