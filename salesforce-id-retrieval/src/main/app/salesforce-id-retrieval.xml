@@ -10,31 +10,30 @@ http://www.mulesoft.org/schema/mule/jetty http://www.mulesoft.org/schema/mule/je
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     
     <flow name="showFormFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <http:listener allowedMethods="GET" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/"/>
         <sfdc:describe-global config-ref="Salesforce" doc:name="Salesforce"/>
-        <expression-component doc:name="Expression"><![CDATA[html = "";
+        <expression-component doc:name="Set objects list"><![CDATA[html = "";
 
 for (obj : payload.sobjects){
   html += "<option value=\"" + obj.name + "\">" + obj.label + "</option>";
 }
 
 payload = html;]]></expression-component>
-        <parse-template location="./src/main/resources/retrieval/index.html" doc:name="Parse Template"/>
+        <parse-template doc:name="Parse Template" location="./src/main/resources/retrieval/index.html"/>
     </flow>
     <flow name="salesforceDataRetrievalFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/" allowedMethods="POST"/>
+        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/"/>
         <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="SELECT name, #[payload.field == null ? &quot;Id&quot; : payload.field] from #[payload.object] where #[payload.searchKey] like '%#[payload.searchValue]%'"/>
-        <expression-component doc:name="Expression"><![CDATA[list = new ArrayList();
-
-while (payload.hasNext()){
-	list.add(payload.next());
-}
-
-payload = list;]]></expression-component>
-        <logger doc:name="Logger" level="INFO" message="list of objects: #[payload]"/>
+        <set-variable variableName="response" value="#[[]]" doc:name="Set blank response"/>
+        <foreach doc:name="For Each">
+            <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+            <expression-component doc:name="Add result to response"><![CDATA[response.add(payload);]]></expression-component>
+        </foreach>
+        <set-payload value="#[response]" doc:name="Set response"/>
         <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+        <logger message="Result: #[payload]" level="INFO" doc:name="Log results"/>
         <catch-exception-strategy doc:name="Catch Exception Strategy">
-            <set-payload value="Invalid Salesforce query." doc:name="Set Payload"/>
+            <set-payload doc:name="Set Payload" value="Invalid Salesforce query."/>
         </catch-exception-strategy>
-    </flow>
+    </flow>    
 </mule>
