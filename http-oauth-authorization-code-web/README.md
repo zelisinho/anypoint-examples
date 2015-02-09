@@ -41,7 +41,7 @@ This has created a certificate file in client.cer that can now be used to popula
 The two files, the keystore (keystore.jks), and truststore (trust-store), along with their corresponding passwords can be now be used. Move them into the */src/main/resources* directory in Mule Studio's Package Explorer.
 If you need more help doing this, feel free to use [this resource](http://docs.continuent.com/tungsten-replicator-2.1/deployment-ssl-stores.html#deployment-ssl-stores-own).
 
-#### Building the Proxy in Studio ####
+#### Building the example in Studio ####
 
 1. Firstly, open http-authorization-code-web.xml in Anypoint Studio. Replace the values *${keystore.keyPassword}*, *${keystore.password}* and *${truststore.password}* with the corresponding data you entered while creating a keystore and a trust store using the commandline - see the previous section.  
 2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
