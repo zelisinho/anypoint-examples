@@ -10,10 +10,14 @@ package org.mule.examples;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +37,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HttpOauthProviderIT extends FunctionalTestCase
 {
+	private static final Logger log = LogManager.getLogger(HttpOauthProviderIT.class);
 	private static final String HTTP_ENDPOINT = "http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect";
 	private static final Object REPLY_NAME = "payroll";
 	private static final Object REPLY_URL = "http://localhost:8082/resources/payroll"; 
