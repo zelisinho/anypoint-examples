@@ -65,7 +65,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         props.put("http.method", "POST");
         Map<String, String> params = new HashMap<String, String>();
         params.put("object", "user");
-        params.put("field", "id");
+        params.put("field", "email");
         params.put("searchKey", "name");
         params.put("searchValue", "mule");
         MuleMessage result = client.send("http://localhost:8081/", params, props);
