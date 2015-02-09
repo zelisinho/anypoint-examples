@@ -32,7 +32,7 @@
             </oauth2-provider:clients>
     </oauth2-provider:config>
      
-<!--      <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8082"/> -->
+     <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8082"/>
 <!--     <flow name="protectedAuthcodeFlow"> -->
 <!--         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/> -->
 <!--         <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/> -->
