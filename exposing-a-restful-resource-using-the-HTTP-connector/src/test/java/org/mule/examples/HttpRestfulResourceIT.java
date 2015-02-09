@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class HttpJsonIT extends FunctionalTestCase
+public class HttpRestfulResourceIT extends FunctionalTestCase
 {
 
     private static final String REPLY = "{ \"status\": \"success\", \"statusDescription\": \"person created successfully\"}";
@@ -43,7 +43,7 @@ public class HttpJsonIT extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "http-json.xml";
+        return "http-restful-resource.xml";
     }
 
     @Before

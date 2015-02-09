@@ -51,7 +51,7 @@ Follow the procedure below to create, then run the HTTP with JSON application.
 
 ### How it Works
 
-The **HTTP with JSON** example application consists of three, simple [flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) which receives end user HTTP requests, sets payloads based on the request paths and sent data and returns the payloads to end users as HTTP responses.
+The **Exposing a RESTful resource using the HTTP connector** example application consists of three, simple [flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) which receives end user HTTP requests, sets payloads based on the request paths and sent data and returns the payloads to end users as HTTP responses.
 
 The sections below elaborate further on the configurations of the application and how it works to respond to end user requests.
 
