@@ -32,19 +32,19 @@
             </oauth2-provider:clients>
     </oauth2-provider:config>
      
-     <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="${http.listener.port}"/>
-<!--     <flow name="protectedAuthcodeFlow"> -->
-<!--         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/> -->
-<!--         <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/> -->
-<!--         <set-payload doc:name="Set Payload" value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:8082/resources/payroll'] ]"/> -->
-<!--         <json:object-to-json-transformer doc:name="Object to JSON"/>         -->
-<!--     </flow> -->
+    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="${http.listener.port}"/>
+    <flow name="protectedAuthcodeFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/>
+        <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/>
+        <set-payload doc:name="Set Payload" value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:${http.listener.port}/resources/payroll'] ]"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>        
+    </flow>
      
      
-    <!-- THIS FLOW IS JUST AN AID TO HELP MANUAL TESTING OF THE OAUTH2 DANCE -->
-<!--     <flow name="redirectFlow"> -->
-<!--         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/redirect"/> -->
-<!--         <set-property doc:name="Property" propertyName="http.status" value="302"/> -->
-<!--         <set-property doc:name="Property" propertyName="Location" value="http://localhost:8081/token?grant_type=authorization_code&amp;&amp;client_id=myclientid&amp;client_secret=myclientsecret&amp;code=#[message.inboundProperties['http.query.params'].code]      &amp;redirect_uri=http://localhost:8082/redirect"/> -->
-<!--     </flow> -->
+<!--     THIS FLOW IS JUST AN AID TO HELP MANUAL TESTING OF THE OAUTH2 DANCE -->
+    <flow name="redirectFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/redirect"/>
+        <set-property doc:name="Property" propertyName="http.status" value="302"/>
+        <set-property doc:name="Property" propertyName="Location" value="http://localhost:${http.provider.port}/token?grant_type=authorization_code&amp;&amp;client_id=myclientid&amp;client_secret=myclientsecret&amp;code=#[message.inboundProperties['http.query.params'].code]&amp;redirect_uri=http://localhost:${http.listener.port}/redirect"/>
+    </flow>
 </mule>

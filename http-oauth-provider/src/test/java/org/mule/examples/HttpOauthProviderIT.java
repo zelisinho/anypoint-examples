@@ -38,9 +38,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HttpOauthProviderIT extends FunctionalTestCase
 {
 	private static final Logger log = LogManager.getLogger(HttpOauthProviderIT.class);
-	private static final String HTTP_ENDPOINT = "http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect";
+	private static String HTTP_PROVIDER_PORT;
+	private static String HTTP_LISTENER_PORT;
 	private static final Object REPLY_NAME = "payroll";
-	private static final Object REPLY_URL = "http://localhost:8082/resources/payroll"; 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	
 	private static String USERNAME = "mule";
@@ -71,7 +71,9 @@ public class HttpOauthProviderIT extends FunctionalTestCase
     	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
-    	}    	
+    	}
+    	HTTP_PROVIDER_PORT = props.getProperty("http.provider.port");
+    	HTTP_LISTENER_PORT = props.getProperty("http.listener.port");
     	System.setProperty("http.provider.port", props.getProperty("http.provider.port"));
     	System.setProperty("http.listener.port", props.getProperty("http.listener.port"));
     }    
@@ -79,7 +81,9 @@ public class HttpOauthProviderIT extends FunctionalTestCase
     @Test
     public void oauthTest() throws Exception
     {
-    	driver.get(HTTP_ENDPOINT);
+    	driver.get("http://localhost:"+ HTTP_PROVIDER_PORT + 
+    			"/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:" + 
+    			HTTP_LISTENER_PORT + "/redirect");
     	WebDriverWait waitForScreen = new WebDriverWait(driver, 10);
 		waitForScreen.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
 
@@ -96,10 +100,10 @@ public class HttpOauthProviderIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         props.put("Authorization", "Bearer " + jso.get("access_token"));
-        MuleMessage result = client.send("http://localhost:8082/resources", "", props);
+        MuleMessage result = client.send("http://localhost:" + HTTP_LISTENER_PORT + "/resources", "", props);
         jso = new JSONObject(result.getPayloadAsString());
         assertEquals(REPLY_NAME, jso.get("name"));
-        assertEquals(REPLY_URL, jso.get("uri"));
+        assertEquals("http://localhost:" + HTTP_LISTENER_PORT + "/resources/payroll", jso.get("uri"));
     }
         
     @After
