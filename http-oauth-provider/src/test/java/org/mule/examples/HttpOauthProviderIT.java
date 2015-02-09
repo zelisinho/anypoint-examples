@@ -32,9 +32,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HttpOauthProviderIT extends FunctionalTestCase
 {
-	private static final String HTTP_ENDPOINT = "http://localhost:9091/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:9092/redirect";
+	private static final String HTTP_ENDPOINT = "http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect";
 	private static final Object REPLY_NAME = "payroll";
-	private static final Object REPLY_URL = "http://localhost:9092/resources/payroll"; 
+	private static final Object REPLY_URL = "http://localhost:8082/resources/payroll"; 
 	
 	private static String USERNAME = "mule";
 	private static String PASSWORD = "mule";
@@ -76,7 +76,7 @@ public class HttpOauthProviderIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         props.put("Authorization", "Bearer " + jso.get("access_token"));
-        MuleMessage result = client.send("http://localhost:9092/resources", "", props);
+        MuleMessage result = client.send("http://localhost:8082/resources", "", props);
         jso = new JSONObject(result.getPayloadAsString());
         assertEquals(REPLY_NAME, jso.get("name"));
         assertEquals(REPLY_URL, jso.get("uri"));
