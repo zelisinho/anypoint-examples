@@ -15,7 +15,7 @@
         <mule-ss:delegate-security-provider delegate-ref="resourceOwnerAuthenticationManager" name="resourceOwnerSecurityProvider"/>
     </mule-ss:security-manager>
     
-    <oauth2-provider:config doc:name="OAuth provider module" name="oauth2Provider" port="8081" providerName="SampleAPI" resourceOwnerSecurityProvider-ref="resourceOwnerSecurityProvider" scopes="READ_RESOURCE POST_RESOURCE">
+    <oauth2-provider:config doc:name="OAuth provider module" name="oauth2Provider" port="${http.provider.port}" providerName="SampleAPI" resourceOwnerSecurityProvider-ref="resourceOwnerSecurityProvider" scopes="READ_RESOURCE POST_RESOURCE">
             <oauth2-provider:clients>
                 <oauth2-provider:client clientId="myclientid" clientName="Mule Bookstore" description="Mule-powered On-line Bookstore" secret="myclientsecret" type="CONFIDENTIAL">
                     <oauth2-provider:redirect-uris>
@@ -32,7 +32,7 @@
             </oauth2-provider:clients>
     </oauth2-provider:config>
      
-     <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8082"/>
+     <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="${http.listener.port}"/>
 <!--     <flow name="protectedAuthcodeFlow"> -->
 <!--         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/> -->
 <!--         <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/> -->
