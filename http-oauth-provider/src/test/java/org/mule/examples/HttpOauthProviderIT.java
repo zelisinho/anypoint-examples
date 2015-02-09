@@ -35,6 +35,7 @@ public class HttpOauthProviderIT extends FunctionalTestCase
 	private static final String HTTP_ENDPOINT = "http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect";
 	private static final Object REPLY_NAME = "payroll";
 	private static final Object REPLY_URL = "http://localhost:8082/resources/payroll"; 
+	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	
 	private static String USERNAME = "mule";
 	private static String PASSWORD = "mule";
@@ -55,6 +56,19 @@ public class HttpOauthProviderIT extends FunctionalTestCase
     	capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);        
     	driver = new PhantomJSDriver(capabilities);
     }
+
+
+    @BeforeClass
+    public static void prepareTest() throws Exception {
+    	final Properties props = new Properties();
+    	try {
+    	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
+    	} catch (Exception e) {
+    		log.error("Error occured while reading mule.test.properties", e);
+    	}    	
+    	System.setProperty("http.provider.port", props.getProperty("http.provider.port"));
+    	System.setProperty("http.listener.port", props.getProperty("http.listener.port"));
+    }    
     
     @Test
     public void oauthTest() throws Exception
