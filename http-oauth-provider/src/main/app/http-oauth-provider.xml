@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:ss="http://www.springframework.org/schema/security"
-	version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:oauth2="http://www.mulesoft.org/schema/mule/oauth2" xmlns:oauth2-provider="http://www.mulesoft.org/schema/mule/oauth2-provider" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:json="http://www.mulesoft.org/schema/mule/json" 
-	xmlns:mule-ss="http://www.mulesoft.org/schema/mule/spring-security"	
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/oauth2-provider http://www.mulesoft.org/schema/mule/oauth2-provider/current/mule-oauth2-provider.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/spring-security http://www.mulesoft.org/schema/mule/spring-security/3.2/mule-spring-security.xsd
-http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:mule-ss="http://www.mulesoft.org/schema/mule/spring-security" xmlns:oauth2="http://www.mulesoft.org/schema/mule/oauth2" xmlns:oauth2-provider="http://www.mulesoft.org/schema/mule/oauth2-provider" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:ss="http://www.springframework.org/schema/security" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/oauth2-provider http://www.mulesoft.org/schema/mule/oauth2-provider/current/mule-oauth2-provider.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/spring-security http://www.mulesoft.org/schema/mule/spring-security/3.2/mule-spring-security.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     
-<!--     <oauth2-provider:config doc:name="OAuth provider module" name="OAuthProviderConfig"/> -->
     <spring:beans>
         <ss:authentication-manager alias="resourceOwnerAuthenticationManager"> 
             <ss:authentication-provider>
                 <ss:user-service id="resourceOwnerUserService">
-                    <ss:user name="john" password="doe" authorities="RESOURCE_OWNER"/>
+                    <ss:user authorities="RESOURCE_OWNER" name="mule" password="mule"/>
                 </ss:user-service>
             </ss:authentication-provider>
         </ss:authentication-manager>
 	</spring:beans>
 
   	<mule-ss:security-manager>
-        <mule-ss:delegate-security-provider name="resourceOwnerSecurityProvider" delegate-ref="resourceOwnerAuthenticationManager"/>
+        <mule-ss:delegate-security-provider delegate-ref="resourceOwnerAuthenticationManager" name="resourceOwnerSecurityProvider"/>
     </mule-ss:security-manager>
     
-    <oauth2-provider:config
-        name="oauth2ProviderCode"
-        providerName="SampleAPI"
-        
-        port="8081"
-        authorizationEndpointPath="sampleapi/api/authorize"
-        accessTokenEndpointPath="sampleapi/api/token"
-        resourceOwnerSecurityProvider-ref="resourceOwnerSecurityProvider"
-        scopes="READ_RESOURCE POST_RESOURCE" doc:name="OAuth provider module">
+    <oauth2-provider:config doc:name="OAuth provider module" name="oauth2Provider" port="8081" providerName="SampleAPI" resourceOwnerSecurityProvider-ref="resourceOwnerSecurityProvider" scopes="READ_RESOURCE POST_RESOURCE">
             <oauth2-provider:clients>
-                <oauth2-provider:client clientId="myclientid" secret="myclientsecret"
-                                        type="CONFIDENTIAL" clientName="Mule Bookstore" description="Mule-powered On-line Bookstore">
+                <oauth2-provider:client clientId="myclientid" clientName="Mule Bookstore" description="Mule-powered On-line Bookstore" secret="myclientsecret" type="CONFIDENTIAL">
                     <oauth2-provider:redirect-uris>
                         <oauth2-provider:redirect-uri>http://localhost*</oauth2-provider:redirect-uri>
                     </oauth2-provider:redirect-uris>
@@ -54,43 +32,19 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
             </oauth2-provider:clients>
     </oauth2-provider:config>
      
-     <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8082" doc:name="HTTP Listener Configuration"/>
-    <flow name="protected-authcode" >
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/resources" doc:name="HTTP"/>
-        <oauth2-provider:validate config-ref="oauth2ProviderCode" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/>
-        <set-payload value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:8081/resources/payroll'] ]" doc:name="Set Payload"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <catch-exception-strategy doc:name="Catch Exception Strategy">
-            <logger message="error state: #[payload]" level="INFO" doc:name="Logger"/>
-        </catch-exception-strategy>
-    </flow>
-    
-  
-    <flow name="registerFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/register" doc:name="HTTP"/>
-    	<oauth2-provider:create-client 
-    		clientId="#[message.inboundProperties['http.query.params'].clientId]" secret="#[message.inboundProperties['http.query.params'].secret]"
-                                        type="CONFIDENTIAL" clientName="Mule Bookstore" description="Mule-powered On-line Bookstore" config-ref="oauth2ProviderCode" doc:name="OAuth provider module">
-	    <oauth2-provider:redirect-uris>
-	    <oauth2-provider:redirect-uri>http://localhost*</oauth2-provider:redirect-uri>
-	    </oauth2-provider:redirect-uris>
-	    <oauth2-provider:authorized-grant-types>
-	        <oauth2-provider:authorized-grant-type>AUTHORIZATION_CODE</oauth2-provider:authorized-grant-type>
-	    </oauth2-provider:authorized-grant-types>
-	    <oauth2-provider:scopes>
-	        <oauth2-provider:scope>READ_RESOURCE</oauth2-provider:scope>
-	        <oauth2-provider:scope>RESOURCE</oauth2-provider:scope>	        
-	    </oauth2-provider:scopes>
-	</oauth2-provider:create-client>
-        <logger level="INFO" doc:name="Logger"/>
+     <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8082"/>
+    <flow name="protectedAuthcodeFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/>
+        <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/>
+        <set-payload doc:name="Set Payload" value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:8082/resources/payroll'] ]"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>        
     </flow>
      
      
     <!-- THIS FLOW IS JUST AN AID TO HELP MANUAL TESTING OF THE OAUTH2 DANCE -->
     <flow name="redirectFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/redirect" doc:name="HTTP"/>
-        <set-property value="302" propertyName="http.status" doc:name="Property" />
-        <set-property propertyName="Location" value="http://localhost:8081/sampleapi/api/token?grant_type=authorization_code&amp;&amp;client_id=myclientid&amp;client_secret=myclientsecret&amp;code=#[message.inboundProperties['http.query.params'].code]
-     &amp;redirect_uri=http://localhost:8082/redirect" doc:name="Property"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/redirect"/>
+        <set-property doc:name="Property" propertyName="http.status" value="302"/>
+        <set-property doc:name="Property" propertyName="Location" value="http://localhost:8081/token?grant_type=authorization_code&amp;&amp;client_id=myclientid&amp;client_secret=myclientsecret&amp;code=#[message.inboundProperties['http.query.params'].code]      &amp;redirect_uri=http://localhost:8082/redirect"/>
     </flow>
 </mule>

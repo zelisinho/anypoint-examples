@@ -1,73 +1,119 @@
-# HTTP OAuth authorization Example
+# HTTP OAuth Provider Example
 
-Often you are faced with a requirement to handle authorization to the third party service. This example application illustrates how to execute it using Mule ESB.
+The primary responsibility of an OAuth2 Web service provider is to control access to protected resources. Playing the part of both the Authorization server and the Resource server, the OAuth provider module hosts the protected resources and issues tokens to access protected resources without sharing the resource owner's credentials with the client applications. 
 
 ### Assumptions
 
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Mule Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).
 
+#### Oauth 2.0a Elements
+
+Mule provides two elements that enable you to configure a Web service provider capable of completing the tasks listed above.
+
+##### Global OAuth Element
+	
+You specify most of the configuration settings for the provider here, such as login page details, security providers, whether to issue refresh tokens, token lifespan, and supported grant types and scopes. This global element is meant to be referenced by message processors. The element in the XML format is:
+	
+	<oauth2-provider:config />
+
+##### Validate
+
+Configure to validate tokens, confirming that the client presents the correct scopes to access the protected resource. The element in the XML format is:
+
+	<oauth2-provider:validate /> 
+
+#### Applying OAuth 2.0a to a Web Service Provider
+
+To apply OAuth 2.0a to a Web service that you publish, you must complete, at minimum, five tasks. The first two tasks define resources which the OAuth Provider elements reference; the last three apply OAuth 2.0a to Mule flows, initiating OAuth2 authentication when a consumer calls the Web service. The table below lists these tasks, along with the Mule elements involved in each task and the OAuth tasks for which each element is responsible.
+
+Tasks
+
+1. Create a Spring bean to define an authentication manager and provider that performs client authentication
+
+2. Configure a Mule Security Manager that delegates client authentication
+
+3. Create a Global OAuth 2.0a provider to define several OAuth parameters. It defines most of the service provider's OAuth 2.0 parameters
+
+4. Create a Client Registration flow. It stores client IDs and secrets. **Not implemented in this example**.
+
+5. Create OAuth Validation flows. OAuth provider module will be configured to Validate or Validate-client. It validates the access token, thereby granting, or rejecting, access to a protected resource
+
+#### Paths to Authentication
+
+Before tackling the work of creating an OAuth 2.0a Web service, it is important to understand the various ways in which a service provider can authenticate a client.
+
+When a client calls an OAuth Web service, it must identify itself by one of two types: PUBLIC or CONFIDENTIAL.
+
++ A **PUBLIC** client provides a client ID which the Web service provider uses for authentication
++ A **CONFIDENTIAL** client provides validation credentials (client ID and client secret) which the Web service provider uses for authentication
+
+If **CONFIDENTIAL**, a client must provide validation credentials in one of three different parts of the request:
+
++ In the **query**
++ In the **body**
++ In the **authentication header**. Therefore, you must configure your OAuth 2.0a Web service provider to match the type(s) of client requests you expect to receive. The figure below illustrates the different types of requests and their resulting paths to authentication.
+
+If the client sends validation credentials in the **body** or the **query** of the request, the OAuth Web service provider simply validates the incoming credentials (client ID and client secret) against the content in the clientStore. If, on the other hand, the client sends validation credentials in the **authentication header** of the request, the service provider uses a security manager to delegate authentication to an authentication manager. The authentication manager users an authentication provider to validate a client's principals (username and password, for example).
+
 ### Example Use Case
 
-In this example, by hitting an HTTP endpoint a user will attempt to grant the access to his data at Box Service. For this purpose, OAuth authorization will be triggered. A user will be asked to enter his user name and password. If successful, he can click a button in order to grant the access.  
+In this example, a user will attempt to gain access to the protected resource. For this purpose, OAuth dance will be triggered. A user will be asked to enter his user name and password. If successful, the access to the resource will be granted.  
 
 ### Set Up and Run the Example ###
 
-To follow along with the steps in this example, you must have a [box.com](https://app.box.com/files) account, which you can create for free if you don't already have one.
+Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
-#### Registering an App in the Box Developer Portal ####
+1. Create, then run the HTTP OAuth Provider example application in Anypoint Studio.
+2. Open your Web browser.
+3. In the address bar, hit the following URL: 
 
-The steps below are only needed in this particular example so that you can test your finished proxy for the Box API by simulating an API call from an application. They don't necessarily match the steps you need to carry out to test your own API.
+		http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect 
 
-1. Go to Box's developer portal: [developers.box.com](https://developers.box.com/)
-1. If you do not have an account, you need to create one [here](https://app.box.com/signup/personal). If you have one, click **My apps** in the upper-right corner of the [page](https://developers.box.com/).
-2. Click **Create a Box Application** in the panel on the right. Give it any name, such as MyProxy, then select the **Content API**. 
-1. Click **Configure Application**.
-1. Look for the *client_id* and the *client_secret*. Copy these to a safe place, as you will need them later.
-1. Add a *redirect_url*. For the purpose of this exercise, set it to *https://localhost:8082/redirectUrl*.
+	The SampleAPI web page will be displayed with the login form. Fill in *mule* for Username and *mule* for Password.
 
-If you're using HTTPS, as the Box API requires, you must create a keystore and a trust store file to certify the communication. This can be done using the keytool provided by Java, found in the bin directory of your Java installation. Navigate to this directory on your machine using the command line (this is not needed if Java bin directory is contained in your PATH variable), then execute the following command to create a keystore file:
+4. Click *Login and Authorize* button. The page content will be reloaded with a data structure containing an access token issued by the OAuth provider. It can be used to gain access to the protected resource. Copy its value.
+5. Make a GET request to *http://localhost:8082/resources*. Add a following header to the request:
 
-	keytool -genkey -alias replserver -keyalg RSA -keystore keystore.jks
+		Header			Value
+		Authorization	Bearer ACCESS_TOKEN
 
-You will be prompted to create two passwords. Remember these and fill them in the configuration later on (parameters: *keystore.password, keystore.keyPassword*). The command creates a .jks file in the directory called keystore.jks. 
-Now you need to export the certificate so that it can be added to the truststore as the trusted certificate: 
+To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility.
+ACCESS_TOKEN is the value from the previous step. The OAuth provider validates the request and permits the access to the resource which contents are shown to the user:
 
-	keytool -export -alias replserver -file client.cer -keystore keystore.jks
+		{"name":"payroll","uri":"http://localhost:8082/resources/payroll"} 
 
-This has created a certificate file in client.cer that can now be used to populate your truststore. When added the certificate to the truststore, it must be identified as a trusted certificate to be valid. The password for the truststore must be provided, remember it (a parameter: *truststore.password*).
-
-	keytool -import -v -trustcacerts -alias replserver -file client.cer -keystore trust-store
-
-The two files, the keystore (keystore.jks), and truststore (trust-store), along with their corresponding passwords can be now be used. Move them into the */src/main/resources* directory in Mule Studio's Package Explorer.
-If you need more help doing this, feel free to use [this resource](http://docs.continuent.com/tungsten-replicator-2.1/deployment-ssl-stores.html#deployment-ssl-stores-own).
-
-#### Building the Proxy in Studio ####
-
-1. Firstly, open http-authorization-code-web.xml in Anypoint Studio. Replace the values *${keystore.keyPassword}*, *${keystore.password}* and *${truststore.password}* with the corresponding data you entered while creating a keystore and a trust store using the commandline - see the previous section.  
-2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
-2. In any Web browser, enter the following URL: 
-
-		http://localhost:8081/web/{user-id}
-
-	Replace {user-id} in the URL above with the user id.
-3. Box will prompt you to log in with your username and password. Click **Authorize**. You can use your personal credentials or create a new test account.
-4. Clicking **Grant access to Box** (or *Deny access to Box as well*) will redirect you to **http://localhost:8081/web/loginDone** showing you "User Logged In Successfully" message.
-  
 ### How it works
 
-#### boxUserLoginFlow
+The HTTP OAuth Provider example consists of two [Mule flow](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture). The first one, *protectedAuthcodeFlow*, is responsible for validating incoming requests to the protected resources. The *redirectFlow* flow acts as an aid to help manual testing of the OAuth dance.
 
-The flow contains only two blocks. First one is an inbound HTTP endpoint that performs several functionalities. It accepts incoming HTTP GET requests. When such requests arrives, it redirects the processing to *https://localhost:8082/authorization* that basically triggers the OAuth authorization. After the successful operation, the client is redirected to the **userLoginDoneFlow** flow.  
+The following global elements were defined to allow the OAuth provider functionality. 
 
-The OAuth authorization is defined by the *authorization-code-grant-type* component which is wrapped in the HTTP request config component. The request URL is set to *https://api.box.com*. As HTTPS protocol is specified, TLS context needed to be introduced. The context has two required values: a key store and a trust store.  
+#### resourceOwnerAuthenticationManager
 
-To start an OAuth operation you will need a *clientId*, a *clientSecret* issued by the third party service and a redirect URL that is used after the finished authorization process. To demonstrate some capabilities of this component, custom URL parameters (i.e. *box_device_id* and *box_device_name*) and a custom extractor are implemented.
+It defines a single user (*mule*) that is allowed to access the resources.
 
+#### resourceOwnerSecurityProvider
 
-#### userLoginDoneFlow
+It is a security manager that delegates the client authentication to *resourceOwnerAuthenticationManager*.
 
-This flow simply informs a user that the authorization was successful by showing the message "User Logged In Successfully" in the browser.
+#### oauth2Provider
+
+This global element defines a single CONFIDENTIAL client with a clientId and a secret. Next, it defines an authorization grant type (*AUTHORIZATION_CODE*), a redirect URI and scopes (*READ_RESOURCE, POST_RESOURCE*). 
+
+#### protectedAuthcodeFlow
+
+The flow starts with an [HTTP inbound endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) that listens at *http://localhost:8082/resources*. All requests must pass through Oauth validate operation. To simulate a protected resource, a simple map representing a payroll, is [set as a payload](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference). Finally, the payload is [transformed to a JSON format](http://www.mulesoft.org/documentation/display/current/Transformers).
+
+#### redirectFlow
+ 
+The flow starts with an [HTTP inbound endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) that listens at *http://localhost:8082/redirect*. The [Property transformer](http://www.mulesoft.org/documentation/display/current/Property+Transformer+Reference) follows, setting the *http.status* property to 302. Finally, the processing is redirected to:
+
+	http://localhost:8081/token?grant_type=authorization_code&&client_id=myclientid&client_secret=myclientsecret&code=#[message.inboundProperties['http.query.params'].code] 
+
+Again, the Property component is implemented to achieve it by setting the *Location* property.
 
 ### Go Further
 
 - Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
+- Learn more about [OAuth in Mule](http://www.mulesoft.org/documentation/display/current/Creating+an+OAuth+2.0a+Web+Service+Provider).
+- Learn more about [Transformers](http://www.mulesoft.org/documentation/display/current/Transformers).
