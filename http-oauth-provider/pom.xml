@@ -84,6 +84,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-json</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-http</artifactId>
             <version>${mule.version}</version>
@@ -95,12 +101,17 @@
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>        
-    	<dependency>
+	    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-http</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>        
-    
-    </dependencies>
+	    <dependency>
+            <groupId>com.mulesoft.security</groupId>
+            <artifactId>mule-module-security-oauth2-provider</artifactId>
+            <version>1.3.0</version>
+            <scope>provided</scope>
+        </dependency>
+	    </dependencies>
 </project>
