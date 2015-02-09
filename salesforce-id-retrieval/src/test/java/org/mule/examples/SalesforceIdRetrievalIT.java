@@ -9,11 +9,14 @@
 package org.mule.examples;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -27,11 +30,13 @@ import org.mule.tck.junit4.FunctionalTestCase;
 public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
 	private static final String TEST_DIR = "./src/test/resources";
-	private static String REPLY, HTML;
+	private static String HTML;
+	private static List<String> REPLY = new ArrayList<String>();
 	
 	@BeforeClass
 	public static void init() throws IOException{
-		REPLY = FileUtils.readFileToString(new File(TEST_DIR + "/reply.txt")).replace("\n", "");
+		REPLY = FileUtils.readLines(new File(TEST_DIR + "/reply.txt"));
+		
 		HTML = FileUtils.readFileToString(new File(TEST_DIR + "/index.html"));
 		
 		Properties props = new Properties();
@@ -69,6 +74,8 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         params.put("searchKey", "name");
         params.put("searchValue", "mule");
         MuleMessage result = client.send("http://localhost:8081/", params, props);
-        assertEquals(result.getPayloadAsString(), REPLY);
+        for (String line : REPLY){
+        	assertTrue(result.getPayloadAsString().contains(line));
+        }
 	}
 }
