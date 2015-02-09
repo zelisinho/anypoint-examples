@@ -23,7 +23,7 @@ payload = html;]]></expression-component>
     </flow>
     <flow name="salesforceDataRetrievalFlow">
         <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/"/>
-        <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="#[&quot;SELECT id, name,&quot; + (payload.field == null ? &quot;Id&quot; : payload.field) +&quot; from &quot; + payload.object +&quot; where &quot; + payload.searchKey + &quot; like '%&quot; + payload.searchValue +&quot;%'&quot;]"/>
+        <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="#[&quot;SELECT id, name &quot; + (payload.field.isEmpty() ? &quot;&quot; : &quot;,&quot; + payload.field) +&quot; from &quot; + payload.object +&quot; where &quot; + payload.searchKey + &quot; like '%&quot; + payload.searchValue +&quot;%'&quot;]"/>
         <set-variable variableName="response" value="#[[]]" doc:name="Set blank response"/>
         <foreach doc:name="For Each">
             <byte-array-to-string-transformer doc:name="Byte Array to String"/>
