@@ -64,7 +64,9 @@ In this example, a user will attempt to gain access to the protected resource. F
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
 1. Create, then run the HTTP OAuth Provider example application in Anypoint Studio.
-2. Open your Web browser.
+2. Open *http-oauth-provider.xml* from the Package Explorer.
+3. Specify *http.provider.port* and *http.listener.port*, e.g. values 8081, 8082 respectively. 
+3. Open your Web browser.
 3. In the address bar, hit the following URL: 
 
 		http://localhost:8081/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:8082/redirect 
