@@ -20,7 +20,7 @@ Follow the procedure below to create, then run the Login using HTML Form applica
 1. Open your browser and hit **http://localhost:8081**. The form will be provided to you, containing following values:
 
 	+	Object - specify Salesforce object type, e.g. User, Account, Contact, etc. 
-	+	Field - a valid field name for the given object you need, e.g. Id for Contact.
+	+	Field - a valid field name for the given object you need, e.g. Email for Contact. **IMPORTANT**: Id and Name attributes are retrieved by default, so choosing these fields will result in an invalid query.
 	+	Search Key -  a valid field name for the given object you wil use for matching, e.g. Name for Contact.
 	+	Search Value - a value for the *Search Key* field that will be used for matching, e.g. *young* for Contact Name. All records that contain the *Search Value* value as a substring of the given *Search Key* field value are returned, i.e. contacts with names such as John Young or Michael Young will be returned. The more specific value, the less results you will obtain. 
 2. Click *Submit* button.
