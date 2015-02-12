@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 	<groupId>org.mule.examples</groupId>
-	<artifactId>http-login-html-form</artifactId>
+	<artifactId>login-form-using-the-http-connector</artifactId>
 	<packaging>mule</packaging>
 
 	<parent>
