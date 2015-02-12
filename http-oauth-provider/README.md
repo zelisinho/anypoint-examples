@@ -1,14 +1,18 @@
-# HTTP OAuth Provider Example
+# HTTP OAuth2 Provider Example
 
 The primary responsibility of an OAuth2 Web service provider is to control access to protected resources. Playing the part of both the Authorization server and the Resource server, the OAuth provider module hosts the protected resources and issues tokens to access protected resources without sharing the resource owner's credentials with the client applications. 
 
 ### Assumptions
 
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Mule Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).
+Ir order to see this example properly you should have the OAuth Provider Module installed in Studio. All Anypoint Enterprise Security modules for Studio can be found in the following update site:
 
-#### Oauth 2.0a Elements
+	http://security-update-site.s3.amazonaws.com/
 
-Mule provides two elements that enable you to configure a Web service provider capable of completing the tasks listed above.
+
+#### OAuth 2.0a Elements
+
+Mule provides two elements that enable you to configure a Web service provider capable of completing the tasks listed below.
 
 ##### Global OAuth Element
 	
@@ -104,7 +108,7 @@ This global element defines a single CONFIDENTIAL client with a clientId and a s
 
 #### protectedAuthcodeFlow
 
-The flow starts with an [HTTP inbound endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) that listens at *http://localhost:8082/resources*. All requests must pass through Oauth validate operation. To simulate a protected resource, a simple map representing a payroll, is [set as a payload](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference). Finally, the payload is [transformed to a JSON format](http://www.mulesoft.org/documentation/display/current/Transformers).
+The flow starts with an [HTTP inbound endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) that listens at *http://localhost:8082/resources*. All requests must pass through OAuth validate operation. To simulate a protected resource, a simple map representing a payroll, is [set as a payload](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference). Finally, the payload is [transformed to a JSON format](http://www.mulesoft.org/documentation/display/current/Transformers).
 
 #### redirectFlow
  
@@ -116,6 +120,7 @@ Again, the Property component is implemented to achieve it by setting the *Locat
 
 ### Go Further
 
-- Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
-- Learn more about [OAuth in Mule](http://www.mulesoft.org/documentation/display/current/Creating+an+OAuth+2.0a+Web+Service+Provider).
+- Learn more about [HTTP Connector](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
+- Learn more about [Anypoint Enterprise Security](http://www.mulesoft.org/documentation/display/current/Anypoint+Enterprise+Security).
+- Learn more about [OAuth2 in Mule](http://www.mulesoft.org/documentation/display/current/Creating+an+OAuth+2.0a+Web+Service+Provider).
 - Learn more about [Transformers](http://www.mulesoft.org/documentation/display/current/Transformers).
