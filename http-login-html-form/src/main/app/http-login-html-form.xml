@@ -17,7 +17,7 @@
         <!-- The payload (HTTP request body) is a Map with the form fields. Lets write the username in the log. -->
         <logger doc:name="Log username" level="INFO" message="User #[payload.username] is trying to login"/>
         <!-- If username does not exist then fail and handle through exception strategy -->
-        <message-filter doc:name="Message" throwOnUnaccepted="true">
+        <message-filter doc:name="Validate username and password" throwOnUnaccepted="true">
             <expression-filter expression="#[payload.username == 'mule' &amp;&amp; payload.password == 'mule']"/>
         </message-filter>
         <!-- Convert the Map to a JSON format -->
