@@ -33,7 +33,7 @@ public class HttpLoginHtmlFormIT extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "http-login-html-form.xml";
+        return "login-form-using-the-http-connector.xml";
     }
 
     @BeforeClass
