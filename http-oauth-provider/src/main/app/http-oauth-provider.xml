@@ -44,12 +44,12 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <flow name="protectedAuthcodeFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/resources"/>
         <oauth2-provider:validate config-ref="oauth2Provider" doc:name="Validate Token" scopes="READ_RESOURCE" throwExceptionOnUnaccepted="true"/>
-        <set-payload doc:name="Set Payload" value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:${http.listener.port}/resources/payroll'] ]"/>
+        <set-payload doc:name="Set Resource" value="#[ ['name' : 'payroll', 'uri' : 'http://localhost:${http.listener.port}/resources/payroll'] ]"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>        
     </flow>
      
      
-<!--     THIS FLOW IS JUST AN AID TO HELP MANUAL TESTING OF THE OAUTH2 DANCE -->
+	<!--  This flow is for OAuth2 dance demonstration purposes only -->
     <flow name="redirectFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/redirect"/>
         <set-property doc:name="set 'http.status'" propertyName="http.status" value="302"/>
