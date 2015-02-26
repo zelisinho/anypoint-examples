@@ -1,0 +1,120 @@
+/**
+ * MuleSoft Examples
+ * Copyright 2014 MuleSoft, Inc.
+ *
+ * This product includes software developed at
+ * MuleSoft, Inc. (http://www.mulesoft.com/).
+ */
+
+package org.mule.examples;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.mule.MessageExchangePattern;
+import org.mule.api.MuleEvent;
+import org.mule.api.config.MuleProperties;
+import org.mule.module.client.MuleClient;
+import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
+import org.mule.streaming.ConsumerIterator;
+import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.util.IOUtils;
+
+public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
+{
+
+	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
+	private static final Logger log = LogManager.getLogger(ImportContactsIntoMSDynamicsIT.class); 
+	
+	private final String EMAIL1 = "john.doe@texasComp.com";
+	private final String EMAIL2 = "jane.doe@texasComp.com";
+	private static List<String> contactIds = new ArrayList<String>();
+	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
+
+	 
+    @Override
+    protected String getConfigResources()
+    {
+        return "import-contacts-into-ms-dynamics.xml,testflows/test-flows.xml";
+    }
+
+    @BeforeClass
+	public static void init() {
+    	final Properties props = new Properties();
+    	try {
+    	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
+    	} catch (Exception e) {
+    		log.error("Error occured while reading mule.test.properties", e);
+    	}    	
+    	System.setProperty("crm.username", props.getProperty("crm.username"));
+		System.setProperty("crm.password", props.getProperty("crm.password"));
+		System.setProperty("crm.service-url", props.getProperty("crm.service-url"));
+		System.setProperty("crm.auth-type", props.getProperty("crm.auth-type"));
+		
+	}
+        
+	@Override
+	protected Properties getStartUpProperties() {
+		Properties properties = new Properties(super.getStartUpProperties());
+
+		String pathToResource = MAPPINGS_FOLDER_PATH;
+		File graphFile = new File(pathToResource);
+
+		properties.put(MuleProperties.APP_HOME_DIRECTORY_PROPERTY,
+				graphFile.getAbsolutePath());
+
+		return properties;
+	}
+    
+    @Test
+    public void testImport() throws Exception
+    {
+    	
+        MuleClient client = new MuleClient(muleContext);
+        String fileInputPath = "file://./src/main/resources/input";
+        String payload = IOUtils.getResourceAsString(
+                "contacts.csv", this.getClass());
+        client.dispatch(fileInputPath, payload, null);
+        Thread.sleep(20000);
+        SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectContactFromDynamics");        										
+        select.initialise();
+        
+        MuleEvent response = select.process(getTestEvent(EMAIL1, MessageExchangePattern.REQUEST_RESPONSE));  
+        assertTrue(((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).hasNext());
+        Map<String, Object> contact = ((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).next();        
+        assertEquals("John", contact.get("firstname"));
+        contactIds.add(contact.get("contactid").toString());
+        
+        response = select.process(getTestEvent(EMAIL2, MessageExchangePattern.REQUEST_RESPONSE));        
+        assertTrue(((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).hasNext());
+        contact = ((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).next();        
+        assertEquals("Doe", contact.get("lastname"));
+        contactIds.add(contact.get("contactid").toString());
+                										
+    }
+
+    @After
+    public void tearDown() {
+    	SubflowInterceptingChainLifecycleWrapper delete = getSubFlow("deleteContactFromDynamics");
+        try {
+			delete.initialise();
+			for (String id : contactIds)
+			delete.process(getTestEvent(id, MessageExchangePattern.REQUEST_RESPONSE));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        		          
+    }
+}

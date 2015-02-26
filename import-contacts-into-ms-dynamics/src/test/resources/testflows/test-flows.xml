@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dynamicscrm="http://www.mulesoft.org/schema/mule/dynamicscrm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/dynamicscrm http://www.mulesoft.org/schema/mule/dynamicscrm/current/mule-dynamicscrm.xsd">
+    <sub-flow name="selectContactFromDynamics">
+        <dynamicscrm:retrieve-multiple-by-query config-ref="MS_Dynamics_CRM"
+			query="dsql:SELECT contactid,firstname,lastname FROM contact where emailaddress1 = '#[payload]'"
+			doc:name="Microsoft Dynamics CRM" />
+    </sub-flow>
+    
+    <sub-flow name="deleteContactFromDynamics">
+    	<dynamicscrm:delete config-ref="MS_Dynamics_CRM"
+			id="#[payload]" logicalName="contact" doc:name="Microsoft Dynamics CRM" />
+    </sub-flow>
+</mule>
