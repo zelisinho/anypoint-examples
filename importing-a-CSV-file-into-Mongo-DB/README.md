@@ -47,7 +47,7 @@ In this example we transform a sample CSV file containing sales data into a Map 
 
 4  **Open** this example application in Studio
 
-5 Locate the properties file mule.dev.properties in src/main/resources and set the recently created user with password and database name
+5 Go to Global Elements and set the recently created user with password and database name for the Mongo DB connector.
 
 6 **Create a folder** called *input* under src/main/resources and copy the input.csv file into the input folder
 
