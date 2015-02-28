@@ -7,7 +7,7 @@
             <oauth2:authorization-request authorizationUrl="https://www.box.com/api/oauth2/authorize" localAuthorizationUrl="https://localhost:8082/authorization"> 
                 <oauth2:custom-parameters>
                     <oauth2:custom-parameter paramName="box_device_id" value="1"/>
-                    <oauth2:custom-parameter paramName="box_device_name" value="pepe"/>
+                    <oauth2:custom-parameter paramName="box_device_name" value="device1"/>
                 </oauth2:custom-parameters>  
             </oauth2:authorization-request>  
             <oauth2:token-request tokenUrl="https://www.box.com/api/oauth2/token"> 
@@ -34,8 +34,15 @@
     </flow>
     
     <flow name="userLoginDoneFlow"> 
-        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="User Login Done" path="web/loginDone"/>  
-        <set-payload doc:name="Set Payload" value="User Logged In Successfully"/>  
+
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="User Login Done" path="web/loginDone"/>
+        <http:request config-ref="HTTP_Request_Configuration_HTTPS" path="/search" method="GET" doc:name="Query user resource using token">
+            <http:request-builder>
+                <http:query-param paramName="query" value="mule"/>
+            </http:request-builder>
+        </http:request>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <set-payload doc:name="Set response" value="The user successfully authorized access to the resource. Searching for files containing &quot;mule&quot;: #[payload]"/>  
     </flow>
     
 </mule>

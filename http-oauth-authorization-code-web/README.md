@@ -1,4 +1,4 @@
-# HTTP OAuth authorization Example
+# OAuth2 Authorization Code using the HTTP Connector Example
 
 Often you are faced with a requirement to handle authorization to the third party service. This example application illustrates how to execute it using Mule ESB.
 
@@ -43,7 +43,8 @@ If you need more help doing this, feel free to use [this resource](http://docs.c
 
 #### Building the example in Studio ####
 
-1. Firstly, open http-authorization-code-web.xml in Anypoint Studio. Replace the values *${keystore.keyPassword}*, *${keystore.password}* and *${truststore.password}* with the corresponding data you entered while creating a keystore and a trust store using the commandline - see the previous section.  
+1. Firstly, open http-authorization-code-web.xml in Anypoint Studio and go to Global Elements. Inside TLS Context element replace the values for keystore keyPassword, keystore password  and truststore password with the corresponding data you entered while creating a keystore and a trust store using the commandline - see the previous section.
+2. Then go to HTTP Request Configuration element and open the Authentication tab. Fill in the client_id and client_secret you got in the previous section.
 2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
 2. In any Web browser, enter the following URL: 
 
@@ -51,7 +52,8 @@ If you need more help doing this, feel free to use [this resource](http://docs.c
 
 	Replace {user-id} in the URL above with the user id.
 3. Box will prompt you to log in with your username and password. Click **Authorize**. You can use your personal credentials or create a new test account.
-4. Clicking **Grant access to Box** (or *Deny access to Box as well*) will redirect you to **http://localhost:8081/web/loginDone** showing you "User Logged In Successfully" message.
+4. Clicking **Grant access to Box** (or *Deny access to Box as well*) will redirect you to **http://localhost:8081/web/loginDone**.
+5. Then the example will try consume a resource using the recently obtained token (in this case, search for items containing the term "mule") and display the result.
   
 ### How it works
 
@@ -66,8 +68,9 @@ To start an OAuth operation you will need a *clientId*, a *clientSecret* issued 
 
 #### userLoginDoneFlow
 
-This flow simply informs a user that the authorization was successful by showing the message "User Logged In Successfully" in the browser.
+This flow simply informs a user that the authorization was successful and consumes a resource using the recently obtained token, showing the result in the browser.
 
 ### Go Further
 
-- Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
+- Learn more about the [HTTP Connector](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
+- Learn more about [OAuth Authentication using the HTTP Connector](http://www.mulesoft.org/documentation/display/current/Authentication+in+HTTP+Requests#AuthenticationinHTTPRequests-code).
