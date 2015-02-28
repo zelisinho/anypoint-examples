@@ -35,7 +35,7 @@ public class HttpAuthorizationCodeWebIT extends FunctionalTestCase
 	private static final String HTTP_ENDPOINT = "http://localhost:8081/web";
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(HttpAuthorizationCodeWebIT.class);
-	private static final CharSequence REPLY = "User Logged In Successfully"; 
+	private static final CharSequence REPLY = "The user successfully authorized"; 
 	
 	private static String USERNAME;
 	private static String PASSWORD;
