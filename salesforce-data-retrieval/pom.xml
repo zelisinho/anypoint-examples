@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mule.examples</groupId>
-	<artifactId>salesforce-id-retrieval</artifactId>
+	<artifactId>salesforce-data-retrieval</artifactId>
     <packaging>mule</packaging>
 	
 	<parent>

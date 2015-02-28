@@ -1,4 +1,4 @@
-# HTTP OAuth authorization Example
+# OAuth2 Client Credentials using the HTTP Connector Example
 
 Often you are faced with a requirement to handle authorization to the third party service. This example application illustrates how to execute it using Mule ESB.
 

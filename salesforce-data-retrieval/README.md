@@ -1,4 +1,4 @@
-# Salesforce ID retrieval Example
+# Salesforce data retrieval Example
 
 This example application illustrates how to use Mule ESB to build a simple HTTP application to query Salesforce in a dynamic way. After reading this document, creating and running the example in Mule, you should be able to leverage what you have learned to create an HTTP request-response application that is able to retrieve requested data from Salesforce instance based on your criteria.
 

@@ -36,7 +36,7 @@
     <flow name="userLoginDoneFlow"> 
 
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="User Login Done" path="web/loginDone"/>
-        <http:request config-ref="HTTP_Request_Configuration_HTTPS" path="/search" method="GET" doc:name="Query user resource using token">
+        <http:request config-ref="HTTP_Request_Configuration_HTTPS" doc:name="Query user resource using token" method="GET" path="/search">
             <http:request-builder>
                 <http:query-param paramName="query" value="mule"/>
             </http:request-builder>
