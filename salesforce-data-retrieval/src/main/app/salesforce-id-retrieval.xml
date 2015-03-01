@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:jetty="http://www.mulesoft.org/schema/mule/jetty" version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/jetty http://www.mulesoft.org/schema/mule/jetty/current/mule-jetty.xsd">
-    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" url="https://login.salesforce.com/services/Soap/u/28.0" username="${sfdc.username}"/>
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jetty="http://www.mulesoft.org/schema/mule/jetty" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/jetty http://www.mulesoft.org/schema/mule/jetty/current/mule-jetty.xsd">
+    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" url="https://login.salesforce.com/services/Soap/u/32.0" username="${sfdc.username}"/>
     
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     
@@ -24,14 +19,14 @@ payload = html;]]></expression-component>
     <flow name="salesforceDataRetrievalFlow">
         <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/"/>
         <sfdc:query-all config-ref="Salesforce" doc:name="Salesforce" query="#[&quot;SELECT id, name &quot; + (payload.field.isEmpty() ? &quot;&quot; : &quot;,&quot; + payload.field) +&quot; from &quot; + payload.object +&quot; where &quot; + payload.searchKey + &quot; like '%&quot; + payload.searchValue +&quot;%'&quot;]"/>
-        <set-variable variableName="response" value="#[[]]" doc:name="Set blank response"/>
+        <set-variable doc:name="Set blank response" value="#[[]]" variableName="response"/>
         <foreach doc:name="For Each">
             <byte-array-to-string-transformer doc:name="Byte Array to String"/>
             <expression-component doc:name="Add result to response"><![CDATA[response.add(payload);]]></expression-component>
         </foreach>
-        <set-payload value="#[response]" doc:name="Set response"/>
+        <set-payload doc:name="Set response" value="#[response]"/>
         <byte-array-to-string-transformer doc:name="Byte Array to String"/>
-        <logger message="Result: #[payload]" level="INFO" doc:name="Log results"/>
+        <logger doc:name="Log results" level="INFO" message="Result: #[payload]"/>
         <catch-exception-strategy doc:name="Catch Exception Strategy">
             <set-payload doc:name="Set Payload" value="Invalid Salesforce query."/>
         </catch-exception-strategy>

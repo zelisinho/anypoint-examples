@@ -2,21 +2,25 @@
 
 This example application illustrates how to use Mule ESB to build a simple HTTP application to query Salesforce in a dynamic way. After reading this document, creating and running the example in Mule, you should be able to leverage what you have learned to create an HTTP request-response application that is able to retrieve requested data from Salesforce instance based on your criteria.
 
+This example can also be used while configuring any of our [Anypoint Salesforce Templates](https://www.mulesoft.com/library#!/?filters=Salesforce) for retrieving all needed Salesforce entity ID's (e.g. selecting User as object, leaving Field empty and querying by 'email')
+
 ### Assumptions
 
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Mule Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).
 
 ### Example Use Case
 
-In this example, a user makes an HTTP request to the endpoint containing predefined set of parameters that are extracted and used while building a Salesforce query. Afterwards, the application receives the response and provides it to the end user. 
+In this example, a user makes an HTTP request to the endpoint containing predefined set of parameters that are extracted and used while building a Salesforce query. Afterwards, the application receives the response and provides it to the end user.
 
 ### Set Up and Run the Example
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
-Follow the procedure below to create, then run the Login using HTML Form application.
+Follow the procedure below to create, then run the **Salesforce data retrieval** application.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Go to Global Elements and open Salesforce Connector element. Fill in your Salesforce credentials including the [security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm).
+1. Run the application.
 1. Open your browser and hit **http://localhost:8081**. The form will be provided to you, containing following values:
 
 	+	Object - specify Salesforce object type, e.g. User, Account, Contact, etc. 
@@ -31,7 +35,7 @@ If you are unsure about valid object types and their attributes, please visit [S
 
 ### How it Works
 
-The **Salesforce ID retrieval** example application contains two [flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) which receive end user HTTP requests, process them and returns the result to the client.
+The **Salesforce data retrieval** example application contains two [flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) which receive end user HTTP requests, process them and returns the result to the client.
 
 The sections below elaborate further on the configurations of the application and how it works to respond to end user requests.
 
