@@ -53,6 +53,8 @@
 		<module>oauth2-authorization-code-using-the-HTTP-connector</module>
 <!-- 	<module>oauth2-client-credentials-using-the-HTTP-connector</module> -->
 		<module>salesforce-data-retrieval</module>
+<!-- 	<module>import-contacts-into-ms-dynamics</module> -->
+<!--	<module>get-customer-list-from-netsuite</module> -->
     </modules>
 
     <properties>
