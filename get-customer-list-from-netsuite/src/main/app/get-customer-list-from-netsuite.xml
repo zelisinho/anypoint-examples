@@ -5,7 +5,7 @@
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
   
     <flow name="get-customer-list-from-netsuiteFlow">
-        <http:listener allowedMethods="GET" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/customers"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/customers"/>
         <expression-filter doc:name="Filters requests without lastName specified in URL" expression="#[message.inboundProperties[&quot;http.query.params&quot;][&quot;lastName&quot;] != null]"/>
         <netsuite:query-records config-ref="Netsuite" doc:name="Get customer list" query="dsql:SELECT email,firstName,lastName FROM CUSTOMER WHERE lastName like '#[message.inboundProperties[&quot;http.query.params&quot;][&quot;lastName&quot;]]%' ORDER BY lastName ASC">
         </netsuite:query-records>
