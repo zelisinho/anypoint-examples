@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:netsuite="http://www.mulesoft.org/schema/mule/netsuite" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule/netsuite/current/mule-netsuite.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <netsuite:config account="${netsuite.account}" doc:name="Netsuite" email="${netsuite.email}" name="Netsuite" password="${netsuite.password}" roleId="${netsuite.roleId}"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
+  
+    <flow name="get-customer-list-from-netsuiteFlow">
+        <http:listener allowedMethods="GET" config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="/customers"/>
+        <expression-filter doc:name="Filters requests without lastName specified in URL" expression="#[message.inboundProperties[&quot;http.query.params&quot;][&quot;lastName&quot;] != null]"/>
+        <netsuite:query-records config-ref="Netsuite" doc:name="Get customer list" query="dsql:SELECT email,firstName,lastName FROM CUSTOMER WHERE lastName like '#[message.inboundProperties[&quot;http.query.params&quot;][&quot;lastName&quot;]]%' ORDER BY lastName ASC">
+        </netsuite:query-records>
+        <expression-component doc:name="prepare HTML table body"><![CDATA[output = new StringBuilder();
+
+if (payload.hasNext()){
+	while (payload.hasNext()) {
+		customer = payload.next();
+		output.append("<tr><td>" + customer.get('lastName') + "</td><td>" + customer.get('firstName') + "</td><td>" + customer.get('email') + "</td></tr>");	
+	}
+}
+else{
+		output.append("No customers found");
+}
+
+payload = output.toString();]]></expression-component>
+        <parse-template doc:name="Parse Template" location="./src/main/resources/customer/index.html"/>
+    </flow>
+</mule>
