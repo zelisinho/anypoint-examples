@@ -112,7 +112,13 @@
 			<artifactId>serializer</artifactId>
 			<version>2.7.1</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
+		<dependency>
+            <groupId>org.mule.transports</groupId>
+            <artifactId>mule-transport-http</artifactId>
+            <version>${mule.version}</version>
+            <scope>provided</scope>
+        </dependency>		
     </dependencies>
     
     <build>
