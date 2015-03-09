@@ -30,6 +30,7 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
 	private static final Logger LOGGER = LogManager.getLogger(GetCustomersListFromNetsuiteIT.class); 	
 	private static final String LAST_NAME_VALUE = "a";
 	private static final CharSequence TEST_HTML = "<h1>Netsuite Customer List</h1>";
+	private static String HTTP_PORT;
 	 
     @Override
     protected String getConfigResources()
@@ -49,6 +50,8 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
 		System.setProperty("netsuite.password", props.getProperty("netsuite.password"));
 		System.setProperty("netsuite.account", props.getProperty("netsuite.account"));	
 		System.setProperty("netsuite.roleId", props.getProperty("netsuite.roleId"));	
+		System.setProperty("http.port", props.getProperty("http.port"));
+		HTTP_PORT = props.getProperty("http.port").toString();
 	}
           
     @Test
@@ -57,7 +60,7 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
     	Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        MuleMessage response = client.send("http://localhost:8081/customers?lastName=" + LAST_NAME_VALUE, "", props);        
+        MuleMessage response = client.send("http://localhost:" + HTTP_PORT + "/customers?lastName=" + LAST_NAME_VALUE, "", props);        
         assertTrue(response.getPayloadAsString().contains(TEST_HTML));        										
         
     }
