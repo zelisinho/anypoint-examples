@@ -17,7 +17,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-Though a simple example, this application nonetheless employs complex functionality to demonstrate a basic use case. The application accepts CSV files which contain contact information – name, phone number, email – and uploads them into a MS Dynamics account, automatically inserting the correct data into each MS Dynamics field. 
+Though a simple example, this application nonetheless employs complex functionality to demonstrate a basic use case. The application accepts CSV files which contain contact information – first name and surname, phone number, email – and uploads them into a MS Dynamics account, automatically inserting the correct data into each MS Dynamics field. 
 
 ### Set Up and Run the Example ###
 
@@ -51,7 +51,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Using a single flow with four elements, this application accepts CSV files which contain contact information, then uploads the contacts to MS Dynamics. 
 
-The [File connector](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – FirstName, LastName, etc. – to output fields that MS Dynamics uses in a collection. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataMapper transformer. When it has converted all the contacts in the file to a collection of MS Dynamics-friendly data, the application uses a [MS Dynamics Connector](https://www.mulesoft.com/resources/esb/ms-dynamics-integration) to push data into your MS Dynamics account. The connector's configurations specify the **operation** – *Create* – and the **Logical name** – *contact* – which dictate exactly how the data uploads to MS Dynamics; in this case, it creates new contacts. 
+The [File connector](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – firstname, surname, etc. – to output fields that MS Dynamics uses in a collection. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataMapper transformer. When it has converted all the contacts in the file to a collection of MS Dynamics-friendly data, the application uses a [MS Dynamics Connector](https://www.mulesoft.com/resources/esb/ms-dynamics-integration) to push data into your MS Dynamics account. The connector's configurations specify the **operation** – *Create* – and the **Logical name** – *contact* – which dictate exactly how the data uploads to MS Dynamics; in this case, it creates new contacts. 
 
 ### Documentation ###
 
