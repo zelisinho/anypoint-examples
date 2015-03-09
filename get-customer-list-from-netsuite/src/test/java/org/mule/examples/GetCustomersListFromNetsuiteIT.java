@@ -59,7 +59,7 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
     {
     	MuleClient client = new MuleClient(muleContext);
     	Map<String, Object> props = new HashMap<String, Object>();
-        props.put("http.method", "POST");
+        props.put("http.method", "GET");
         MuleMessage response = client.send("http://localhost:" + HTTP_PORT + "/customers?lastName=" + LAST_NAME_VALUE, "", props);        
         assertTrue(response.getPayloadAsString().contains(TEST_HTML));        										
         
