@@ -1,5 +1,4 @@
 ### Import contacts into Microsoft Dynamics ###
-#### Enterprise, CloudHub ####
 
 This application uses pre-packaged tools to intelligently connect with Microsoft Dynamics. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Dynamics user account. It uses the Anypoint DataMapper Transformer to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
 
@@ -14,6 +13,8 @@ At times, you may find that you need to connect one or more of your organization
 This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). 
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface.
+
+**Note:** Be sure to have Microsoft Dynamics CRM connector installed in your Anypoint Studio.
 
 ### Example Use Case ###
 
