@@ -1,0 +1,1665 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="Admin" created="Thu Mar 12 10:42:42 CET 2015" description="XML To PutCustomerRequestType" guiVersion="3.4.4.P" id="1426159108890" licenseCode="Unlicensed" licenseType="Unknown" modified="Thu Mar 12 10:42:42 CET 2015" modifiedBy="Admin" name="XML_To_PutCustomerRequestType" preview-file="${Project_Home}/src/test/resources/customer.xml" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="2" __referenceCounter="0" __sourcePath="{}/object/customerData/acceptedCurrenciesReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="58534920-4cfa-4964-b7e0-541c0273b36c">
+<Record fieldDelimiter="," name="acceptedCurrenciesReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="4" __sourcePath="{}/object/customerData/acceptedCurrenciesReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="20" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="08cb5516-0594-485e-b196-ad0e6f331c0c">
+<Record fieldDelimiter="," name="addressData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="20" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressFormatType" containerType="SINGLE" label="addressFormatType" name="addressFormatType" type="string"/>
+<Field __index="21" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressID" containerType="SINGLE" label="addressID" name="addressID" type="string"/>
+<Field __index="27" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="30" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="33" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryRegionReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_2" type="string"/>
+<Field __index="34" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/defaultedBusinessSiteAddress" containerType="SINGLE" label="defaultedBusinessSiteAddress" name="defaultedBusinessSiteAddress" type="boolean"/>
+<Field __index="35" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/delete" containerType="SINGLE" label="delete" name="delete" type="boolean"/>
+<Field __index="36" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/doNotReplaceAll" containerType="SINGLE" label="doNotReplaceAll" name="doNotReplaceAll" type="boolean"/>
+<Field __dmType="Calendar" __index="37" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/effectiveDate" containerType="SINGLE" label="effectiveDate" name="effectiveDate" type="string"/>
+<Field __index="38" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/formattedAddress" containerType="SINGLE" label="formattedAddress" name="formattedAddress" type="string"/>
+<Field __dmType="Calendar" __index="39" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/lastModified" containerType="SINGLE" label="lastModified" name="lastModified" type="string"/>
+<Field __index="40" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/municipality" containerType="SINGLE" label="municipality" name="municipality" type="string"/>
+<Field __index="41" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/municipalityLocal" containerType="SINGLE" label="municipalityLocal" name="municipalityLocal" type="string"/>
+<Field __index="42" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/postalCode" containerType="SINGLE" label="postalCode" name="postalCode" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="22" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressLineData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="9215abb0-dcdf-46bd-9fec-9438df33fd9e">
+<Record fieldDelimiter="," name="addressLineData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="22" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressLineData/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="23" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressLineData/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="24" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressLineData/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="7" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateNameUsageReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="58e65201-0676-49bc-8ed8-5d5e37eee4ba" _parent_id="__parent_id" _type="Output" id="9392d90d-acb1-474c-823e-c29055d74cb7">
+<Record fieldDelimiter="," name="alternateNameUsageReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="9" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateNameUsageReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="6" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityAlternateNameData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="58e65201-0676-49bc-8ed8-5d5e37eee4ba">
+<Record fieldDelimiter="," name="businessEntityAlternateNameData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="6" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateName" containerType="SINGLE" label="alternateName" name="alternateName" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="10" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityAttachmentData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="4f3c72e2-593c-4c01-9706-5f939c63a503">
+<Record fieldDelimiter="," name="businessEntityAttachmentData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="10" __sourcePath="{}/object/customerData/businessEntityAttachmentData/comment" containerType="SINGLE" label="comment" name="comment" type="string"/>
+<Field __index="11" __sourcePath="{}/object/customerData/businessEntityAttachmentData/compressed" containerType="SINGLE" label="compressed" name="compressed" type="boolean"/>
+<Field __index="12" __sourcePath="{}/object/customerData/businessEntityAttachmentData/contentType" containerType="SINGLE" label="contentType" name="contentType" type="string"/>
+<Field __index="13" __sourcePath="{}/object/customerData/businessEntityAttachmentData/encoding" containerType="SINGLE" label="encoding" name="encoding" type="string"/>
+<Field __index="14" __sourcePath="{}/object/customerData/businessEntityAttachmentData/fileContent" containerType="SINGLE" label="fileContent" name="fileContent" type="byte"/>
+<Field __index="15" __sourcePath="{}/object/customerData/businessEntityAttachmentData/filename" containerType="SINGLE" label="filename" name="filename" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="140" __referenceCounter="0" __sourcePath="{}/object/customerData/creditCardData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="eef2c79f-97c5-4dc2-a3b1-56a980a4489b">
+<Record fieldDelimiter="," name="creditCardData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="142" __sourcePath="{}/object/customerData/creditCardData/creditCardTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="143" __sourcePath="{}/object/customerData/creditCardData/customerProfileID" containerType="SINGLE" label="customerProfileID" name="customerProfileID" type="string"/>
+<Field __dmType="Calendar" __index="144" __sourcePath="{}/object/customerData/creditCardData/expirationDate" containerType="SINGLE" label="expirationDate" name="expirationDate" type="string"/>
+<Field __index="145" __sourcePath="{}/object/customerData/creditCardData/firstName" containerType="SINGLE" label="firstName" name="firstName" type="string"/>
+<Field __index="146" __sourcePath="{}/object/customerData/creditCardData/last4DigitsOfCreditCardNumber" containerType="SINGLE" label="last4DigitsOfCreditCardNumber" name="last4DigitsOfCreditCardNumber" type="string"/>
+<Field __index="147" __sourcePath="{}/object/customerData/creditCardData/lastName" containerType="SINGLE" label="lastName" name="lastName" type="string"/>
+<Field __index="150" __sourcePath="{}/object/customerData/creditCardData/merchantAccountReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="151" __sourcePath="{}/object/customerData/creditCardData/merchantCustomerProfileID" containerType="SINGLE" label="merchantCustomerProfileID" name="merchantCustomerProfileID" type="string"/>
+<Field __index="152" __sourcePath="{}/object/customerData/creditCardData/primaryCard" containerType="SINGLE" label="primaryCard" name="primaryCard" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="164" __referenceCounter="0" __sourcePath="{}/object/customerData/customerGroupReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="6bf30bec-b97e-4f86-a86b-0c94457b6cf7">
+<Record fieldDelimiter="," name="customerGroupReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="166" __sourcePath="{}/object/customerData/customerGroupReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="170" __referenceCounter="0" __sourcePath="{}/object/customerData/customerSecuritySegmentReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="64e37885-7344-45ef-972d-76a04faaa85b">
+<Record fieldDelimiter="," name="customerSecuritySegmentReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="172" __sourcePath="{}/object/customerData/customerSecuritySegmentReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="173" __referenceCounter="0" __sourcePath="{}/object/customerData/customerStatusData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="5aec531b-b236-462f-9516-926a61285d28">
+<Record fieldDelimiter="," name="customerStatusData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="173" __sourcePath="{}/object/customerData/customerStatusData/customerStatusChangeReasonDescription" containerType="SINGLE" label="customerStatusChangeReasonDescription" name="customerStatusChangeReasonDescription" type="string"/>
+<Field __index="176" __sourcePath="{}/object/customerData/customerStatusData/customerStatusValueReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="179" __sourcePath="{}/object/customerData/customerStatusData/reasonForCustomerStatusChangeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="61" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="863fbc4d-4512-4667-b1c6-0fbb752b26da">
+<Record fieldDelimiter="," name="emailAddressData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="61" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/emailAddress" containerType="SINGLE" label="emailAddress" name="emailAddress" type="string"/>
+<Field __index="62" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/emailComment" containerType="SINGLE" label="emailComment" name="emailComment" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="2" __referenceCounter="0" __sourcePath="{}/object/customerData/acceptedCurrenciesReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="58534920-4cfa-4964-b7e0-541c0273b36c" _parent_id="__parent_id" _type="Output" id="3fa8a77d-791f-404a-8c2c-5176c57b35e4">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="2" __sourcePath="{}/object/customerData/acceptedCurrenciesReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="3" __sourcePath="{}/object/customerData/acceptedCurrenciesReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="7" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateNameUsageReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="9392d90d-acb1-474c-823e-c29055d74cb7" _parent_id="__parent_id" _type="Output" id="f2deeda4-cd35-419c-b28c-882106c6bd20">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="7" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateNameUsageReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="8" __sourcePath="{}/object/customerData/businessEntityAlternateNameData/alternateNameUsageReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="25" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="500483eb-0eb3-454e-8586-00ca80532c1f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="25" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="26" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/addressReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="28" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="62912068-cc85-49ae-ac00-fdfe5036567f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="28" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="29" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="31" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryRegionReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="c7a35d35-98b2-4023-9f36-98f029749c0f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="31" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryRegionReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="32" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/countryRegionReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="52" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData/typeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="b46b458d-f619-46c0-87a9-939c3931a0a1" _parent_id="__parent_id" _type="Output" id="582d7cac-4a59-4036-a436-2c7305469b83">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="52" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData/typeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="53" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData/typeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="55" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="c802b301-dc54-43e6-86e6-551837e6f9ec" _parent_id="__parent_id" _type="Output" id="b5bb97ef-36e2-4660-86b2-226af58f6b45">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="55" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="56" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="58" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForTenantedReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f88bcf3f-e0e6-4f15-addd-00372e76b80c" _parent_id="__parent_id" _type="Output" id="5a0817e4-8561-4b7f-978e-909112bf72e2">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="58" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForTenantedReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="59" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForTenantedReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="66" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData/typeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f145fc50-3975-4740-97e0-9533ddf1897a" _parent_id="__parent_id" _type="Output" id="c4177007-ed6c-44f8-8277-29b14959b835">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="66" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData/typeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="67" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData/typeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="69" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="eafff8c5-4e28-4bbb-8c60-52691188f588" _parent_id="__parent_id" _type="Output" id="4e954bff-b691-4f83-8348-e2cc968eb86e">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="69" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="70" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="72" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForTenantedReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="2a13c9ff-4618-4077-9da0-a27a1894b4d7" _parent_id="__parent_id" _type="Output" id="fab0d177-c4c7-4157-9f38-adf3ac7ad809">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="72" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForTenantedReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="73" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForTenantedReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="77" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="e52a61de-84ae-4875-b130-adc87f011041" _parent_id="__parent_id" _type="Output" id="5dc88003-589b-4b03-a618-abe6ca3762dd">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="77" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="78" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="83" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData/typeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="0137e5c1-6c7c-4a34-a58d-1f6e0066aa9e" _parent_id="__parent_id" _type="Output" id="25799ddb-e12e-40aa-97b1-a8a51d8ca08b">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="83" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData/typeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="84" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData/typeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="86" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="43bae888-42f2-4b48-99db-4bcbbb2818ef" _parent_id="__parent_id" _type="Output" id="529b1fb0-8991-421a-a6b3-c894edba08f1">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="86" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="87" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="89" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForTenantedReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="57d13e61-5f2b-4e1d-8289-70b80aae59c3" _parent_id="__parent_id" _type="Output" id="b913d7b2-9422-45ec-b7c6-6e7a2ac2a13a">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="89" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForTenantedReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="90" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForTenantedReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="96" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneDeviceTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="82b768cc-8ec1-4413-be55-f1b92a2e1ac4" _parent_id="__parent_id" _type="Output" id="78b1abf5-4c52-431d-be0d-e72a44d9549c">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="96" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneDeviceTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="97" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneDeviceTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="104" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData/typeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="ca7e6f9a-6ef6-4216-8d04-5e17f57dedeb" _parent_id="__parent_id" _type="Output" id="31a28eb2-1361-44ce-98dd-5bfd7dcd74ea">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="104" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData/typeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="105" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData/typeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="107" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="1c9a827e-9db9-4fbf-94da-8821330969eb" _parent_id="__parent_id" _type="Output" id="5d547c0f-1a02-4182-b843-84af34bf6a11">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="107" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="108" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="110" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForTenantedReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="4a8995de-c34d-4bc3-aa88-758ff12db88d" _parent_id="__parent_id" _type="Output" id="f88dc433-fbbc-4307-a4c7-07d99ddb3605">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="110" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForTenantedReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="111" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForTenantedReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="116" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData/typeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="fb78639d-17a8-4570-8437-6f2dad4609a4" _parent_id="__parent_id" _type="Output" id="b23f70e4-f969-4de5-8752-1949409bfaae">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="116" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData/typeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="117" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData/typeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="119" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="bacbc44f-030d-431f-b3aa-94f60389970f" _parent_id="__parent_id" _type="Output" id="3d1f2250-8291-4f0c-a8b8-370a86bf6678">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="119" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="120" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="122" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForTenantedReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="2ab7fc72-5a05-44da-beaa-d3dad380d119" _parent_id="__parent_id" _type="Output" id="489b1a22-8536-4fc0-851e-df25e61555d0">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="122" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForTenantedReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="123" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForTenantedReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="128" __referenceCounter="0" __sourcePath="{}/object/customerData/createCustomerFromFinancialInstitutionReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="2a2dfc54-b932-4460-b23d-a78881722978">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="128" __sourcePath="{}/object/customerData/createCustomerFromFinancialInstitutionReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="129" __sourcePath="{}/object/customerData/createCustomerFromFinancialInstitutionReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="131" __referenceCounter="0" __sourcePath="{}/object/customerData/createCustomerFromInvestorReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="ab57a115-e2c6-4096-a257-89870fb46564">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="131" __sourcePath="{}/object/customerData/createCustomerFromInvestorReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="132" __sourcePath="{}/object/customerData/createCustomerFromInvestorReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="134" __referenceCounter="0" __sourcePath="{}/object/customerData/createCustomerFromSupplierReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="5b481bdc-1651-4b59-892f-7dc35284a34e">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="134" __sourcePath="{}/object/customerData/createCustomerFromSupplierReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="135" __sourcePath="{}/object/customerData/createCustomerFromSupplierReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="137" __referenceCounter="0" __sourcePath="{}/object/customerData/createCustomerFromTaxAuthorityReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="574b9194-c704-4114-9a30-22672fd83393">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="137" __sourcePath="{}/object/customerData/createCustomerFromTaxAuthorityReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="138" __sourcePath="{}/object/customerData/createCustomerFromTaxAuthorityReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="140" __referenceCounter="0" __sourcePath="{}/object/customerData/creditCardData/creditCardTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="eef2c79f-97c5-4dc2-a3b1-56a980a4489b" _parent_id="__parent_id" _type="Output" id="25d8e4ca-1086-487a-9ec2-9aca880f5b71">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="140" __sourcePath="{}/object/customerData/creditCardData/creditCardTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="141" __sourcePath="{}/object/customerData/creditCardData/creditCardTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="148" __referenceCounter="0" __sourcePath="{}/object/customerData/creditCardData/merchantAccountReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="eef2c79f-97c5-4dc2-a3b1-56a980a4489b" _parent_id="__parent_id" _type="Output" id="9cd59d88-8809-4ad3-ad69-8c645a8eba6f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="148" __sourcePath="{}/object/customerData/creditCardData/merchantAccountReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="149" __sourcePath="{}/object/customerData/creditCardData/merchantAccountReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="154" __referenceCounter="0" __sourcePath="{}/object/customerData/creditLimitCurrencyReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="e13743f5-4a41-4be4-a58a-d5043331e0ea">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="154" __sourcePath="{}/object/customerData/creditLimitCurrencyReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="155" __sourcePath="{}/object/customerData/creditLimitCurrencyReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="158" __referenceCounter="0" __sourcePath="{}/object/customerData/currencyReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="e8c9209d-bd5d-47ec-93e7-1103e9ed9b23">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="158" __sourcePath="{}/object/customerData/currencyReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="159" __sourcePath="{}/object/customerData/currencyReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="161" __referenceCounter="1" __sourcePath="{}/object/customerData/customerCategoryReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="406881b5-1f72-4bcf-84ab-b9fb610597a4">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="161" __sourcePath="{}/object/customerData/customerCategoryReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="162" __sourcePath="{}/object/customerData/customerCategoryReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="164" __referenceCounter="0" __sourcePath="{}/object/customerData/customerGroupReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="6bf30bec-b97e-4f86-a86b-0c94457b6cf7" _parent_id="__parent_id" _type="Output" id="7817d098-3cf2-4907-95ef-2129b7e82d5e">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="164" __sourcePath="{}/object/customerData/customerGroupReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="165" __sourcePath="{}/object/customerData/customerGroupReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="170" __referenceCounter="0" __sourcePath="{}/object/customerData/customerSecuritySegmentReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="64e37885-7344-45ef-972d-76a04faaa85b" _parent_id="__parent_id" _type="Output" id="5bd8eb83-c091-439c-a738-fbbb7a14d1f5">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="170" __sourcePath="{}/object/customerData/customerSecuritySegmentReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="171" __sourcePath="{}/object/customerData/customerSecuritySegmentReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="174" __referenceCounter="1" __sourcePath="{}/object/customerData/customerStatusData/customerStatusValueReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="5aec531b-b236-462f-9516-926a61285d28" _parent_id="__parent_id" _type="Output" id="d59ed11f-01ca-4f0e-9488-0abe6451649f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="174" __sourcePath="{}/object/customerData/customerStatusData/customerStatusValueReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="175" __sourcePath="{}/object/customerData/customerStatusData/customerStatusValueReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="177" __referenceCounter="0" __sourcePath="{}/object/customerData/customerStatusData/reasonForCustomerStatusChangeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="5aec531b-b236-462f-9516-926a61285d28" _parent_id="__parent_id" _type="Output" id="7f4b4283-e461-4d26-a0d1-610954ae4778">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="177" __sourcePath="{}/object/customerData/customerStatusData/reasonForCustomerStatusChangeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="178" __sourcePath="{}/object/customerData/customerStatusData/reasonForCustomerStatusChangeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="180" __referenceCounter="0" __sourcePath="{}/object/customerData/defaultPaymentTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="c38275bc-7d8d-4e3b-9a68-e7317aa1c541">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="180" __sourcePath="{}/object/customerData/defaultPaymentTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="181" __sourcePath="{}/object/customerData/defaultPaymentTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="185" __referenceCounter="0" __sourcePath="{}/object/customerData/includedChildrenReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="3fee7010-5955-44b7-b312-e62dcffc8042" _parent_id="__parent_id" _type="Output" id="1d09cf1a-79b4-4960-8dac-d83ccf2187da">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="185" __sourcePath="{}/object/customerData/includedChildrenReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="186" __sourcePath="{}/object/customerData/includedChildrenReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="188" __referenceCounter="0" __sourcePath="{}/object/customerData/invoiceDeliveryMethodReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="1ef87dd6-0b46-4792-b43b-6d2defbe9bae" _parent_id="__parent_id" _type="Output" id="1113f6f0-b6a5-4572-a1d8-da6afcfa4788">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="188" __sourcePath="{}/object/customerData/invoiceDeliveryMethodReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="189" __sourcePath="{}/object/customerData/invoiceDeliveryMethodReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="191" __referenceCounter="0" __sourcePath="{}/object/customerData/invoiceNotificationEmailRecipientsReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f10f8c73-b734-43ed-a569-ee48754cc828" _parent_id="__parent_id" _type="Output" id="c414de33-d313-44eb-903b-34277eb51578">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="191" __sourcePath="{}/object/customerData/invoiceNotificationEmailRecipientsReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="192" __sourcePath="{}/object/customerData/invoiceNotificationEmailRecipientsReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="194" __referenceCounter="0" __sourcePath="{}/object/customerData/lockboxReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="3b6993f4-2603-4ac5-a529-1496e126bc18" _parent_id="__parent_id" _type="Output" id="c9331284-068b-4a6b-ad68-751c61e7f78e">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="194" __sourcePath="{}/object/customerData/lockboxReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="195" __sourcePath="{}/object/customerData/lockboxReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="197" __referenceCounter="0" __sourcePath="{}/object/customerData/noteData/businessEntityContactReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="76ad470d-a199-45f4-b785-02d1be91a112" _parent_id="__parent_id" _type="Output" id="2b26ceb4-c888-41d5-b0e6-3971def3840a">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="197" __sourcePath="{}/object/customerData/noteData/businessEntityContactReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="198" __sourcePath="{}/object/customerData/noteData/businessEntityContactReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="203" __referenceCounter="0" __sourcePath="{}/object/customerData/noteData/systemUserReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="76ad470d-a199-45f4-b785-02d1be91a112" _parent_id="__parent_id" _type="Output" id="95dec297-5caa-414a-9607-8b84916ea958">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="203" __sourcePath="{}/object/customerData/noteData/systemUserReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="204" __sourcePath="{}/object/customerData/noteData/systemUserReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="206" __referenceCounter="0" __sourcePath="{}/object/customerData/noteData/workerReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="76ad470d-a199-45f4-b785-02d1be91a112" _parent_id="__parent_id" _type="Output" id="c13ecb26-64ea-4f7a-a6ac-6cefe7c46803">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="206" __sourcePath="{}/object/customerData/noteData/workerReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="207" __sourcePath="{}/object/customerData/noteData/workerReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="209" __referenceCounter="0" __sourcePath="{}/object/customerData/paymentTermsReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="71bd89a2-e9e5-45fa-8adf-b258aa4f5dbf">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="209" __sourcePath="{}/object/customerData/paymentTermsReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="210" __sourcePath="{}/object/customerData/paymentTermsReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="212" __referenceCounter="0" __sourcePath="{}/object/customerData/remitFromCustomerReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="8b2f4613-2dea-4a52-8b0c-f4a5bd540076">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="212" __sourcePath="{}/object/customerData/remitFromCustomerReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="213" __sourcePath="{}/object/customerData/remitFromCustomerReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="220" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d057122d-e23c-42e6-8926-78ef65f1eb7a" _parent_id="__parent_id" _type="Output" id="694b4bc3-4e74-429d-a684-55229f6318f6">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="220" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="221" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="228" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/countryReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d057122d-e23c-42e6-8926-78ef65f1eb7a" _parent_id="__parent_id" _type="Output" id="cc580f2a-191a-4441-a7fb-5d144282b09b">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="228" __sourcePath="{}/object/customerData/settlementAccountData/countryReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="229" __sourcePath="{}/object/customerData/settlementAccountData/countryReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="231" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/currencyReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d057122d-e23c-42e6-8926-78ef65f1eb7a" _parent_id="__parent_id" _type="Output" id="8ad5c714-5c65-4c18-b116-493850d61b6a">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="231" __sourcePath="{}/object/customerData/settlementAccountData/currencyReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="232" __sourcePath="{}/object/customerData/settlementAccountData/currencyReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="240" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountTypeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="a402504b-1784-4a6f-9fa3-9485d84900d5" _parent_id="__parent_id" _type="Output" id="6d639b66-d4c8-4be1-b61b-ea9f76e9a9b5">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="240" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountTypeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="241" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountTypeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="248" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/countryReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="a402504b-1784-4a6f-9fa3-9485d84900d5" _parent_id="__parent_id" _type="Output" id="1b344f23-c9f7-405f-b3c9-27df27af022f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="248" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/countryReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="249" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/countryReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="251" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/currencyReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="a402504b-1784-4a6f-9fa3-9485d84900d5" _parent_id="__parent_id" _type="Output" id="5b91ec0a-7d41-4aff-8eb2-053e8fc72d39">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="251" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/currencyReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="252" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/currencyReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="258" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/paymentTypesReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="99317706-3c88-4b4d-905b-e0753fd77131" _parent_id="__parent_id" _type="Output" id="a437c9de-fbea-4451-8f71-4dc7b3990bb3">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="258" __sourcePath="{}/object/customerData/settlementAccountData/paymentTypesReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="259" __sourcePath="{}/object/customerData/settlementAccountData/paymentTypesReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="263" __referenceCounter="0" __sourcePath="{}/object/customerData/statementDeliveryMethodReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="39b77894-6f7c-4a2e-ad6c-27b920e8992f">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="263" __sourcePath="{}/object/customerData/statementDeliveryMethodReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="264" __sourcePath="{}/object/customerData/statementDeliveryMethodReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="266" __referenceCounter="0" __sourcePath="{}/object/customerData/taxCodeReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="8e8dcd32-ee5e-4436-9f1c-b5f86960f5ba">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="266" __sourcePath="{}/object/customerData/taxCodeReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="267" __sourcePath="{}/object/customerData/taxCodeReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="270" __referenceCounter="0" __sourcePath="{}/object/customerData/worktagsReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="0d0a022e-c710-4496-a876-3e15f55d6749" _parent_id="__parent_id" _type="Output" id="d514d852-bcf6-4f23-9d48-bdc6538d40fd">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="270" __sourcePath="{}/object/customerData/worktagsReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="271" __sourcePath="{}/object/customerData/worktagsReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="273" __referenceCounter="0" __sourcePath="{}/object/customerReference/ID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="9afcecf1-3290-4abf-a8eb-68cd2505f94d">
+<Record fieldDelimiter="," name="ID" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="273" __sourcePath="{}/object/customerReference/ID/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="274" __sourcePath="{}/object/customerReference/ID/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="185" __referenceCounter="0" __sourcePath="{}/object/customerData/includedChildrenReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="3fee7010-5955-44b7-b312-e62dcffc8042">
+<Record fieldDelimiter="," name="includedChildrenReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="187" __sourcePath="{}/object/customerData/includedChildrenReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="75" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="e52a61de-84ae-4875-b130-adc87f011041">
+<Record fieldDelimiter="," name="instantMessengerData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="75" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerAddress" containerType="SINGLE" label="instantMessengerAddress" name="instantMessengerAddress" type="string"/>
+<Field __index="76" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerComment" containerType="SINGLE" label="instantMessengerComment" name="instantMessengerComment" type="string"/>
+<Field __index="79" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/instantMessengerTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="235" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d057122d-e23c-42e6-8926-78ef65f1eb7a" _parent_id="__parent_id" _type="Output" id="a402504b-1784-4a6f-9fa3-9485d84900d5">
+<Record fieldDelimiter="," name="intermediaryBankData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="235" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/IBAN" containerType="SINGLE" label="IBAN" name="IBAN" type="string"/>
+<Field __index="236" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/SWIFTBankIdentificationCode" containerType="SINGLE" label="SWIFTBankIdentificationCode" name="SWIFTBankIdentificationCode" type="string"/>
+<Field __index="237" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountName" containerType="SINGLE" label="bankAccountName" name="bankAccountName" type="string"/>
+<Field __index="238" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountNickname" containerType="SINGLE" label="bankAccountNickname" name="bankAccountNickname" type="string"/>
+<Field __index="239" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountNumber" containerType="SINGLE" label="bankAccountNumber" name="bankAccountNumber" type="string"/>
+<Field __index="242" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankAccountTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="243" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankInstructions" containerType="SINGLE" label="bankInstructions" name="bankInstructions" type="string"/>
+<Field __index="244" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/bankName" containerType="SINGLE" label="bankName" name="bankName" type="string"/>
+<Field __index="245" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/branchID" containerType="SINGLE" label="branchID" name="branchID" type="string"/>
+<Field __index="246" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/branchName" containerType="SINGLE" label="branchName" name="branchName" type="string"/>
+<Field __index="247" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/checkDigit" containerType="SINGLE" label="checkDigit" name="checkDigit" type="string"/>
+<Field __index="250" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/countryReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="253" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/currencyReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_2" type="string"/>
+<Field __index="254" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/inactive" containerType="SINGLE" label="inactive" name="inactive" type="boolean"/>
+<Field __index="255" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/intermediaryBankOrder" containerType="SINGLE" label="intermediaryBankOrder" name="intermediaryBankOrder" type="string"/>
+<Field __index="256" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/rollNumber" containerType="SINGLE" label="rollNumber" name="rollNumber" type="string"/>
+<Field __index="257" __sourcePath="{}/object/customerData/settlementAccountData/intermediaryBankData/routingTransitNumber" containerType="SINGLE" label="routingTransitNumber" name="routingTransitNumber" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="188" __referenceCounter="0" __sourcePath="{}/object/customerData/invoiceDeliveryMethodReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="1ef87dd6-0b46-4792-b43b-6d2defbe9bae">
+<Record fieldDelimiter="," name="invoiceDeliveryMethodReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="190" __sourcePath="{}/object/customerData/invoiceDeliveryMethodReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="191" __referenceCounter="0" __sourcePath="{}/object/customerData/invoiceNotificationEmailRecipientsReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="f10f8c73-b734-43ed-a569-ee48754cc828">
+<Record fieldDelimiter="," name="invoiceNotificationEmailRecipientsReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="193" __sourcePath="{}/object/customerData/invoiceNotificationEmailRecipientsReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="194" __referenceCounter="0" __sourcePath="{}/object/customerData/lockboxReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="3b6993f4-2603-4ac5-a529-1496e126bc18">
+<Record fieldDelimiter="," name="lockboxReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="196" __sourcePath="{}/object/customerData/lockboxReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="197" __referenceCounter="0" __sourcePath="{}/object/customerData/noteData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="76ad470d-a199-45f4-b785-02d1be91a112">
+<Record fieldDelimiter="," name="noteData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="199" __sourcePath="{}/object/customerData/noteData/businessEntityContactReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __dmType="Calendar" __index="200" __sourcePath="{}/object/customerData/noteData/created" containerType="SINGLE" label="created" name="created" type="string"/>
+<Field __dmType="Calendar" __index="201" __sourcePath="{}/object/customerData/noteData/lastUpdated" containerType="SINGLE" label="lastUpdated" name="lastUpdated" type="string"/>
+<Field __index="202" __sourcePath="{}/object/customerData/noteData/noteContent" containerType="SINGLE" label="noteContent" name="noteContent" type="string"/>
+<Field __index="205" __sourcePath="{}/object/customerData/noteData/systemUserReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="208" __sourcePath="{}/object/customerData/noteData/workerReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_2" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="258" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData/paymentTypesReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d057122d-e23c-42e6-8926-78ef65f1eb7a" _parent_id="__parent_id" _type="Output" id="99317706-3c88-4b4d-905b-e0753fd77131">
+<Record fieldDelimiter="," name="paymentTypesReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="260" __sourcePath="{}/object/customerData/settlementAccountData/paymentTypesReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="92" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="82b768cc-8ec1-4413-be55-f1b92a2e1ac4">
+<Record fieldDelimiter="," name="phoneData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="92" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/areaCode" containerType="SINGLE" label="areaCode" name="areaCode" type="string"/>
+<Field __index="93" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/countryISOCode" containerType="SINGLE" label="countryISOCode" name="countryISOCode" type="string"/>
+<Field __index="94" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/formattedPhone" containerType="SINGLE" label="formattedPhone" name="formattedPhone" type="string"/>
+<Field __index="95" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/internationalPhoneCode" containerType="SINGLE" label="internationalPhoneCode" name="internationalPhoneCode" type="string"/>
+<Field __index="98" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneDeviceTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="99" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneExtension" containerType="SINGLE" label="phoneExtension" name="phoneExtension" type="string"/>
+<Field __index="100" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/phoneNumber" containerType="SINGLE" label="phoneNumber" name="phoneNumber" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="d13c4b87-83ee-4e6a-8d00-cde097773642">
+<Record fieldDelimiter="," name="PutCustomerRequestType" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/addOnly" containerType="SINGLE" label="addOnly" name="addOnly" type="boolean"/>
+<Field __index="1" __sourcePath="{}/object/customerData/DUNSNumber" containerType="SINGLE" label="DUNSNumber" name="DUNSNumber" type="string"/>
+<Field __index="5" __sourcePath="{}/object/customerData/alwaysSeparatePayments" containerType="SINGLE" label="alwaysSeparatePayments" name="alwaysSeparatePayments" type="boolean"/>
+<Field __index="16" __sourcePath="{}/object/customerData/businessEntityData/businessEntityLogoImageData/filename" containerType="SINGLE" label="filename" name="filename" type="string"/>
+<Field __index="17" __sourcePath="{}/object/customerData/businessEntityData/businessEntityLogoImageData/image" containerType="SINGLE" label="image" name="image" type="byte"/>
+<Field __index="18" __sourcePath="{}/object/customerData/businessEntityData/businessEntityName" containerType="SINGLE" label="businessEntityName" name="businessEntityName" type="string"/>
+<Field __index="19" __sourcePath="{}/object/customerData/businessEntityData/businessEntityTaxID" containerType="SINGLE" label="businessEntityTaxID" name="businessEntityTaxID" type="string"/>
+<Field __index="127" __sourcePath="{}/object/customerData/businessEntityData/externalEntityID" containerType="SINGLE" label="externalEntityID" name="externalEntityID" type="string"/>
+<Field __index="130" __sourcePath="{}/object/customerData/createCustomerFromFinancialInstitutionReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="133" __sourcePath="{}/object/customerData/createCustomerFromInvestorReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="136" __sourcePath="{}/object/customerData/createCustomerFromSupplierReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_2" type="string"/>
+<Field __index="139" __sourcePath="{}/object/customerData/createCustomerFromTaxAuthorityReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_3" type="string"/>
+<Field __index="153" __sourcePath="{}/object/customerData/creditLimit" containerType="SINGLE" label="creditLimit" name="creditLimit" type="decimal"/>
+<Field __index="156" __sourcePath="{}/object/customerData/creditLimitCurrencyReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_4" type="string"/>
+<Field __dmType="Calendar" __index="157" __sourcePath="{}/object/customerData/creditVerificationDate" containerType="SINGLE" label="creditVerificationDate" name="creditVerificationDate" type="string"/>
+<Field __index="160" __sourcePath="{}/object/customerData/currencyReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_5" type="string"/>
+<Field __index="163" __sourcePath="{}/object/customerData/customerCategoryReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_6" type="string"/>
+<Field __index="167" __sourcePath="{}/object/customerData/customerID" containerType="SINGLE" label="customerID" name="customerID" type="string"/>
+<Field __index="168" __sourcePath="{}/object/customerData/customerName" containerType="SINGLE" label="customerName" name="customerName" type="string"/>
+<Field __index="169" __sourcePath="{}/object/customerData/customerReferenceID" containerType="SINGLE" label="customerReferenceID" name="customerReferenceID" type="string"/>
+<Field __index="182" __sourcePath="{}/object/customerData/defaultPaymentTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_7" type="string"/>
+<Field __dmType="Calendar" __index="183" __sourcePath="{}/object/customerData/followupDate" containerType="SINGLE" label="followupDate" name="followupDate" type="string"/>
+<Field __index="184" __sourcePath="{}/object/customerData/hierarchyCreditLimit" containerType="SINGLE" label="hierarchyCreditLimit" name="hierarchyCreditLimit" type="decimal"/>
+<Field __index="211" __sourcePath="{}/object/customerData/paymentTermsReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_8" type="string"/>
+<Field __index="214" __sourcePath="{}/object/customerData/remitFromCustomerReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_9" type="string"/>
+<Field __index="265" __sourcePath="{}/object/customerData/statementDeliveryMethodReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_10" type="string"/>
+<Field __index="268" __sourcePath="{}/object/customerData/taxCodeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_11" type="string"/>
+<Field __index="269" __sourcePath="{}/object/customerData/worktagOnly" containerType="SINGLE" label="worktagOnly" name="worktagOnly" type="boolean"/>
+<Field __index="275" __sourcePath="{}/object/customerReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_12" type="string"/>
+<Field __index="276" __sourcePath="{}/object/version" containerType="SINGLE" label="version" name="version" type="string"/>
+</Record>
+</Metadata>
+<Metadata __filteredMetadata="false" __index="0" __referenceCounter="3" __schemaType="rootType" __sourcePath="{}/root" _dataStructure="OBJECT" _id="__id" _type="Input" id="174852f5-2e24-46bd-bca9-ce9cba5c30b7">
+<Record fieldDelimiter="," name="root" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __schemaType="AccountType" __sourcePath="{}/root/Account/CustomerName" containerType="SINGLE" label="CustomerName" name="CustomerName" type="string"/>
+<Field __index="1" __schemaType="AccountType" __sourcePath="{}/root/Account/BusinessEntityName" containerType="SINGLE" label="BusinessEntityName" name="BusinessEntityName" type="string"/>
+<Field __index="2" __schemaType="AccountType" __sourcePath="{}/root/Account/Customer_Category_Reference_Type" containerType="SINGLE" label="Customer_Category_Reference_Type" name="Customer_Category_Reference_Type" type="string"/>
+<Field __index="3" __schemaType="AccountType" __sourcePath="{}/root/Account/Customer_Category_Reference_Value" containerType="SINGLE" label="Customer_Category_Reference_Value" name="Customer_Category_Reference_Value" type="string"/>
+<Field __index="4" __schemaType="AccountType" __sourcePath="{}/root/Account/Customer_Status_Reference_Type" containerType="SINGLE" label="Customer_Status_Reference_Type" name="Customer_Status_Reference_Type" type="string"/>
+<Field __index="5" __schemaType="AccountType" __sourcePath="{}/root/Account/Customer_Status_Reference_Value" containerType="SINGLE" label="Customer_Status_Reference_Value" name="Customer_Status_Reference_Value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="215" __referenceCounter="0" __sourcePath="{}/object/customerData/settlementAccountData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="d057122d-e23c-42e6-8926-78ef65f1eb7a">
+<Record fieldDelimiter="," name="settlementAccountData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="215" __sourcePath="{}/object/customerData/settlementAccountData/IBAN" containerType="SINGLE" label="IBAN" name="IBAN" type="string"/>
+<Field __index="216" __sourcePath="{}/object/customerData/settlementAccountData/SWIFTBankIdentificationCode" containerType="SINGLE" label="SWIFTBankIdentificationCode" name="SWIFTBankIdentificationCode" type="string"/>
+<Field __index="217" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountName" containerType="SINGLE" label="bankAccountName" name="bankAccountName" type="string"/>
+<Field __index="218" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountNickname" containerType="SINGLE" label="bankAccountNickname" name="bankAccountNickname" type="string"/>
+<Field __index="219" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountNumber" containerType="SINGLE" label="bankAccountNumber" name="bankAccountNumber" type="string"/>
+<Field __index="222" __sourcePath="{}/object/customerData/settlementAccountData/bankAccountTypeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="223" __sourcePath="{}/object/customerData/settlementAccountData/bankInstructions" containerType="SINGLE" label="bankInstructions" name="bankInstructions" type="string"/>
+<Field __index="224" __sourcePath="{}/object/customerData/settlementAccountData/bankName" containerType="SINGLE" label="bankName" name="bankName" type="string"/>
+<Field __index="225" __sourcePath="{}/object/customerData/settlementAccountData/branchID" containerType="SINGLE" label="branchID" name="branchID" type="string"/>
+<Field __index="226" __sourcePath="{}/object/customerData/settlementAccountData/branchName" containerType="SINGLE" label="branchName" name="branchName" type="string"/>
+<Field __index="227" __sourcePath="{}/object/customerData/settlementAccountData/checkDigit" containerType="SINGLE" label="checkDigit" name="checkDigit" type="string"/>
+<Field __index="230" __sourcePath="{}/object/customerData/settlementAccountData/countryReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_1" type="string"/>
+<Field __index="233" __sourcePath="{}/object/customerData/settlementAccountData/currencyReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor_2" type="string"/>
+<Field __index="234" __sourcePath="{}/object/customerData/settlementAccountData/inactive" containerType="SINGLE" label="inactive" name="inactive" type="boolean"/>
+<Field __index="261" __sourcePath="{}/object/customerData/settlementAccountData/rollNumber" containerType="SINGLE" label="rollNumber" name="rollNumber" type="string"/>
+<Field __index="262" __sourcePath="{}/object/customerData/settlementAccountData/routingTransitNumber" containerType="SINGLE" label="routingTransitNumber" name="routingTransitNumber" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="43" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/submunicipalityData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="ff663580-1ca5-4474-bce8-31e9b59dcd49">
+<Record fieldDelimiter="," name="submunicipalityData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="43" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/submunicipalityData/addressComponentName" containerType="SINGLE" label="addressComponentName" name="addressComponentName" type="string"/>
+<Field __index="44" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/submunicipalityData/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="45" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/submunicipalityData/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="46" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/subregionData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="003ed8d3-b4b5-4ce6-910d-6666548b1b0e">
+<Record fieldDelimiter="," name="subregionData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="46" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/subregionData/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+<Field __index="47" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/subregionData/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __index="48" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/subregionData/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="51" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="ad387921-a940-47f7-9812-38e2b9fc68d0" _parent_id="__parent_id" _type="Output" id="b46b458d-f619-46c0-87a9-939c3931a0a1">
+<Record fieldDelimiter="," name="typeData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="51" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData/primary" containerType="SINGLE" label="primary" name="primary" type="boolean"/>
+<Field __index="54" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/typeData/typeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="65" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="25b6d0e5-2e91-41ff-a9ae-be1c875fe386" _parent_id="__parent_id" _type="Output" id="f145fc50-3975-4740-97e0-9533ddf1897a">
+<Record fieldDelimiter="," name="typeData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="65" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData/primary" containerType="SINGLE" label="primary" name="primary" type="boolean"/>
+<Field __index="68" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/typeData/typeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="82" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="1640b00f-e343-4b0e-a0dc-3c672df38287" _parent_id="__parent_id" _type="Output" id="0137e5c1-6c7c-4a34-a58d-1f6e0066aa9e">
+<Record fieldDelimiter="," name="typeData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="82" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData/primary" containerType="SINGLE" label="primary" name="primary" type="boolean"/>
+<Field __index="85" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/typeData/typeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="103" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f7ec32f1-9f1e-4768-9ded-a3d43714f68c" _parent_id="__parent_id" _type="Output" id="ca7e6f9a-6ef6-4216-8d04-5e17f57dedeb">
+<Record fieldDelimiter="," name="typeData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="103" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData/primary" containerType="SINGLE" label="primary" name="primary" type="boolean"/>
+<Field __index="106" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/typeData/typeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="115" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="57e772b7-2acd-4a08-9a3d-1559e45bec9d" _parent_id="__parent_id" _type="Output" id="fb78639d-17a8-4570-8437-6f2dad4609a4">
+<Record fieldDelimiter="," name="typeData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="115" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData/primary" containerType="SINGLE" label="primary" name="primary" type="boolean"/>
+<Field __index="118" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/typeData/typeReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="49" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="08cb5516-0594-485e-b196-ad0e6f331c0c" _parent_id="__parent_id" _type="Output" id="ad387921-a940-47f7-9812-38e2b9fc68d0">
+<Record fieldDelimiter="," name="usageData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="49" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/comments" containerType="SINGLE" label="comments" name="comments" type="string"/>
+<Field __index="50" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/public" containerType="SINGLE" label="public" name="public" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="63" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="863fbc4d-4512-4667-b1c6-0fbb752b26da" _parent_id="__parent_id" _type="Output" id="25b6d0e5-2e91-41ff-a9ae-be1c875fe386">
+<Record fieldDelimiter="," name="usageData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="63" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/comments" containerType="SINGLE" label="comments" name="comments" type="string"/>
+<Field __index="64" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/public" containerType="SINGLE" label="public" name="public" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="80" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="e52a61de-84ae-4875-b130-adc87f011041" _parent_id="__parent_id" _type="Output" id="1640b00f-e343-4b0e-a0dc-3c672df38287">
+<Record fieldDelimiter="," name="usageData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="80" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/comments" containerType="SINGLE" label="comments" name="comments" type="string"/>
+<Field __index="81" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/public" containerType="SINGLE" label="public" name="public" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="101" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="82b768cc-8ec1-4413-be55-f1b92a2e1ac4" _parent_id="__parent_id" _type="Output" id="f7ec32f1-9f1e-4768-9ded-a3d43714f68c">
+<Record fieldDelimiter="," name="usageData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="101" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/comments" containerType="SINGLE" label="comments" name="comments" type="string"/>
+<Field __index="102" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/public" containerType="SINGLE" label="public" name="public" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="113" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="37beb9ec-8ae1-4409-a7d0-14808e53edb8" _parent_id="__parent_id" _type="Output" id="57e772b7-2acd-4a08-9a3d-1559e45bec9d">
+<Record fieldDelimiter="," name="usageData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="113" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/comments" containerType="SINGLE" label="comments" name="comments" type="string"/>
+<Field __index="114" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/public" containerType="SINGLE" label="public" name="public" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __index="55" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="ad387921-a940-47f7-9812-38e2b9fc68d0" _parent_id="__parent_id" _type="Output" id="c802b301-dc54-43e6-86e6-551837e6f9ec">
+<Record fieldDelimiter="," name="useForReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="57" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="69" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="25b6d0e5-2e91-41ff-a9ae-be1c875fe386" _parent_id="__parent_id" _type="Output" id="eafff8c5-4e28-4bbb-8c60-52691188f588">
+<Record fieldDelimiter="," name="useForReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="71" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="86" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="1640b00f-e343-4b0e-a0dc-3c672df38287" _parent_id="__parent_id" _type="Output" id="43bae888-42f2-4b48-99db-4bcbbb2818ef">
+<Record fieldDelimiter="," name="useForReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="88" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="107" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f7ec32f1-9f1e-4768-9ded-a3d43714f68c" _parent_id="__parent_id" _type="Output" id="1c9a827e-9db9-4fbf-94da-8821330969eb">
+<Record fieldDelimiter="," name="useForReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="109" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="119" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="57e772b7-2acd-4a08-9a3d-1559e45bec9d" _parent_id="__parent_id" _type="Output" id="bacbc44f-030d-431f-b3aa-94f60389970f">
+<Record fieldDelimiter="," name="useForReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="121" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="58" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForTenantedReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="ad387921-a940-47f7-9812-38e2b9fc68d0" _parent_id="__parent_id" _type="Output" id="f88bcf3f-e0e6-4f15-addd-00372e76b80c">
+<Record fieldDelimiter="," name="useForTenantedReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="60" __sourcePath="{}/object/customerData/businessEntityData/contactData/addressData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="72" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForTenantedReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="25b6d0e5-2e91-41ff-a9ae-be1c875fe386" _parent_id="__parent_id" _type="Output" id="2a13c9ff-4618-4077-9da0-a27a1894b4d7">
+<Record fieldDelimiter="," name="useForTenantedReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="74" __sourcePath="{}/object/customerData/businessEntityData/contactData/emailAddressData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="89" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForTenantedReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="1640b00f-e343-4b0e-a0dc-3c672df38287" _parent_id="__parent_id" _type="Output" id="57d13e61-5f2b-4e1d-8289-70b80aae59c3">
+<Record fieldDelimiter="," name="useForTenantedReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="91" __sourcePath="{}/object/customerData/businessEntityData/contactData/instantMessengerData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="110" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForTenantedReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="f7ec32f1-9f1e-4768-9ded-a3d43714f68c" _parent_id="__parent_id" _type="Output" id="4a8995de-c34d-4bc3-aa88-758ff12db88d">
+<Record fieldDelimiter="," name="useForTenantedReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="112" __sourcePath="{}/object/customerData/businessEntityData/contactData/phoneData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="122" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForTenantedReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="57e772b7-2acd-4a08-9a3d-1559e45bec9d" _parent_id="__parent_id" _type="Output" id="2ab7fc72-5a05-44da-beaa-d3dad380d119">
+<Record fieldDelimiter="," name="useForTenantedReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="124" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="113" __referenceCounter="0" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="37beb9ec-8ae1-4409-a7d0-14808e53edb8">
+<Record fieldDelimiter="," name="webAddressData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="125" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/webAddress" containerType="SINGLE" label="webAddress" name="webAddress" type="string"/>
+<Field __index="126" __sourcePath="{}/object/customerData/businessEntityData/contactData/webAddressData/webAddressComment" containerType="SINGLE" label="webAddressComment" name="webAddressComment" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="270" __referenceCounter="0" __sourcePath="{}/object/customerData/worktagsReference" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="d13c4b87-83ee-4e6a-8d00-cde097773642" _parent_id="__parent_id" _type="Output" id="0d0a022e-c710-4496-a876-3e15f55d6749">
+<Record fieldDelimiter="," name="worktagsReference" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="272" __sourcePath="{}/object/customerData/worktagsReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node cacheInMemory="true" enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <addOnly>$0.addOnly</addOnly>
+  <customerData>
+    <DUNSNumber>$0.DUNSNumber</DUNSNumber>
+    <alwaysSeparatePayments>$0.alwaysSeparatePayments</alwaysSeparatePayments>
+    <businessEntityData>
+      <businessEntityLogoImageData>
+        <filename>$0.filename</filename>
+        <image>$0.image</image>
+      </businessEntityLogoImageData>
+      <businessEntityName>$0.businessEntityName</businessEntityName>
+      <businessEntityTaxID>$0.businessEntityTaxID</businessEntityTaxID>
+      <externalEntityID>$0.externalEntityID</externalEntityID>
+    </businessEntityData>
+    <createCustomerFromFinancialInstitutionReference>
+      <descriptor>$0.descriptor</descriptor>
+    </createCustomerFromFinancialInstitutionReference>
+    <createCustomerFromInvestorReference>
+      <descriptor>$0.descriptor_1</descriptor>
+    </createCustomerFromInvestorReference>
+    <createCustomerFromSupplierReference>
+      <descriptor>$0.descriptor_2</descriptor>
+    </createCustomerFromSupplierReference>
+    <createCustomerFromTaxAuthorityReference>
+      <descriptor>$0.descriptor_3</descriptor>
+    </createCustomerFromTaxAuthorityReference>
+    <creditLimit>$0.creditLimit</creditLimit>
+    <creditLimitCurrencyReference>
+      <descriptor>$0.descriptor_4</descriptor>
+    </creditLimitCurrencyReference>
+    <creditVerificationDate>$0.creditVerificationDate</creditVerificationDate>
+    <currencyReference>
+      <descriptor>$0.descriptor_5</descriptor>
+    </currencyReference>
+    <customerCategoryReference>
+      <clover:collection clover:name="ID">
+        <item clover:inPort="1" clover:key="__parent_id" clover:parentKey="__id">
+          <type>$1.type</type>
+          <value>$1.value</value>
+        </item>
+      </clover:collection>
+      <descriptor>$0.descriptor_6</descriptor>
+    </customerCategoryReference>
+    <customerID>$0.customerID</customerID>
+    <customerName>$0.customerName</customerName>
+    <customerReferenceID>$0.customerReferenceID</customerReferenceID>
+    <clover:collection clover:name="customerStatusData">
+      <item>
+        <customerStatusValueReference>
+          <clover:collection clover:name="ID">
+            <item clover:inPort="2" clover:key="__parent_id" clover:parentKey="__id">
+              <type>$2.type</type>
+              <value>$2.value</value>
+            </item>
+          </clover:collection>
+        </customerStatusValueReference>
+      </item>
+    </clover:collection>
+    <defaultPaymentTypeReference>
+      <descriptor>$0.descriptor_7</descriptor>
+    </defaultPaymentTypeReference>
+    <followupDate>$0.followupDate</followupDate>
+    <hierarchyCreditLimit>$0.hierarchyCreditLimit</hierarchyCreditLimit>
+    <paymentTermsReference>
+      <descriptor>$0.descriptor_8</descriptor>
+    </paymentTermsReference>
+    <remitFromCustomerReference>
+      <descriptor>$0.descriptor_9</descriptor>
+    </remitFromCustomerReference>
+    <statementDeliveryMethodReference>
+      <descriptor>$0.descriptor_10</descriptor>
+    </statementDeliveryMethodReference>
+    <taxCodeReference>
+      <descriptor>$0.descriptor_11</descriptor>
+    </taxCodeReference>
+    <worktagOnly>$0.worktagOnly</worktagOnly>
+  </customerData>
+  <customerReference>
+    <descriptor>$0.descriptor_12</descriptor>
+  </customerReference>
+  <version>$0.version</version>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="com.workday.revenue.PutCustomerRequestType"/>
+  <typed-object type="com.workday.revenue.CreditCardTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CreditCardTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.InstantMessengerTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.InstantMessengerTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.WebAddressInformationDataType">
+    <schema-collection name="usageData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationMethodUsageInformationDataType"/>
+    </schema-collection>
+    <typed-object-ref name="webAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="webAddressComment" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityLogoImageDataType">
+    <typed-object-ref name="filename" type-ref="java.lang.String"/>
+    <schema-collection array="true" name="image">
+      <typed-object-ref type-ref="byte"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SubmunicipalityInformationDataType">
+    <typed-object-ref name="addressComponentName" type-ref="java.lang.String"/>
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="java.math.BigDecimal"/>
+  <typed-object type="com.workday.revenue.InvestorObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.InvestorObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BankAccountTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BankAccountTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.BankAccountTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerGroupObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerGroupObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.LockboxObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.LockboxObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AddressInformationDataType">
+    <typed-object-ref name="addressFormatType" type-ref="java.lang.String"/>
+    <typed-object-ref name="addressID" type-ref="java.lang.String"/>
+    <schema-collection name="addressLineData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AddressLineInformationDataType"/>
+    </schema-collection>
+    <typed-object-ref name="addressReference" type-ref="com.workday.revenue.AddressReferenceObjectType"/>
+    <typed-object-ref name="countryReference" type-ref="com.workday.revenue.CountryObjectType"/>
+    <typed-object-ref name="countryRegionReference" type-ref="com.workday.revenue.CountryRegionObjectType"/>
+    <typed-object-ref name="defaultedBusinessSiteAddress" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="delete" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="doNotReplaceAll" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="effectiveDate" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="formattedAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="lastModified" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="municipality" type-ref="java.lang.String"/>
+    <typed-object-ref name="municipalityLocal" type-ref="java.lang.String"/>
+    <typed-object-ref name="postalCode" type-ref="java.lang.String"/>
+    <schema-collection name="submunicipalityData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.SubmunicipalityInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="subregionData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.SubregionInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="usageData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationMethodUsageInformationDataType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.MerchantAccountObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityStatusValueObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.BusinessEntityStatusValueObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerGroupObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AddressLineInformationDataType">
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SubregionInformationDataType">
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageBehaviorTenantedObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageBehaviorTenantedObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PaymentTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.PaymentTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CurrencyObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CurrencyObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.EmailAddressInformationDataType">
+    <typed-object-ref name="emailAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="emailComment" type-ref="java.lang.String"/>
+    <schema-collection name="usageData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationMethodUsageInformationDataType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityWWSDataType">
+    <typed-object-ref name="businessEntityLogoImageData" type-ref="com.workday.revenue.BusinessEntityLogoImageDataType"/>
+    <typed-object-ref name="businessEntityName" type-ref="java.lang.String"/>
+    <typed-object-ref name="businessEntityTaxID" type-ref="java.lang.String"/>
+    <typed-object-ref name="contactData" type-ref="com.workday.revenue.ContactInformationDataType"/>
+    <typed-object-ref name="externalEntityID" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.IntermediaryBankAccountWWSDataType">
+    <typed-object-ref name="IBAN" type-ref="java.lang.String"/>
+    <typed-object-ref name="SWIFTBankIdentificationCode" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountName" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountNickname" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountNumber" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountTypeReference" type-ref="com.workday.revenue.BankAccountTypeObjectType"/>
+    <typed-object-ref name="bankInstructions" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankName" type-ref="java.lang.String"/>
+    <typed-object-ref name="branchID" type-ref="java.lang.String"/>
+    <typed-object-ref name="branchName" type-ref="java.lang.String"/>
+    <typed-object-ref name="checkDigit" type-ref="java.lang.String"/>
+    <typed-object-ref name="countryReference" type-ref="com.workday.revenue.CountryObjectType"/>
+    <typed-object-ref name="currencyReference" type-ref="com.workday.revenue.CurrencyObjectType"/>
+    <typed-object-ref name="inactive" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="intermediaryBankOrder" type-ref="java.lang.String"/>
+    <typed-object-ref name="rollNumber" type-ref="java.lang.String"/>
+    <typed-object-ref name="routingTransitNumber" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AccountingWorktagObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="byte"/>
+  <typed-object type="com.workday.revenue.AddressReferenceObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AddressReferenceObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CreditCardTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.WorkerObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.WorkerObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CurrencyObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CountryObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CountryObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerStatusDataType">
+    <typed-object-ref name="customerStatusChangeReasonDescription" type-ref="java.lang.String"/>
+    <typed-object-ref name="customerStatusValueReference" type-ref="com.workday.revenue.BusinessEntityStatusValueObjectType"/>
+    <typed-object-ref name="reasonForCustomerStatusChangeReference" type-ref="com.workday.revenue.ReasonForCustomerStatusChangeObjectType"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PaymentTermsObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SettlementAccountWWSDataType">
+    <typed-object-ref name="IBAN" type-ref="java.lang.String"/>
+    <typed-object-ref name="SWIFTBankIdentificationCode" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountName" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountNickname" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountNumber" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankAccountTypeReference" type-ref="com.workday.revenue.BankAccountTypeObjectType"/>
+    <typed-object-ref name="bankInstructions" type-ref="java.lang.String"/>
+    <typed-object-ref name="bankName" type-ref="java.lang.String"/>
+    <typed-object-ref name="branchID" type-ref="java.lang.String"/>
+    <typed-object-ref name="branchName" type-ref="java.lang.String"/>
+    <typed-object-ref name="checkDigit" type-ref="java.lang.String"/>
+    <typed-object-ref name="countryReference" type-ref="com.workday.revenue.CountryObjectType"/>
+    <typed-object-ref name="currencyReference" type-ref="com.workday.revenue.CurrencyObjectType"/>
+    <typed-object-ref name="inactive" type-ref="java.lang.Boolean"/>
+    <schema-collection name="intermediaryBankData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.IntermediaryBankAccountWWSDataType"/>
+    </schema-collection>
+    <schema-collection name="paymentTypesReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.PaymentTypeObjectType"/>
+    </schema-collection>
+    <typed-object-ref name="rollNumber" type-ref="java.lang.String"/>
+    <typed-object-ref name="routingTransitNumber" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.WorkerObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SystemUserObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.LockboxObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.TaxCodeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.TaxCodeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerDocumentEmailRecipientOptionObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerSecuritySegmentObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.TaxAuthorityObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CountryObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SupplierObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.SupplierObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerCreditCardProfileWWSDataType">
+    <typed-object-ref name="creditCardTypeReference" type-ref="com.workday.revenue.CreditCardTypeObjectType"/>
+    <typed-object-ref name="customerProfileID" type-ref="java.lang.String"/>
+    <typed-object-ref name="expirationDate" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="firstName" type-ref="java.lang.String"/>
+    <typed-object-ref name="last4DigitsOfCreditCardNumber" type-ref="java.lang.String"/>
+    <typed-object-ref name="lastName" type-ref="java.lang.String"/>
+    <typed-object-ref name="merchantAccountReference" type-ref="com.workday.revenue.MerchantAccountObjectType"/>
+    <typed-object-ref name="merchantCustomerProfileID" type-ref="java.lang.String"/>
+    <typed-object-ref name="primaryCard" type-ref="java.lang.Boolean"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.ReasonForCustomerStatusChangeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.TaxAuthorityObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.TaxAuthorityObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PaymentTermsObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.PaymentTermsObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityContactObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.BusinessEntityContactObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PutCustomerRequestType">
+    <typed-object-ref name="addOnly" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="customerData" type-ref="com.workday.revenue.CustomerWWSDataType"/>
+    <typed-object-ref name="customerReference" type-ref="com.workday.revenue.CustomerObjectType"/>
+    <typed-object-ref name="version" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AddressReferenceObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CountryRegionObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.TaxCodeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.InstantMessengerTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.ContactInformationDataType">
+    <schema-collection name="addressData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AddressInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="emailAddressData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.EmailAddressInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="instantMessengerData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.InstantMessengerInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="phoneData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.PhoneInformationDataType"/>
+    </schema-collection>
+    <schema-collection name="webAddressData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.WebAddressInformationDataType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageBehaviorObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageBehaviorObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AlternateNameUsageObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationMethodUsageInformationDataType">
+    <typed-object-ref name="comments" type-ref="java.lang.String"/>
+    <typed-object-ref name="public" type-ref="java.lang.Boolean"/>
+    <schema-collection name="typeData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageTypeDataType"/>
+    </schema-collection>
+    <schema-collection name="useForReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageBehaviorObjectType"/>
+    </schema-collection>
+    <schema-collection name="useForTenantedReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationUsageBehaviorTenantedObjectType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SystemUserObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.SystemUserObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AccountingWorktagObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AccountingWorktagObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="java.lang.Boolean"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="com.workday.revenue.CustomerObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.ReasonForCustomerStatusChangeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.ReasonForCustomerStatusChangeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PhoneInformationDataType">
+    <typed-object-ref name="areaCode" type-ref="java.lang.String"/>
+    <typed-object-ref name="countryISOCode" type-ref="java.lang.String"/>
+    <typed-object-ref name="formattedPhone" type-ref="java.lang.String"/>
+    <typed-object-ref name="internationalPhoneCode" type-ref="java.lang.String"/>
+    <typed-object-ref name="phoneDeviceTypeReference" type-ref="com.workday.revenue.PhoneDeviceTypeObjectType"/>
+    <typed-object-ref name="phoneExtension" type-ref="java.lang.String"/>
+    <typed-object-ref name="phoneNumber" type-ref="java.lang.String"/>
+    <schema-collection name="usageData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationMethodUsageInformationDataType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PaymentTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.MerchantAccountObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.MerchantAccountObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerCategoryObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageBehaviorTenantedObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.InstantMessengerInformationDataType">
+    <typed-object-ref name="instantMessengerAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="instantMessengerComment" type-ref="java.lang.String"/>
+    <typed-object-ref name="instantMessengerTypeReference" type-ref="com.workday.revenue.InstantMessengerTypeObjectType"/>
+    <schema-collection name="usageData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CommunicationMethodUsageInformationDataType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PhoneDeviceTypeObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.FinancialInstitutionObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.FinancialInstitutionObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageTypeDataType">
+    <typed-object-ref name="primary" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="typeReference" type-ref="com.workday.revenue.CommunicationUsageTypeObjectType"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.InvestorObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.NoteWWSDataType">
+    <typed-object-ref name="businessEntityContactReference" type-ref="com.workday.revenue.BusinessEntityContactObjectType"/>
+    <typed-object-ref name="created" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="lastUpdated" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="noteContent" type-ref="java.lang.String"/>
+    <typed-object-ref name="systemUserReference" type-ref="com.workday.revenue.SystemUserObjectType"/>
+    <typed-object-ref name="workerReference" type-ref="com.workday.revenue.WorkerObjectType"/>
+  </typed-object>
+  <typed-object type="javax.xml.datatype.XMLGregorianCalendar"/>
+  <typed-object type="com.workday.revenue.BusinessEntityStatusValueObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.SupplierObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.FinancialInstitutionObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerSecuritySegmentObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerSecuritySegmentObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CountryRegionObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CountryRegionObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.DeliveryMethodObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityContactObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.AlternateNameUsageObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AlternateNameUsageObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.BusinessEntityAlternateNameDataType">
+    <typed-object-ref name="alternateName" type-ref="java.lang.String"/>
+    <schema-collection name="alternateNameUsageReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AlternateNameUsageObjectType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerCategoryObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerCategoryObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.DeliveryMethodObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.DeliveryMethodObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerWWSDataType">
+    <typed-object-ref name="DUNSNumber" type-ref="java.lang.String"/>
+    <schema-collection name="acceptedCurrenciesReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CurrencyObjectType"/>
+    </schema-collection>
+    <typed-object-ref name="alwaysSeparatePayments" type-ref="java.lang.Boolean"/>
+    <schema-collection name="businessEntityAlternateNameData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.BusinessEntityAlternateNameDataType"/>
+    </schema-collection>
+    <schema-collection name="businessEntityAttachmentData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.FinancialsAttachmentDataType"/>
+    </schema-collection>
+    <typed-object-ref name="businessEntityData" type-ref="com.workday.revenue.BusinessEntityWWSDataType"/>
+    <typed-object-ref name="createCustomerFromFinancialInstitutionReference" type-ref="com.workday.revenue.FinancialInstitutionObjectType"/>
+    <typed-object-ref name="createCustomerFromInvestorReference" type-ref="com.workday.revenue.InvestorObjectType"/>
+    <typed-object-ref name="createCustomerFromSupplierReference" type-ref="com.workday.revenue.SupplierObjectType"/>
+    <typed-object-ref name="createCustomerFromTaxAuthorityReference" type-ref="com.workday.revenue.TaxAuthorityObjectType"/>
+    <schema-collection name="creditCardData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerCreditCardProfileWWSDataType"/>
+    </schema-collection>
+    <typed-object-ref name="creditLimit" type-ref="java.math.BigDecimal"/>
+    <typed-object-ref name="creditLimitCurrencyReference" type-ref="com.workday.revenue.CurrencyObjectType"/>
+    <typed-object-ref name="creditVerificationDate" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="currencyReference" type-ref="com.workday.revenue.CurrencyObjectType"/>
+    <typed-object-ref name="customerCategoryReference" type-ref="com.workday.revenue.CustomerCategoryObjectType"/>
+    <schema-collection name="customerGroupReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerGroupObjectType"/>
+    </schema-collection>
+    <typed-object-ref name="customerID" type-ref="java.lang.String"/>
+    <typed-object-ref name="customerName" type-ref="java.lang.String"/>
+    <typed-object-ref name="customerReferenceID" type-ref="java.lang.String"/>
+    <schema-collection name="customerSecuritySegmentReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerSecuritySegmentObjectType"/>
+    </schema-collection>
+    <schema-collection name="customerStatusData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerStatusDataType"/>
+    </schema-collection>
+    <typed-object-ref name="defaultPaymentTypeReference" type-ref="com.workday.revenue.PaymentTypeObjectType"/>
+    <typed-object-ref name="followupDate" type-ref="javax.xml.datatype.XMLGregorianCalendar"/>
+    <typed-object-ref name="hierarchyCreditLimit" type-ref="java.math.BigDecimal"/>
+    <schema-collection name="includedChildrenReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerObjectType"/>
+    </schema-collection>
+    <schema-collection name="invoiceDeliveryMethodReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.DeliveryMethodObjectType"/>
+    </schema-collection>
+    <schema-collection name="invoiceNotificationEmailRecipientsReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerDocumentEmailRecipientOptionObjectType"/>
+    </schema-collection>
+    <schema-collection name="lockboxReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.LockboxObjectType"/>
+    </schema-collection>
+    <schema-collection name="noteData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.NoteWWSDataType"/>
+    </schema-collection>
+    <typed-object-ref name="paymentTermsReference" type-ref="com.workday.revenue.PaymentTermsObjectType"/>
+    <typed-object-ref name="remitFromCustomerReference" type-ref="com.workday.revenue.CustomerObjectType"/>
+    <schema-collection name="settlementAccountData" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.SettlementAccountWWSDataType"/>
+    </schema-collection>
+    <typed-object-ref name="statementDeliveryMethodReference" type-ref="com.workday.revenue.DeliveryMethodObjectType"/>
+    <typed-object-ref name="taxCodeReference" type-ref="com.workday.revenue.TaxCodeObjectType"/>
+    <typed-object-ref name="worktagOnly" type-ref="java.lang.Boolean"/>
+    <schema-collection name="worktagsReference" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.AccountingWorktagObjectType"/>
+    </schema-collection>
+  </typed-object>
+  <typed-object type="com.workday.revenue.FinancialsAttachmentDataType">
+    <typed-object-ref name="comment" type-ref="java.lang.String"/>
+    <typed-object-ref name="compressed" type-ref="java.lang.Boolean"/>
+    <typed-object-ref name="contentType" type-ref="java.lang.String"/>
+    <typed-object-ref name="encoding" type-ref="java.lang.String"/>
+    <schema-collection array="true" name="fileContent">
+      <typed-object-ref type-ref="byte"/>
+    </schema-collection>
+    <typed-object-ref name="filename" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CommunicationUsageBehaviorObjectIDType">
+    <typed-object-ref name="type" type-ref="java.lang.String"/>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerDocumentEmailRecipientOptionObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerDocumentEmailRecipientOptionObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.PhoneDeviceTypeObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.PhoneDeviceTypeObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.workday.revenue.CustomerObjectType">
+    <schema-collection name="ID" type="java.util.List">
+      <typed-object-ref type-ref="com.workday.revenue.CustomerObjectIDType"/>
+    </schema-collection>
+    <typed-object-ref name="descriptor" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'root' -&gt; 'ID'" guiX="460" guiY="120" id="FOREACH_ROOT_ID" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+output.__parent_id = input.__id;
+//END -> DO NOT REMOVE
+output.type = input.Customer_Category_Reference_Type;
+output.value = input.Customer_Category_Reference_Value;]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'root' -&gt; 'ID'" guiX="460" guiY="220" id="FOREACH_ROOT_ID1" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+output.__parent_id = input.__id;
+//END -> DO NOT REMOVE
+output.type = input.Customer_Status_Reference_Type;
+output.value = input.Customer_Status_Reference_Value;]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'root' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_ROOT_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.customerName = input.CustomerName;
+output.businessEntityName = input.BusinessEntityName;
+output.customerReferenceID = input.CustomerName;]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Duplicate root" guiX="240" guiY="20" id="SIMPLE_COPY0" type="SIMPLE_COPY"/>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="XML READER" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[./src/test/resources/root.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath="/root">
+  <Mapping cloverField="CustomerName" trim="true" xpath="Account/CustomerName"/>
+  <Mapping cloverField="BusinessEntityName" trim="true" xpath="Account/BusinessEntityName"/>
+  <Mapping cloverField="Customer_Category_Reference_Type" trim="true" xpath="Account/Customer_Category_Reference_Type"/>
+  <Mapping cloverField="Customer_Category_Reference_Value" trim="true" xpath="Account/Customer_Category_Reference_Value"/>
+  <Mapping cloverField="Customer_Status_Reference_Type" trim="true" xpath="Account/Customer_Status_Reference_Type"/>
+  <Mapping cloverField="Customer_Status_Reference_Value" trim="true" xpath="Account/Customer_Status_Reference_Value"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[root]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_ROOT_ID:0" guiBendpoints="" id="Edge4" inPort="Port 1 (in)" metadata="406881b5-1f72-4bcf-84ab-b9fb610597a4" outPort="Port 0 (out)" toNode="BEAN_WRITER0:1"/>
+<Edge debugMode="true" fromNode="FOREACH_ROOT_ID1:0" guiBendpoints="" id="Edge6" inPort="Port 2 (in)" metadata="d59ed11f-01ca-4f0e-9488-0abe6451649f" outPort="Port 0 (out)" toNode="BEAN_WRITER0:2"/>
+<Edge debugMode="true" fromNode="FOREACH_ROOT_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="d13c4b87-83ee-4e6a-8d00-cde097773642" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="174852f5-2e24-46bd-bca9-ce9cba5c30b7" outPort="Port 0 (out)" toNode="FOREACH_ROOT_OBJECT:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:1" guiBendpoints="" id="Edge3" inPort="Port 0 (in)" metadata="174852f5-2e24-46bd-bca9-ce9cba5c30b7" outPort="Port 1 (out)" toNode="FOREACH_ROOT_ID:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:2" guiBendpoints="" id="Edge5" inPort="Port 0 (in)" metadata="174852f5-2e24-46bd-bca9-ce9cba5c30b7" outPort="Port 2 (out)" toNode="FOREACH_ROOT_ID1:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="174852f5-2e24-46bd-bca9-ce9cba5c30b7" outPort="Port 0 (out)" toNode="SIMPLE_COPY0:0"/>
+</Phase>
+</Graph>
