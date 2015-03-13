@@ -112,7 +112,7 @@ public class AddingNewCustomerToWorkdayRevenueManagementIT extends FunctionalTes
 		CustomerStatusDataType status = new CustomerStatusDataType();
 		
 		BusinessEntityStatusValueObjectType value = new BusinessEntityStatusValueObjectType();
-		List<BusinessEntityStatusValueObjectIDType> ids = new ArrayList<>();
+		List<BusinessEntityStatusValueObjectIDType> ids = new ArrayList<BusinessEntityStatusValueObjectIDType>();
 		BusinessEntityStatusValueObjectIDType e = new BusinessEntityStatusValueObjectIDType();
 		e.setType("WID");
 		e.setValue(STATUS_WID);
