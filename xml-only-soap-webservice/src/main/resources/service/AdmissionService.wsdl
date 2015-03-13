@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:mes="http://www.mule-health.com/SOA/message/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Admission" xmlns:tns="http://www.mule-health.com/SOA/service/admission/1.0" targetNamespace="http://www.mule-health.com/SOA/service/admission/1.0">
 	<wsdl:types>
-		<xsd:schema>
-			<xsd:import namespace="http://www.mule-health.com/SOA/message/1.0" schemaLocation="xsd/SOA-Message-1.0.xsd" />
+		<xsd:schema targetNamespace="http://www.mule-health.com/SOA/service/admission/1.0">
+			<xsd:import namespace="http://www.mule-health.com/SOA/message/1.0" schemaLocation="src/main/resources/service/xsd/SOA-Message-1.0.xsd" />
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="admitSubject">
