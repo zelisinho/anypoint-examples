@@ -64,7 +64,7 @@
         <eclipsePluginVersion>2.8</eclipsePluginVersion>
         <jdkName>JavaSE-1.7</jdkName>
         <jdk.version>1.7</jdk.version>
-        <assembly-descriptor-version>1.0.10</assembly-descriptor-version>
+        <assembly-descriptor-version>1.0.12</assembly-descriptor-version>
         <muleServerId>org.mule.tooling.server.3.6.1.ee</muleServerId>
         <muleConfigVersion>EE-3.6.1</muleConfigVersion>
         <mule.version>3.6.1</mule.version>
