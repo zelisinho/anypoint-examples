@@ -53,8 +53,9 @@
 		<module>oauth2-authorization-code-using-the-HTTP-connector</module>
 <!-- 	<module>oauth2-client-credentials-using-the-HTTP-connector</module> -->
 		<module>salesforce-data-retrieval</module>
-<!-- 	<module>import-contacts-into-ms-dynamics</module> -->
-<!--	<module>get-customer-list-from-netsuite</module> -->
+		<module>import-contacts-into-ms-dynamics</module>
+		<module>get-customer-list-from-netsuite</module>
+		<module>adding-a-new-customer-to-workday-revenue-management</module>
     </modules>
 
     <properties>
@@ -64,11 +65,11 @@
         <jdkName>JavaSE-1.7</jdkName>
         <jdk.version>1.7</jdk.version>
         <assembly-descriptor-version>1.0.10</assembly-descriptor-version>
-        <muleServerId>org.mule.tooling.server.3.6.0.ee</muleServerId>
-        <muleConfigVersion>EE-3.6.0</muleConfigVersion>
-        <mule.version>3.6.0</mule.version>
+        <muleServerId>org.mule.tooling.server.3.6.1.ee</muleServerId>
+        <muleConfigVersion>EE-3.6.1</muleConfigVersion>
+        <mule.version>3.6.1</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
-		<sfdc.version>5.4.8</sfdc.version>
+		<sfdc.version>6.0.2</sfdc.version>
     </properties>
 
     <build>
