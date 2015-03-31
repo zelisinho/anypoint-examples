@@ -43,7 +43,7 @@ The Web service uses five elements to maximize its processing efficiency:
 
 ### Set Up and Run the Example ###
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in **Anypoint Studio** or, in this case, also in **Mule Standalone** where this example is called **loanbroker-simple**. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other example templates, you can create template applications straight out of the box in **Anypoint Studio** or, in this case, also in **Mule Standalone** where this example is called **loanbroker-simple**. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the Loan Broker application in Mule ESB.
 

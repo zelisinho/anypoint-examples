@@ -46,7 +46,7 @@ The example application connects to the LDAP directory and retrieves a list of L
 
 9. If you click on ROOT DSE in the panel LDAP browser, you should see the imported data structure.
 
-10. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio.
+10. Create the example application in Anypoint Studio.
 11. Double-click on ldap.xml under src/main/app directory and open *Global Elements* tab. Open LDAP configuration and fill in these values if you strictly followed the instructions:
 
 		Principal DN	cn=Manager,dc=my-domain,dc=com
@@ -93,7 +93,7 @@ The example application connects to the LDAP directory and retrieves a list of L
 
 ### How it Works 
 
-An [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) is responsible for listening to incoming HTTP requests and sending the response. The [LDAP Connector](http://www.mulesoft.org/connectors/ldap-connector) performs the search operation with the given search parameters. The search result is transformed to a list of user records using **Byte Array to Object Transformer**. [Collection Splitter](http://www.mulesoft.org/documentation/display/current/Routing+Message+Processors#RoutingMessageProcessors-CollectionSplitter) splits the list into individual objects which are logged in the console. [Collection Aggregator](http://www.mulesoft.org/documentation/display/current/Routing+Message+Processors#RoutingMessageProcessors-CollectionAggregator) combines the objects back to the list and converts it to the text using **Object to String Transformer** and returned back.
+An [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) is responsible for listening to incoming HTTP requests and sending the response. The [LDAP Connector](http://www.mulesoft.org/connectors/ldap-connector) performs the search operation with the given search parameters. The search result is transformed to a list of user records using **Byte Array to Object Transformer**. Collection Splitter splits the list into individual objects which are logged in the console. Collection Aggregator combines the objects back to the list and converts it to the text using **Object to String Transformer** and returned back.
 
 The following steps outline the process to build this application:
 
@@ -125,13 +125,3 @@ The following steps outline the process to build this application:
 8. Add a **Collection Aggregator** to the flow.
 9. Add a **Object to String Transformer** to finish the flow.
 10. Having completed a flow, you can hit the HTTP endpoint to see all the users stored in the LDAP system in the given domain.
-
-
-### Go Further ###
-
-- For more information on Routing, see [Routing Message Processors](http://www.mulesoft.org/documentation/display/current/Routing+Message+Processors).
- 
-
-
-
-

@@ -10,8 +10,7 @@ This document describes the details of the example within the context of Anypoin
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
-1. [Create, then run](
-http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the Hello World example application in Anypoint Studio.
+1. Create, then run the Hello World example application in Anypoint Studio.
 2. Open your Web browser.
 3. In the address bar, type the following URL: http://localhost:8081
 4. Press enter to elicit a response from the Hello World application. 
@@ -37,4 +36,3 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 * Learn more about configuring an [HTTP Endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) in Studio.
 * Read about the concept of [flows](http://www.mulesoft.org/documentation/display/current/Mule+Concepts) in Mule.
-* Examine the [HTTP Request-Response with Logger](http://www.mulesoft.org/documentation/display/current/HTTP+Request-Response+with+Logger+Example) example, which expands upon the basic functionality in Hello World.

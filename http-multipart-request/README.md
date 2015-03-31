@@ -12,11 +12,11 @@ In this example, a user submits a file in the HTML form that is sent via HTTP to
 
 ### Set Up and Run the Example
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other example templates, you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the Login using HTML Form application.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Create, then run the example application in Anypoint Studio or Standalone.
 1. Open your browser and hit **http://localhost:8081/uploadFile**.
 2. Click *Browse...* and choose a file to upload. Hit *Send* button. 
 1. Either you will see the file contents in your browser or a dialogue will prompt you to save the file contents, based on the content type.

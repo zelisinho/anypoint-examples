@@ -21,11 +21,11 @@ There are two functions the HTTP Request-Response with Logger example applicatio
 
 ### Set Up and Run the Example
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio or, in this case, also in Mule Standalone where this example is called echo. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other example templates, you can create template applications straight out of the box in Anypoint Studio or, in this case, also in Mule Standalone where this example is called echo. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the HTTP Request-Response with Logger application.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Create, then run the example application in Anypoint Studio or Standalone.
 1. Open your Web browser, type http://localhost:8084/echo in the address bar, then press **enter**.
 1. Your browser presents a message that reads, /echo.
 1. In your browser’s address bar, replace the word echo with the word moon, then press **enter**.
@@ -41,7 +41,7 @@ The sections below elaborate further on the configurations of the application an
 
 This flow makes use of four [building blocks](http://www.mulesoft.org/documentation/display/current/Elements+in+a+Mule+Flow) to receive, process and respond to an end user requests. When an end user request encounters the application, the first building block it meets is the request-response [HTTP Inbound Endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector). Because it has a two-way message exchange pattern, this HTTP endpoint is responsible for both receiving requests from, and send sending responses to, the end user.
 
-Then the HTTP request path is set to message payload in [Set Payload Transformer](http://http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference). The Set Payload Transformer uses a [MEL Expression](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL) to determine what information in, or about, the message it should set to payload. In this case, because it needs to set the message request path, stored in inbound properties of the message, the expression is #[message.inboundProperties['http.request.path']].
+Then the HTTP request path is set to message payload in [Set Payload Transformer](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference). The Set Payload Transformer uses a [MEL Expression](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL) to determine what information in, or about, the message it should set to payload. In this case, because it needs to set the message request path, stored in inbound properties of the message, the expression is #[message.inboundProperties['http.request.path']].
 
 Next, the flow uses a [Logger Component](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference) to log the message payload in the application’s log files. The logger component uses a [MEL Expression](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL) to determine what information in, or about, the message it should log. In this case, because it needs to log the message payload, the instructions to log read About to echo #[message.payload]. 
 
@@ -50,5 +50,5 @@ Finally, Mule moves the message back to the [HTTP Inbound Endpoint](http://www.m
 ### Go Further
 
 - Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
-- Learn more about the [Set Payload Transformer](http://http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
+- Learn more about the [Set Payload Transformer](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
 - Learn more about the [Logger component](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference).

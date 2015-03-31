@@ -16,7 +16,7 @@ This example application receives the order in JSON format for filtering. It emp
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio and run it as Mule Application.
+1. Create the example application in Anypoint Studio and run it as Mule Application.
 1. Send a POST request with the following JSON in the body to *http:/localhost:8081*.
 
 		{
