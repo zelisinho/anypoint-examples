@@ -57,9 +57,9 @@ In this example JSON data is sent to the mule application through an HTTP end po
 	
 3. Verify if the file was uploaded at ***http://ftp-server.demo.solarwinds.com/*** with the following credentials
 
-       login: demo
-       password: demo
-       folder: Upload
+	   login: demo
+	   password: demo
+	   folder: Upload
 
 4. The FTP uploaded file name is set to *muleExample.xml*, but it can be changed using the *outputPattern* attribute within the FTP connector operation.
 
