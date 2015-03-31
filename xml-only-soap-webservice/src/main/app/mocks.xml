@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+<mule version="EE-3.6.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <data-mapper:config doc:name="DataMapper" name="upsert_patient_to_upsert_patient_response" transformationGraphPath="upsert_patient_to_upsert_patient_response.grf"/>
     <data-mapper:config doc:name="DataMapper" name="get_patient_to_get_patient_response" transformationGraphPath="get_patient_to_get_patient_response.grf"/>
     <data-mapper:config doc:name="DataMapper" name="create_episode_to_create_episode_response" transformationGraphPath="create_episode_to_create_episode_response.grf"/>
@@ -14,7 +8,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="PatientService" path="PatientService"/>
         <cxf:proxy-service doc:name="Proxy service" namespace="http://www.mule-health.com/SOA/service/patient/1.0" payload="body" port="PatientPort" service="PatientService" wsdlLocation="service/PatientService.wsdl"/>
         <mulexml:dom-to-xml-transformer doc:name="DOM to XML"/>
-        <set-variable variableName="operation" value="#[xpath('fn:local-name(/*)')]" doc:name="operation"/>
+        <set-variable doc:name="operation" value="#[xpath('fn:local-name(/*)')]" variableName="operation"/>
         <choice doc:name="Choice">
             <when expression="#[flowVars.operation == 'upsertPatient']">
                 <data-mapper:transform config-ref="upsert_patient_to_upsert_patient_response" doc:name="&lt;upsertPatientRequest /> to &lt;upsertPatientResponse />"/>

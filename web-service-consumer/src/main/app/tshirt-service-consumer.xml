@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
 	<ws:consumer-config doc:name="Web Service Consumer" name="Web_Service_Consumer" port="TshirtServicePort" service="TshirtService" serviceAddress="http://tshirt-service.cloudhub.io" wsdlLocation="tshirt.wsdl"/>
 	<data-mapper:config doc:name="xml_listinventoryresponse__to_json" name="xml_listinventoryresponse__to_json" transformationGraphPath="xml_listinventoryresponse__to_json.grf"/>
 	<data-mapper:config doc:name="json_to_xml_ordertshirt_" name="json_to_xml_ordertshirt_" transformationGraphPath="json_to_xml_ordertshirt_.grf"/>
 	<data-mapper:config doc:name="xml_ordertshirtresponse__to_json" name="xml_ordertshirtresponse__to_json" transformationGraphPath="xml_ordertshirtresponse__to_json.grf"/>
 	<data-mapper:config doc:name="string_to_xml_authenticationheader_" name="string_to_xml_authenticationheader_" transformationGraphPath="string_to_xml_authenticationheader_.grf"/>
 
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     
-    <flow  name="orderTshirt">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/orders" doc:name="Recieve HTTP request">
+    <flow name="orderTshirt">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP request" path="/orders">
             <http:response-builder statusCode="200"/>
         </http:listener>
         <data-mapper:transform config-ref="json_to_xml_ordertshirt_" doc:name="JSON To Xml"/>
@@ -23,8 +18,8 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<ws:consumer config-ref="Web_Service_Consumer" doc:name="Order Tshirt" operation="OrderTshirt"/>
 		<data-mapper:transform config-ref="xml_ordertshirtresponse__to_json" doc:name="Xml To JSON" returnClass="java.lang.String"/>
 	</flow>
-	<flow  name="listInventory">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/inventory" doc:name="Recieve HTTP request">
+	<flow name="listInventory">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP request" path="/inventory">
             <http:response-builder statusCode="200"/>
         </http:listener>
 		<ws:consumer config-ref="Web_Service_Consumer" doc:name="List Inventory" operation="ListInventory"/>

@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+<mule version="EE-3.6.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
     <data-mapper:config doc:name="map_to_csv" name="map_to_csv" transformationGraphPath="map_to_csv.grf"/>
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
 
 <!-- Example 1 Start  How to access properties using MEL, how to set a payload dynamically -->   
-    <flow  name="greetingFlow1">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet1" doc:name="HTTP"/>
+    <flow name="greetingFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet1"/>
 
         <set-payload doc:name="Set Payload using username" value="Hello #[message.inboundProperties['http.query.params'].username]"/>
     </flow>
 <!-- Example 1 End -->
   
 <!-- Example 2 Start  How to dynamically route messages based on the results of a conditional expression -->   
-    <flow  name="greetingFlow2">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet2" doc:name="HTTP"/>
+    <flow name="greetingFlow2">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet2"/>
 
         <choice doc:name="Choice">
             <when expression="#[message.inboundProperties['http.query.params'].username == empty]">
@@ -33,19 +27,19 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 <!-- Example 2 End --> 
  
 <!-- Example 3 Start  How to assign variables, how to evaluate a condition --> 
-    <flow  name="docs-greetingFlow3">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet3" doc:name="HTTP"/>
+    <flow name="docs-greetingFlow3">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet3"/>
 
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
-        <set-payload doc:name="Set Payload of output file" value="#[message.inboundProperties['http.query.params'].username], #[message.inboundProperties['http.query.params'].age], #[message.inboundProperties['http.query.params'].age &gt;18]"/>
+        <set-payload doc:name="Set Payload of output file" value="#[message.inboundProperties['http.query.params'].username], #[message.inboundProperties['http.query.params'].age], #[message.inboundProperties['http.query.params'].age >18]"/>
         <file:outbound-endpoint doc:name="Save output file to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
         <set-payload doc:name="Set Payload to Hello 'username'" value="Hello #[flowVars.username]"/>
     </flow>
 <!-- Example 3 End -->
  
 <!-- Example 4 Start  How to create a map, how to evaluate a condition with DataMapper -->
-    <flow  name="docs-greetingFlow4">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet4" doc:name="HTTP"/>
+    <flow name="docs-greetingFlow4">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet4"/>
 
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
         <set-payload doc:name="Set Payload to formatted output" value="#[['username' : message.inboundProperties['http.query.params'].username, 'age' : message.inboundProperties['http.query.params'].age]]"/>
@@ -57,8 +51,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 <!-- Example 4 End -->
 
 <!-- Example 5 Start  How to parse XML input with Xpath -->   
-    <flow  name="docs-greetingFlow5">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet5" doc:name="HTTP"/>
+    <flow name="docs-greetingFlow5">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet5"/>
 
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = xpath('/user/username').text]]></expression-component>
         <set-payload doc:name="Set Payload to formatted output" value="#[xpath('/user/username').text], #[xpath('/user/age').text], #[xpath('/user/age').text > 18]"/>
@@ -68,8 +62,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 <!-- Example 5 End -->
  
 <!-- Example 6 Start  How to parse Java objects -->
-    <flow  name="greetingFlow6">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="greet6" doc:name="HTTP"/>
+    <flow name="greetingFlow6">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet6"/>
 
         <json:json-to-object-transformer doc:name="Convert JSON to Object" returnClass="java.lang.Object"/>
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.payload.username]]></expression-component>

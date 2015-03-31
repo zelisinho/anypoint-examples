@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.6.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
  
     <configuration doc:name="Configuration">
         <expression-language>
@@ -42,11 +37,11 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <vm:connector doc:name="VM" name="vmConnector">
         <dispatcher-threading-profile maxThreadsActive="200"/>
     </vm:connector>
-    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8081"/>
  
  
-    <flow  name="cache-exampleFlow1">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="fibonacci" doc:name="HTTP"/>
+    <flow name="cache-exampleFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="fibonacci"/>
  <message-filter doc:name="Filter favicon">
             <not-filter>
                 <wildcard-filter caseSensitive="true" pattern="/favicon.ico"/>
@@ -63,7 +58,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         </choice>
     </flow>
  
-    <flow  name="calculateFibonacci">
+    <flow name="calculateFibonacci">
         <vm:inbound-endpoint doc:name="VM" exchange-pattern="request-response" path="fibonacci"/>
  <ee:cache cachingStrategy-ref="Caching_Strategy" doc:name="Cache scope" filterExpression="#[groovy:message.getInboundProperty('nocache') == null]">
             <logger doc:name="Log the input" level="INFO" message="aaa: #[]"/>

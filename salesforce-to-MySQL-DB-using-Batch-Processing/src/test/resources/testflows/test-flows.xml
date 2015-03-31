@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:db="http://www.mulesoft.org/schema/mule/db"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
-    <sub-flow name="insertSalesforceContactSubFlow" doc:name="insertSalesforceContactSubFlow">
-        <sfdc:upsert config-ref="Salesforce" externalIdFieldName="Id" type="Contact" doc:name="Insert Account">
+<mule version="EE-3.6.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
+    <sub-flow doc:name="insertSalesforceContactSubFlow" name="insertSalesforceContactSubFlow">
+        <sfdc:upsert config-ref="Salesforce" doc:name="Insert Account" externalIdFieldName="Id" type="Contact">
      		<sfdc:objects>
                 <sfdc:object>
                     <sfdc:inner-object key="LastName">#[payload.LastName]</sfdc:inner-object>
@@ -17,22 +10,22 @@ http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/ba
 	        </sfdc:objects> 
         </sfdc:upsert>
     </sub-flow>
-    <sub-flow name="deleteContactFromDB" doc:name="deleteContactFromDB">
+    <sub-flow doc:name="deleteContactFromDB" name="deleteContactFromDB">
         <db:delete config-ref="MySQL_Configuration" doc:name="Database">
             <db:dynamic-query><![CDATA[delete from contact where last_name = '#[payload.LastName]']]></db:dynamic-query>
 
         </db:delete>
     </sub-flow>    
-    <sub-flow name="selectContactFromDB" doc:name="selectContactFromDB">
+    <sub-flow doc:name="selectContactFromDB" name="selectContactFromDB">
         <db:select config-ref="MySQL_Configuration" doc:name="Database">
             <db:dynamic-query><![CDATA[select first_name, last_name, email from contact where last_name = '#[payload.LastName]']]></db:dynamic-query>
 
         </db:select>
     </sub-flow>
-	<sub-flow name="deleteContactFromSalesforce" doc:name="deleteContactFromSalesforce">
+	<sub-flow doc:name="deleteContactFromSalesforce" name="deleteContactFromSalesforce">
 		<sfdc:delete config-ref="Salesforce" doc:name="Salesforce">
-			<sfdc:ids ref="#[payload]" />
+			<sfdc:ids ref="#[payload]"/>
 		</sfdc:delete>
-		<logger level="INFO" message="Remove Contact from Salesforce result: #[payload]" doc:name="Logger"/>
+		<logger doc:name="Logger" level="INFO" message="Remove Contact from Salesforce result: #[payload]"/>
 	</sub-flow>
 </mule>

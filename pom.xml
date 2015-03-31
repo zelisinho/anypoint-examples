@@ -194,6 +194,7 @@
 		                            <preserveDir>true</preserveDir>
 		                            <includes>
 		                                <include>src/main/app/*.xml</include>
+		                                <include>src/test/resources/**/test-flows.xml</include>
 		                            </includes>
 		                            <replacements>
 		                                <replacement>
