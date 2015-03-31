@@ -27,10 +27,10 @@ import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 
-public class UploadToSftpAfterConvertingJsonToXmlIT extends FunctionalTestCase
+public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LogManager.getLogger(UploadToSftpAfterConvertingJsonToXmlIT.class); 
+	private static final Logger log = LogManager.getLogger(UploadToFtpAfterConvertingJsonToXmlIT.class); 
 	
 	private static String PASSWORD;
 	private static String USER;
@@ -45,7 +45,7 @@ public class UploadToSftpAfterConvertingJsonToXmlIT extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "upload-to-sftp.xml";
+        return "upload-to-ftp.xml";
     }
 
     @BeforeClass
@@ -61,18 +61,18 @@ public class UploadToSftpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    	    
-    	USER = props.getProperty("sftp.user");
-    	PASSWORD = props.getProperty("sftp.password");
-    	PORT = props.getProperty("sftp.port");
-    	HOME = props.getProperty("sftp.home");		
-    	PATH = props.getProperty("sftp.path");
-    	HOST = props.getProperty("sftp.host");
+    	USER = props.getProperty("ftp.user");
+    	PASSWORD = props.getProperty("ftp.password");
+    	PORT = props.getProperty("ftp.port");
+    	HOME = props.getProperty("ftp.home");		
+    	PATH = props.getProperty("ftp.path");
+    	HOST = props.getProperty("ftp.host");
     	
-    	System.setProperty("sftp.user", USER);
-    	System.setProperty("sftp.password", PASSWORD);
-    	System.setProperty("sftp.port", PORT);
-    	System.setProperty("sftp.path", PATH);
-    	System.setProperty("sftp.host", HOST);
+    	System.setProperty("ftp.user", USER);
+    	System.setProperty("ftp.password", PASSWORD);
+    	System.setProperty("ftp.port", PORT);
+    	System.setProperty("ftp.path", PATH);
+    	System.setProperty("ftp.host", HOST);
 		File dataDirectory = new File(HOME);
 		if (dataDirectory.exists()) {
 		    FileUtils.deleteDirectory(dataDirectory);

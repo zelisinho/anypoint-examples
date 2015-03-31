@@ -43,7 +43,7 @@
 		<module>service-orchestration-and-choice-routing</module>
 		<module>soap-webservice-security</module>
 		<module>track-a-custom-business-event</module>
-<!-- 	<module>upload-to-sftp-after-converting-json-to-xml</module> -->
+	 	<module>upload-to-ftp-after-converting-json-to-xml</module>
 		<module>using-transactional-scope-in-jms-to-database</module>
 		<module>web-service-consumer</module>
 		<module>websphere-mq</module>

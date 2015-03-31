@@ -1,9 +1,9 @@
-# Upload to SFTP after converting JSON to XML  
+# Upload to FTP after converting JSON to XML  
 
-This example application illustrates the concept of datamapping to convert JSON data to XML. It also shows you how to configure the SFTP connector.
+This example application illustrates the concept of datamapping to convert JSON data to XML. It also shows you how to configure and use the FTP connector to upload a file to a FTP server.
 
 ###Example Use Case
-In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the datamapper transformer after which the message payload is uploaded to the SFTP folder. 
+In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the datamapper transformer after which the message payload is uploaded to the FTP folder. 
 
 ###Set up and run the example
 1. Import the project into your workspace and run the project as a mule application.
@@ -55,12 +55,10 @@ In this example JSON data is sent to the mule application through an HTTP end po
        password: demo
        folder: Upload
 
-4. The SFTP filename (5e379df0-0bef-11e4-b08a-5c514f927c90.dat) that is generated can be extracted from the log output of studio:
+4. The FTP uploaded file name is set to *muleExample.xml*, but it can be changed using the *outputPattern* attribute within the FTP connector operation.
 
-	    INFO  2014-07-15 09:12:27,759 [[data-mapper].connector.http.mule.default.receiver.02] org.mule.transport.sftp.SftpMessageDispatcher: Successfully wrote file '5e379df0-0bef-11e4-b08a-5c514f927c90.dat' to sftp://demo:****@ftp-server.demo.solarwinds.com:22/Upload/
-
-   You can sort by date modified on the web page and click to download the file.
    
 ### Go further
 * Read about the Datamapper Transformer [here](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference)
+* Read about the Mule FTP endpoint [here](http://www.mulesoft.org/documentation/display/current/FTP+Transport+Reference)
 * Read about the Mule SFTP endpoint [here](http://www.mulesoft.org/documentation/display/current/SFTP+Transport+Reference)
