@@ -1,8 +1,8 @@
-### Import contacts into Microsoft Dynamics ###
+# Import contacts into Microsoft Dynamics CRM
 
-This application uses pre-packaged tools to intelligently connect with Microsoft Dynamics. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Dynamics user account. It uses the Anypoint DataMapper Transformer to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
+This application uses pre-packaged tools to intelligently connect with Microsoft Dynamics CRM. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Dynamics CRM user account. It uses the Anypoint DataMapper Transformer to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
 
-### Connect with Microsoft Dynamics ###
+### Connect with Microsoft Dynamics CRM ###
 
 At times, you may find that you need to connect one or more of your organization's on-premises systems with a SaaS such as Microsoft Dynamics. Ideally, these independent systems would talk to each other and share data to enable automation of end-to-end business processes. Use Mule applications to facilitate communication between your on-prem system(s) and Microsoft Dynamics. (Though this use case does not extend as far, you can also use Mule to facilitate communication between SaaS providers).
 

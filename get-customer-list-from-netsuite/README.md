@@ -1,4 +1,4 @@
-### Retrieving customers from NetSuite ###
+# Retrieving customers from NetSuite
 
 Anypoint Connector for NetSuite synchronizes data and automates business processes between NetSuite and third party applications, either on-premise or in the cloud.
 
