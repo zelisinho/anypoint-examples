@@ -19,7 +19,7 @@ In this example, a user calls the Mule application by submitting a request via R
 
 ### Set Up and Run the Example
 
-As with other examples, you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the HTTP with JSON application.
 

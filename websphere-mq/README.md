@@ -15,7 +15,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Set Up and Run the Example ###
 
-As with other [example templates](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in **Anypoint Studio** or **Mule Standalone** (Mule ESB without Studio). You can tweak the configurations of these use case-based templates to create your own customized applications in Mule.
+As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), you can create template applications straight out of the box in **Anypoint Studio** or **Mule Standalone** (Mule ESB without Studio). You can tweak the configurations of these use case-based templates to create your own customized applications in Mule.
 
 #### Prerequisites ####
 
@@ -27,7 +27,7 @@ Before you run the example, ensure that your system meets the following conditio
 
 Follow the procedure below to create, then configure and run the Websphere MQ application in Anypoint Studio or Mule Standalone.
 
-1. Create the example application in Anypoint Studio. Do not run the application.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). Do not run the application.
 1. Add your WebSphere MQ client libraries to the project build path.
 1. Make sure your WebSphere MQ installation has a channel and queues named "in" and "out."
 1. Edit the following attributes of the global Websphere MQ configuration that are appropriate for your WebSphere MQ installation by opening *websphere-mq.xml* under src/main/app, then opening *Global elements* and choosing *WMQ* component:
@@ -90,6 +90,6 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 **Go Further**
 
-- Explore more [Mule example applications](http://www.mulesoft.org/documentation/display/current/Mule+Examples).
+- Explore more [Mule example applications](https://www.mulesoft.com/exchange#!/?types=example).
 - Learn more about the [WMQ Connector](http://www.mulesoft.org/documentation/display/current/WMQ+Connector).
 - Learn more about the [AJAX Connector](http://www.mulesoft.org/documentation/display/current/Ajax+Connector).

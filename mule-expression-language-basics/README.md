@@ -10,7 +10,7 @@ If you aren't yet familiar with how to access information about the Mule message
 
 ###Set up and run the example
 
-1. Import the Mule example project into your workspace and run it as a mule application
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
 2. ****Flow 1**** : Through a web browser, access the URL **http://localhost:8081/greet1?username=yourName** 
 The response prints the words **Hello (yourName)** in your browser.

@@ -26,15 +26,14 @@ The example application applies different security measures to five of the six v
 
 This application also includes several variations of a **client-side Web service** to ensure a functional example. These service-clients enable end users to submit salutation requests to the server-side Web service. Refer to the [Client-Side Flows](http://www.mulesoft.org/documentation/display/current/SOAP+Web+Service+Security+Example#SOAPWebServiceSecurityExample-Client-sideFlows) section below for more details.
 
-This document will help you understand some of the ways you can apply security to a SOAP Web service in Mule ESB applications. To understand more about Mule ESB’s ability to integrate services and systems, access the [Mule examples](http://www.mulesoft.org/documentation/display/current/Mule+Examples) and see other applications in action.
-
+This document will help you understand some of the ways you can apply security to a SOAP Web service in Mule ESB applications. To understand more about Mule ESB’s ability to integrate services and systems, access the [Mule examples](https://www.mulesoft.com/exchange#!/?types=example)) and see other applications in action.
 ### Set Up and Run the Example 
 
 You can create template applications straight out of the box in **Anypoint Studio** or **Mule Standlone** (Mule ESB without Studio). You can tweak the configurations of these use case-based templates to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the WS-Security example application.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open your Web browser.
 1. In the address bar, type *localhost:63080/client?clientType=unsecure&name=John*
 1. Press **enter** to elicit a response from the WS-Security application (see image below). 
@@ -52,7 +51,7 @@ Regardless of the **clientType** you use to submit a request, Mule returns the s
 ### Alternative Set Up
 
 Rather than interacting with the application via a Web browser, you can submit end user requests via the SecureClient java class within Anypoint Studio.
-1. Complete the [procedure](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) to create, then run the Security template in Anypoint Studio, or the Security example in Mule Standalone (Mule ESB without Studio).
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. In the **Package Explorer**, navigate to *src/main/java*, then expand the *com.mulesoft.mule.example.security *folder to reveal the *SecureClient* file. 
 1. Right click the *SecureClient* file, then select **Run As > Java Application**.
 1. In the **Console**, Mule displays a menu which lists the different types of requests you can submit to the WS-Security application.

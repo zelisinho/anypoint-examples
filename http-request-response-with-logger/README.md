@@ -21,11 +21,11 @@ There are two functions the HTTP Request-Response with Logger example applicatio
 
 ### Set Up and Run the Example
 
-As with other example templates, you can create template applications straight out of the box in Anypoint Studio or, in this case, also in Mule Standalone where this example is called echo. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), you can create template applications straight out of the box in Anypoint Studio or, in this case, also in Mule Standalone where this example is called echo. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the HTTP Request-Response with Logger application.
 
-1. Create, then run the example application in Anypoint Studio or Standalone.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open your Web browser, type http://localhost:8084/echo in the address bar, then press **enter**.
 1. Your browser presents a message that reads, /echo.
 1. In your browser’s address bar, replace the word echo with the word moon, then press **enter**.

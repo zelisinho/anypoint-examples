@@ -16,7 +16,7 @@ Though a simple example, this application nonetheless employs complex functional
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
-1. Create the example application in Anypoint Studio. *Do not run the application*.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). Do not run the application.
 1. In your application in Studio, click the **Global Elements** tab. 
 1. Double-click the Workday Revenue Management global element to open its **Global Element Properties** panel. 
 1. Change the contents of the **user**, **password** and **endpoint** fields to your account-specific values as follows:

@@ -26,7 +26,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Skip ahead to the next section if you prefer to simply examine this example via code snippets.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Send posts to your application via a browser extension such as Postman (for Google Chrome), or the curl command-line utility.
 	* Send your request to the address http://localhost:8081/orders
 	* Append the following JSON code to it:

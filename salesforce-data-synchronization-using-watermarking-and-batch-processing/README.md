@@ -20,7 +20,7 @@ In this example, watermarking feature is used to periodically make pull requests
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio. *Do not run the application*.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). *Do not run the application*.
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 
 1. Click **Reset My Security Token**. Salesforce resets the token and emails you the new one.

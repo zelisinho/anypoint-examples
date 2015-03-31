@@ -16,7 +16,7 @@ Though a simple example, this application connects to NetSuite to retrieve a lis
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. 
 
-1. Create the example application in Anypoint Studio. *Do not run the application*.
+1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). *Do not run the application*.
 2. Replace *http.port* parameter in *http:listener-config* element with the valid value. 
 1. Log in to your NetSuite account. You will need the login email (*netsuite.email*) and the password (*netsuite.password*) to connect to NetSuite using the connector later on. 
 2. Choose **Setup > Integration > Web Services Preferences** from the main menu. Store the value *ACCOUNT ID* that will be used as a *netsuite.account* parameter. 

@@ -14,11 +14,11 @@ In this example, a user makes an HTTP request to the endpoint containing predefi
 
 ### Set Up and Run the Example
 
-As with other [examples](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the **Salesforce data retrieval** application.
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
 1. Go to Global Elements and open Salesforce Connector element. Fill in your Salesforce credentials including the [security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm).
 1. Run the application.
 1. Open your browser and hit **http://localhost:8081**. The form will be provided to you, containing following values:

@@ -22,7 +22,7 @@ This application presents a simple use case scenario: by making an HTTP request 
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio. 
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). 
 2. In the **Package Explorer**, right-click the cmis-document-integration project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
 3. Open your Web browser.
 3. In the address bar, type the following URL: *http://localhost:8081/cmis*
@@ -80,3 +80,6 @@ Studio includes a feature that enables you to easily export all the documentatio
 - The text you entered in the Notes tab of any building block in your flow
 
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
+
+### Go Further ###
+- Explore more [Mule example applications](https://www.mulesoft.com/exchange#!/?types=example).

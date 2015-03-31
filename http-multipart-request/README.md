@@ -12,7 +12,7 @@ In this example, a user submits a file in the HTML form that is sent via HTTP to
 
 ### Set Up and Run the Example
 
-As with other example templates, you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the Login using HTML Form application.
 
