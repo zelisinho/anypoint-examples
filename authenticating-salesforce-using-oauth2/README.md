@@ -1,4 +1,4 @@
-﻿# Authenticating Salesforce using OAuth2 #
+# Authenticating Salesforce using OAuth2 #
 
 This example shows you how to connect to Salesforce using OAuth as the security protocol 
 
@@ -18,7 +18,7 @@ This application employs Salesforce (OAuth) connector to enable OAuth authentica
 
 ### Set Up and Run the Example ###
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio. *Do not run the application*.
+1. Create the example application in Anypoint Studio. *Do not run the application*.
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Build** heading, click to expand the **Create** folder. 
 1. Click **Apps**. Under **Connected Apps** click **New**.
@@ -69,4 +69,3 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 ### Go Further ###
 
 - Learn more about [Connection Testing](http://www.mulesoft.org/documentation/display/current/Testing+Connections) .
-- Examine other [Mule application examples](http://www.mulesoft.org/documentation/display/33X/Mule+Examples).

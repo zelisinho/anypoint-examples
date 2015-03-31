@@ -19,11 +19,11 @@ In this example, a user calls the Mule application by submitting a request via R
 
 ### Set Up and Run the Example
 
-As with other [examples](http://www.mulesoft.org/documentation/display/current/Mule+Examples), you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
+As with other examples, you can create template applications straight out of the box in Anypoint Studio. You can tweak the configurations of these use case-based examples to create your own customized applications in Mule.
 
 Follow the procedure below to create, then run the HTTP with JSON application.
 
-1. [Create, then run](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-CreateandRunExampleApplications) the example application in Anypoint Studio or Standalone.
+1. Create, then run the example application in Anypoint Studio or Standalone.
 1. Send a POST request to **http://localhost:8081/person** with the body equals to:
 		
 		{
@@ -103,6 +103,6 @@ This flow defines an exception strategy in order to correctly process requests f
 ### Go Further
 
 - Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
-- Learn more about the [Set Payload Transformer](http://http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
+- Learn more about the [Set Payload Transformer](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
 - Learn more about the [Error Handling](http://www.mulesoft.org/documentation/display/current/Error+Handling)
 - Learn more about the [Filter component](http://www.mulesoft.org/documentation/display/current/Filters). 

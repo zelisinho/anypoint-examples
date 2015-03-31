@@ -42,7 +42,7 @@ To witness end-to-end functionality, you must have an active Salesforce account 
 
 #### Create the Example Application ####
 
-1. [Create](http://www.mulesoft.org/documentation/display/current/Mule+Examples#MuleExamples-template) the example application in Mule Studio, using the **DataMapper with FlowRefLookup** template. *Do not run the application*.
+1. Create the example application in Mule Studio, using the **DataMapper with FlowRefLookup** template. *Do not run the application*.
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 
 1. Click **Reset My Security Token**. Salesforce resets the token and emails you the new one.
@@ -82,7 +82,7 @@ The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+C
 
 The DataMapper also utilizes a [FlowRef Lookup](http://www.mulesoft.org/documentation/display/current/Using+DataMapper+Lookup+Tables) Table. This Lookup Table accesses another flow in the application to acquire the sales region for each new account. DataMapper invokes the LookupSalesRegionFlow which uses the company_state data to determine into which sales region the account falls. DataMapper then maps this newly acquired data to the custom field in Salesforce, Region__c.
 
-When it has converted all the account information in the file to a collection of Salesforce-friendly data, the application uses a [Salesforce Connector](http://www.mulesoft.org/extensions/salesforce-cloud-connector) to push data into your Salesforce account. The connector's configurations specify the **operation** – *Create* – and the **sObject** type – *Account* – which dictate exactly how the data uploads to Salesforce; in this case, it creates new accounts. 
+When it has converted all the account information in the file to a collection of Salesforce-friendly data, the application uses a [Salesforce Connector](http://www.mulesoft.org/documentation/display/current/Salesforce+Connector) to push data into your Salesforce account. The connector's configurations specify the **operation** – *Create* – and the **sObject** type – *Account* – which dictate exactly how the data uploads to Salesforce; in this case, it creates new accounts. 
 
 #### LookupSalesRegionFlow ####
 

@@ -27,7 +27,7 @@ Complete the following procedure to create, then run this example in your own in
 3. Open your Web browser.
 3. In the address bar, type the following URL: *http://localhost:8081/cmis*
 4. Press enter to elicit a response from the cmis-document-integration application. Notice the **id** in the response displayed in the browser window.
-5. Navigate to *http://demo.openkm.com/OpenKM/login.jsp*. Use following login data:
+5. Navigate to *http://demo.openkm.com/OpenKM/login*. Use following login data:
 
 		User Name: user3
 		Password:  pass3
@@ -80,7 +80,3 @@ Studio includes a feature that enables you to easily export all the documentatio
 - The text you entered in the Notes tab of any building block in your flow
 
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
-
-### Go Further ###
-
-- Examine other [Mule application examples](http://www.mulesoft.org/documentation/display/33X/Mule+Examples).
