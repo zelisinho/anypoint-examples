@@ -61,7 +61,7 @@ In this example JSON data is sent to the mule application through an HTTP end po
 	password: demo
 	folder: Upload
 ```
-4. The FTP uploaded file name is set to *muleExample.xml*, but it can be changed using the *outputPattern* attribute within the FTP connector operation.
+**Note:** The FTP uploaded file name is set to *muleExample.xml*, but it can be changed using the *outputPattern* attribute within the FTP connector operation.
 
 ### Documentation ###
 
