@@ -22,7 +22,7 @@ This application presents a simple use case scenario: by making an HTTP request 
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). 
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). 
 2. In the **Package Explorer**, right-click the cmis-document-integration project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
 3. Open your Web browser.
 3. In the address bar, type the following URL: *http://localhost:8081/cmis*

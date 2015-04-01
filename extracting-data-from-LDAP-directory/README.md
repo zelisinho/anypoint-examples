@@ -46,7 +46,7 @@ The example application connects to the LDAP directory and retrieves a list of L
 
 9. If you click on ROOT DSE in the panel LDAP browser, you should see the imported data structure.
 
-10. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
+10. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 11. Double-click on ldap.xml under src/main/app directory and open *Global Elements* tab. Open LDAP configuration and fill in these values if you strictly followed the instructions:
 
 		Principal DN	cn=Manager,dc=my-domain,dc=com

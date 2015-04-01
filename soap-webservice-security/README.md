@@ -33,7 +33,7 @@ You can create template applications straight out of the box in **Anypoint Studi
 
 Follow the procedure below to create, then run the WS-Security example application.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open your Web browser.
 1. In the address bar, type *localhost:63080/client?clientType=unsecure&name=John*
 1. Press **enter** to elicit a response from the WS-Security application (see image below). 
@@ -52,7 +52,7 @@ Regardless of the **clientType** you use to submit a request, Mule returns the s
 
 Rather than interacting with the application via a Web browser, you can submit end user requests via the SecureClient java class within Anypoint Studio.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. In the **Package Explorer**, navigate to *src/main/java*, then expand the *com.mulesoft.mule.example.security *folder to reveal the *SecureClient* file. 
 1. Right click the *SecureClient* file, then select **Run As > Java Application**.
 1. In the **Console**, Mule displays a menu which lists the different types of requests you can submit to the WS-Security application.

@@ -25,7 +25,7 @@ Though a simple example, this application nonetheless employs complex functional
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. 
 
 1. Create your free trial MS Dynamics account [here](http://www.microsoft.com/en-us/dynamics/crm-free-trial-overview.aspx). Remember your registration data as you will need it to connect to Dynamics, namely: a username, a password and a company name.
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). *Do not run the application*.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
 1. In your application in Studio, click the **Global Elements** tab. 
 1. Double-click the MS Dynamics CRM global element to open its **Global Element Properties** panel. 
 1. Change the contents of the **Username**, **Password** and **Organization Service Url** fields to your account-specific values as follows:

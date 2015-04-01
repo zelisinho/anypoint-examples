@@ -7,7 +7,7 @@ The JSON data containing employee names is sent to the application using the HTT
 
 ### Set up and run the example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). 
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). 
 
 2. Start the MySQL server on your machine and create a connection by navigating to your mysql home directory and using the following command:
                   

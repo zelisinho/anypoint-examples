@@ -42,7 +42,7 @@ In this example a sample data is prepared using the Expression component, which 
 
 ### Set Up and Run this Example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
 2. Navigate to src/main/app/scatter-gather.xml and **edit Send an email via SMTP component** as follows:
  

@@ -9,7 +9,7 @@ In this example the JMS endpoint listens for XML messages sent to the "in" queue
 
 ### Set up and run the example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
 2. Start activeMQ server as well as the MySQL server and establish a connection to the database
 

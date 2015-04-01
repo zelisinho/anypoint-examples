@@ -24,7 +24,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Skip ahead to the next section if you prefer to simply examine this example code snippets.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking! 
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking! 
 1. To simulate a request submission to the Mule application, use the **soapUI interface** available for free download at [www.soapui.org](http://www.soapui.org/). This tool enables you to submit a request to simulate the submission of a new order in this example's use case.  If you haven't already done so, download and launch soapUI. 
 2. In soapUI, select **File > Import Project**. Browse to the AnypointStudio folder on your local drive to locate the sample soapUI project file: **AnypointStudio > workspace > Legacy Modernization > src > main > resources > LegacyModernizationExample-soapui-project.xml**. Click **Open**.
 2. In the new LegacyModernizationExample project in soapUI, expand the folders to reveal **Request 1**. Double-click **Request 1** to open the request-response window.

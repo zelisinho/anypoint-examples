@@ -12,7 +12,7 @@ This document describes the details of the example within the context of Anypoin
 In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the datamapper transformer after which the message payload is uploaded to the FTP folder. 
 
 ###Set up and run the example
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
 2. Make a POST request using Postman to http://localhost:8081 with following JSON message body:
 

@@ -16,7 +16,7 @@ This example demonstrates integration of external services (Stocklytics, Sentime
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). *Do not run the application*.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
 2. Acquire **stocklyticsApiKey** by registering at [http://developer.stocklytics.com/signup/](http://developer.stocklytics.com/signup/).
 3. Acquire **sentiment140ApiKey** by registering at [http://help.sentiment140.com/api/registration](http://help.sentiment140.com/api/registration). It is the email you used for the registration.
 4. Register at [http://dev.twitter.com/](http://dev.twitter.com/) and navigate to [https://apps.twitter.com/](https://apps.twitter.com/) to create a new app. Then click **API Keys** tab and get:

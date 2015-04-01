@@ -16,7 +16,7 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the Login using HTML Form application.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open your browser and hit **http://localhost:8081/uploadFile**.
 2. Click *Browse...* and choose a file to upload. Hit *Send* button. 
 1. Either you will see the file contents in your browser or a dialogue will prompt you to save the file contents, based on the content type.

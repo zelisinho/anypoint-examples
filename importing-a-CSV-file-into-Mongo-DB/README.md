@@ -45,7 +45,7 @@ In this example we transform a sample CSV file containing sales data into a Map 
     )
 
 
-4  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
+4  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
 5 Go to Global Elements and set the recently created user with password and database name for the Mongo DB connector.
 

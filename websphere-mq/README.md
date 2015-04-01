@@ -27,7 +27,7 @@ Before you run the example, ensure that your system meets the following conditio
 
 Follow the procedure below to create, then configure and run the Websphere MQ application in Anypoint Studio or Mule Standalone.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). Do not run the application.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application.
 1. Add your WebSphere MQ client libraries to the project build path.
 1. Make sure your WebSphere MQ installation has a channel and queues named "in" and "out."
 1. Edit the following attributes of the global Websphere MQ configuration that are appropriate for your WebSphere MQ installation by opening *websphere-mq.xml* under src/main/app, then opening *Global elements* and choosing *WMQ* component:

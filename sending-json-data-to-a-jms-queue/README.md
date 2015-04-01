@@ -12,7 +12,7 @@ This document assumes that you are familiar with Mule and the Anypoint™ Studio
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
 
-1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). Do not run the application yet.
+1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application yet.
 
 2. Start the ActiveMQ server;  navigate to the activeMQ home directory in the command terminal and then   use the  bin/activemq start command to start the activeMQ server.   You should get a message that is similar to the one shown below when your activeMQ server is running
 

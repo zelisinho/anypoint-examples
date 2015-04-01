@@ -32,7 +32,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Skip ahead to the next section if you prefer to simply examine this example via code snippets.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 1. Set up **Salesforce credentials**:
 	1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 	1. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 

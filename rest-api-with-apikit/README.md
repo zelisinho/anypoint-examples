@@ -20,7 +20,7 @@ This API allows you to add, remove, and retrieve information about sports teams 
 
 Follow the procedure below to run and test the functionality of this example application in Anypoint Studio.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Anypoint Studio starts the application and automatically opens an API console below the canvas.
 2. Click **GET** for the **/teams** resource.
 The console opens a details panel for the GET method for this resource that allows you to view details about the request format and expected responses, as well as a **Try It** option.

@@ -23,7 +23,7 @@ In this example a message containing sample sales data in JSON is received throu
 
 4. Click on **sales__exchange** under the **Exchanges** tab and then go to the section titled **Add binding from this exchange**. In the **To queue** field type in ***sales_queue*** and then click on **Bind**.
     
-5. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+5. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
 6. Make a HTTP POST request using Postman, curl or the REST Console to send the following JSON data:
         
