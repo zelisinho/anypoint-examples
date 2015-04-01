@@ -18,7 +18,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-Though a simple example, this application nonetheless employs complex functionality to demonstrate a basic use case. The application accepts CSV files which contain contact information – first name and surname, phone number, email – and uploads them into a MS Dynamics account, automatically inserting the correct data into each MS Dynamics field. 
+The application accepts a CSV file by polling a local folder frequently. The CSV file contains contact information with columns as follows: first name, surname, phone number and email. These columns are mapped to each of the respective fields in a specific Dynamics CRM account and the rows are uploaded.
 
 ### Set Up and Run the Example ###
 
