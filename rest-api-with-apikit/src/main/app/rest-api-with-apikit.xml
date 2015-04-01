@@ -14,7 +14,7 @@
     <spring:beans>
         <spring:bean class="org.mule.examples.leagues.LeagueAPI" id="league-api" init-method="initialize"/>
     </spring:beans>
-    <apikit:mapping-exception-strategy doc:name="Mapping Exception Strategy" name="leagues-apiKitGlobalExceptionMapping">
+    <apikit:mapping-exception-strategy name="leagues-apiKitGlobalExceptionMapping">
         <apikit:mapping statusCode="404">
             <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>
             <set-property doc:name="Set Content-Type" propertyName="Content-Type" value="application/json"/>
