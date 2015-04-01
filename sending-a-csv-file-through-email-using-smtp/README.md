@@ -13,7 +13,7 @@ In this example a CSV file containing sample sales data which is stored in the l
 
 ### Set Up and Run this Example
 
-1. **Open** the project in the studio interface
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
 
 2. Create a folder called input under src/main/resources and **paste** the input.csv file in the input folder. Edit the path field in the file connector to:
     

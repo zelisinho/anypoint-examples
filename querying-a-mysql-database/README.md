@@ -28,7 +28,7 @@ The database connector instructs the database server to run the SQL query, retri
    
         username: generatedata; password:generatedata
  
-4. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
 4. **Open database-to-json.xml file** located in src/main/app directory. Set **url** attribute of the **db:generic-config** element to:
 
 		jdbc:mysql://localhost:3306/company?user=generatedata&password=generatedata
