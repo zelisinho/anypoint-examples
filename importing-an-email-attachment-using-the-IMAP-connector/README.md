@@ -13,7 +13,7 @@ In this example a CSV file containing sample sales data which has been received 
 
 ### Set Up and Run this Example
 
-1.  **Open** the project in the studio interface
+1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library).
 
 2. Click on the IMAP Connector in the Mule flow and edit its properties as follows:
 

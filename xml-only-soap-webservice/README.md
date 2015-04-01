@@ -40,7 +40,7 @@ For example, if a family doctor wishes to schedule a surgical procedure for an e
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
 
-1. Create, then run the example application in Anypoint Studio.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
 2. To simulate a request submission to the Mule application, use the soapUI interface available for free download at [www.soapui.org](www.soapui.org). This tool enables you to submit a request as though you were a family doctor in this example's use case. If you haven't already done so, download and launch soapUI.
 

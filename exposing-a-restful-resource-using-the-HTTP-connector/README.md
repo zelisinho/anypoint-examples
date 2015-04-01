@@ -23,7 +23,7 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the HTTP with JSON application.
 
-1. Create, then run the example application in Anypoint Studio or Standalone.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Send a POST request to **http://localhost:8081/person** with the body equals to:
 		
 		{

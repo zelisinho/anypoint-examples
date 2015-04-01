@@ -51,6 +51,7 @@ Regardless of the **clientType** you use to submit a request, Mule returns the s
 ### Alternative Set Up
 
 Rather than interacting with the application via a Web browser, you can submit end user requests via the SecureClient java class within Anypoint Studio.
+
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. In the **Package Explorer**, navigate to *src/main/java*, then expand the *com.mulesoft.mule.example.security *folder to reveal the *SecureClient* file. 
 1. Right click the *SecureClient* file, then select **Run As > Java Application**.

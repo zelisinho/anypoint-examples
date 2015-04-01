@@ -47,7 +47,7 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the Loan Broker application in Mule ESB.
 
-1. Create, then run the example application in Anypoint Studio or Standalone Mule.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open your Web browser.
 1. Type http://localhost:11081/?name=Muley&amount=20000&term=48&ssn=1234 into the address bar of your browser, then press enter to elicit a response from the application. 
 2. In your browser’s address bar, replace the amount value with 5000, then press enter to elicit a new response from the application. 

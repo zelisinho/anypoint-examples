@@ -36,7 +36,7 @@ As with the other example templates, you can create a fully-functioning applicat
 Follow the procedure below to run and test the functionality of this example application in Anypoint Studio.
 
 
-1. Create, then run the example application in Anypoint Studio.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 1. Open a Web browser, then navigate to the following URL:
 [http://localhost:8091/populate/](http://localhost:8091/populate/)
 This causes the application to initialize a local database to store the orders you place. Your browser displays a message that reads: *db populated*.
@@ -47,7 +47,7 @@ This causes the application to initialize a local database to store the orders y
 
 The second approach to running this example is using raw SOAP that bypasses the ordering process via the GUI. To achieve this, follow the procedure bellow:
 
-1. Create, then run the example application in Anypoint Studio.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/The+Library). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 2. Open a Web browser, then navigate to the following URL:
 [http://localhost:8091/populate/](http://localhost:8091/populate/)
 This causes the application to initialize a local database to store the orders you place. Your browser displays a message that reads: *db populated*.
