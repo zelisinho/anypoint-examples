@@ -67,7 +67,7 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081/api/" + MESSAGE, "", props);
+        MuleMessage result = client.send("http://localhost:8080/api/" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         ObjectMapper mapper = new ObjectMapper();
@@ -76,7 +76,7 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
         assertTrue(tree1.equals(tree2));
         
         props.put("http.method", "DELETE");
-        result = client.send("http://localhost:8081/api/" + MESSAGE, "", props);
+        result = client.send("http://localhost:8080/api/" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("204", result.getInboundProperty("http.status"));
