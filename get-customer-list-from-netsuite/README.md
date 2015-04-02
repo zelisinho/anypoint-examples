@@ -10,7 +10,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-Though a simple example, this application connects to NetSuite to retrieve a list of customers based on the predefined criteria (all customers that have a last name that starts with 'a'). The data is then parsed and formatted to improve readability for the end user. 
+This application connects to NetSuite to retrieve a list of customers based on the predefined criteria (all customers that have a last name that starts with 'a'). The data is then parsed and formatted to improve readability and is displayed in the web browser for the end user. 
 
 ### Set Up and Run the Example ###
 
