@@ -3,4 +3,5 @@
     <name>rest-api-with-apikit</name>
     <description/>
     <muleExtension name="APIkit" qualifier="org.mule.tooling.apikit.3.6.0"/>
+    <muleExtension name="APIkit" qualifier="org.mule.tooling.apikit.3.6.0"/>
 </mule-project>
