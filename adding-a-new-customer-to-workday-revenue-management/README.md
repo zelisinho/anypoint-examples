@@ -1,6 +1,6 @@
-#Adding a new customer to Workday Revenue Management Example
+#Adding a new customer to Workday Revenue Management
 
-The Workday Connector facilitates connections between Mule integration applications and Workday by allowing you to connect to a Workday database.
+The Workday Anypoint Connector facilitates connections between Mule integration applications and Workday by making API calls to the Workday Web Services. This example shows you how to use this connector in an integration application where a customer has to be added to the Workday Revenue Management Console.
 
 ### Assumptions ###
 
@@ -10,22 +10,19 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-Though a simple example, this application nonetheless employs complex functionality to demonstrate a basic use case. The application accepts a piece of XML code which contains customer information –  customer name, status and category – and creates a customer record in a Workday instance, automatically inserting the correct data into each field. 
+The application accepts an XML code which containing the required customer information (customer name, status and category). It parses this xml using the Datamapper component and creates a new customer record in a Workday instance.
 
 ### Set Up and Run the Example ###
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application.
-1. In your application in Studio, click the **Global Elements** tab. 
-1. Double-click the Workday Revenue Management global element to open its **Global Element Properties** panel. 
-1. Change the contents of the **user**, **password** and **endpoint** fields to your account-specific values as follows:
+1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Revenue Management global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** and **endpoint** fields to your account-specific values as follows:
 
 		user						<USER>@<DOMAIN>
 		password					<PASSWORD>
 		endpoint					<ENDPOINT_URL>
- 
-4. Then click **OK** to save your changes. 
+Then click **OK** to save your changes. 
 1. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
 1. Make an HTTP POST request to *http://localhost:9090/* with the request body as follows:
 
@@ -42,9 +39,7 @@ Complete the following procedure to create, then run this example in your own in
 		</root>
 
 	To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. 
-8. Login to your Workday account.
-9. Navigate to View Customer Report and enter John Doe in the search field.
-10. Verify that the customer was added.
+8. Login to your Workday account. Navigate to View Customer Report and enter John Doe in the search field. Verify that the customer was added.
 
 ### How it Works ###
 
