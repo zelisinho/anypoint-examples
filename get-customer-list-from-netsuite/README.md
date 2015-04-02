@@ -1,16 +1,16 @@
-# Retrieving customers from NetSuite
+# Retrieving a List of Customers from NetSuite
 
-Anypoint Connector for NetSuite synchronizes data and automates business processes between NetSuite and third party applications, either on-premise or in the cloud.
+Anypoint Connector for NetSuite synchronizes data and automates business processes between NetSuite and third party applications, either on-premise or in the cloud. This example shown you how to use the NetSuite connector in an Anypoint integration application.
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) and [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements).
+This document assumes that you are familiar with Mule 101 and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) and [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements).
 
 This document describes the details of the example within the context of Anypoint Studio and Mule ESB’s graphical user interface.
 
 ### Example Use Case ###
 
-Though a simple example, this application connects to NetSuite to retrieve a list of customers based on the predefined criteria. The data are formatted to improve readability for an end user. 
+Though a simple example, this application connects to NetSuite to retrieve a list of customers based on the predefined criteria (all customers that have a last name that starts with 'a'). The data is then parsed and formatted to improve readability for the end user. 
 
 ### Set Up and Run the Example ###
 
@@ -30,7 +30,7 @@ Complete the following procedure to create, then run this example in your own in
 		Role Id			netsuite.roleId
 
 
-	You should verify the configuration by clicking Test Connection... button. Alternatively, configure the global element in the XML Editor.
+	You should verify the configuration by clicking Test Connection... button. Alternatively, you can also configure the global element in the XML Editor.
 1. In the **Package Explorer**, right-click the get-customer-list-from-netsuite project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
 2. Hit your web browser with the following url: *http://localhost:8081/customers?lastName=a* to retrive a list of all customers having a last name starting with *a*. The data is stored in the HTML table.  
 1. Stop the Mule application by clicking the square, red terminate button in the **Console**.
@@ -39,7 +39,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Using a single flow, this application accepts incoming HTTP requests, performs a query in NetSuite and delivers results to the end user. 
 
-The [HTTP connector](http://www.mulesoft.org/documentation/display/current/File+Connector) listens at *http://localhost:8081/customers* to incoming HTTP Get requests. The dynamic part of the NetSuite customer query is extracted from the url under *lastName* parameter key using [Mule Expression Language](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL). Next, MEL Expression block iterates over the returned collection and prepares an HTML table body that is sent to a [Parse Template](http://www.mulesoft.org/documentation/display/current/Parse+Template+Reference) component that injects it into the HTML template.
+The [HTTP connector](http://www.mulesoft.org/documentation/display/current/File+Connector) listens at *http://localhost:8081/customers* to incoming HTTP Get requests. The dynamic part of the NetSuite customer query is extracted from the url under *lastName* parameter key using [Mule Expression Language](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL). Next, the MEL Expression block iterates over the returned collection and prepares an HTML table body that is sent to a [Parse Template](http://www.mulesoft.org/documentation/display/current/Parse+Template+Reference) component that injects it into the HTML template.
 
 ### Documentation ###
 
