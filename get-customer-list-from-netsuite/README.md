@@ -1,12 +1,11 @@
 # Retrieving a List of Customers from NetSuite
 
-Anypoint Connector for NetSuite synchronizes data and automates business processes between NetSuite and third party applications, either on-premise or in the cloud. This example shown you how to use the NetSuite connector in an Anypoint integration application.
+Anypoint Connector for NetSuite synchronizes data and automates business processes between NetSuite and third party applications, either on-premise or in the cloud. This example shows you how to use the NetSuite connector in an Anypoint integration application.
 
 ### Assumptions ###
 
 This document assumes that you are familiar with Mule 101 and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) and [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements).
 
-This document describes the details of the example within the context of Anypoint Studio and Mule ESB’s graphical user interface.
 
 ### Example Use Case ###
 
