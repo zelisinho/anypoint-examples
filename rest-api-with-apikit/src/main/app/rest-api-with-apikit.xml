@@ -14,7 +14,7 @@
     <spring:beans>
         <spring:bean class="org.mule.examples.leagues.LeagueAPI" id="league-api" init-method="initialize"/>
     </spring:beans>
-    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="httpConnector" port="${http.port}"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="httpConnector" port="${http.port}"/>
     <apikit:mapping-exception-strategy name="leagues-apiKitGlobalExceptionMapping">
         <apikit:mapping statusCode="404">
             <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>
