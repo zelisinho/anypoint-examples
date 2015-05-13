@@ -5,7 +5,7 @@
 
     <groupId>org.mule.examples</groupId>
     <artifactId>examples-catalog</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -62,14 +62,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <eclipsePluginVersion>2.8</eclipsePluginVersion>
-        <jdkName>JavaSE-1.7</jdkName>
-        <jdk.version>1.7</jdk.version>
+        <jdkName>JavaSE-1.8</jdkName>
+        <jdk.version>1.8</jdk.version>
         <assembly-descriptor-version>1.0.13</assembly-descriptor-version>
-        <muleServerId>org.mule.tooling.server.3.6.1.ee</muleServerId>
-        <muleConfigVersion>EE-3.6.1</muleConfigVersion>
-        <mule.version>3.6.1</mule.version>
+        <muleServerId>org.mule.tooling.server.3.7.0.ee</muleServerId>
+        <muleConfigVersion>EE-3.7.0</muleConfigVersion>
+        <mule.version>3.7.0-RC1</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
-		<sfdc.version>6.0.2</sfdc.version>
+		<sfdc.version>6.1.0</sfdc.version>
     </properties>
 
     <build>
