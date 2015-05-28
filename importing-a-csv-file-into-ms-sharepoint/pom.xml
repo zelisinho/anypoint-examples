@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-sharepoint</artifactId>
-			<version>${mssp.version}</version>
+			<version>2.1.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
