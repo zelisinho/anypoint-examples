@@ -13,7 +13,7 @@ This document assumes that you are familiar with Mule and the [Anypoint™ Studi
 
 ### Example Use Case ###
 
-Though a simple example, this application nonetheless employs complex functionality to demonstrate a basic use case. The application accepts CSV files which contain lead information – company, first name, last name, birthday, email – and uploads them into a Salesforce account, automatically inserting the correct data into each Salesforce field. 
+The application accepts a CSV file which contain lead information – company, first name, last name, birthday, email – and uploads them into a Salesforce account, automatically inserting the correct data into each Salesforce field. 
 
 ### Set Up and Run the Example ###
 
