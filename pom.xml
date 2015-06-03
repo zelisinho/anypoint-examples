@@ -33,7 +33,7 @@
 		<module>proxying-a-soap-api</module>
 		<module>querying-a-db-and-attaching-results-to-an-email</module>
 		<module>querying-a-mysql-database</module>
-<!--	<module>rest-api-with-apikit</module> -->
+		<module>rest-api-with-apikit</module>
 		<module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
 		<module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
 		<module>scatter-gather-flow-control</module>
@@ -56,6 +56,7 @@
 		<module>import-contacts-into-ms-dynamics</module>
 		<module>get-customer-list-from-netsuite</module>
 		<module>adding-a-new-customer-to-workday-revenue-management</module>
+		<module>import-leads-into-salesforce</module>
     </modules>
 
     <properties>
@@ -65,11 +66,11 @@
         <jdkName>JavaSE-1.7</jdkName>
         <jdk.version>1.7</jdk.version>
         <assembly-descriptor-version>1.0.13</assembly-descriptor-version>
-        <muleServerId>org.mule.tooling.server.3.6.1.ee</muleServerId>
-        <muleConfigVersion>EE-3.6.1</muleConfigVersion>
-        <mule.version>3.6.1</mule.version>
+        <muleServerId>org.mule.tooling.server.3.6.2.ee</muleServerId>
+        <muleConfigVersion>EE-3.6.2</muleConfigVersion>
+        <mule.version>3.6.2</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
-		<sfdc.version>6.0.2</sfdc.version>
+		<sfdc.version>6.1.0</sfdc.version>
     </properties>
 
     <build>
