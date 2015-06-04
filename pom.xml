@@ -33,7 +33,7 @@
 		<module>proxying-a-soap-api</module>
 		<module>querying-a-db-and-attaching-results-to-an-email</module>
 		<module>querying-a-mysql-database</module>
-<!--	<module>rest-api-with-apikit</module> -->
+		<module>rest-api-with-apikit</module>
 		<module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
 		<module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
 		<module>scatter-gather-flow-control</module>
@@ -56,6 +56,7 @@
 		<module>import-contacts-into-ms-dynamics</module>
 		<module>get-customer-list-from-netsuite</module>
 		<module>adding-a-new-customer-to-workday-revenue-management</module>
+		<module>import-leads-into-salesforce</module>
     </modules>
 
     <properties>
