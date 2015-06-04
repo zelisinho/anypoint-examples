@@ -68,7 +68,7 @@
         <assembly-descriptor-version>1.0.13</assembly-descriptor-version>
         <muleServerId>org.mule.tooling.server.3.7.0.ee</muleServerId>
         <muleConfigVersion>EE-3.7.0</muleConfigVersion>
-        <mule.version>3.7.0-RC1</mule.version>
+        <mule.version>3.7.0-SNAPSHOT</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
 		<sfdc.version>6.1.0</sfdc.version>
     </properties>
