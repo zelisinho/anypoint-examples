@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/5.0/mule-sfdc.xsd http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
-    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" username="${sfdc.user}">
+<mule version="EE-3.7.0"
+	xmlns:weave="http://www.mulesoft.org/schema/mule/ee/weave"  
+	xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" 
+	xmlns:file="http://www.mulesoft.org/schema/mule/file" 
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" 
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/weave http://www.mulesoft.org/schema/mule/ee/weave/current/weave.xsd">
+    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" username="${sfdc.username}">
         <sfdc:connection-pooling-profile exhaustedAction="WHEN_EXHAUSTED_GROW" initialisationPolicy="INITIALISE_ONE"/>
     </sfdc:config>
-    <data-mapper:config doc:name="DataMapper" name="datamapper_grf" transformationGraphPath="datamapper.grf"/>
-    <flow doc:description="From the content of a CSV file, creates new accounts in Salesforce." doc:name="CreateNewSalesforceAccountFlow" name="CreateNewSalesforceAccountFlow">
+    
+    <flow doc:description="From the content of a CSV file, creates new accounts in Salesforce." name="CreateNewSalesforceAccountFlow">
         <file:inbound-endpoint doc:name="Poll for files" moveToDirectory="src/main/resources/output" path="src/main/resources/input" pollingFrequency="10000" responseTimeout="10000"/>
-        <data-mapper:transform config-ref="datamapper_grf" doc:name="CSV to Salesforce account object"/>
+        <weave:transform-message doc:name="Transform Message">
+            <weave:set-payload><![CDATA[%weave 0.1
+%input payload application/csv header=true
+%output application/java
+%function setRegion (state) {
+	(value: "North East") 	when (state matches /(CT|ME|MA|NH|VT|RI|NY|NJ|DE|DC|MD|NH)/),
+  	(value: "South East") 	when (state matches /(AL|AR|FL|GA|LA|SC|NC|TN|TX)/),
+  	(value: "Mid West") 	when (state matches /(ID|IL|IA|KS|MT|WY|ND|SD|OH)/),
+  	(value: "South West") 	when (state matches /(AZ|CO|OK|NM|NV)/),
+  	(value: "West Coast") 	when (state matches /(CA|HI|WA|OR|AK)/)
+}
+---
+payload map {
+  Name: $.company_name,
+  BillingStreet: $.company_address,
+  BillingCity: $.company_city,
+  BillingState: upper $.company_state,
+  BillingPostalCode: $.company_zip,
+  Region__c: setRegion(upper $.company_state).value
+}]]></weave:set-payload>
+        </weave:transform-message>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
         <sfdc:create config-ref="Salesforce" doc:name="Create Salesforce Account" type="Account">
             <sfdc:objects ref="#[payload]"/>
         </sfdc:create>
     </flow>
-    <flow doc:description="The script uses data in the state field to add a region to the payload according to location." doc:name="LookUpSalesRegionFlow" name="LookUpSalesRegionFlow">
-        <scripting:component doc:name="Get Region by State">
-            <scripting:script engine="Groovy"><![CDATA[def region = "UNKNOWN"
-def state = payload.state
-if (state != null) {
-	state = state.toUpperCase()
-}
-println "State to lookup is: " + state
-switch (state) {
-	case ["CT","ME","MA","NH","VT","RI","NY","NJ","DE","DC","MD","NH"]:
-      region = "North East"
-      break
-      case ["AL","AR","FL", "GA","LA" ,"SC","NC","TN","TX"]:
-      region = "South East"
-      break
-      case ["ID","IL", "IA","KS","MT", "WY","ND","SD","OH" ]:
-      region = "Mid West"
-      break
-      case ["AZ","CO","OK","NM", "NV"]:
-      region = "South West"
-      break
-      case ["CA","HI","WA","OR", "AK"]:
-      region = "West Coast"
-      break
-}
-return ["region":region]]]></scripting:script>
-        </scripting:component>
-        <logger doc:name="Log the Region" level="INFO" message="Region is : #[payload.region]"/>
-    </flow>
+
 </mule>
