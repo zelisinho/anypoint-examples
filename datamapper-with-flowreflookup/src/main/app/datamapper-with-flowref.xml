@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/ee/weave http://www.mulesoft.org/schema/mule/ee/weave/current/weave.xsd  
 http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd">
 
-    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" username="${sfdc.username}">
+    <sfdc:config doc:name="Salesforce" name="Salesforce" password="${sfdc.password}" securityToken="${sfdc.securityToken}" username="${sfdc.user}">
         <sfdc:connection-pooling-profile exhaustedAction="WHEN_EXHAUSTED_GROW" initialisationPolicy="INITIALISE_ONE"/>
     </sfdc:config>
     
