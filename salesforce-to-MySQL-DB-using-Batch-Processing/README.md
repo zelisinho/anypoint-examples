@@ -135,7 +135,7 @@ The On Complete stage of the batch process executes once, after all of the recor
 
 - Learn more about the [Database Connector](http://www.mulesoft.org/documentation/display/current/Database+Connector).
 - Understand [Batch Processing](http://www.mulesoft.org/documentation/display/current/Batch+Processing). 
-- Learn more about the [Datamapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).
+- Learn more about the [DataWeave](https://developer.mulesoft.com/docs/display/current/Weave+Reference+Documentation).
 - Learn about [Anypoint Connectors](http://www.mulesoft.org/documentation/display/current/Anypoint+Connectors).
 - Understand the [Poll Scope](http://www.mulesoft.org/documentation/display/current/Poll+Reference).
 - Read more about the [Choice Flow Control](http://www.mulesoft.org/documentation/display/current/Choice+Flow+Control+Reference).
