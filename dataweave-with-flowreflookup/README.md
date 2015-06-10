@@ -8,7 +8,7 @@ At times, you may find that you need to connect one or more of your organization
 
 #### DataWeave and FlowRefLookup ####
 
-Beyond transforming and mapping data from one format to another, you can use an Anypoint DataWeave Transformer to access other flows in a Mule application to acquire additional information. Use a FlowRefLookup Table to acquire information outside the message, then append it to the payload.
+Beyond transforming and mapping data from one format to another, you can use an Anypoint DataWeave Transformer to access other flows in a Mule application to acquire additional information. Use a flow lookup to acquire information outside the message, then append it to the payload.
 
 ### Assumptions ###
 
@@ -22,7 +22,7 @@ The use case upon which this example is based represents a reasonably common req
 
 ### Set Up and Run the Example ###
 
-Complete the following procedure to create, then run this example in your own instance of Mule Studio. Skip ahead to the next section if you prefer to simply examine this example.
+Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
 To witness end-to-end functionality, you must have an active Salesforce account into which you don't mind inserting a new custom field for "region" and two sample accounts. After this application automatically uploads these accounts, you can manually delete them, and the custom field, in your Salesforce account.
 
@@ -80,13 +80,13 @@ Using two flows, this application accepts CSV files which contain account inform
 
 The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – company_name, company_address, etc. – to output fields that Salesforce uses in a collection. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataWeave transformer.
 
-The DataWeave also utilizes a FlowRef Lookup Table. This Lookup Table accesses another flow in the application to acquire the sales region for each new account. DataWeave invokes the LookupSalesRegionFlow which uses the company_state data to determine into which sales region the account falls. DataWeave then maps this newly acquired data to the custom field in Salesforce, Region__c.
+The DataWeave also utilizes a flow lookup. Flow lookup accesses another flow in the application to acquire the sales region for each new account. DataWeave invokes the LookupSalesRegionFlow which uses the company_state data to determine into which sales region the account falls. DataWeave then maps this newly acquired data to the custom field in Salesforce, Region__c.
 
 When it has converted all the account information in the file to a collection of Salesforce-friendly data, the application uses a [Salesforce Connector](http://www.mulesoft.org/documentation/display/current/Salesforce+Connector) to push data into your Salesforce account. The connector's configurations specify the **operation** – *Create* – and the **sObject** type – *Account* – which dictate exactly how the data uploads to Salesforce; in this case, it creates new accounts. 
 
 #### LookupSalesRegionFlow ####
 
-This flow consists of a [Groovy](http://www.mulesoft.org/documentation/display/current/Groovy+Component+Reference) component and a [Logger](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference).  The script in the component uses state information in the message payload to calculate the sales region to which the account belongs. Invoked by the FlowRefLookup table in DataWeave, this flow exists only to determine a sales region for each account in the CSV file.
+This flow consists of a [Groovy](http://www.mulesoft.org/documentation/display/current/Groovy+Component+Reference) component and a [Logger](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference).  The script in the component uses state information in the message payload to calculate the sales region to which the account belongs. Invoked by the flow lookup in DataWeave, this flow exists only to determine a sales region for each account in the CSV file.
 
 ### Documentation ###
 
