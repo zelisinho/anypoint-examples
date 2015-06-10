@@ -114,7 +114,7 @@ public class SalesforceToMySQLDBUsingBatchProcessingIT extends AbstractTemplateT
 
 		// wait for 
 		Thread.sleep(5000);
-		// Execute selectContactFromDB sublow
+		// Execute selectContactFromDB subflow
 		final MuleEvent event = selectContactFromDBFlow.process(getTestEvent(contact, MessageExchangePattern.REQUEST_RESPONSE));
 		final List<Map<String, Object>> payload = (List<Map<String, Object>>) event.getMessage().getPayload();
 
