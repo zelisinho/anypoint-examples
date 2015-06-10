@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule-project runtimeId="org.mule.tooling.server.3.7.0.ee" schemaVersion="3.5.0.0" xmlns="http://www.mulesoft.com/tooling/project">
-    <name>extracting-data-from-LDAP-directory1</name>
+    <name>dataweave-with-flowreflookup</name>
     <description/>
-    <muleExtension name="LDAP" qualifier="org.mule.tooling.ui.contribution.ldap.3.5.0"/>
+    <muleExtension name="Salesforce" qualifier="org.mule.tooling.ui.contribution.sfdc.3.5.0"/>
 </mule-project>

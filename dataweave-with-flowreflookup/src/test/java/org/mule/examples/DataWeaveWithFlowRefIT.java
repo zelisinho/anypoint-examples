@@ -31,10 +31,10 @@ import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.util.IOUtils;
 
-public class DatamapperWithFlowRefIT extends FunctionalTestCase
+public class DataWeaveWithFlowRefIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LogManager.getLogger(DatamapperWithFlowRefIT.class); 
+	private static final Logger log = LogManager.getLogger(DataWeaveWithFlowRefIT.class); 
 	
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	private final String COMPANY_NAME = "Universal Exports";
@@ -44,7 +44,7 @@ public class DatamapperWithFlowRefIT extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "datamapper-with-flowref.xml,./src/test/resources/testflows/test-flows.xml";
+        return "dataweave-with-flowref.xml,./src/test/resources/testflows/test-flows.xml";
     }
 
     @BeforeClass
