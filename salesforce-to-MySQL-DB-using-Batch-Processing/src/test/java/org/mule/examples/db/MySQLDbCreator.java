@@ -65,7 +65,7 @@ public class MySQLDbCreator {
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-			stmt.addBatch("CREATE DATABASE "+databaseName);
+			stmt.addBatch("CREATE DATABASE IF NOT EXISTS " + databaseName);
 			stmt.addBatch("USE "+databaseName);
 			stmt.addBatch("DROP TABLE IF EXISTS contact ");	
 			String strLine;
