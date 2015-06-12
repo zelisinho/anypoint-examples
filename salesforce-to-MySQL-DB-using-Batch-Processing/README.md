@@ -103,7 +103,7 @@ The process records stage of the batch job process the records – each represen
 
 #### Batch Step 1 ####
 
-In this step, the DataMapper first renames the fields so that they match those in the database. The Database connector issues the following query to the database:
+In this step, the DataWeave first renames the fields so that they match those in the database. The Database connector issues the following query to the database:
 
 	SELECT first_name,last_name,email FROM contact WHERE email=#[payload.email]
 
