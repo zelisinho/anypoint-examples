@@ -1,2 +1,2 @@
-firstname;surname;phone;state
-John;Doe;096548763;john.doe@texasComp.com
+firstname,surname,phone,email
+John,Doe,096548763,john.doe@texasComp.com
