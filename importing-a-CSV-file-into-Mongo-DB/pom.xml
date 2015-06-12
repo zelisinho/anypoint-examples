@@ -12,6 +12,10 @@
 		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 	
+	<properties>
+		<weave.version>1.0.0-RC2-SNAPSHOT</weave.version>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 		    <groupId>org.mule.modules</groupId>
@@ -45,26 +49,6 @@
 				<exclusion>
 					<groupId>de.schlichtherle</groupId>
 					<artifactId>truelicense</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.muleesb.modules</groupId>
-			<artifactId>mule-module-data-mapper</artifactId>
-			<version>${mule.version}</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion> 
-					<groupId>com.mulesoft.licm</groupId> 
-					<artifactId>licm</artifactId> 
-				</exclusion> 
-				<exclusion>
-					<groupId>de.schlichtherle</groupId>
-					<artifactId>truelicense</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>de.schlichtherle</groupId>
-					<artifactId>truexml</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency> 
@@ -111,13 +95,6 @@
 			<version>2.7.1</version>
 			<scope>test</scope>
 		</dependency>
-			    
-		<dependency>
-			<groupId>org.mule.modules</groupId> 
-			<artifactId>mule-module-json</artifactId> 
-			<version>${mule.version}</version>
-			<scope>provided</scope>
-		</dependency>	
 		
 		<dependency>
 		    <groupId>de.flapdoodle.embed</groupId>
@@ -125,6 +102,13 @@
 		    <version>1.27</version>
 		    <scope>test</scope>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.mulesoft.weave</groupId>
+            <artifactId>mule-plugin-weave_2.11</artifactId>
+            <version>${weave.version}</version>
+            <scope>provided</scope>
+        </dependency>
 				    
 	</dependencies>
 
