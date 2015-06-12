@@ -74,12 +74,12 @@ public class WebServiceConsumerIT extends FunctionalTestCase
         assertFalse(result.getPayload() instanceof NullPayload);
         assertTrue(result.getPayloadAsString().contains("orderId"));
         
-        result = client.send("http://localhost:8081/inventory", MESSAGE, props);
+        result = client.send("http://localhost:8081/inventory", null, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
-        assertTrue(result.getPayloadAsString().contains("\"productCode\" : \"1412\""));
-        assertTrue(result.getPayloadAsString().contains("\"description\" : \"Prueba2\""));
-        assertTrue(result.getPayloadAsString().contains("\"count\" : 5"));
+        assertTrue(result.getPayloadAsString().contains("\"productCode\": \"1412\""));
+        assertTrue(result.getPayloadAsString().contains("\"description\": \"Prueba2\""));
+        assertTrue(result.getPayloadAsString().contains("\"count\": \"5\""));
         
     }
 
