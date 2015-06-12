@@ -51,15 +51,14 @@ The Client-Side T-Shirt API example consumes a SOAP-based Web service, which acc
 
 ### orderTshirt Flow
 
-The orderTshirt flow accepts HTTP requests that are directed at its address, then turns the JSON payload into XML by using the DataMapper. As the consumed Web service requires an APIKey to be passed with every request, the flow creates an APIKey variable with a hardcoded value, then uses DataMapper to pass this variable to an XML header. With the XML envelope built, the flow then contacts the Web service via the Web Service Consumer. This flow is also responsible for returning a response to the caller to confirm that the order was processed, for this it first transforms the resulting response to JSON and then uses the HTTP Response Builder to set the content type to application/json to make it readable on a browser.
+The orderTshirt flow accepts HTTP requests that are directed at its address, then turns the JSON payload into XML by using the DataWeave transformer. As the consumed Web service requires an APIKey to be passed with every request, the flow creates the XML SOAP header hardcoding the APIKey value using DataWeave transformer. With the XML envelope built, the flow then contacts the Web service via the Web Service Consumer. This flow is also responsible for returning a response to the caller to confirm that the order was processed, so it transforms the resulting response to JSON format.
 
 ### listInventory Flow
 
-When issued a "list inventory" request, the flow directs it to the Web service via the Web service consumer, its response is then transformed into a JSON by the DataMapper, then the HTTP Response Builder sets the message's content type to application/json to make it readable on a browser. Finally, the HTTP connector returns the response to the requester.
+When issued a "list inventory" request, the flow directs it to the Web service via the Web service consumer, its response is then transformed into a JSON by the DataWeave transformer. Finally, the HTTP connector returns the response to the requester.
 
 ### Go Further ###
 
 - Learn more about about the [Web Service Consumer](http://www.mulesoft.org/documentation/display/current/Web+Service+Consumer).
-- Learn more about the [HTTP Response Builder](http://www.mulesoft.org/documentation/display/33X/HTTP+Response+Builder).
-- Learn more about [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).
+- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
 - Learn more about how [Anypoint Service Registry](http://www.mulesoft.org/documentation/display/current/Anypoint+Service+Registry) can help you organize your organization's services.
