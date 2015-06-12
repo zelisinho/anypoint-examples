@@ -6,7 +6,7 @@ This example illustrates how to use the mongoDB connector to import data in a CS
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials).
 
 ###Example Use Case
-In this example we transform a sample CSV file containing sales data into a Map with a key value pair. We use the Datamapper transformer to do so. This Map is basically a collection called customers_Copy. We now use the mongoDB connector embedded in a Message Enricher scope to check if such a collection exists in the database. The message enricher basically enriches the message from #[payload] to #[flowVars['existsCollection']]. This is then used by the choice router to decide whether to route to a mongoDB connector that creates a collection or just use the default option. The last mongoDB connector embedded in the For Each scope, saves the object from the map, iteratively for each of the elements in the collection.
+In this example we transform a sample CSV file containing sales data into a Map with a key value pair. We use the DataWeave transformer to do so. This Map is basically a collection called customers. We now use the mongoDB connector embedded in a Message Enricher scope to check if such a collection exists in the database. The message enricher basically enriches the message from #[payload] to #[flowVars['existsCollection']]. This is then used by the choice router to decide whether to route to a mongoDB connector that creates a collection or just use the default option. The last mongoDB connector embedded in the For Each scope, saves the object from the map, iteratively for each of the elements in the collection.
 
 ###Set Up and Run the Example
 
@@ -71,3 +71,4 @@ The output then shows the inserted objects similar to  what is below.
 * Read more about the mongoDB connector [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
 * Read more about the message enricher scope [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
 * Read more about the For Each connector [here](http://www.mulesoft.org/documentation/display/current/Foreach)
+* Learn more about Anypoint DataWeave [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
