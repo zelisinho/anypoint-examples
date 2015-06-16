@@ -19,7 +19,6 @@
             <db:dynamic-query><![CDATA[select first_name,last_name,gender,dob,hire_date from employees where first_name = "#[payload.getText().split(" ")[0]]" and last_name = "#[payload.getText().split(" ")[1]]"]]></db:dynamic-query>
         </db:select>
         <collection-aggregator doc:name="Aggregate employee records" failOnTimeout="true"/>
-        <logger doc:name="Logger" level="INFO" message="#[payload]"/>
         <dw:transform-message doc:name="Map Collection to CSV">
             <dw:set-payload><![CDATA[%dw 1.0
 %input payload application/java
