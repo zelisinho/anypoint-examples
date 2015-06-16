@@ -47,8 +47,8 @@ public class QueryingDbAndAttachingResultsToAnEmailIT extends FunctionalTestCase
 	private static final Logger log = LogManager.getLogger(QueryingDbAndAttachingResultsToAnEmailIT.class); 
 	
 	private static String MESSAGE;
-	private static final String REPLY_1 = "\"Chava\",\"Puckett\",\"F\",\"1985/09/02\",\"2008/10/12\"";
-	private static final String REPLY_2 = "\"Mona\",\"Sosa\",\"M\",\"1950/09/26\",\"2007/11/27\"";
+	private static final String REPLY_1 = "Chava,Puckett,F,1985-09-02,2008-10-12";
+	private static final String REPLY_2 = "Mona,Sosa,M,1950-09-26,2007-11-27";
 	private static String USER ;
 	private static String PASSWORD;
 	private static String HOST;

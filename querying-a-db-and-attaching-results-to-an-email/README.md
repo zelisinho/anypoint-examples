@@ -3,7 +3,7 @@
 This example application shows you how to query a MySQL database, aggregate the query results and use the Attachment transformer to attach it to an email in a csv format
 
 ###Example use case
-The JSON data containing employee names is sent to the application using the HTTP POST method. The Splitter component then splits the list of employees and queries the MySQL DB individually for employee details. The Collection Aggregrator component aggregates all the employee information into a List. This List is then converted to a .csv file and attached to an email which is sent using SMTP.
+The XML data containing employee names is sent to the application using the HTTP POST method. The Splitter component then splits the list of employees and queries the MySQL DB individually for employee details. The Collection Aggregrator component aggregates all the employee information into a List. This List is then converted to a .csv file and attached to an email which is sent using SMTP.
 
 ### Set up and run the example
 
@@ -25,10 +25,14 @@ The JSON data containing employee names is sent to the application using the HTT
         To=receiveremailid@gmail.com
         From=senderemailid@gmail.com
         Subject=Export from Excel
-        
-5. Now,run the mule application
 
-6. Make a POST request using Postman to your localhost with the following xml code as the message body:
+5. In *Global Elements* tab click on the Generic Database Configuration and **configure its properties** as follows:
+
+        URL=jdbc:mysql://localhost:3306/company?user=user&password=password
+        
+6. Now,run the mule application
+
+7. Make a POST request using Postman to your localhost with the following xml code as the message body:
 
         <root>
          <employees>
@@ -38,9 +42,10 @@ The JSON data containing employee names is sent to the application using the HTT
          </employees>
         </root>
 
-7. Verify that you recieved an email with the attachment which is basically a csv file of the queried employee records.
+8. Verify that you recieved an email with the attachment which is basically a csv file of the queried employee records.
 
 ###Go further
 * Read about the Database Connector [here](http://www.mulesoft.org/documentation/display/current/Database+Connector)
 * Read about the Attachment Transformer Reference [here](http://www.mulesoft.org/documentation/display/current/Attachment+Transformer+Reference)
+* Learn more about Anypoint DataWeave [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
 
