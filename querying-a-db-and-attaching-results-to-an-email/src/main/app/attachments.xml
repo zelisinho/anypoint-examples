@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
-    <smtp:gmail-connector doc:name="Gmail" name="Gmail" validateConnections="true"/>
+<mule version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+
+	<smtp:gmail-connector doc:name="Gmail" name="Gmail" validateConnections="true"/>
     <db:generic-config doc:name="Generic Database Configuration" driverClassName="com.mysql.jdbc.Driver" name="MySQL_Configuration" url="${jdbc.url}"/>
-    <data-mapper:config doc:name="List_Map__To_CSV" name="List_Map__To_CSV" transformationGraphPath="list_map__to_csv.grf"/>
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     <flow name="attachmentsFlow1">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" path="/"/>
@@ -12,7 +19,24 @@
             <db:dynamic-query><![CDATA[select first_name,last_name,gender,dob,hire_date from employees where first_name = "#[payload.getText().split(" ")[0]]" and last_name = "#[payload.getText().split(" ")[1]]"]]></db:dynamic-query>
         </db:select>
         <collection-aggregator doc:name="Aggregate employee records" failOnTimeout="true"/>
-        <data-mapper:transform config-ref="List_Map__To_CSV" doc:name="List&lt;Map> To CSV"/>
+        <logger doc:name="Logger" level="INFO" message="#[payload]"/>
+        <dw:transform-message doc:name="Map Collection to CSV">
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/java
+%output application/csv header=true
+---
+payload map
+{
+	first_name: $[0].first_name,
+  	last_name: $[0].last_name,
+  	gender: $[0].gender,
+  	dob: $[0].dob as :date,
+  	hire_date: $[0].hire_date as :date  	
+}]]></dw:set-payload>
+        </dw:transform-message>
+        
+        <object-to-string-transformer doc:name="CSV Output Object to String"/>
+        
         <set-attachment attachmentName="employees.csv" contentType="text/plain" doc:name="Attachment" value="#[payload]"/>
         <smtp:outbound-endpoint connector-ref="Gmail" doc:name="Send an email" from="${mail.from}" host="${smtp.host}" password="${smtp.password}" port="${smtp.port}" responseTimeout="10000" subject="${mail.subject}" to="${mail.to}" user="${smtp.user}"/>
     </flow>
