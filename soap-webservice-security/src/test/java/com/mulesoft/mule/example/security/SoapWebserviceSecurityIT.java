@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public final class SoapWebserviceSecurityTest extends FunctionalTestCase
+public final class SoapWebserviceSecurityIT extends FunctionalTestCase
 {
     
     @Override
@@ -120,7 +120,7 @@ public final class SoapWebserviceSecurityTest extends FunctionalTestCase
       }
       catch (SOAPFaultException e)
       {
-          assertTrue(e.getMessage().contains("SAML token security failure"));
+          assertTrue(e.getMessage().contains("<wsse:Security> header"));
       }
   }
 
