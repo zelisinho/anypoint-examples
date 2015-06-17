@@ -48,7 +48,11 @@ The following steps outline the process to build this application.
 1. Drop a Batch Scope in your application.
 2. Drop a Poll Component in the Input Phase of the Batch enabling the polling mechanism. Set Frequency and Time units to 10 seconds or any time period you wish. Check the Enable watermarking checkbox, set Variable Name to *timestamp* and Default Expression to:
 
-		#[groovy: new Date(System.currentTimeMillis() - 10000).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", TimeZone.getTimeZone('UTC'))]
+		YESTERDAY
+
+	or to precise time in the following format:
+
+		2015-06-17T10:00:00.000Z
 
 3. Check the Selector checkbox to be able to select how the watermarking variable will be updated. Select *MAX* so the watermarking process updates it to the latest time value. Set the Selector Expression to #payload.LastModifiedDate].
 4. Next, put a Salesforce Connector into the Poll Component. At this point, you can configure the connector with your Salesforce account-specific details and test the connection to Salesforce. 
