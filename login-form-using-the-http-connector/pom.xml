@@ -26,11 +26,5 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-interceptor-module</artifactId>
-			<version>${munit.version}</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>
