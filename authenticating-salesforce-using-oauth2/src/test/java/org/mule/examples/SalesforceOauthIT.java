@@ -79,7 +79,7 @@ public class SalesforceOauthIT extends FunctionalTestCase
     	capabilities.setCapability(
     	    PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);               
 		driver = new PhantomJSDriver(capabilities);
-		driver.get("https://emea.salesforce.com/");
+		driver.get("https://login.salesforce.com/");
 		WebDriverWait waitForScreen = new WebDriverWait(driver, 30);
 		waitForScreen.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
 
