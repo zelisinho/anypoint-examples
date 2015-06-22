@@ -13,7 +13,7 @@
 		<module>authenticating-salesforce-using-oauth2</module>
 		<module>cache-scope-with-fibonacci</module>
 		<module>content-based-routing</module>
-		<module>datamapper-with-flowreflookup</module>
+		<module>dataweave-with-flowreflookup</module>
 		<module>document-integration-using-the-cmis-connector</module>
 		<module>extracting-data-from-LDAP-directory</module>
 		<module>filtering-a-message</module>
