@@ -17,10 +17,9 @@
 		<!-- Needed for the integration tests -->
 		<plugins>
 			<plugin>
-				<groupId>org.mule.tools</groupId>
-				<artifactId>maven-mule-plugin</artifactId>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-app-maven-plugin</artifactId>
 				<configuration>
-					<copyToAppsDirectory>true</copyToAppsDirectory>
 					<inclusions>
 						<inclusion>
 							<groupId>org.mule.modules</groupId>
