@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:ajax="http://www.mulesoft.org/schema/mule/ajax" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd http://www.mulesoft.org/schema/mule/ajax http://www.mulesoft.org/schema/mule/ajax/current/mule-ajax.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+<mule version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:ajax="http://www.mulesoft.org/schema/mule/ajax" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/ajax http://www.mulesoft.org/schema/mule/ajax/current/mule-ajax.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
    <ajax:connector doc:name="Ajax" name="ajaxServer" resourceBase="${app.home}/docroot" serverUrl="http://0.0.0.0:8090/orders"/>
-   <data-mapper:config doc:name="DataMapper" name="JsonToXml" transformationGraphPath="json_to_xml.grf"/>
-   <data-mapper:config doc:name="DataMapper" name="orderSummaryToJson" transformationGraphPath="ordersummarytojson_1.grf"/>
    <http:request-config doc:name="HTTP Request Configuration" host="0.0.0.0" name="HTTP_Request_Configuration"/>
    <flow name="orderRequest">
       <ajax:inbound-endpoint channel="/orders/request" connector-ref="ajaxServer" doc:name="/orders/request" responseTimeout="10000"/>
-      <data-mapper:transform config-ref="JsonToXml" doc:name="JSON to XML"/>
+        <dw:transform-message doc:name="JSON to XML">
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/json
+%output application/xml
+---
+order: {
+  orderId: payload.orderId,
+  customer: payload.customer,
+  orderItems: payload.orderItems.item
+}]]></dw:set-payload>
+        </dw:transform-message>
       <object-to-string-transformer doc:name="Convert Object to String"/>
       <mulexml:xslt-transformer doc:name="Xml to Soap Envelope" maxActiveTransformers="5" maxIdleTransformers="2" xsl-file="XmlToSoapEnvelope.xsl"/>
       <object-to-string-transformer doc:name="Convert Object to String"/>
@@ -14,7 +29,19 @@
       <object-to-string-transformer doc:name="Convert Object to String"/>
       <mulexml:xslt-transformer doc:name="Xml to Soap Envelope" maxActiveTransformers="5" maxIdleTransformers="2" xsl-file="SoapEnvelopeToBodyChild.xslt"/>
       <object-to-string-transformer doc:name="Convert Object to String"/>
-      <data-mapper:transform config-ref="orderSummaryToJson" doc:name="XML to JSON"/>
+        <dw:transform-message doc:name="XML to JSON">
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/xml
+%output application/json
+---
+{
+	orderId: payload.order.orderId,
+	customer: payload.order.customer,
+	orderItems: payload.order.orderItems map {
+		item: $
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
       <object-to-string-transformer doc:name="Convert Object to String"/>
    </flow>
    <flow name="orderProxy">
