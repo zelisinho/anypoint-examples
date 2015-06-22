@@ -143,7 +143,7 @@ Notes:
 #### samsungOrder Flow 
 The samsungOrder flow delegates processing of Samsung order item requests to an external, SOAP-based Web service at Samsung.
 
-The first building block is a [VM Inbound connector](http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference), which provides the flow with the information from the orderService flow. The second building block, an [Anypoint DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference), transforms the message into one suitable for the samsungService flow. After successfully invoking the Samsung Web service, a [Session Variable Transformer](http://www.mulesoft.org/documentation/display/current/Session+Variable+Transformer+Reference) increments the session variable totalValue with the price returned by Samsung. Then, a new DataMapper building block transforms the response again for processing by the orderService flow. In case of error, the flow creates a purchase receipt marked *REJECTED*. After processing in the flow is complete, the flow sends the information back to the orderService flow.
+The first building block is a [VM Inbound connector](http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference), which provides the flow with the information from the orderService flow. The second building block, an [Anypoint DataWeave Transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation), transforms the message into one suitable for the samsungService flow. After successfully invoking the Samsung Web service, a [Session Variable Transformer](http://www.mulesoft.org/documentation/display/current/Session+Variable+Transformer+Reference) increments the session variable totalValue with the price returned by Samsung. Then, a new DataWeave building block transforms the response again for processing by the orderService flow. In case of an error, the flow creates a purchase receipt marked *REJECTED*. After processing in the flow is complete, the flow sends the information back to the orderService flow.
 
 Notes:
 
@@ -210,5 +210,5 @@ Follow the [procedure](http://www.mulesoft.org/documentation/display/current/Imp
 - Learn more about the [Choice Router](http://www.mulesoft.org/documentation/display/current/Choice+Flow+Control+Reference).
 - Learn more about the [VM](http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference) and [JMS](http://www.mulesoft.org/documentation/display/current/JMS+Transport+Reference) connectors. 
 - Learn more about the [Database Connector](http://www.mulesoft.org/documentation/display/current/Database+Connector).
-- Learn more about [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).
+- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
 - Learn more about the [Cache](http://www.mulesoft.org/documentation/display/current/Cache+Scope) and [Foreach](http://www.mulesoft.org/documentation/display/current/Foreach) scopes.
