@@ -30,7 +30,7 @@ public class ImplementingChoiceExceptionStrategyIT extends FunctionalTestCase
 	private static String MESSAGE;
 	private static String MESSAGE_WRONG;
 	private static final String REPLY = "Input data validation passed.";
-	private static final String REPLY_WRONG = "Missing input data: {item name=aa, membership=free, item price per unit=1, item units=10}";
+	private static final String REPLY_WRONG = "Missing input data: {item price per unit=1, membership=free, item name=aa, item units=10}";
     
 	@Override
     protected String getConfigResources()

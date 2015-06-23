@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
     <flow name="choice-error-handlingFlow1">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" path="/">
@@ -7,22 +15,55 @@
         </http:listener>
         <json:json-to-object-transformer doc:name="Convert JSON to HashMap" returnClass="java.util.HashMap"/>
         <custom-filter class="org.mule.examples.InputDataValidator" doc:name="Perform custom validation"/>
-        <set-variable doc:name="Set variable 'order'" value="#[payload]" variableName="order"/>
+        <dw:transform-message doc:name="Set order variable">
+            <dw:set-variable variableName="order"><![CDATA[%dw 1.0
+%input payload application/java
+%output application/java
+---
+payload]]></dw:set-variable>
+
+            
+        </dw:transform-message>
         <set-payload doc:name="Set payload to Email" value="#[payload['email']]"/>
         <regex-filter doc:name="Validate email" pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9  -]*[a-z0-9])?"/>
         <set-payload doc:name="Set Payload" value="Input data validation passed."/>
         <choice-exception-strategy doc:name="Choice Exception Strategy">
             <catch-exception-strategy doc:name="Catch Invalid Data" when="#[exception.causedBy(java.lang.IllegalArgumentException)]">
-                <set-payload doc:name="Set Payload" value="Invalid input data: #[payload]"/>
-                <set-variable doc:name="Set 'statusCode' variable" value="400" variableName="statusCode"/>
-                <set-variable doc:name="Set 'reason' variable" value="Invalid input data" variableName="reason"/>
-            	
+                <dw:transform-message doc:name="Set payload, statusCode and reason variables">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/java
+%output application/java
+---
+"Invalid input data: " ++ payload
+]]></dw:set-payload>
+                    <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
+%output application/java
+---
+"400"]]></dw:set-variable>
+                    <dw:set-variable variableName="reason"><![CDATA[%dw 1.0
+%output application/java
+---
+"Invalid input data"]]></dw:set-variable>
+                </dw:transform-message>
             </catch-exception-strategy>
             <catch-exception-strategy doc:name="Catch Missing Data" when="#[exception.causedBy(java.lang.NullPointerException)]">
-                <set-payload doc:name="Set Payload" value="Missing input data: #[payload]"/>
-                <set-variable doc:name="Set 'statusCode' variable" value="400" variableName="statusCode"/>
-                <set-variable doc:name="Set 'reason' variable" value="Missing input data" variableName="reason"/>
-            </catch-exception-strategy>
+                <dw:transform-message doc:name="Set payload, statusCode and reason variables">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/java
+%output application/java
+---
+"Missing input data: " ++ payload
+]]></dw:set-payload>
+                    <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
+%output application/java
+---
+"400"]]></dw:set-variable>
+                    <dw:set-variable variableName="reason"><![CDATA[%dw 1.0
+%output application/java
+---
+"Missing input data"]]></dw:set-variable>
+                </dw:transform-message>
+                </catch-exception-strategy>
             
         </choice-exception-strategy>
     </flow>
