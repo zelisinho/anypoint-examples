@@ -52,11 +52,11 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
         <dw:transform-message doc:name="Map to CSV">
             <dw:set-payload><![CDATA[%dw 1.0
 %input payload application/java
-%output application/csv header=true
+%output application/csv header=false
 ---
 [] + {
-	age: payload.age,
 	username: payload.username,
+	age: payload.age,
 	age_of: (payload.age > 18) as :boolean
 }]]></dw:set-payload>
         </dw:transform-message>

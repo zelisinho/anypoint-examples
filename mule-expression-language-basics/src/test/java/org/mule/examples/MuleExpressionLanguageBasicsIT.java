@@ -81,7 +81,7 @@ public class MuleExpressionLanguageBasicsIT extends FunctionalTestCase
     @Test
     public void melFlow4Test() throws Exception
     {    
-    	testFileAndClean(CLIENT, "greet4?" + MESSAGE, "\"Mule\",\"1\",\"false\"\n", StringUtils.EMPTY);
+    	testFileAndClean(CLIENT, "greet4?" + MESSAGE, "Mule,1,false", StringUtils.EMPTY);
     }
     
     @Test
@@ -99,7 +99,7 @@ public class MuleExpressionLanguageBasicsIT extends FunctionalTestCase
     private void testFileAndClean(MuleClient client, String param, String reply, String body) throws Exception{
     	testResponse(client, param, REPLY, body);
         assertTrue(new File(DIR).list().length == 1);
-        assertEquals(reply, FileUtils.readFileToString(new File(DIR).listFiles()[0]));
+        assertEquals(StringUtils.trim(reply), StringUtils.trim(FileUtils.readFileToString(new File(DIR).listFiles()[0])));
         FileUtils.deleteDirectory(new File(DIR));
     }
     
