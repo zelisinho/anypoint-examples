@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
-    <data-mapper:config doc:name="map_to_csv" name="map_to_csv" transformationGraphPath="map_to_csv.grf"/>
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
 
 <!-- Example 1 Start  How to access properties using MEL, how to set a payload dynamically -->   
@@ -43,7 +49,18 @@
 
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
         <set-payload doc:name="Set Payload to formatted output" value="#[['username' : message.inboundProperties['http.query.params'].username, 'age' : message.inboundProperties['http.query.params'].age]]"/>
-        <data-mapper:transform config-ref="map_to_csv" doc:name="Map To CSV"/>
+        <dw:transform-message doc:name="Map to CSV">
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/java
+%output application/csv header=true
+---
+[] + {
+	age: payload.age,
+	username: payload.username,
+	age_of: (payload.age > 18) as :boolean
+}]]></dw:set-payload>
+        </dw:transform-message>
+
         <file:outbound-endpoint doc:name="Save to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
         <byte-array-to-string-transformer doc:name="Byte Array to String"/>
         <set-payload doc:name="Set Payload to Hello 'username'" value="Hello #[flowVars.username]"/>
