@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.6.2" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jdbc="http://www.mulesoft.org/schema/mule/jdbc" xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:oauth2="http://www.mulesoft.org/schema/mule/oauth2" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/oauth2 http://www.mulesoft.org/schema/mule/oauth2/current/mule-oauth2.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:oauth2="http://www.mulesoft.org/schema/mule/oauth2" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/oauth2 http://www.mulesoft.org/schema/mule/oauth2/current/mule-oauth2.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
     <oauth2:token-manager-config doc:name="Token Manager Config" name="Token_Manager_Config"/>    
     <http:request-config basePath="/2.0" doc:name="HTTP Request Configuration" host="api.box.com" name="HTTP_Request_Configuration_HTTPS" port="443" protocol="HTTPS" tlsContext-ref="TLS_Context"> 
@@ -28,6 +32,7 @@
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Box User Login" path="web"> 
             <http:response-builder statusCode="302">
                 <http:header headerName="Location" value="https://localhost:8082/authorization?onCompleteRedirectTo=http://localhost:8081/web/loginDone"/>
+
             </http:response-builder>  
         </http:listener>  
         <logger doc:name="Logger" level="INFO" message="Redirecting user to Box login page"/>  
@@ -39,6 +44,7 @@
         <http:request config-ref="HTTP_Request_Configuration_HTTPS" doc:name="Query user resource using token" method="GET" path="/search">
             <http:request-builder>
                 <http:query-param paramName="query" value="mule"/>
+
             </http:request-builder>
         </http:request>
         <object-to-string-transformer doc:name="Object to String"/>

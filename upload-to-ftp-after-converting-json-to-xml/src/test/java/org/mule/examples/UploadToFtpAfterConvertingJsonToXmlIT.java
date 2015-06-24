@@ -23,7 +23,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
-import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
 
@@ -40,8 +39,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 	private static String PATH;
 	
 	private static String MESSAGE = "";
-	private static String REPLY = "<?xmlversion=\"1.0\"encoding=\"UTF-8\"?>\n<employees>\n<employee>\n<name>John</name>\n<lastName>Doe</lastName>\n<addresses>\n<address>\n<street>123MainStreet</street>\n<zipCode>111</zipCode>\n</address>\n<address>\n<street>987CypressAvenue</street>\n<zipCode>222</zipCode>\n</address>\n</addresses>\n</employee>\n<employee>\n<name>Jane</name>\n<lastName>Doe</lastName>\n<addresses>\n<address>\n<street>345MainStreet</street>\n<zipCode>111</zipCode>\n</address>\n<address>\n<street>654SunsetBoulevard</street>\n<zipCode>333</zipCode>\n</address>\n</addresses>\n</employee>\n</employees>";
-	
+	private static String REPLY = "";
     @Override
     protected String getConfigResources()
     {
@@ -58,6 +56,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
     	}
     	try {
 			MESSAGE = FileUtils.readFileToString(new File("./src/test/resources/message.json"));
+			REPLY = FileUtils.readFileToString(new File("./src/test/resources/reply.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    	    
@@ -83,29 +82,19 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
     
 
     @Test
-    public void testDataMapper() throws Exception
+    public void testDataWeave() throws Exception
     {
-    	
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         MuleMessage result = client.send("http://0.0.0.0:8081/", MESSAGE, props);
-        assertEquals(REPLY, result.getPayloadAsString().replace(" ", ""));
+        assertEquals(REPLY.replaceAll("\\s",""), result.getPayloadAsString().replaceAll("\\s",""));
         
     }
 
-    private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 
 	@Override
 	protected Properties getStartUpProperties() {
-		Properties properties = new Properties(super.getStartUpProperties());
-
-		String pathToResource = MAPPINGS_FOLDER_PATH;
-		File graphFile = new File(pathToResource);
-
-		properties.put(MuleProperties.APP_HOME_DIRECTORY_PROPERTY,
-				graphFile.getAbsolutePath());
-
-		return properties;
+		return new Properties(super.getStartUpProperties());
 	}	    
 }
