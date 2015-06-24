@@ -20,8 +20,8 @@ The steps below are only needed in this particular example so that you can test 
 
 1. Go to Box's developer portal: [developers.box.com](https://developers.box.com/)
 1. If you do not have an account, you need to create one [here](https://app.box.com/signup/personal). If you have one, click **My apps** in the upper-right corner of the [page](https://developers.box.com/).
-2. Click **Create a Box Application** in the panel on the right. Give it any name, such as MyProxy, then select the **Content API**. 
-1. Click **Configure Application**.
+2. Click **Create a Box Application** in the panel on the right. Give it any name, such as MyProxy, then select the **Box Content API**. 
+1. Click **Configure Your Application**.
 1. Look for the *client_id* and the *client_secret*. Copy these to a safe place, as you will need them later.
 1. Add a *redirect_url*. For the purpose of this exercise, set it to *https://localhost:8082/redirectUrl*.
 
