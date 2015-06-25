@@ -55,7 +55,7 @@ Complete the following procedure to create, then run this example in your own in
 
 ###How it Works 
 
-The application is divided into two parts, each stored on separate flow files (.mflow files) in the Mule project.
+The application is divided into two parts, each stored on separate flow files (.xml files) in the Mule project.
 
 The ***Hospital Admissions SOA*** file contains the heart of the hospital's SOAP proxy Web service application. It accepts SOAP requests from family doctors, then processes them to locate or create EHRs or episodes. The main flow, admitPatientService, orchestrates calls to services contained within the mocks.mflow file, then ultimately creates and returns a response to the end user.
 
