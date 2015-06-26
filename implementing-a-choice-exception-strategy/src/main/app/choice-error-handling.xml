@@ -15,15 +15,9 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
         </http:listener>
         <json:json-to-object-transformer doc:name="Convert JSON to HashMap" returnClass="java.util.HashMap"/>
         <custom-filter class="org.mule.examples.InputDataValidator" doc:name="Perform custom validation"/>
-        <dw:transform-message doc:name="Set order variable">
-            <dw:set-variable variableName="order"><![CDATA[%dw 1.0
-%input payload application/java
-%output application/java
----
-payload]]></dw:set-variable>
 
-            
-        </dw:transform-message>
+        <set-variable variableName="order" value="#[payload]" doc:name="Variable"/>
+
         <set-payload doc:name="Set payload to Email" value="#[payload['email']]"/>
         <regex-filter doc:name="Validate email" pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9  -]*[a-z0-9])?"/>
         <set-payload doc:name="Set Payload" value="Input data validation passed."/>
