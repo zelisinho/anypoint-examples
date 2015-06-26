@@ -25,14 +25,12 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
         <mulexml:namespace prefix="ns1" uri="http://www.mule-health.com/SOA/model/1.0"/>
     </mulexml:namespace-manager>
     
-	<object-to-string-transformer doc:name="Object to String" name="Object_to_String"/>
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="${http.port}"/>
     <http:request-config doc:name="HTTP Request Configuration" host="0.0.0.0" name="HTTP_Request_Configuration" port="${http.port}"/>
     
     <flow doc:description="AdmssionService SOAP Web service which accepts calls and processes request to perform pre-admissions activities in the hospital's systems." name="admitPatientService">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="AdmissionService" path="AdmissionService"/>
         <cxf:proxy-service doc:name="Proxy service" namespace="http://www.mule-health.com/SOA/service/admission/1.0" payload="envelope" port="AdmissionPort" service="AdmissionService" wsdlLocation="service/AdmissionService.wsdl" />
-        <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
 
         <flow-ref doc:name="Upsert Patient" name="upsertPatient"/>
         <flow-ref doc:name="Create Episode" name="createEpisode"/>
@@ -62,10 +60,8 @@ ns0#"admitSubjectResponse": {
 	}
 }]]></dw:set-payload>
         </dw:transform-message>
-        <object-to-string-transformer doc:name="Object to String"/>
-
-
     </flow>
+    
     <sub-flow doc:description="Uploads and inserts patient data into a hospital system." name="upsertPatient">
         <dw:transform-message doc:name="admitSubject to upsertPatient">
             <dw:set-payload><![CDATA[%dw 1.0
@@ -90,10 +86,9 @@ ns0#"upsertPatient": {
 	}
 }]]></dw:set-payload>
         </dw:transform-message>
-        <object-to-string-transformer doc:name="Object to String"/>
         <flow-ref doc:name="Invoke Patient Service" name="invokePatientService"/>
-        <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
     </sub-flow>
+    
     <sub-flow doc:description="Submits calls to the PatientService Web service." name="invokePatientService">
         <cxf:proxy-client doc:name="Proxy client" payload="body"/>
         <http:request config-ref="HTTP_Request_Configuration" doc:name="PatientService" method="POST" path="PatientService"/>
@@ -111,14 +106,12 @@ ns0#"createEpisode": {
 	ns1#"PatientId": payload.upsertPatientResponse.ns1#PatientId
 }]]></dw:set-payload>
         </dw:transform-message>
-        <object-to-string-transformer doc:name="Object to String"/>
         <flow-ref doc:name="Invoke EHR Service" name="invokeEHRService"/>
-        <mulexml:dom-to-xml-transformer doc:name="DOM to XML" returnClass="java.lang.String"/>
     </sub-flow>
+    
     <sub-flow doc:description="Submits calls to the EHR Web service." name="invokeEHRService">
         <cxf:proxy-client doc:name="Proxy client" payload="body"/>
         <http:request config-ref="HTTP_Request_Configuration" doc:name="EHRService" method="POST" path="EHRService"/>
-
     </sub-flow>
 
 </mule>
