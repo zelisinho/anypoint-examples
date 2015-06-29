@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-netsuite</artifactId>
-            <version>4.0.12</version>
+            <version>5.0.0</version>
         </dependency>
     	<dependency>
             <groupId>org.mule.modules</groupId>
