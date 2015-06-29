@@ -72,6 +72,8 @@
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
 		<sfdc.version>6.1.0</sfdc.version>
 		<mule.tools.version>1.0</mule.tools.version>
+		<weave.version>1.0.0-RC2-SNAPSHOT</weave.version>
+		<mule.test.timeoutSecs>60</mule.test.timeoutSecs>
     </properties>
 
     <build>
