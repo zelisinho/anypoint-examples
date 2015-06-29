@@ -14,7 +14,6 @@
 
 	<properties>
 		<wday.rev.version>4.1.1</wday.rev.version>
-		<weave.version>1.0.0-RC2-SNAPSHOT</weave.version>
 	</properties>
 
 	<dependencies>

@@ -11,10 +11,6 @@
 		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<weave.version>1.0.0-RC2-SNAPSHOT</weave.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.mulesoft.muleesb.modules</groupId>
