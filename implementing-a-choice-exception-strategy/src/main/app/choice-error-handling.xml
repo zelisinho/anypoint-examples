@@ -15,21 +15,16 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
         </http:listener>
         <json:json-to-object-transformer doc:name="Convert JSON to HashMap" returnClass="java.util.HashMap"/>
         <custom-filter class="org.mule.examples.InputDataValidator" doc:name="Perform custom validation"/>
-
-        <set-variable variableName="order" value="#[payload]" doc:name="Variable"/>
+		<set-variable variableName="order" value="#[payload]" doc:name="Set order variable"/>
 
         <set-payload doc:name="Set payload to Email" value="#[payload['email']]"/>
         <regex-filter doc:name="Validate email" pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9  -]*[a-z0-9])?"/>
         <set-payload doc:name="Set Payload" value="Input data validation passed."/>
         <choice-exception-strategy doc:name="Choice Exception Strategy">
             <catch-exception-strategy doc:name="Catch Invalid Data" when="#[exception.causedBy(java.lang.IllegalArgumentException)]">
-                <dw:transform-message doc:name="Set payload, statusCode and reason variables">
-                    <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
-%output application/java
----
-"Invalid input data: " ++ payload
-]]></dw:set-payload>
+
+                <dw:transform-message doc:name="Set statusCode and reason variables">
+
                     <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
 %output application/java
 ---
@@ -39,15 +34,12 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 ---
 "Invalid input data"]]></dw:set-variable>
                 </dw:transform-message>
+                <set-payload value="Invalid input data: #[payload]" doc:name="Set Payload"/>
             </catch-exception-strategy>
             <catch-exception-strategy doc:name="Catch Missing Data" when="#[exception.causedBy(java.lang.NullPointerException)]">
-                <dw:transform-message doc:name="Set payload, statusCode and reason variables">
-                    <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
-%output application/java
----
-"Missing input data: " ++ payload
-]]></dw:set-payload>
+
+                <dw:transform-message doc:name="Set statusCode and reason variables">
+
                     <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
 %output application/java
 ---
@@ -57,6 +49,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 ---
 "Missing input data"]]></dw:set-variable>
                 </dw:transform-message>
+                <set-payload value="Missing input data: #[payload]" doc:name="Set Payload"/>
                 </catch-exception-strategy>
             
         </choice-exception-strategy>
