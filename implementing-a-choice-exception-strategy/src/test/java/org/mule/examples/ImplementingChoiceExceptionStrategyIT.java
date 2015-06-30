@@ -10,6 +10,7 @@ package org.mule.examples;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
@@ -30,7 +32,7 @@ public class ImplementingChoiceExceptionStrategyIT extends FunctionalTestCase
 	private static String MESSAGE;
 	private static String MESSAGE_WRONG;
 	private static final String REPLY = "Input data validation passed.";
-	private static final String REPLY_WRONG = "Missing input data: {item price per unit=1, membership=free, item name=aa, item units=10}";
+	private static final String[] REPLY_WRONG = {"Missing input data:", "item price per unit=1", "membership=free", "item name=aa", "item units=10"};
     
 	@Override
     protected String getConfigResources()
@@ -61,8 +63,10 @@ public class ImplementingChoiceExceptionStrategyIT extends FunctionalTestCase
         
         result = client.send("http://localhost:8081/", MESSAGE_WRONG, props);
         assertNotNull(result);
-        assertEquals("400", result.getInboundProperty("http.status"));        
-        assertEquals(REPLY_WRONG, result.getPayloadAsString());
+        assertEquals("400", result.getInboundProperty("http.status"));
+        for (String item : REPLY_WRONG) {
+        	assertTrue(StringUtils.contains(result.getPayloadAsString(), item));
+        }
         
     }
 
