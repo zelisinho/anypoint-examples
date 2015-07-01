@@ -24,7 +24,9 @@ The example application connects to the LDAP directory and retrieves a list of L
    
 2. Install Apache Directory Studio from [http://directory.apache.org/studio/downloads.html](http://directory.apache.org/studio/downloads.html).
  
-3. Navigate to *etc\openldap\slapd.conf* in your OpenLDAP installation directory and set rootpw in **BDB database definitions** section to *root*.
+3. Navigate to *etc\openldap\slapd.conf* in your OpenLDAP installation directory and set rootpw in **BDB database definitions** section to *root*. You may also need to encrypt the password using the following command before adding it to the slapd.conf file:
+		
+		slappasswd -h {SHA} -s <password>
    
 4. Start the LDAP server
    * For Windows: Enter **libexec\StartLDAP.cmd** in the command line.
