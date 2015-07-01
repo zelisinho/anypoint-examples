@@ -60,7 +60,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         MuleMessage result = client.send("http://localhost:8081", "", props);
-        assertEquals(result.getPayloadAsString(), HTML);
+        assertEquals(result.getPayloadAsString().replaceAll("\\s", ""), HTML.replaceAll("\\s", ""));
 	}
 	
 	@Test
