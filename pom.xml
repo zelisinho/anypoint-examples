@@ -68,11 +68,10 @@
         <assembly-descriptor-version>1.0.13</assembly-descriptor-version>
         <muleServerId>org.mule.tooling.server.3.7.0.ee</muleServerId>
         <muleConfigVersion>EE-3.7.0</muleConfigVersion>
-        <mule.version>3.7.0-SNAPSHOT</mule.version>
+        <mule.version>3.7.0</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
-		<sfdc.version>6.1.0</sfdc.version>
+		<sfdc.version>6.2.1</sfdc.version>
 		<mule.tools.version>1.0</mule.tools.version>
-		<weave.version>1.0.0-RC2-SNAPSHOT</weave.version>
 		<mule.test.timeoutSecs>60</mule.test.timeoutSecs>
     </properties>
 
@@ -391,23 +390,21 @@
             <layout>default</layout>
         </repository>
         <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Snapshots Repository</name>
+            <url>https://repository.mulesoft.org/snapshots/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>mulesoft-public</id>
+            <name>MuleSoft Public Repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
             <id>jboss</id>
             <name>JBoss</name>
             <url>http://repository.jboss.com/</url>
-        </repository>
-        <repository>
-            <id>oss-sonatype-snapshots</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>codehaus-snaphosts</id>
-            <name>Codehaus Snapshots</name>
-            <url>http://snapshots.repository.codehaus.org/</url>
-        </repository>
-        <repository>
-            <id>codehaus-releases</id>
-            <name>CodeHaus Releases</name>
-            <url>http://repository.codehaus.org/</url>
         </repository>
     </repositories>
 
