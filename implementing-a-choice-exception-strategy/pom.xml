@@ -34,7 +34,7 @@
     <dependency>
             <groupId>com.mulesoft.weave</groupId>
             <artifactId>mule-plugin-weave_2.11</artifactId>
-            <version>1.0.0-RC2-SNAPSHOT</version>
+            <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
