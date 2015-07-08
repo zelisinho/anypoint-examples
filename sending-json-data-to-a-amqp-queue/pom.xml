@@ -18,7 +18,6 @@
 			<artifactId>amqp-client</artifactId>
 			<version>3.3.4</version>
 		</dependency>
-				
 		<dependency>
             <groupId>org.mule.transports</groupId>
             <artifactId>mule-transport-amqp</artifactId>
@@ -31,19 +30,11 @@
 			<version>0.24</version>
 			<scope>test</scope>
 		</dependency>
-		        
-    <dependency>
+	    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-http</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-	<repositories>
-        <repository>
-            <id>muleforge-releases</id>
-            <name>MuleForge Snapshot Repository</name>
-            <url>http://repository-master.mulesoft.org/releases/</url>
-        </repository>
-    </repositories>
 </project>
