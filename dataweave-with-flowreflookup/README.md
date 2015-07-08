@@ -78,7 +78,7 @@ Using two flows, this application accepts CSV files which contain account inform
 
 #### CreateNewSalesforceAccountFlow ####
 
-The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – company_name, company_address, etc. – to output fields that Salesforce uses in a collection. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataWeave transformer.
+The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – company_name, company_address, etc. – to output fields that Salesforce uses in a collection.
 
 The DataWeave also utilizes a flow lookup. Flow lookup accesses another flow in the application to acquire the sales region for each new account. DataWeave invokes the LookupSalesRegionFlow which uses the company_state data to determine into which sales region the account falls. DataWeave then maps this newly acquired data to the custom field in Salesforce, Region__c.
 
