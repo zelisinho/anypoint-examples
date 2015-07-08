@@ -8,7 +8,7 @@ An older, legacy system may be limited in the form of data that it accepts. For 
 
 ### Assumptions 
 
-This document assumes that you are familiar with Mule ESB and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).  Further, this example assumes you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/33X/Mule+Application+Architecture), SOAP Web services and using [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference) in Anypoint Studio.
+This document assumes that you are familiar with Mule ESB and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).  Further, this example assumes you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/33X/Mule+Application+Architecture), SOAP Web services and using [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation) in Anypoint Studio.
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface (GUI), and includes configuration details for both the visual and XML editors.
 
@@ -34,16 +34,12 @@ Skip ahead to the next section if you prefer to simply examine this example code
 
 ### How it Works 
 
-Using a single flow, this application exposes a SOAP Web service which accepts new order requests from customers. A Java component processes the order, returning a response to the caller to advise that the order has been accepted. Asynchronously (relative to the HTTP request-response activity), Mule uses a DataMapper transformer to map data from the shipping order POJO into a CSV file, which it sends to the legacy system for fulfillment. In this example, since there is no actual legacy system to perform order fulfillment, the File endpoint at the end of the flow simply outputs the CSV file to the Output folder in the src/test/resources folder within the application. 
+Using a single flow, this application exposes a SOAP Web service which accepts new order requests from customers. A Java component processes the order, returning a response to the caller to advise that the order has been accepted. Asynchronously (relative to the HTTP request-response activity), the application uses a DataWeave transformer to map data from the shipping order POJO into a CSV file, which it sends to the legacy system for fulfillment. In this example, since there is no actual legacy system to perform order fulfillment, the File endpoint at the end of the flow simply outputs the CSV file to the Output folder in the src/main/resources folder within the application. 
 
 There are a couple important configurations to take note of in this example application.
 
 - **The application exposes a SOAP Web service**.  Configured as a JAX-WS service, the CXF component in the flow makes the Web service available using the Apache CXF Web services framework.
-- **The DataMapper transforms and maps data from POJO to CSV in one step**. Where the input and output fields have identical names, DataMapper intelligently, and automatically, maps input to output, as with the ShippingId. Otherwise, you can quickly map input to output manually by clicking and dragging input fields to output fields in the Data Mapping Console (see below). Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataMapper transformer. Click **Preview** to examine the CSV output that the DataMapper will produce when the application processes orders.
-	
-	In this example, DataMapper uses **Rules** to map a nested list of items. For each item on the order list, DataMapper must map the billing and shipping address information to the output CSV file. To do so, the application's designer created each rule individually, then clicked-and-dragged each rule to map them all to CSV output file values.
-
-For more information on mapping nested elements, refer to [Mapping Elements Inside Lists](http://www.mulesoft.org/documentation/display/current/Mapping+Elements+Inside+Lists).
+- **DataWeave transforms and maps data from POJO to CSV in one step**. Click **Preview** to examine the CSV output that the DataWeave transformer will produce when the application processes orders.
 
 ### Documentation 
 
@@ -57,4 +53,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 ### Go Further 
 - Learn more about the [CXF Component in Studio](http://www.mulesoft.org/documentation/display/current/CXF+Component+Reference).
-- Learn more about the [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference) transformer in Studio.
+- Learn more about the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).

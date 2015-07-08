@@ -28,8 +28,8 @@ public class ShippingOrder {
 	
 	public ShippingOrder(String shippingId, Address billingAddress, Address shippingAddress, Order order){
 		setShippingId(shippingId);
-		setBillingAdddress(billingAddress);
-		setShippingAdddress(shippingAddress);
+		setBillingAddress(billingAddress);
+		setShippingAddress(shippingAddress);
 		setOrder(order);
 	}
 	
@@ -56,7 +56,7 @@ public class ShippingOrder {
 		return this.billingAddress;
 	}
 	
-	public void setBillingAdddress(Address billingAddress){
+	public void setBillingAddress(Address billingAddress){
 		this.billingAddress = billingAddress;
 	}
 
@@ -65,7 +65,7 @@ public class ShippingOrder {
 		return this.shippingAddress;
 	}
 	
-	public void setShippingAdddress(Address shippingAddress){
+	public void setShippingAddress(Address shippingAddress){
 		this.shippingAddress = shippingAddress;
 	}
 
