@@ -43,7 +43,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     </flow>
 <!-- Example 3 End -->
  
-<!-- Example 4 Start  How to create a map, how to evaluate a condition with DataMapper -->
+<!-- Example 4 Start  How to create a map, how to evaluate a condition with DataWeave -->
     <flow name="docs-greetingFlow4">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="greet4"/>
 

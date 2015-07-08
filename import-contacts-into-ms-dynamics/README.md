@@ -1,6 +1,6 @@
 # Import contacts into Microsoft Dynamics CRM
 
-This application uses pre-packaged tools to intelligently connect with Microsoft Dynamics CRM. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Dynamics CRM user account. It uses the Anypoint DataMapper Transformer to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
+This application uses pre-packaged tools to intelligently connect with Microsoft Dynamics CRM. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Dynamics CRM user account. It uses the Anypoint DataWeave Transformer to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
 
 ### Connect with Microsoft Dynamics CRM ###
 
@@ -10,7 +10,7 @@ At times, you may find that you need to connect one or more of your organization
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). 
+This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface.
 
@@ -52,7 +52,7 @@ Complete the following procedure to create, then run this example in your own in
 
 Using a single flow with four elements, this application accepts CSV files which contain contact information, then uploads the contacts to MS Dynamics. 
 
-The [File connector](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – firstname, surname, etc. – to output fields that MS Dynamics uses in a collection. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataMapper transformer. When it has converted all the contacts in the file to a collection of MS Dynamics-friendly data, the application uses a [MS Dynamics Connector](https://www.mulesoft.com/resources/esb/ms-dynamics-integration) to push data into your MS Dynamics account. The connector's configurations specify the **operation** – *Create* – and the **Logical name** – *contact* – which dictate exactly how the data uploads to MS Dynamics; in this case, it creates new contacts. 
+The [File connector](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – firstname, surname, etc. – to output fields that MS Dynamics uses in a collection. When it has converted all the contacts in the file to a collection of MS Dynamics-friendly data, the application uses a [MS Dynamics Connector](https://www.mulesoft.com/resources/esb/ms-dynamics-integration) to push data into your MS Dynamics account. The connector's configurations specify the **operation** – *Create* – and the **Logical name** – *contact* – which dictate exactly how the data uploads to MS Dynamics; in this case, it creates new contacts. 
 
 ### Documentation ###
 
@@ -66,4 +66,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 ### Go Further ###
 
-- Learn more about [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).	
+- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).	

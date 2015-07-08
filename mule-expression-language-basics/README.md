@@ -87,15 +87,15 @@ In this flow, you will use MEL to:
 * dynamically set the payload
 
 
-#####Flow 4 –  Creating Maps and Evaluating Conditions with DataMapper
+#####Flow 4 –  Creating Maps and Evaluating Conditions with DataWeave
 
-In this flow, like in the previous one, the Mule application saves a CSV file with user data and returns a greeting. The call to the service includes two parameters, username and age. The service stores these two parameters and adds a third boolean parameter that evaluates if the user is above a certain age (if age > 18). In this case, however, the mapping between input and output fields and the generation of the third field is performed by a DataMapper component.
+In this flow, like in the previous one, the Mule application saves a CSV file with user data and returns a greeting. The call to the service includes two parameters, username and age. The service stores these two parameters and adds a third boolean parameter that evaluates if the user is above a certain age (if age > 18). In this case, however, the mapping between input and output fields and the generation of the third field is performed by a DataWeave component.
 
 In this example, you will use MEL to:
 
 * set a flow variable in the message
 * set a map as your message payload
-* generate an output based on evaluating the input within DataMapper
+* generate an output based on evaluating the input within DataWeave
 * access an inbound property
 * dynamically set the payload
 

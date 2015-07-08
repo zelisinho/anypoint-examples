@@ -1,15 +1,15 @@
 # Importing an attached csv file using the IMAP connector
 
 
-This example shows you how to use the IMAP connector to facilitate information transfer through email. It also illustrates how you can use the datamapper to transform a CSV file to XML.
+This example shows you how to use the IMAP connector to facilitate information transfer through email. It also illustrates how you can use DataWeave to transform a CSV file to XML.
 
 ### Assumptions
 
-This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [Datamapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference) and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). 
+This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation) and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). 
 
 ### Example Use Case
 
-In this example a CSV file containing sample sales data which has been received as an attachment in an email inbox is imported using the IMAP connector. The Datamapper then converts the CSV file to the XML format. The logger then logs this data on the studio console.
+In this example a CSV file containing sample sales data which has been received as an attachment in an email inbox is imported using the IMAP connector. The DataWeave transformer then converts the CSV file to the XML format. The logger then logs this data on the studio console.
 
 ### Set Up and Run this Example
 
@@ -53,14 +53,6 @@ In this example a CSV file containing sample sales data which has been received 
 
 * Read more about the [IMAP Connector](http://www.mulesoft.org/documentation/display/current/IMAP+Connector)
 
-* Read more about the [IMAP Transport Reference] (http://www.mulesoft.org/documentation/display/current/IMAP+Transport+Reference)
+* Read more about the [IMAP Transport Reference](http://www.mulesoft.org/documentation/display/current/IMAP+Transport+Reference)
 
-* Read more about the [Datamapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference)
-
-
-
-
-
-
-
-   
+* Read more about the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).

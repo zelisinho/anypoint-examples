@@ -4,13 +4,13 @@ The Workday Anypoint Connector facilitates connections between Mule integration 
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). 
+This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). 
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface.
 
 ### Example Use Case ###
 
-The application accepts an XML code which containing the required customer information (customer name, status and category). It parses this xml using the Datamapper component and creates a new customer record in a Workday instance.
+The application accepts an XML code which containing the required customer information (customer name, status and category). It parses this xml using the DataWeave component and creates a new customer record in a Workday instance.
 
 ### Set Up and Run the Example ###
 
@@ -45,7 +45,7 @@ Then click **OK** to save your changes.
 
 Using a single flow with four elements, this application accepts XML with the customer information, then uploads a customer to Workday. 
 
-The [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) listens to POST requests at the predefined URL. When such request arrives, it converts the input stream using [Byte Array to String transformer](http://www.mulesoft.org/documentation/display/current/Using+Transformers) and passes the content to the [DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). This transformer converts the format of the data from XML to a POJO, a Workday request. Each mapping earns an arrow which helps you to visualize the activity that occurs within the DataMapper transformer. After data conversion, the application uses a [Workday Connector](http://www.mulesoft.org/documentation/display/current/Workday+Connector) to push data into your Workday system. The connector's configuration specifies the **operation** – *Put customer*. 
+The [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) listens to POST requests at the predefined URL. When such request arrives, it converts the input stream using [Byte Array to String transformer](http://www.mulesoft.org/documentation/display/current/Using+Transformers) and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer converts the format of the data from XML to a POJO, a Workday request. After data conversion, the application uses a [Workday Connector](http://www.mulesoft.org/documentation/display/current/Workday+Connector) to push data into your Workday system. The connector's configuration specifies the **operation** – *Put customer*. 
 
 ### Documentation ###
 
@@ -59,4 +59,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 ### Go Further ###
 
-- Learn more about the [Anypoint DataMapper Transformer](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).
+- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).

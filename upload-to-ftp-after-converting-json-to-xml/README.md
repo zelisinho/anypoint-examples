@@ -4,12 +4,12 @@ This example application illustrates the concept of datamapping to convert JSON 
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference). 
+This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). 
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface.
 
 ###Example Use Case
-In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the datamapper transformer after which the message payload is uploaded to the FTP folder. 
+In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the DataWeave transformer after which the message payload is uploaded to the FTP folder. 
 
 ###Set up and run the example
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
@@ -74,6 +74,6 @@ Studio includes a feature that enables you to easily export all the documentatio
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
    
 ### Go further
-* Read about the Datamapper Transformer [here](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference)
+* Read about the DataWeave Transformer [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
 * Read about the Mule FTP endpoint [here](http://www.mulesoft.org/documentation/display/current/FTP+Transport+Reference)
 * Read about the Mule SFTP endpoint [here](http://www.mulesoft.org/documentation/display/current/SFTP+Transport+Reference)

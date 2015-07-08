@@ -1,6 +1,6 @@
 # Importing a CSV file into mongoDB
 
-This example illustrates how to use the mongoDB connector to import data in a CSV format from a local directory into mongoDB. This examples also covers other important components in the studio including the datamapper and Scopes such as the Message Enricher and Foreach.
+This example illustrates how to use the mongoDB connector to import data in a CSV format from a local directory into mongoDB. This examples also covers other important components in the studio including DataWeave and Scopes such as the Message Enricher and Foreach.
 
 ###Assumption
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials).

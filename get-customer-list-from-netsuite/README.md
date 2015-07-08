@@ -54,4 +54,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 - Learn more about [Connection Testing](http://www.mulesoft.org/documentation/display/current/Testing+Connections).
 - Learn more about [NetSuite Connector](http://www.mulesoft.org/documentation/display/35X/NetSuite+Connector#NetSuiteConnector-Assumptions)
-- Learn more about [Anypoint DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).	
+- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).	
