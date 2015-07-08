@@ -54,4 +54,3 @@ In this example, the database connector retrieves data from a MySQL database lis
 * View this [document](http://www.mulesoft.org/documentation/display/current/Database+Connector) for more information on how to configure a database connector on your machine.
 * Access plain [Reference material](http://www.mulesoft.org/documentation/display/current/Database+Connector+Reference) for the Database Connector.
 * Learn more about [DataSense](http://www.mulesoft.org/documentation/display/current/DataSense).
-* Learn more about [DataMapper](http://www.mulesoft.org/documentation/display/current/Datamapper+User+Guide+and+Reference).
