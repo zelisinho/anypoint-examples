@@ -59,6 +59,7 @@
 		<!-- <module>importing-a-csv-file-into-ms-sharepoint</module> -->
 		<!-- <module>import-leads-into-salesforce</module> -->
 		<!-- <module>processing-orders-with-dataweave-and-APIkit</module> -->
+		<module>MUnit-short-tutorial</module>
     </modules>
 
     <properties>
@@ -67,7 +68,7 @@
         <eclipsePluginVersion>2.8</eclipsePluginVersion>
         <jdkName>JavaSE-1.8</jdkName>
         <jdk.version>1.8</jdk.version>
-        <assembly-descriptor-version>1.0.13</assembly-descriptor-version>
+        <assembly-descriptor-version>1.0.14</assembly-descriptor-version>
         <muleServerId>org.mule.tooling.server.3.7.0.ee</muleServerId>
         <muleConfigVersion>EE-3.7.0</muleConfigVersion>
         <mule.version>3.7.0</mule.version>
