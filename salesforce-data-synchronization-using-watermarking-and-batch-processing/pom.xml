@@ -12,6 +12,23 @@
 		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-app-maven-plugin</artifactId>
+				<configuration>
+					<inclusions>
+						<inclusion>
+							<groupId>org.mule.modules</groupId>
+							<artifactId>mule-module-sfdc</artifactId>
+						</inclusion>
+					</inclusions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
             <groupId>com.mulesoft.muleesb.modules</groupId>
