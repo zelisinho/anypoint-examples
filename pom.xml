@@ -59,7 +59,7 @@
 		<!-- <module>importing-a-csv-file-into-ms-sharepoint</module> -->
 		<!-- <module>import-leads-into-salesforce</module> -->
 		<!-- <module>processing-orders-with-dataweave-and-APIkit</module> -->
-		<module>MUnit-short-tutorial</module>
+		<module>munit_short_tutorial</module>
     </modules>
 
     <properties>
@@ -239,6 +239,27 @@
 		                            </replacements>
 		                        </configuration>
 		                    </execution>
+							<execution>
+								<id>replace-project-name-with-version</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+								<configuration>
+									<basedir>${project.basedir}</basedir>
+									<regex>true</regex>
+									<preserveDir>true</preserveDir>
+									<includes>
+										<include>mule-project.xml</include>
+									</includes>
+									<replacements>
+										<replacement>
+											<token>&lt;name&gt;.*&lt;/name&gt;</token>
+											<value>&lt;name&gt;${project.artifactId}_${project.version}&lt;/name&gt;</value>
+										</replacement>
+									</replacements>
+								</configuration>
+							</execution>		                    
 		                </executions>
 		            </plugin>
 
