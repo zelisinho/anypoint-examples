@@ -5,7 +5,6 @@
     	<file:inbound-endpoint doc:name="Poll files" metadata:id="a75d5954-7fb4-4721-85f6-7ee66b793750" path="src/main/resources/input" responseTimeout="10000"/>
         <dw:transform-message doc:name="Transform Message">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/csv header=true
 %output application/java
 ---
 payload map {

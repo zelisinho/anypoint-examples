@@ -8,8 +8,7 @@
     <flow doc:name="csv-to-mongodbFlow1" name="csv-to-mongodbFlow1">
     	<file:inbound-endpoint doc:name="Poll files" metadata:id="d465231a-3a94-4460-acce-174c73019323" path="src/main/resources/input" responseTimeout="10000"/>
         <dw:transform-message doc:name="CSV to Map">
-            <dw:set-payload><![CDATA[%dw 0.1
-%input payload application/csv header=true
+            <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
 payload map

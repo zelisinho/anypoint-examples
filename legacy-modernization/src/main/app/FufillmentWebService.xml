@@ -9,7 +9,6 @@
         <async doc:name="Async - Legacy Fulfillment Service">
             <dw:transform-message doc:name="Map Fullfilment order to CSV">
                 <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
 %output application/csv header=true
 ---
 using (obj = payload as :object { class: "org.ordermgmt.ShippingOrderConfirmation"})

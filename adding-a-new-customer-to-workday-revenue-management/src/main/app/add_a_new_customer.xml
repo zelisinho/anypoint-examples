@@ -9,8 +9,7 @@
     <flow name="add-customer-flow">
         <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" path="/"/>
         <dw:transform-message doc:name="XML to Workday PutCustomerRequestType">
-            <dw:set-payload><![CDATA[%dw 0.1
-%input payload application/xml
+            <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
 {

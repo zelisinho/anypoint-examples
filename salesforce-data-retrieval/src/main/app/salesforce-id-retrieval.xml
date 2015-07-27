@@ -9,7 +9,6 @@
         <sfdc:describe-global config-ref="Salesforce" doc:name="Salesforce"/>
         <dw:transform-message doc:name="Tranform to HTML set of option values">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
 %output application/xml
 ---
 using (p = payload as :object {class : "com.sforce.soap.partner.DescribeGlobalResult"})

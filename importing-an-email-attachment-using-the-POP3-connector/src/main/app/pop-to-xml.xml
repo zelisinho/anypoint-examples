@@ -10,7 +10,6 @@
 		<set-payload doc:name="Set Payload to content" metadata:id="9aa78c67-4bc3-47dd-9707-bf255cf8fa3b" value="#[payload[0].getContent()]"/>
         <dw:transform-message doc:name="Map CSV to XML">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/csv header=true
 %output application/xml
 ---
 orders: payload map {

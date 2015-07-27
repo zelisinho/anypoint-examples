@@ -9,7 +9,6 @@
         </http:listener>
         <dw:transform-message doc:name="JSON to XML and set API key">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/json
 %output application/xml
 %namespace ns0 http://mulesoft.org/tshirt-service
 ---
@@ -25,7 +24,6 @@ ns0#AuthenticationHeader : {
 		<ws:consumer config-ref="Web_Service_Consumer" doc:name="Order Tshirt" operation="OrderTshirt"/>
         <dw:transform-message doc:name="XML to JSON">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/xml
 %output application/json
 ---
 payload]]></dw:set-payload>
@@ -38,7 +36,6 @@ payload]]></dw:set-payload>
 		<ws:consumer config-ref="Web_Service_Consumer" doc:name="List Inventory" operation="ListInventory"/>
         <dw:transform-message doc:name="XML to JSON">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/xml
 %output application/json
 %namespace ns0 http://mulesoft.org/tshirt-service
 ---

@@ -6,7 +6,6 @@
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Receive HTTP Requests" metadata:id="d41f5fe4-982b-4458-84cf-9fcaa1190228" path="/"/>  
         <dw:transform-message doc:name="JSON to XML"> 
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/json
 %output application/xml
 ---
 employees: payload.employees.employee map {

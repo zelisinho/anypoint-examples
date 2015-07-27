@@ -14,7 +14,6 @@
         <collection-aggregator doc:name="Aggregate employee records" failOnTimeout="true"/>
         <dw:transform-message doc:name="Map Collection to CSV">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
 %output application/csv header=true
 ---
 payload map

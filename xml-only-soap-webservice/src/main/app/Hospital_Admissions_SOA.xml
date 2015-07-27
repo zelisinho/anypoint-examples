@@ -38,7 +38,6 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
-%input payload application/xml
 %output application/xml
 
 %var episode = payload.createEpisodeResponse.Episode
@@ -67,7 +66,6 @@ ns0#"admitSubjectResponse": {
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
-%input payload application/xml
 %output application/xml
 
 %var subject = payload.Envelope.Body.admitSubject.Subject
@@ -99,7 +97,6 @@ ns0#"upsertPatient": {
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
-%input payload application/xml
 %output application/xml
 ---
 ns0#"createEpisode": {

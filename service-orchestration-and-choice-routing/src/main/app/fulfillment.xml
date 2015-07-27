@@ -64,8 +64,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
    <flow name="samsungOrder">
       <vm:inbound-endpoint doc:name="samsungOrder" exchange-pattern="request-response" path="samsungOrder"/>
          <dw:transform-message doc:name="OrderItem to OrderRequest"> 
-	             <dw:set-payload><![CDATA[%dw 1.0 
-%input payload application/java
+	             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java 
 --- 
 using (obj = payload as :object { class: "com.mulesoft.se.orders.OrderItem"})
@@ -80,8 +79,7 @@ using (obj = payload as :object { class: "com.mulesoft.se.orders.OrderItem"})
       </message-filter>
       <set-session-variable doc:name="totalValue += price" value="#[totalValue + payload.price]" variableName="totalValue"/>
         <dw:transform-message doc:name="OrderResponse to PurchaseReceipt">
-            <dw:set-payload><![CDATA[%dw 1.0 
-%input payload application/java
+            <dw:set-payload><![CDATA[%dw 1.0
 %output application/java 
 --- 
 using (obj = payload as :object { class: "com.mulesoft.se.samsung.OrderResponse" })

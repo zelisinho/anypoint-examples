@@ -15,7 +15,6 @@
 		<set-payload doc:name="Set Payload to Attachment content" metadata:id="359939d1-e0b0-4882-ba79-4eebc7ff9620" value="#[payload[0].getContent()]"/>
         <dw:transform-message doc:name="Map CSV to XML">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/csv header=true
 %output application/xml
 ---
 orders: payload map {

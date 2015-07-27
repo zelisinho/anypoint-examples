@@ -6,8 +6,7 @@
     <flow doc:description="From the content of a CSV file, creates new accounts in Salesforce." name="CreateNewSalesforceAccountFlow">
         <file:inbound-endpoint doc:name="Poll for files" metadata:id="9bf66750-ef55-4ebd-8853-9a94fe72d017" moveToDirectory="src/main/resources/output" path="src/main/resources/input" pollingFrequency="10000" responseTimeout="10000"/>
         <dw:transform-message doc:name="Transform Message">
-            <dw:set-payload><![CDATA[%dw 0.1
-%input payload application/csv header=true
+            <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
 payload map {

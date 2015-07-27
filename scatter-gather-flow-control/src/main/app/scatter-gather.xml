@@ -44,7 +44,6 @@ payload = sourceB;]]></expression-component>
         </scatter-gather>
         <dw:transform-message doc:name="transform Collection of Maps to CSV Format">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/java
 %output application/csv
 ---
 payload]]></dw:set-payload>

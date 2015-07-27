@@ -13,7 +13,6 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
       <ajax:inbound-endpoint channel="/orders/request" connector-ref="ajaxServer" doc:name="/orders/request" responseTimeout="10000"/>
         <dw:transform-message doc:name="JSON to XML">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/json
 %output application/xml
 ---
 order: {
@@ -31,7 +30,6 @@ order: {
       <object-to-string-transformer doc:name="Convert Object to String"/>
         <dw:transform-message doc:name="XML to JSON">
             <dw:set-payload><![CDATA[%dw 1.0
-%input payload application/xml
 %output application/json
 ---
 {
