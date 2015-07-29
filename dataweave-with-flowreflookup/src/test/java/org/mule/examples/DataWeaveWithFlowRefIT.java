@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -22,9 +23,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mule.DefaultMuleMessage;
 import org.mule.MessageExchangePattern;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleException;
+import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
@@ -76,13 +79,16 @@ public class DataWeaveWithFlowRefIT extends FunctionalTestCase
     @Test
     public void importAccounts() throws Exception
     {
-    	
         MuleClient client = new MuleClient(muleContext);
         String fileInputPath = "file://./src/main/resources/input";
-        String payload = IOUtils.getResourceAsString(
-                "companies.csv", this.getClass());
-        client.dispatch(fileInputPath, payload, null);
-
+        Map<String, Object> outboundProperties = new HashMap<String, Object>();
+        outboundProperties.put("outputPattern", "companies.csv");
+        MuleMessage message = new DefaultMuleMessage(
+        		IOUtils.getResourceAsString("companies.csv", this.getClass()),
+        		outboundProperties,
+        		muleContext);
+        client.dispatch(fileInputPath, message);
+        
         Thread.sleep(15000);
         
         Map<String, Object> account = getAccount(COMPANY_NAME);
@@ -90,7 +96,8 @@ public class DataWeaveWithFlowRefIT extends FunctionalTestCase
         getAccount(COMPANY_NAME1);        
     }
     
-    private Map<String, Object> getAccount(String name) throws MuleException, Exception{
+    @SuppressWarnings("unchecked")
+	private Map<String, Object> getAccount(String name) throws MuleException, Exception{
     	SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectAccountFromSalesforce");        										
     	select.initialise();
         MuleEvent response = select.process(getTestEvent(name, MessageExchangePattern.REQUEST_RESPONSE));        
