@@ -11,12 +11,16 @@ package org.mule.examples;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mule.DefaultMuleMessage;
+import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
@@ -54,8 +58,7 @@ public class ImportCSVfileIntoMongoDBIT extends FunctionalTestCase
     {
         return "csv-to-mongodb.xml";
     }
-               
-    @SuppressWarnings("deprecation")
+
 	@Before
     public void setup() throws Exception {
         MongodStarter runtime = MongodStarter.getDefaultInstance();
@@ -93,15 +96,18 @@ public class ImportCSVfileIntoMongoDBIT extends FunctionalTestCase
     {
         MuleClient client = new MuleClient(muleContext);
         String fileInputPath = "file://./src/main/resources/input";
-        String payload = IOUtils.getResourceAsString(
-                "input.csv", this.getClass());
-        client.dispatch(fileInputPath, payload, null);
-        
+        Map<String, Object> outboundProperties = new HashMap<String, Object>();
+        outboundProperties.put("outputPattern", "input.csv");
+        MuleMessage message = new DefaultMuleMessage(
+        		IOUtils.getResourceAsString("input.csv", this.getClass()),
+        		outboundProperties,
+        		muleContext);
+        client.dispatch(fileInputPath, message);        
+
         Thread.sleep(5000);
         
         DBCollection collection = db.getCollection(DB_NAME);
         assertEquals(1, collection.getCount());
-        
     }
   
 	@Override
