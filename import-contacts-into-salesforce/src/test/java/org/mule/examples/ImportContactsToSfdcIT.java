@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -20,8 +21,10 @@ import java.util.Properties;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mule.DefaultMuleMessage;
 import org.mule.MessageExchangePattern;
 import org.mule.api.MuleEvent;
+import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
@@ -75,16 +78,20 @@ public class ImportContactsToSfdcIT extends FunctionalTestCase
 		return properties;
 	}
     
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void testImport() throws Exception
     {
-    	
-        MuleClient client = new MuleClient(muleContext);
+    	MuleClient client = new MuleClient(muleContext);
         String fileInputPath = "file://./src/main/resources/input";
-        String payload = IOUtils.getResourceAsString(
-                "contacts.csv", this.getClass());
-        client.dispatch(fileInputPath, payload, null);
-
+        Map<String, Object> outboundProperties = new HashMap<String, Object>();
+        outboundProperties.put("outputPattern", "contacts.csv");
+        MuleMessage message = new DefaultMuleMessage(
+        		IOUtils.getResourceAsString("contacts.csv", this.getClass()),
+        		outboundProperties,
+        		muleContext);
+        client.dispatch(fileInputPath, message);        
+        
         Thread.sleep(8000);
         SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectContactFromSalesforce");        										
         select.initialise();
@@ -97,7 +104,6 @@ public class ImportContactsToSfdcIT extends FunctionalTestCase
         contact = (Map<String, Object>)response.getMessage().getPayload();        
         assertEquals("Doe", contact.get("LastName"));
         contactIds.add(contact.get("Id").toString());
-                										
     }
 
     @After
