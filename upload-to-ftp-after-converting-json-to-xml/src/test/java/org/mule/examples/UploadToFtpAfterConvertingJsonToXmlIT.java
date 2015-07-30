@@ -87,6 +87,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
+        props.put("Content-Type", "application/json");
         MuleMessage result = client.send("http://0.0.0.0:8081/", MESSAGE, props);
         assertEquals(REPLY.replaceAll("\\s",""), result.getPayloadAsString().replaceAll("\\s",""));
         

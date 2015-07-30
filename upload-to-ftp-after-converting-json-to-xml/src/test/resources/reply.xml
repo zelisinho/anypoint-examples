@@ -1,43 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <employees>
-  <element>
-    <employee>
-      <name>John</name>
-      <lastName>Doe</lastName>
-      <addresses>
-        <element>
-          <address>
-            <element>
-              <street>123 Main Street</street>
-              <zipCode>111</zipCode>
-            </element>
-            <element>
-              <street>987 Cypress Avenue</street>
-              <zipCode>222</zipCode>
-            </element>
-          </address>
-        </element>
-      </addresses>
-    </employee>
-  </element>
-  <element>
-    <employee>
-      <name>Jane</name>
-      <lastName>Doe</lastName>
-      <addresses>
-        <element>
-          <address>
-            <element>
-              <street>345 Main Street</street>
-              <zipCode>111</zipCode>
-            </element>
-            <element>
-              <street>654 Sunset Boulevard</street>
-              <zipCode>333</zipCode>
-            </element>
-          </address>
-        </element>
-      </addresses>
-    </employee>
-  </element>
+	<employee>
+		<name>John</name>
+		<lastName>Doe</lastName>
+		<addresses>
+			<address>
+				<street>123 MainStreet</street>
+				<zipCode>111</zipCode>
+			</address>
+			<address>
+				<street>987 CypressAvenue</street>
+				<zipCode>222</zipCode>
+			</address>
+		</addresses>
+	</employee>
+	<employee>
+		<name>Jane</name>
+		<lastName>Doe</lastName>
+		<addresses>
+			<address>
+				<street>345 MainStreet</street>
+				<zipCode>111</zipCode>
+			</address>
+			<address>
+				<street>654 SunsetBoulevard</street>
+				<zipCode>333</zipCode>
+			</address>
+		</addresses>
+	</employee>
 </employees>

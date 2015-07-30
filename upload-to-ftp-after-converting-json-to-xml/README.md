@@ -14,7 +14,7 @@ In this example JSON data is sent to the mule application through an HTTP end po
 ###Set up and run the example
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
-2. Make a POST request using Postman to http://localhost:8081 with following JSON message body:
+2. Make a POST request using Postman to http://localhost:8081 with following JSON message body, and setting the 'Content-Type' header as 'application/json':
 
 	    {
 	    "employees": {
