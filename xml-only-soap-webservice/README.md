@@ -117,4 +117,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 * Learn more about the [Choice Router](http://www.mulesoft.org/documentation/display/current/Choice+Flow+Control+Reference).
 * Learn more about the [CXF component](http://www.mulesoft.org/documentation/display/current/CXF+Component+Reference).
-* Learn more about [DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
+* Learn more about [DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation).

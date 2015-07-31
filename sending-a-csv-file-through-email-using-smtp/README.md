@@ -5,7 +5,7 @@ This example shows you how to use the SMTP connector to facilitate information t
 
 ### Assumptions
 
-This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation) and the [Anypoint Studio](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials) interface. 
+This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation) and the [Anypoint Studio](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials) interface. 
 
 ### Example Use Case
 
@@ -43,4 +43,4 @@ In this example a CSV file containing sample sales data which is stored in the l
 
 * Read more about the [File Connector](http://www.mulesoft.org/documentation/display/current/File+Transport+Reference)
 
-* Read more about the [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
+* Read more about the [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation)

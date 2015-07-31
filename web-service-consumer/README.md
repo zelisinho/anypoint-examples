@@ -61,5 +61,5 @@ When issued a "list inventory" request, the flow directs it to the Web service v
 ### Go Further ###
 
 - Learn more about about the [Web Service Consumer](http://www.mulesoft.org/documentation/display/current/Web+Service+Consumer).
-- Learn more about [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
+- Learn more about [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation).
 - Learn more about how [Anypoint Service Registry](http://www.mulesoft.org/documentation/display/current/Anypoint+Service+Registry) can help you organize your organization's services.

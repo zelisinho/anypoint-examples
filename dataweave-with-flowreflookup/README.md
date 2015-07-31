@@ -12,7 +12,7 @@ Beyond transforming and mapping data from one format to another, you can use an 
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). 
+This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and Studio's [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation). 
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface, and includes configuration details for XML Editor where relevant.  
 
@@ -78,7 +78,7 @@ Using two flows, this application accepts CSV files which contain account inform
 
 #### CreateNewSalesforceAccountFlow ####
 
-The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – company_name, company_address, etc. – to output fields that Salesforce uses in a collection.
+The [File Endpoint](http://www.mulesoft.org/documentation/display/current/File+Connector) polls the input folder for new files every ten seconds. When it spots a new file, it reads it and passes the content to the [Anypoint DataWeave transformer](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation). This transformer not only converts the format of the data from CSV to a collection, it automatically maps the input fields from the CSV file – company_name, company_address, etc. – to output fields that Salesforce uses in a collection.
 
 The DataWeave also utilizes a flow lookup. Flow lookup accesses another flow in the application to acquire the sales region for each new account. DataWeave invokes the LookupSalesRegionFlow which uses the company_state data to determine into which sales region the account falls. DataWeave then maps this newly acquired data to the custom field in Salesforce, Region__c.
 
@@ -101,4 +101,4 @@ Follow the [procedure](http://www.mulesoft.org/documentation/display/current/Imp
 ### Go Further ###
 
 - Learn more about [Connection Testing](http://www.mulesoft.org/documentation/display/current/Testing+Connections) and [DataSense](http://www.mulesoft.org/documentation/display/current/DataSense).
-- Learn more about the [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
+- Learn more about the [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation).

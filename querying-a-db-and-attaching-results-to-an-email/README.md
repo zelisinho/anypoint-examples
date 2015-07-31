@@ -47,5 +47,5 @@ The XML data containing employee names is sent to the application using the HTTP
 ###Go further
 * Read about the Database Connector [here](http://www.mulesoft.org/documentation/display/current/Database+Connector)
 * Read about the Attachment Transformer Reference [here](http://www.mulesoft.org/documentation/display/current/Attachment+Transformer+Reference)
-* Learn more about Anypoint DataWeave [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
+* Learn more about Anypoint DataWeave [here](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation)
 

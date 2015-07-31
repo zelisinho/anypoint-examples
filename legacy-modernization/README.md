@@ -8,7 +8,7 @@ An older, legacy system may be limited in the form of data that it accepts. For 
 
 ### Assumptions 
 
-This document assumes that you are familiar with Mule ESB and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).  Further, this example assumes you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/33X/Mule+Application+Architecture), SOAP Web services and using [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation) in Anypoint Studio.
+This document assumes that you are familiar with Mule ESB and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial).  Further, this example assumes you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/33X/Mule+Application+Architecture), SOAP Web services and using [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation) in Anypoint Studio.
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface (GUI), and includes configuration details for both the visual and XML editors.
 
@@ -53,4 +53,4 @@ Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Imp
 
 ### Go Further 
 - Learn more about the [CXF Component in Studio](http://www.mulesoft.org/documentation/display/current/CXF+Component+Reference).
-- Learn more about the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
+- Learn more about the [Anypoint DataWeave transformer](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation).

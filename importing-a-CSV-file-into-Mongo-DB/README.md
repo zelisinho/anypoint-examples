@@ -71,4 +71,4 @@ The output then shows the inserted objects similar to  what is below.
 * Read more about the mongoDB connector [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
 * Read more about the message enricher scope [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
 * Read more about the For Each connector [here](http://www.mulesoft.org/documentation/display/current/Foreach)
-* Learn more about Anypoint DataWeave [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
+* Learn more about Anypoint DataWeave [here](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation)

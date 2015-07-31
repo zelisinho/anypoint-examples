@@ -5,7 +5,7 @@ This example shows you how to use the IMAP connector to facilitate information t
 
 ### Assumptions
 
-This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation) and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). 
+This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB, [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation) and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). 
 
 ### Example Use Case
 
@@ -55,4 +55,4 @@ In this example a CSV file containing sample sales data which has been received 
 
 * Read more about the [IMAP Transport Reference](http://www.mulesoft.org/documentation/display/current/IMAP+Transport+Reference)
 
-* Read more about the [Anypoint DataWeave transformer](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation).
+* Read more about the [Anypoint DataWeave transformer](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation).

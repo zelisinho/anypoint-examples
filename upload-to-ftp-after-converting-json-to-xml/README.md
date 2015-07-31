@@ -4,7 +4,7 @@ This example application illustrates the concept of datamapping to convert JSON 
 
 ### Assumptions ###
 
-This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and [Anypoint DataWeave](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation). 
+This document assumes that you are familiar with Mule and the [Anypoint™ Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture), [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements), and [Anypoint DataWeave](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation). 
 
 This document describes the details of the example within the context of Anypoint Studio, Mule ESB’s graphical user interface.
 
@@ -74,6 +74,6 @@ Studio includes a feature that enables you to easily export all the documentatio
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
    
 ### Go further
-* Read about the DataWeave Transformer [here](http://www.mulesoft.org/documentation/display/current/Weave+Reference+Documentation)
+* Read about the DataWeave Transformer [here](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation)
 * Read about the Mule FTP endpoint [here](http://www.mulesoft.org/documentation/display/current/FTP+Transport+Reference)
 * Read about the Mule SFTP endpoint [here](http://www.mulesoft.org/documentation/display/current/SFTP+Transport+Reference)
