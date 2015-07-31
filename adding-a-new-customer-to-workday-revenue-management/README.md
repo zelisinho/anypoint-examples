@@ -24,7 +24,7 @@ Complete the following procedure to create, then run this example in your own in
 		endpoint					<ENDPOINT_URL>
 Then click **OK** to save your changes. 
 1. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
-1. Make an HTTP POST request to *http://localhost:9090/* with the request body as follows:
+1. Make an HTTP POST request to *http://localhost:9090/* with the 'Content-Type' header set as 'application/xml' and the request body as follows:
 
 		<?xml version="1.0" encoding="UTF-8"?>
 		<root>

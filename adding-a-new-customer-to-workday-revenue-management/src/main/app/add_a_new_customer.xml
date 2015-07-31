@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:wd-revenue="http://www.mulesoft.org/schema/mule/wd-revenue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/wd-revenue http://www.mulesoft.org/schema/mule/wd-revenue/current/mule-wd-revenue.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+<mule version="EE-3.7.1" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:wd-revenue="http://www.mulesoft.org/schema/mule/wd-revenue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/wd-revenue http://www.mulesoft.org/schema/mule/wd-revenue/current/mule-wd-revenue.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="9090"/>
     
-    <wd-revenue:config doc:name="Workday Revenue Management" name="Workday_Revenue_Management" revenueEndpoint="${wday.endpoint}" revenuePassword="${wday.password}" revenueUser="${wday.user}">
+     <wd-revenue:config doc:name="Workday Revenue Management" name="Workday_Revenue_Management" revenueEndpoint="${wday.endpoint}" revenuePassword="${wday.password}" revenueUser="${wday.user}">
         <wd-revenue:connection-pooling-profile exhaustedAction="WHEN_EXHAUSTED_GROW" initialisationPolicy="INITIALISE_ONE"/>
     </wd-revenue:config>    
     
     <flow name="add-customer-flow">
-        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" path="/"/>
+        <http:listener allowedMethods="POST" config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" metadata:id="9979b2a0-cc76-49c5-8eb6-7c47a466178e" path="/"/>
         <dw:transform-message doc:name="XML to Workday PutCustomerRequestType">
+            <dw:input-payload doc:sample="root.xml"/>
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
@@ -18,7 +19,7 @@
 			ID: [ {
 				type: payload.root.Account.Customer_Category_Reference_Type,
 				value: payload.root.Account.Customer_Category_Reference_Value
-			} as :object {class: "com.workday.revenue.CustomerCategoryObjectIDType"}
+			}
 			]
 		},
 		customerStatusData: [ {
@@ -26,16 +27,17 @@
 				ID:[ {
 					type: payload.root.Account.Customer_Status_Reference_Type,
 					value: payload.root.Account.Customer_Status_Reference_Value
-				} as :object {class: "com.workday.revenue.BusinessEntityStatusValueObjectIDType"}
+				}
 				]
 			}
-		} as :object {class: "com.workday.revenue.CustomerStatusDataType"}
+		} 
 		],
 		businessEntityData: {
 			businessEntityName: payload.root.Account.BusinessEntityName
 		},
 		customerName: payload.root.Account.CustomerName,
-		customerID: payload.root.Account.CustomerName
+		customerID: payload.root.Account.CustomerName,
+		customerReferenceID: payload.root.Account.CustomerName
 	}		
 } as :object { class: "com.workday.revenue.PutCustomerRequestType" }]]></dw:set-payload>
         </dw:transform-message>
