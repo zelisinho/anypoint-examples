@@ -186,7 +186,7 @@
                         </rootElement>
                         <schemas class="org.mule.common.metadata.UrlBasedSchemaProvider">
                           <schemas>
-                            <url>src/main/resources/orders.xsd</url>
+                            <url>file://src/main/resources/orders.xsd</url>
                           </schemas>
                         </schemas>
                         <namespaceManager>

@@ -14,9 +14,9 @@ This example application illustrates how to use Anypoint DataWeave to process an
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
 2. In the **Package Explorer**, under the *src/main/resources* folder create two new folders named **input** and **output**. Now, run the example as a Mule Application. 
-3. This project includes a sample XML file, called books.xml, that you can use to witness end-to-end functionality of the application. In the **Package Explorer**, click the *src/main/resources* folder to expand it, then find the *books.xml* file inside this folder.
-4. Click and drag the *books.xml* file into the *input* folder in the same directory.
-5. The File Endpoint in the application polls the input folder every ten seconds. It picks up the XML file, processes it, then deposits it into the output folder in the same directory. (Hit **F5** to refresh the contents of the *input* and *output* folders.)
+3. This project includes a sample XML file, called orders.xml, that you can use to witness end-to-end functionality of the application. In the **Package Explorer**, click the *src/main/resources* folder to expand it, then find the *orders.xml* file inside this folder.
+4. Click and drag the *orders.xml* file into the *input* folder in the same directory.
+5. The File Endpoint in the application polls the input folder every ten seconds. It picks up the XML file, processes it, then deposits the JSON output and a CSV report into the output folder in the same directory. (Hit **F5** to refresh the contents of the *input* and *output* folders.)
 6. The Message Enricher consumes the API exposed in the *currency.xml* configuration file and saves the response in the *currencies* flow variable.
 7. The API consumed is exposed in *currency.xml* configuration file by using APIkit and a Parse Template component to build the response.
 
