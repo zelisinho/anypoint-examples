@@ -31,7 +31,6 @@ import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
-import org.mule.streaming.ConsumerIterator;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.util.IOUtils;
 
@@ -97,21 +96,20 @@ public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
         client.dispatch(fileInputPath, testMessage);         
                 
         Thread.sleep(20000);
-        SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectContactFromDynamics");        										
+        SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectContactFromDynamics");
         select.initialise();
         
-        MuleEvent response = select.process(getTestEvent(EMAIL1, MessageExchangePattern.REQUEST_RESPONSE));  
-        assertTrue(((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).hasNext());
-        Map<String, Object> contact = ((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).next();        
+        MuleEvent response = select.process(getTestEvent(EMAIL1, MessageExchangePattern.REQUEST_RESPONSE));
+        assertTrue(((List<Map<String, Object>>)response.getMessage().getPayload()).size() > 0);
+        Map<String, Object> contact = ((List<Map<String, Object>>)response.getMessage().getPayload()).get(0);
         assertEquals("John", contact.get("firstname"));
         contactIds.add(contact.get("contactid").toString());
         
-        response = select.process(getTestEvent(EMAIL2, MessageExchangePattern.REQUEST_RESPONSE));        
-        assertTrue(((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).hasNext());
-        contact = ((ConsumerIterator<Map<String, Object>>)response.getMessage().getPayload()).next();        
+        response = select.process(getTestEvent(EMAIL2, MessageExchangePattern.REQUEST_RESPONSE));
+        assertTrue(((List<Map<String, Object>>)response.getMessage().getPayload()).size() > 0);
+        contact = ((List<Map<String, Object>>)response.getMessage().getPayload()).get(0);
         assertEquals("Doe", contact.get("lastname"));
         contactIds.add(contact.get("contactid").toString());
-                										
     }
 
     @After
@@ -124,6 +122,5 @@ public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        		          
     }
 }
