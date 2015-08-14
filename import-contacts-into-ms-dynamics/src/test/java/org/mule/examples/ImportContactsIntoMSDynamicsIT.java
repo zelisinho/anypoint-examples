@@ -38,12 +38,12 @@ public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
 {
 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
-	private static final Logger log = LogManager.getLogger(ImportContactsIntoMSDynamicsIT.class); 
+	private static final Logger LOG = LogManager.getLogger(ImportContactsIntoMSDynamicsIT.class); 
+	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	
 	private final String EMAIL1 = "john.doe@texasComp.com";
 	private final String EMAIL2 = "jane.doe@texasComp.com";
-	private static List<String> contactIds = new ArrayList<String>();
-	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
+	private List<String> contactIds = new ArrayList<String>();
 
 	 
     @Override
@@ -58,7 +58,7 @@ public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
     	try {
     	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
     	} catch (Exception e) {
-    		log.error("Error occured while reading mule.test.properties", e);
+    		LOG.error("Error occured while reading mule.test.properties", e);
     	}    	
     	System.setProperty("crm.username", props.getProperty("crm.username"));
 		System.setProperty("crm.password", props.getProperty("crm.password"));
