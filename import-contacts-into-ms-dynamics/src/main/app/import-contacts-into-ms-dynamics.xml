@@ -17,15 +17,15 @@ http://www.mulesoft.org/schema/mule/dynamicscrm http://www.mulesoft.org/schema/m
 ---
 payload map
 {
-	firstname	: $.firstname,
-	lastname	: $.surname,
-	phone		: $.businessphone,
-	email		: $.email
+	firstname		: $.firstname,
+	lastname		: $.surname,
+	businessphone	: $.phone,
+	email			: $.email
 }]]></dw:set-payload>
         </dw:transform-message>
 
         <foreach doc:name="For Each">
-            <dynamicscrm:create config-ref="Microsoft_Dynamics_CRM__Legacy_Connection" doc:name="Microsoft Dynamics CRM" logicalName="contact">
+            <dynamicscrm:create config-ref="Microsoft_Dynamics_CRM__Legacy_Connection" doc:name="Create Contact" logicalName="contact">
 				<dynamicscrm:attributes>
 	                <dynamicscrm:attribute key="firstname">#[payload.firstname]</dynamicscrm:attribute>
 	                <dynamicscrm:attribute key="lastname">#[payload.lastname]</dynamicscrm:attribute>

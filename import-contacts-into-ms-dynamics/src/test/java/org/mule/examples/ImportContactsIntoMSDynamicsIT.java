@@ -94,8 +94,8 @@ public class ImportContactsIntoMSDynamicsIT extends FunctionalTestCase
         	outboundProperties,
         	muleContext);
         client.dispatch(fileInputPath, testMessage);         
-                
-        Thread.sleep(20000);
+                 	
+        Thread.sleep(40000);
         SubflowInterceptingChainLifecycleWrapper select = getSubFlow("selectContactFromDynamics");
         select.initialise();
         
