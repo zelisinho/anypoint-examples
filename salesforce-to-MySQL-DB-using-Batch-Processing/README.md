@@ -35,48 +35,48 @@ Skip ahead to the next section if you prefer to simply examine this example via 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 1. Set up **Salesforce credentials**:
 	1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
-	1. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 
-	1. Click **Reset My Security Token**. Salesforce resets the token and emails you the new one.
-	1. Access the email that Salesforce sent and copy the new token onto your local clipboard.
-	1. In the package explorer, open *src/main/resources/connector.properties*
-	1. Complete the file with your own username, password, and security token.
+	2. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 
+	3. Click **Reset My Security Token**. Salesforce resets the token and emails you the new one.
+	4. Access the email that Salesforce sent and copy the new token onto your local clipboard.
+	5. Go to **Global Elements** tab.
+	6. Double-click the Salesforce global element to open its **Global Element Properties** panel. In the **Security Token** field, paste the new Salesforce token you copied from the email. Alternatively, configure the global element in the XML Editor.
+	7. Change the contents of the **Username** and **Password** fields to your account-specific values, then click **OK** to save your changes.
 1. Create a **Database** and set up **credentials**:
-1. Create a new MySQL Database
 	1. Create a new MySQL Database
 	
 		If you do not have a MySQL database available for your use, you can install MySQL on your local computer. Please visit dev.MySQL.com  to download and install a free version. It is a good idea to also install the MySQL workbench. Please also configure a MySQL username and password for use with this project.
 	2. The project requires the following database configuration:
-		- MySQL Database Schema: SFtoDB_Example
+		- MySQL Database Schema: company
 		- One table: contact
-		- Four fields: email,  first_name,  last_name, last_modified
+		- Three fields: email,  first_name,  last_name
 		- One or more rows of data should be inserted into the table
 		- A user that must have read and write access to this data.
 	3. You can execute the following SQL statement to produce this schema and populate one row of data. See the green box below for tips on executing this SQL.
 		
 		```
-		USE SFtoDB_Example;
+		USE comapany;
 		CREATE TABLE contact (
 	    ID INT(11) NOT NULL AUTO_INCREMENT,
 	    email varchar(255) NOT NULL,
 	    first_name varchar(255) DEFAULT NULL,
 	    last_name varchar(255) DEFAULT NULL,
-	    last_modified varchar(255) NOT NULL,
 		PRIMARY KEY (email)
 		);
-		INSERT INTO contacts VALUES (NULL, "leonardmule@mulesoft.com", "Leonard", "Mule", "");
+		INSERT INTO contacts VALUES (NULL, "leonardmule@mulesoft.com", "Leonard", "Mule");
 		```
 		
-		If you are using the MySQL Workbench, first create the schema **SFtoDB_Example** , and then execute the above SQL statements from within the MySQL Workbench SQL Editor.
+		If you are using the MySQL Workbench, first create the schema **company** , and then execute the above SQL statements from within the MySQL Workbench SQL Editor.
 
 		Alternatively, you can use the MySQL command-line tool, as follows:
 		
-		1.	Execute this command: *CREATE DATABASE SFtoDB_Example;*. This will create the database schema.
+		1.	Execute this command: *CREATE DATABASE company;*. This will create the database schema.
 		1. 		Save the above SQL code-block to a text file, **SQL_for_example.sql**
-		1. 		Then execute the SQL with this command: mysql *SFtoDB_Example < SQL_for_example.sql*
+		1. 		Then execute the SQL with this command: mysql *company < SQL_for_example.sql*
 		
 		In either case, you may need to assign a user for access to the schema as well. Please see [MySQL Documentation](http://dev.mysql.com/doc/) for more information on using the MySQL Workbench or the command-line tool.
-	1. In the package explorer, open src/main/resources/connector.properties
-	1. Complete the file with your own DB credentials
+	4. Go to **Global Elements** tab.
+	5. Double-click the Database global element to open its **Global Element Properties** panel. Alternatively, configure the global element in the XML Editor.
+	6. Change the contents of the **Host**, **User** and **Password** fields to your account-specific values, then click **OK** to save your changes.
 1. In the **Package Explorer**, right-click the connect-with-salesforce project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server. 
 
 ### How It Works ###
@@ -91,7 +91,7 @@ The Process Records stage is divided into two separate **batch steps**: the firs
 
 ### Input ###
 
-Every 30 minutes, the Poll scope triggers a new request to the Salesforce connector. The Salesforce connector is set to perform the query below, where the **timestamp flow variable** is periodically updated to the time of the last iteration of the poll:
+Every 60 seconds, the Poll scope triggers a new request to the Salesforce connector. The Salesforce connector is set to perform the query below, where the **timestamp flow variable** is periodically updated to the time of the last iteration of the poll:
 
 	SELECT Email,FirstName,LastModifiedDate,LastName FROM Contact WHERE LastModifiedDate > #[flowVars['timestamp']]
  

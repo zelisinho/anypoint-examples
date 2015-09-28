@@ -60,7 +60,7 @@
         <poll doc:name="Poll">
                 <fixed-frequency-scheduler frequency="60" timeUnit="SECONDS"/>
                 <watermark default-expression="#[groovy: new Date(System.currentTimeMillis() - 10000).format(&quot;yyyy-MM-dd'T'HH:mm:ss.SSS'Z'&quot;, TimeZone.getTimeZone('UTC'))]" selector="MAX" selector-expression="#[payload.LastModifiedDate]" variable="timestamp"/>                
-                <sfdc:query config-ref="Salesforce" doc:name="Query Salesforce every 10 seconds" query="dsql:SELECT Email,FirstName,LastModifiedDate,LastName FROM Contact WHERE LastModifiedDate > #[timestamp]"/>
+                <sfdc:query config-ref="Salesforce" doc:name="Query Salesforce every 60 seconds" query="dsql:SELECT Email,FirstName,LastModifiedDate,LastName FROM Contact WHERE LastModifiedDate > #[timestamp]"/>
         </poll>
         <logger doc:name="Logger" level="INFO" message="#[flowVars.timestamp]"/>
         <batch:execute doc:name="salesforce-to-database-Batch" name="salesforce-to-database-Batch"/>
