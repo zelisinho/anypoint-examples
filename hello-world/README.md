@@ -12,7 +12,7 @@ Complete the following procedure to create, then run this example in your own in
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 2. Open your Web browser.
-3. In the address bar, type the following URL: http://localhost:8081
+3. In the address bar, type the following URL: http://localhost:8081/helloWorld
 4. Press enter to elicit a response from the Hello World application. 
 
 ### How it Works
