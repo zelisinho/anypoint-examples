@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <http:request config-ref="HTTP_Request_Configuration" path="/munit" method="GET" doc:name="HTTP"/>
         <object-to-string-transformer doc:name="Object to String"/>
         <munit:assert-on-equals message="The HTTP Status code is not correct!" expectedValue="#[200]" actualValue="#[message.inboundProperties['http.status']]" doc:name="Assert Equals"/>
-        <munit:assert-on-equals message="The response payload is not correct!" expectedValue="&quot;GET RESPONSE&quot;" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-payload-equals message="The response payload is not correct!" expectedValue="&quot;GET RESPONSE&quot;" doc:name="Assert Payload"/>
     </munit:test>
 
     <munit:test name="api-test-post" description="Test">
@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <http:request config-ref="HTTP_Request_Configuration" path="/munit" method="POST" doc:name="HTTP"/>
         <object-to-string-transformer doc:name="Object to String"/>
         <munit:assert-on-equals message="The HTTP Status code is not correct!" expectedValue="#[201]" actualValue="#[message.inboundProperties['http.status']]" doc:name="Assert Equals"/>
-        <munit:assert-on-equals message="The response payload is not correct!" expectedValue="&quot;POST RESPONSE&quot;" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-payload-equals message="The response payload is not correct!" expectedValue="&quot;POST RESPONSE&quot;" doc:name="Assert Payload"/>
     </munit:test>
 
     <munit:test name="api-test-put" description="Test">
@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <http:request config-ref="HTTP_Request_Configuration" path="/munit" method="PUT" doc:name="HTTP"/>
         <object-to-string-transformer doc:name="Object to String"/>
         <munit:assert-on-equals message="The HTTP Status code is not correct!" expectedValue="#[201]" actualValue="#[message.inboundProperties['http.status']]" doc:name="Assert Equals"/>
-        <munit:assert-on-equals message="The response payload is not correct!" expectedValue="&quot;PUT RESPONSE&quot;" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-payload-equals message="The response payload is not correct!" expectedValue="&quot;PUT RESPONSE&quot;" doc:name="Assert Payload"/>
     </munit:test>
 
     <munit:test name="api-test-delete" description="Test">
@@ -41,6 +41,6 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <http:request config-ref="HTTP_Request_Configuration" path="/munit" method="DELETE" doc:name="HTTP"/>
         <object-to-string-transformer doc:name="Object to String"/>
         <munit:assert-on-equals message="The HTTP Status code is not correct!" expectedValue="#[200]" actualValue="#[message.inboundProperties['http.status']]" doc:name="Assert Equals"/>
-        <munit:assert-on-equals message="The response payload is not correct!" expectedValue="&quot;DELETE RESPONSE&quot;" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-payload-equals message="The response payload is not correct!" expectedValue="&quot;DELETE RESPONSE&quot;" doc:name="Assert Payload"/>
     </munit:test>
 </mule>
