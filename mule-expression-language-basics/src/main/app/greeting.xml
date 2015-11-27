@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" 
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" 
+	xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" 
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" 
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" 
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
@@ -49,15 +59,15 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 
         <expression-component doc:name="Store username to flowVars"><![CDATA[flowVars.username = message.inboundProperties['http.query.params'].username]]></expression-component>
         <set-payload doc:name="Set Payload to formatted output" value="#[['username' : message.inboundProperties['http.query.params'].username, 'age' : message.inboundProperties['http.query.params'].age]]"/>
-        <dw:transform-message doc:name="Map to CSV">
+        <dw:transform-message doc:name="Map to CSV" metadata:id="7376f1c5-3057-4973-8abd-dbb13540e4ad">
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/csv header=false
 ---
-[] + {
+[{
 	username: payload.username,
 	age: payload.age,
 	age_of: (payload.age > 18) as :boolean
-}]]></dw:set-payload>
+}]]]></dw:set-payload>
         </dw:transform-message>
 
         <file:outbound-endpoint doc:name="Save to the folder" path="Path_of_your_choice" responseTimeout="10000"/>
