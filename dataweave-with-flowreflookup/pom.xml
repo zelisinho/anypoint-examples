@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mule.examples</groupId>
 	<artifactId>dataweave-with-flowreflookup</artifactId>
@@ -13,8 +14,8 @@
 	<build>
 		<plugins>
 			<plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-app-maven-plugin</artifactId>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-app-maven-plugin</artifactId>
 				<configuration>
 					<inclusions>
 						<inclusion>
@@ -25,7 +26,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>	
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -45,7 +46,7 @@
 			<artifactId>mule-transport-file</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-devkit-support</artifactId>
@@ -59,4 +60,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	
+	<properties>
+		<mule.version>3.7.2</mule.version>
+	</properties>
 </project>
