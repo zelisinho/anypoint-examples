@@ -14,6 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     <flow doc:description="Upload a csv file of contact information into Salesforce as new contacts." name="Contacts_to_SFDC">
         <file:inbound-endpoint doc:name="Poll files" metadata:id="d1092c1a-dfc4-4147-a2a0-a7238f229328" moveToDirectory="src/main/resources/output" path="src/main/resources/input" pollingFrequency="10000" responseTimeout="10000"/>
         <dw:transform-message doc:name="Map CSV to Contacts" metadata:id="e7dcaea6-608a-4256-986b-f07fb9c1b9e9">
+            <dw:input-payload/>
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
