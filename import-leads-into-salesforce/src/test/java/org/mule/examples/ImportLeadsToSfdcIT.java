@@ -10,7 +10,6 @@ package org.mule.examples;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,6 @@ import org.mule.DefaultMuleMessage;
 import org.mule.MessageExchangePattern;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
-import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.processor.chain.SubflowInterceptingChainLifecycleWrapper;
 import org.mule.tck.junit4.FunctionalTestCase;
@@ -43,8 +41,6 @@ public class ImportLeadsToSfdcIT extends FunctionalTestCase
 	private static final String EMAIL2 = "sem.egestas@mollis.org";
 	
 	private static List<String> leadIds = new ArrayList<String>();
-	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
-
 	 
     @Override
     protected String getConfigResources()
@@ -66,18 +62,6 @@ public class ImportLeadsToSfdcIT extends FunctionalTestCase
 		
 	}
         
-	@Override
-	protected Properties getStartUpProperties() {
-		Properties properties = new Properties(super.getStartUpProperties());
-
-		String pathToResource = MAPPINGS_FOLDER_PATH;
-		File graphFile = new File(pathToResource);
-
-		properties.put(MuleProperties.APP_HOME_DIRECTORY_PROPERTY,
-				graphFile.getAbsolutePath());
-
-		return properties;
-	}
     
     @Test
     public void testImport() throws Exception
