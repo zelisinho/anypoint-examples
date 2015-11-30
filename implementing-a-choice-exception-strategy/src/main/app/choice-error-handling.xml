@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
-	version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+	 xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
@@ -23,7 +23,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
         <choice-exception-strategy doc:name="Choice Exception Strategy">
             <catch-exception-strategy doc:name="Catch Invalid Data" when="#[exception.causedBy(java.lang.IllegalArgumentException)]">
 
-                <dw:transform-message doc:name="Set statusCode and reason variables">
+                <dw:transform-message doc:name="Set statusCode and reason variables" metadata:id="77eb0ffc-8342-4caa-853f-f7c084a649c2">
 
                     <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
 %output application/java
@@ -38,7 +38,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
             </catch-exception-strategy>
             <catch-exception-strategy doc:name="Catch Missing Data" when="#[exception.causedBy(java.lang.NullPointerException)]">
 
-                <dw:transform-message doc:name="Set statusCode and reason variables">
+                <dw:transform-message doc:name="Set statusCode and reason variables" metadata:id="d005b1f4-6a95-4635-bb8b-f3e0669a7f67">
 
                     <dw:set-variable variableName="statusCode"><![CDATA[%dw 1.0
 %output application/java
