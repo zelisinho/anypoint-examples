@@ -19,12 +19,11 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/xml
 ---
-using (p = payload as :object {class : "com.sforce.soap.partner.DescribeGlobalResult"})
 div: { 
-		(p.sobjects map {
-			option @(value: $.name): $.label
-		})
-	}]]></dw:set-payload>
+	(payload.sobjects map {
+		option @(value: $.name): $.label
+	})
+}]]></dw:set-payload>
 </dw:transform-message>
         <object-to-string-transformer doc:name="Object to String" mimeType="text/html"/>
 

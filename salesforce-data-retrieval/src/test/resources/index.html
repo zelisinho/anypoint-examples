@@ -9,12 +9,12 @@
 -->
 <style>input{display:block;}select{display: block;}</style>
 <html>
-	<body>
-		
-		<h1>Salesforce data retrieval</h1>
-		<form action="/" method="POST">
-			Object: <select name="object" >
-				<?xml version='1.0' encoding='UTF-8'?>
+  <body>
+    
+    <h1>Salesforce data retrieval</h1>
+    <form action="/" method="POST">
+      Object: <select name="object" >
+        <?xml version='1.0' encoding='UTF-8'?>
 <div>
   <option value="AcceptedEventRelation">Accepted Event Relation</option>
   <option value="Account">Account</option>
@@ -234,8 +234,9 @@
   <option value="Scontrol">Custom S-Control</option>
   <option value="SearchPromotionRule">Promoted Search Term</option>
   <option value="SecureAgent">Secure Agent</option>
-  <option value="SecureAgentPlugin">Secure Agent Plugin</option>
-  <option value="SecureAgentPluginProperty">Secure Agent Plugin Property</option>
+  <option value="SecureAgentPlugin">Secure Agent Plug-in</option>
+  <option value="SecureAgentPluginProperty">Secure Agent Plug-in Property</option>
+  <option value="SetupAuditTrail">Setup Audit Trail Entry</option>
   <option value="SetupEntityAccess">Setup Entity Access</option>
   <option value="Site">Site</option>
   <option value="SiteFeed">Site</option>
@@ -273,11 +274,11 @@
   <option value="Vote">Vote</option>
   <option value="WebLink">Custom Button or Link</option>
 </div>
-			</select>
-			Field: <input type="text" name="field" />
-			Search Key: <input type="text" name="searchKey" />
-			Search Value: <input type="text" name="searchValue" />
-			<input type="submit" name="Submit" value="Submit" id="submit"/>
-		</form>
-	</body>
+      </select>
+      Field: <input type="text" name="field" />
+      Search Key: <input type="text" name="searchKey" />
+      Search Value: <input type="text" name="searchValue" />
+      <input type="submit" name="Submit" value="Submit" id="submit"/>
+    </form>
+  </body>
 </html>
