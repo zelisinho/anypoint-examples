@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule  xmlns="http://www.mulesoft.org/schema/mule/core"
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata"  xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:spring="http://www.springframework.org/schema/beans"
@@ -34,22 +34,20 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 
         <flow-ref doc:name="Upsert Patient" name="upsertPatient"/>
         <flow-ref doc:name="Create Episode" name="createEpisode"/>
-        <dw:transform-message doc:name="createEpisodeResponse to admitSubjectResponse">
+        <dw:transform-message doc:name="createEpisodeResponse to admitSubjectResponse" metadata:id="9134b5db-eaf1-4b1a-a3f1-d28316e7bbf5">
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
 %output application/xml
-
-%var episode = payload.createEpisodeResponse.Episode
 ---
 ns0#"admitSubjectResponse": {
 	ns1#"Episode": {
-		episodeId: episode.episodeId,
-		"ns1:PatientId": episode."ns1:PatientId",
-		admission: episode.admission,
-		(startDate: episode.startDate as :date) when episode.startDate?,
-		(endDate: (episode.endDate as :date) +|P5D|) when episode.endDate?,
-		care: episode.care
+		episodeId: payload.createEpisodeResponse.Episode.episodeId,
+	    ns1#PatientId: payload.createEpisodeResponse.Episode.PatientId,
+		admission: payload.createEpisodeResponse.Episode.admission,
+		(startDate: payload.createEpisodeResponse.Episode.startDate as :date) when payload.createEpisodeResponse.Episode.startDate?,
+		(endDate: (payload.createEpisodeResponse.Episode.endDate as :date) +|P5D|) when payload.createEpisodeResponse.Episode.endDate?,
+		care: payload.createEpisodeResponse.Episode.care
 	},
 	ns1#"Bill ": {
 		costPerNight: "100",
@@ -62,27 +60,17 @@ ns0#"admitSubjectResponse": {
     </flow>
     
     <sub-flow doc:description="Uploads and inserts patient data into a hospital system." name="upsertPatient">
-        <dw:transform-message doc:name="admitSubject to upsertPatient">
+        <dw:transform-message doc:name="admitSubject to upsertPatient" metadata:id="303505e1-22fe-41f1-b054-6128cbc167d2">
+            <dw:input-payload doc:sample="Envelope.xml"/>
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
 %output application/xml
-
-%var subject = payload.Envelope.Body.admitSubject.Subject
 ---
 ns0#"upsertPatient": {
-	ns1#"Subject": {
-		nationalId: 	subject.nationalId,
-		firstName: 		subject.firstName,
-		lastName: 		subject.lastName,
-		address1: 		subject.address1,
-		address2: 		subject.address2,
-		address3: 		subject.address3,
-		nationality: 	subject.nationality,
-		gender: 		subject.gender,
-		(dateOfBirth: 	subject.dateOfBirth as :date) when subject.dateOfBirth?
-	}
-}]]></dw:set-payload>
+	ns1#"Subject": payload.Envelope.Body.admitSubject.Subject
+}
+]]></dw:set-payload>
         </dw:transform-message>
         <flow-ref doc:name="Invoke Patient Service" name="invokePatientService"/>
     </sub-flow>
@@ -93,7 +81,7 @@ ns0#"upsertPatient": {
 
     </sub-flow>
     <sub-flow doc:description="Creates new episodes for patient pre-admission into the hospital systems." name="createEpisode">
-        <dw:transform-message doc:name="upsertPatientResponse to createEpisode">
+        <dw:transform-message doc:name="upsertPatientResponse to createEpisode" metadata:id="0ef1c948-e8a1-41c1-a9cd-4310121fd98d">
             <dw:set-payload><![CDATA[%dw 1.0
 %namespace ns0 http://www.mule-health.com/SOA/message/1.0
 %namespace ns1 http://www.mule-health.com/SOA/model/1.0
