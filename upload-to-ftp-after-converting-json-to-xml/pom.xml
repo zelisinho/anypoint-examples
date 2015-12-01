@@ -11,11 +11,6 @@
 		<artifactId>examples-catalog</artifactId>
 		<version>1.3.3-SNAPSHOT</version>
 	</parent>
-	
-	<properties>
-		<ftp.version>3.7.0</ftp.version>
-		<mule.version>3.7.2</mule.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -43,10 +38,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-            <groupId>com.mulesoft.muleesb.transports</groupId>
-            <artifactId>mule-transport-ftp-ee</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>org.mule.transports</groupId> 
+			<artifactId>mule-transport-ftp</artifactId> 
+ 			<version>${mule.version}</version>
+ 			<scope>provided</scope>
+		</dependency>
     </dependencies>
 </project>
