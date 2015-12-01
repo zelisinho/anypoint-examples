@@ -1,8 +1,8 @@
 <custom__type__definition>
   <version>5.2.0.0</version>
   <typeName class="org.mule.common.metadata.DefaultMetaDataKey">
-    <id>objectsMap</id>
-    <displayName>objectsMap</displayName>
+    <id>ordersJava</id>
+    <displayName>ordersJava</displayName>
     <category>DEFAULT</category>
     <metaDataKeyPropertiesManager>
       <properties>
@@ -82,8 +82,8 @@
         <org.mule.common.metadata.DefaultMetaDataField>
           <name>pricePerUnit</name>
           <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
-            <implementationClass>java.lang.Integer</implementationClass>
-            <dataType>INTEGER</dataType>
+            <implementationClass>java.lang.Double</implementationClass>
+            <dataType>DOUBLE</dataType>
             <metaDataModelPropertiesManager>
               <properties/>
             </metaDataModelPropertiesManager>
@@ -138,8 +138,8 @@
         <org.mule.common.metadata.DefaultMetaDataField>
           <name>totalPrice</name>
           <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
-            <implementationClass>java.lang.Integer</implementationClass>
-            <dataType>INTEGER</dataType>
+            <implementationClass>java.lang.Double</implementationClass>
+            <dataType>DOUBLE</dataType>
             <metaDataModelPropertiesManager>
               <properties/>
             </metaDataModelPropertiesManager>
@@ -164,7 +164,7 @@
           </metaDataFieldPropertyManager>
         </org.mule.common.metadata.DefaultMetaDataField>
       </fields>
-      <name>objectsMap</name>
+      <name>ordersJava</name>
     </model>
     <isArray>false</isArray>
   </metadataModel>
