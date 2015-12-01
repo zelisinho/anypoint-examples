@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule version="EE-3.7.0" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jbossts="http://www.mulesoft.org/schema/mule/jbossts" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata"  xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jbossts="http://www.mulesoft.org/schema/mule/jbossts" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
 http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
 http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd
@@ -63,11 +63,11 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
    </flow>
    <flow name="samsungOrder">
       <vm:inbound-endpoint doc:name="samsungOrder" exchange-pattern="request-response" path="samsungOrder"/>
-         <dw:transform-message doc:name="OrderItem to OrderRequest"> 
+         <dw:transform-message doc:name="OrderItem to OrderRequest" metadata:id="496824c7-5d09-4802-941d-4feadc6e7d46">
+            <dw:input-payload doc:sample="OrderItem_2.dwl"/> 
 	             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java 
 --- 
-using (obj = payload as :object { class: "com.mulesoft.se.orders.OrderItem"})
 {
 	name: 		payload.name,
 	quantity: 	payload.quantity
@@ -78,15 +78,15 @@ using (obj = payload as :object { class: "com.mulesoft.se.orders.OrderItem"})
          <message-property-filter caseSensitive="true" pattern="http.status=200" scope="inbound"/>
       </message-filter>
       <set-session-variable doc:name="totalValue += price" value="#[totalValue + payload.price]" variableName="totalValue"/>
-        <dw:transform-message doc:name="OrderResponse to PurchaseReceipt">
+        <dw:transform-message doc:name="OrderResponse to PurchaseReceipt" metadata:id="628e1ea0-6246-425f-aa0a-0e0673255fd0">
+            <dw:input-payload doc:sample="OrderResponse_1.dwl"/>
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java 
 --- 
-using (obj = payload as :object { class: "com.mulesoft.se.samsung.OrderResponse" })
 {
-	id: 		obj.id,
-	status: 	obj.result,
-	totalPrice: obj.price  as :number
+	id: 		payload.id,
+	status: 	payload.result,
+	totalPrice: payload.price 
 } as :object { class: "com.mulesoft.se.orders.PurchaseReceipt"}
 
 ]]></dw:set-payload>
@@ -97,6 +97,7 @@ using (obj = payload as :object { class: "com.mulesoft.se.samsung.OrderResponse"
                     <scripting:text><![CDATA[def receipt = new com.mulesoft.se.orders.PurchaseReceipt();
 receipt.setStatus(com.mulesoft.se.orders.Status.REJECTED); receipt.setTotalPrice(0);
 return receipt;]]></scripting:text>
+
 
 
 
@@ -131,6 +132,7 @@ return receipt;]]></scripting:text>
          <scripting:script engine="Groovy">
                 <scripting:text><![CDATA[receipt = new com.mulesoft.se.orders.PurchaseReceipt(); receipt.setStatus(com.mulesoft.se.orders.Status.ACCEPTED); receipt.setTotalPrice(Float.valueOf(message.getInvocationProperty('totalPrice')));
 return receipt;]]></scripting:text>
+
          </scripting:script>
       </scripting:transformer>
       <rollback-exception-strategy doc:name="Rollback Exception Strategy" maxRedeliveryAttempts="3">
