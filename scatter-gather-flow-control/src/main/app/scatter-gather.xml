@@ -54,7 +54,11 @@ payload = sourceB;]]></expression-component>
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/csv
 ---
-payload]]></dw:set-payload>
+payload map {
+	Id      : $.Id,
+	Name    : $.Name,
+	Email   : $.Email
+}]]></dw:set-payload>
         </dw:transform-message>
 
         <object-to-string-transformer doc:name="CSV Output Object to String"/>
