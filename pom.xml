@@ -54,10 +54,10 @@
 <!-- 	<module>oauth2-client-credentials-using-the-HTTP-connector</module> -->
 		<module>salesforce-data-retrieval</module>
 		<module>import-contacts-into-ms-dynamics</module>
-		<!-- <module>get-customer-list-from-netsuite</module> -->
+		<module>get-customer-list-from-netsuite</module>
 		<module>adding-a-new-customer-to-workday-revenue-management</module>
 		<!-- <module>importing-a-csv-file-into-ms-sharepoint</module> -->
-		<!-- <module>import-leads-into-salesforce</module> -->
+		<module>import-leads-into-salesforce</module>
 		<module>processing-orders-with-dataweave-and-APIkit</module>
 		<module>munit-short-tutorial</module>
 		<module>testing-apikit-with-munit</module>
