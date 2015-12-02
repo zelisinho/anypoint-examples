@@ -1,65 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core"  xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
-     <apikit:config name="api-config" raml="api.raml" consoleEnabled="true" consolePath="console" doc:name="Router" >
-        <apikit:flow-mapping resource="/munit" action="get" flow-ref="get:/munit:api-config"/>
-        <apikit:flow-mapping resource="/munit" action="post" flow-ref="post:/munit:api-config"/>
-        <apikit:flow-mapping resource="/munit" action="put" flow-ref="put:/munit:api-config"/>
-        <apikit:flow-mapping resource="/munit" action="delete" flow-ref="delete:/munit:api-config"/>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+     <apikit:config consoleEnabled="true" consolePath="console" doc:name="Router" name="api-config" raml="api.raml">
+        <apikit:flow-mapping action="get" flow-ref="get:/munit:api-config" resource="/munit"/>
+        <apikit:flow-mapping action="post" flow-ref="post:/munit:api-config" resource="/munit"/>
+        <apikit:flow-mapping action="put" flow-ref="put:/munit:api-config" resource="/munit"/>
+        <apikit:flow-mapping action="delete" flow-ref="delete:/munit:api-config" resource="/munit"/>
     </apikit:config>
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="9090" doc:name="HTTP Listener Configuration"/>
-    <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping" >
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="9090"/>
+    <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping">
         <apikit:mapping statusCode="404">
-            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
-            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value='{ "message": "Resource not found" }' doc:name="Set Payload" />
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>
+            <set-property doc:name="Property" propertyName="Content-Type" value="application/json"/>
+            <set-payload doc:name="Set Payload" value="{ &quot;message&quot;: &quot;Resource not found&quot; }"/>
         </apikit:mapping>
         <apikit:mapping statusCode="405">
-            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
-            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value='{ "message": "Method not allowed" }' doc:name="Set Payload" />
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException"/>
+            <set-property doc:name="Property" propertyName="Content-Type" value="application/json"/>
+            <set-payload doc:name="Set Payload" value="{ &quot;message&quot;: &quot;Method not allowed&quot; }"/>
         </apikit:mapping>
         <apikit:mapping statusCode="415">
-            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
-            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value='{ "message": "Unsupported media type" }' doc:name="Set Payload" />
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException"/>
+            <set-property doc:name="Property" propertyName="Content-Type" value="application/json"/>
+            <set-payload doc:name="Set Payload" value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }"/>
         </apikit:mapping>
         <apikit:mapping statusCode="406">
-            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
-            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value='{ "message": "Not acceptable" }' doc:name="Set Payload" />
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException"/>
+            <set-property doc:name="Property" propertyName="Content-Type" value="application/json"/>
+            <set-payload doc:name="Set Payload" value="{ &quot;message&quot;: &quot;Not acceptable&quot; }"/>
         </apikit:mapping>
         <apikit:mapping statusCode="400">
-            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
-            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value='{ "message": "Bad request" }' doc:name="Set Payload" />
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException"/>
+            <set-property doc:name="Property" propertyName="Content-Type" value="application/json"/>
+            <set-payload doc:name="Set Payload" value="{ &quot;message&quot;: &quot;Bad request&quot; }"/>
         </apikit:mapping>
     </apikit:mapping-exception-strategy>
 
-    <flow name="api-main" >
-        <http:listener config-ref="HTTP_Listener_Configuration" path="api/*" doc:name="HTTP"/>
+    <flow name="api-main">
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="HTTP" path="api/*"/>
 
-        <apikit:router config-ref="api-config" doc:name="APIkit Router" />
-        <exception-strategy ref="api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy" />
+        <apikit:router config-ref="api-config" doc:name="APIkit Router"/>
+        <exception-strategy doc:name="Reference Exception Strategy" ref="api-apiKitGlobalExceptionMapping"/>
     </flow>
 
-    <flow name="get:/munit:api-config" >
+    <flow name="get:/munit:api-config">
 
-        <set-payload value="#['GET RESPONSE']" doc:name="Set Payload" />
+        <set-payload doc:name="Set Payload" value="#['GET RESPONSE']"/>
     </flow>
-    <flow name="put:/munit:api-config" >
+    <flow name="put:/munit:api-config">
 
-        <set-payload value="#['PUT RESPONSE']" doc:name="Set Payload"/>
+        <set-payload doc:name="Set Payload" value="#['PUT RESPONSE']"/>
     </flow>
-    <flow name="delete:/munit:api-config" >
+    <flow name="delete:/munit:api-config">
 
-        <set-payload value="#['DELETE RESPONSE']" doc:name="Set Payload"/>
+        <set-payload doc:name="Set Payload" value="#['DELETE RESPONSE']"/>
     </flow>
-    <flow name="post:/munit:api-config" >
+    <flow name="post:/munit:api-config">
 
-        <set-payload value="#['POST RESPONSE']" doc:name="Set Payload"/>
+        <set-payload doc:name="Set Payload" value="#['POST RESPONSE']"/>
     </flow>
 </mule>
