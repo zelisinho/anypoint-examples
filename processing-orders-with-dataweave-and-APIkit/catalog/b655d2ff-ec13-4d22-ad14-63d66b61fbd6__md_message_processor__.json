@@ -3,7 +3,7 @@
     "outputMessageMetadata": {
         "messagePayload": {
             "connectorName": "#_custom_mule_metadata_type_#",
-            "typeId": "report"
+            "typeId": "ProcessedOrders"
         }
     },
     "id": "b655d2ff-ec13-4d22-ad14-63d66b61fbd6",
