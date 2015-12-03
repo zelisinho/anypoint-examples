@@ -3,4 +3,5 @@
     <name>testing-apikit-with-munit_1.3.3-SNAPSHOT</name>
     <description/>
     <muleExtension name="APIkit" qualifier="org.mule.tooling.apikit.3.7.0"/>
+	<muleExtension name="Munit" qualifier="org.mule.tooling.ui.contribution.munit"/>
 </mule-project>
