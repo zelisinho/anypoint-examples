@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
     <spring:beans>
         <spring:import resource="classpath:sap-api.xml"/>
     </spring:beans>
-    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="${http.port}" basePath="/api" doc:name="HTTP Request Configuration">
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8081" basePath="/api" doc:name="HTTP Request Configuration">
         <http:raml-api-configuration location="sap-api.raml"/>
     </http:request-config>
     <munit:test name="sap-api-test-suite-get:/salesOrders:sap-api-configTest" description="Test" >
