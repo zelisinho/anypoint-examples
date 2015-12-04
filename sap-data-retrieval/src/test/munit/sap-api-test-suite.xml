@@ -69,7 +69,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
      </sub-flow> 
      <sub-flow name="deleteSAPCustomer">
 
-        <sap:outbound-endpoint xmlVersion="2" responseTimeout="10000" doc:name="Get Customer" connector-ref="SapConnector" functionName="BAPI_CUSTOMER_FIND" type="function" exchange-pattern="request-response" outputXml="true">
+        <sap:outbound-endpoint xmlVersion="2" responseTimeout="10000" doc:name="Get Customer" connector-ref="SapConnector" functionName="BAPI_CUSTOMER_FIND" type="function" exchange-pattern="request-response">
             <sap:definition><![CDATA[<BAPI_CUSTOMER_FIND>
 	<import>
 		<MAX_CNT>0</MAX_CNT>
@@ -102,7 +102,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
          
          <sap:outbound-endpoint exchange-pattern="request-response"
 				 type="function" functionName="ZMULE_CUSTOMER_DELETE"
-				xmlVersion="2" outputXml="true" evaluateFunctionResponse="true"
+				xmlVersion="2" evaluateFunctionResponse="true"
 				responseTimeout="10000" doc:name="Delete Customer">
 				<sap:definition><![CDATA[<ZMULE_CUSTOMER_DELETE type="function">
 	<import>
