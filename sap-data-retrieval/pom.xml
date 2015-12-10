@@ -15,9 +15,9 @@
 	<properties>
 		<sap.jco.version>3.0.13</sap.jco.version>
 		<sap.idoc.version>3.0.12</sap.idoc.version>
-	<munit.version>1.0.0</munit.version>
-    <mule.munit.support.version>3.7.0</mule.munit.support.version>
-    </properties>
+		<munit.version>1.1.0</munit.version>
+		<mule.munit.support.version>3.7.1</mule.munit.support.version>
+	</properties>
 
 	<build>
 		<plugins>
@@ -28,49 +28,34 @@
 					<copyToAppsDirectory>true</copyToAppsDirectory>
 					<inclusions>
 						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-sfdc</artifactId>
-						</inclusion>
-						<inclusion>
 							<groupId>com.mulesoft.muleesb.transports</groupId>
 							<artifactId>mule-transport-sap</artifactId>
 						</inclusion>
-					<inclusion>
+						<inclusion>
                             <groupId>org.mule.modules</groupId>
                             <artifactId>mule-module-extensions-support</artifactId>
-                        </inclusion>
-                    <inclusion>
+						</inclusion>
+						<inclusion>
                             <groupId>org.mule.modules</groupId>
                             <artifactId>mule-module-extensions-spring-support</artifactId>
-                        </inclusion>
+                        </inclusion>						
                     </inclusions>
 				</configuration>
 			</plugin>
 
-			<!-- SAP Build -->
 			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<argLine>-Djava.library.path=${project.basedir}/libraries/SAP.${sap.jco.version}</argLine>
-					<classpathDependencyExcludes>
-						<classpathDependencyExcludes>com.sap.conn.jco:sapjco</classpathDependencyExcludes>
-						<classpathDependencyExcludes>com.sap.conn.idoc:sapidoc</classpathDependencyExcludes>
-					</classpathDependencyExcludes>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${project.basedir}/libraries/SAP.${sap.jco.version}/sapjco3.jar</additionalClasspathElement>
-						<additionalClasspathElement>${project.basedir}/libraries/SAP.${sap.idoc.version}/sapidoc3.jar</additionalClasspathElement>
-					</additionalClasspathElements>
-				</configuration>
-			</plugin>
-		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
                 <version>${munit.version}</version>
+				<configuration>
+					<systemPropertyVariables>   
+						<java.library.path>${project.basedir}/libraries/SAP.${sap.jco.version}</java.library.path>
+					</systemPropertyVariables>
+				</configuration>                
                 <executions>
                     <execution>
                         <id>test</id>
-                        <phase>test</phase>
+                        <phase>integration-test</phase>
                         <goals>
                             <goal>test</goal>
                         </goals>
@@ -78,13 +63,19 @@
                 </executions>
             </plugin>
         </plugins>
-	<testResources>
+		<testResources>
             <testResource>
                 <directory>src/test/munit</directory>
             </testResource>
-        <testResource>
+        	<testResource>
                 <directory>src/test/resources</directory>
             </testResource>
+        	<testResource>
+                <directory>${project.basedir}/libraries/SAP.${sap.idoc.version}</directory>
+            </testResource>
+        	<testResource>
+                <directory>${project.basedir}/libraries/SAP.${sap.jco.version}</directory>
+            </testResource>            
         </testResources>
     </build>
 
@@ -100,11 +91,6 @@
 			<version>3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-sfdc</artifactId>
-			<version>${sfdc.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.mulesoft.muleesb.transports</groupId>
 			<artifactId>mule-transport-sap</artifactId>
 			<version>${sap.version}</version>
@@ -113,14 +99,16 @@
 			<groupId>com.sap.conn.jco</groupId>
 			<artifactId>sapjco</artifactId>
 			<version>${sap.jco.version}</version>
-			<scope>provided</scope>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libraries/SAP.${sap.jco.version}/sapjco3.jar</systemPath>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.conn.idoc</groupId>
 			<artifactId>sapidoc</artifactId>
 			<version>${sap.idoc.version}</version>
-			<scope>provided</scope>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libraries/SAP.${sap.idoc.version}/sapidoc3.jar</systemPath>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -135,34 +123,36 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
-	<dependency>
+		<dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>mule-munit-support</artifactId>
             <version>${mule.munit.support.version}</version>
             <scope>test</scope>
         </dependency>
-    <dependency>
+	    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-extensions-support</artifactId>
             <version>${mule.version}</version>
         </dependency>
-    <dependency>
+		<dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-extensions-spring-support</artifactId>
             <version>${mule.version}</version>
         </dependency>
-    <dependency>
+		<dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-json</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
 	<repositories>
         <repository>
             <id>mule-ee-releases</id>
             <name>Mule Release Repository</name>
             <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 </project>
