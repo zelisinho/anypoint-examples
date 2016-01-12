@@ -4,7 +4,7 @@
 Mule applies the concept of transactions to operations in application for which the result cannot remain indeterminate. This example illustrates the concept of transactional scope and rollback error handling strategy in a use case where data is sent from JMS to a MySQL DB.
 
 ###Example Use Case 
-In this example the JMS endpoint listens for XML messages sent to the "in" queue. This message is logged and then inserted to a MySQL database. After the order has been inserted an error is thrown using a Java component. This error is handled using the rollback exception handling strategy which redelivers the message for a set number of times before it logs an error message. As the database connector is within the transactional scope, the action that inserted the order is rescinded.
+In this example the JMS endpoint listens for XML messages sent to the "in" queue. This message is logged and then inserted to a MySQL database. After the order has been inserted an error is thrown using a Java component. This error is handled using the rollback exception handling strategy which redelivers the message for a set number of times before it logs an error message. As the database connector is within the transactional scope, the action that inserted the order is rescinded and also next processors defined in the scope are not executed.
 
 
 ### Set up and run the example
