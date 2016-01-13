@@ -35,6 +35,6 @@
         <exception-strategy doc:name="Reference Exception Strategy" ref="currency-apiKitGlobalExceptionMapping"/>
     </flow>
     <flow name="get:/currencies:currency-config">
-        <parse-template doc:name="Parse Template" location="src/main/resources/currency.json"/>
+        <parse-template doc:name="Parse Template" location="currency.json"/>
     </flow>
 </mule>
