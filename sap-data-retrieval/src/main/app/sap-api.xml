@@ -89,7 +89,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 ---
 customers: 
 	payload."BAPI_CUSTOMER_FIND".tables."RESULT_TAB".*row map {
-		(($$):$)
+		($$):$
 	}]]></dw:set-payload>
         </dw:transform-message>
     </flow>
@@ -119,7 +119,7 @@ customers:
 %output application/json
 ---
 salesOrders: payload."BAPI_SALESORDER_GETLIST".tables."SALES_ORDERS".*row map {
-	(($$):$)
+	($$):$
 } when (payload."BAPI_SALESORDER_GETLIST".tables."SALES_ORDERS" != "") otherwise {message:"No data found."}]]></dw:set-payload>
         </dw:transform-message>
 
@@ -156,7 +156,7 @@ salesOrders: payload."BAPI_SALESORDER_GETLIST".tables."SALES_ORDERS".*row map {
 %output application/json
 ---
 materials: payload."BAPI_MATERIAL_GETLIST".tables.MATNRLIST.*row map {
-	(($$):$)
+	($$):$
 } when (payload."BAPI_MATERIAL_GETLIST".tables.MATNRLIST != "") otherwise { message:"No data found."}]]></dw:set-payload>
         </dw:transform-message>
 
