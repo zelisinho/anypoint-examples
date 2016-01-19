@@ -102,14 +102,14 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <logger message="Customer number for delete: #[payload.CustomerNumber]" level="INFO" doc:name="Log the CustomerNumber for deletion"/>
          
          <sap:outbound-endpoint exchange-pattern="request-response"
-				 type="function" functionName="ZMULE_CUSTOMER_DELETE"
+				 type="function" functionName="ZCAFM_CUSTOMER_DELETE"
 				xmlVersion="2" evaluateFunctionResponse="true"
 				responseTimeout="10000" doc:name="Delete Customer">
-				<sap:definition><![CDATA[<ZMULE_CUSTOMER_DELETE type="function">
+				<sap:definition><![CDATA[<ZCAFM_CUSTOMER_DELETE type="function">
 	<import>
-			<I_CUSTOMER type="field">#[payload.CustomerNumber]</I_CUSTOMER>
+			<PI_CUSTOMER type="field">#[payload.CustomerNumber]</PI_CUSTOMER>
 	</import>
-</ZMULE_CUSTOMER_DELETE>
+</ZCAFM_CUSTOMER_DELETE>
 ]]></sap:definition>
 			</sap:outbound-endpoint>
  
