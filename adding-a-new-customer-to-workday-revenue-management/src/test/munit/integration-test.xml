@@ -82,7 +82,7 @@ root : {
     </sub-flow>
     
     <sub-flow name="inactivateCustomerInWorkdayFlow">
-        <logger message="Invalidating customer..." level="INFO" doc:name="Log beginning of customer invalidation"/>
+        <logger message="Invalidating customer... #[flowVars.CustomerName]" level="INFO" doc:name="Log beginning of customer invalidation"/>
         <dw:transform-message doc:name="Create PutCustomer request">
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/xml

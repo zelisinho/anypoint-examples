@@ -17,11 +17,12 @@ The application accepts an XML code which containing the required customer infor
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application.
-1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Connector global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** and **tenant** fields to your account-specific values as follows:
+1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Connector global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** **tenant**and **hostname** fields to your account-specific values as follows:
 
 		user						<USER>
-		tenant						<DOMAIN>
+		tenant						<TENANT ID> - It usually ends with _pt1
 		password					<PASSWORD>
+		hostname					<HOST NAME OF ONE OF THE WORKDAY CLOUD SERVERS> - for example impl-cc.workday.com
 
 Then click **OK** to save your changes. 
 1. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
