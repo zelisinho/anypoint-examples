@@ -10,18 +10,19 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-The application accepts an XML code which containing the required customer information (customer name, status and category). It parses this xml using the DataWeave component and creates a new customer record in a Workday instance.
+The application accepts an XML code which containing the required customer information (customer name, status and category). It parses this XML using the DataWeave transformer and creates a new customer record in a Workday instance.
 
 ### Set Up and Run the Example ###
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application.
-1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Revenue Management global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** and **endpoint** fields to your account-specific values as follows:
+1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Connector global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** and **tenant** fields to your account-specific values as follows:
 
-		user						<USER>@<DOMAIN>
+		user						<USER>
+		tenant						<DOMAIN>
 		password					<PASSWORD>
-		endpoint					<ENDPOINT_URL>
+
 Then click **OK** to save your changes. 
 1. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
 1. Make an HTTP POST request to *http://localhost:9090/* with the 'Content-Type' header set as 'application/xml' and the request body as follows:
@@ -45,7 +46,7 @@ Then click **OK** to save your changes.
 
 Using a single flow with four elements, this application accepts XML with the customer information, then uploads a customer to Workday. 
 
-The [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) listens to POST requests at the predefined URL. When such request arrives, it passes the content to the [Anypoint DataWeave transformer](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation). This transformer converts the format of the data from XML to a POJO required for the Workday request. After data conversion, the application uses the [Workday Connector](http://www.mulesoft.org/documentation/display/current/Workday+Connector) to push data into your Workday system. The connector's configuration specifies the **operation** – *Put customer*. 
+The [HTTP connector](http://www.mulesoft.org/documentation/display/current/HTTP+Connector) listens to POST requests at the predefined URL. When such request arrives, it passes the content to the [Anypoint DataWeave transformer](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation). This transformer converts the format of the data from XML to a XML required for the Workday request. After data conversion, the application uses the [Workday Connector](http://www.mulesoft.org/documentation/display/current/Workday+Connector) to push data into your Workday system. The connector's configuration specifies the **operation** – *Put customer*. 
 
 ### Documentation ###
 
