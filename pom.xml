@@ -61,6 +61,7 @@
 		<module>processing-orders-with-dataweave-and-APIkit</module>
 		<module>munit-short-tutorial</module>
 		<module>testing-apikit-with-munit</module>
+		<module>sap-data-retrieval</module>
     </modules>
 
     <properties>
