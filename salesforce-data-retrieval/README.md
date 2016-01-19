@@ -33,6 +33,17 @@ Follow the procedure below to create, then run the **Salesforce data retrieval**
 
 If you are unsure about valid object types and their attributes, please visit [Salesforce Documentation site - Standard Objects](https://www.salesforce.com/developer/docs/api/Content/sforce_api_objects_list.htm).
 
+### Example of specific Use Case
+
+To find out the correct **sfdc.integration.user.id** value, after you'll run the example, please fill in the following values to the form:
+
++ Object: `User`
++ Field: can be empty as *Id* field is displayed by default
++ Search Key: `UserName`
++ Search Value: `bob.dylan@org` (value of the *sfdc.username*)
+
+The *id* field from the output represents the *sfdc.integration.user.id* of the specified user.
+
 ### How it Works
 
 The **Salesforce data retrieval** example application contains two [flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) which receive end user HTTP requests, process them and returns the result to the client.
