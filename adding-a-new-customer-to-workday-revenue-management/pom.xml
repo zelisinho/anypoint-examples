@@ -37,10 +37,6 @@
 							<groupId>org.mule.modules</groupId>
 							<artifactId>mule-module-extensions-spring-support</artifactId>
 						</inclusion>
-						<inclusion>
-							<groupId>com.mulesoft.munit.utils</groupId>
-							<artifactId>munit-synchronize-module</artifactId>
-						</inclusion>
 					</inclusions>
 				</configuration>
 			</plugin>
