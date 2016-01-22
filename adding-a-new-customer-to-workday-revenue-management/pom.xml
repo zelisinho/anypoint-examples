@@ -14,8 +14,8 @@
 
 	<properties>
 		<wday.version>7.0.0</wday.version>
-		<munit.version>1.0.0</munit.version>
-		<mule.munit.support.version>3.7.0</mule.munit.support.version>
+		<munit.version>1.1.0</munit.version>
+		<mule.munit.support.version>3.8.0-SNAPSHOT</mule.munit.support.version>
 	</properties>
 
 	<build>
