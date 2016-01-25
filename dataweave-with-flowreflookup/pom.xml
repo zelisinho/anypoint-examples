@@ -60,7 +60,12 @@
 		</dependency>
 	</dependencies>
 	
-	<properties>
-		<mule.version>3.7.2</mule.version>
-	</properties>
+	<repositories>
+		<repository>
+			<id>mule-ee-releases</id>
+			<name>MuleSoft Releases EE Repository</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases-ee/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 </project>

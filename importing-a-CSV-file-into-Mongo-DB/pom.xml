@@ -37,16 +37,11 @@
 		    <version>1.27</version>
 		    <scope>test</scope>
 		</dependency>
-		
 		<dependency>
             <groupId>com.mulesoft.weave</groupId>
             <artifactId>mule-plugin-weave_2.11</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
-				    
 	</dependencies>
-<properties>
-        <mule.version>3.7.2</mule.version>
-    </properties>
 </project>
