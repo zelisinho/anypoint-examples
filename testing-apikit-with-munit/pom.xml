@@ -91,9 +91,4 @@
 			<version>1.7.2</version>
 		</dependency>
 	</dependencies>
-
-	<properties>
-		<munit.version>1.0.0</munit.version>
-		<mule.munit.support.version>3.7.0</mule.munit.support.version>
-	</properties>
 </project>
