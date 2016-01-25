@@ -14,7 +14,7 @@
     	<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-apikit</artifactId>
-			<version>1.7.0</version>
+			<version>${mule.version}</version>
 		</dependency>		
 		<dependency>
 			<groupId>com.mulesoft.muleesb.modules</groupId>
