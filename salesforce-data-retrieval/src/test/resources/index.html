@@ -9,12 +9,12 @@
 -->
 <style>input{display:block;}select{display: block;}</style>
 <html>
-  <body>
-    
-    <h1>Salesforce data retrieval</h1>
-    <form action="/" method="POST">
-      Object: <select name="object" >
-        <?xml version='1.0' encoding='UTF-8'?>
+	<body>
+		
+		<h1>Salesforce data retrieval</h1>
+		<form action="/" method="POST">
+			Object: <select name="object" >
+				<?xml version='1.0' encoding='UTF-8'?>
 <div>
   <option value="AcceptedEventRelation">Accepted Event Relation</option>
   <option value="Account">Account</option>
@@ -24,6 +24,8 @@
   <option value="AccountHistory">Account History</option>
   <option value="AccountPartner">Account Partner</option>
   <option value="AccountShare">Account Share</option>
+  <option value="ActionLinkGroupTemplate">Action Link Group Template</option>
+  <option value="ActionLinkTemplate">Action Link Template</option>
   <option value="ActivityHistory">Activity History</option>
   <option value="AdditionalNumber">Additional Directory Number</option>
   <option value="AggregateResult">Aggregate Result</option>
@@ -50,6 +52,7 @@
   <option value="AuthConfigProviders">Authentication Configuration Auth. Provider</option>
   <option value="AuthProvider">Auth. Provider</option>
   <option value="AuthSession">Auth Session</option>
+  <option value="BackgroundOperation">Background Operation</option>
   <option value="BrandTemplate">Letterhead</option>
   <option value="BusinessHours">Business Hours</option>
   <option value="BusinessProcess">Business Process</option>
@@ -84,6 +87,7 @@
   <option value="CollaborationInvitation">Chatter Invitation</option>
   <option value="CombinedAttachment">Note, Attachment, Google Doc And File</option>
   <option value="Community">Zone</option>
+  <option value="ConnectedApplication">Connected App</option>
   <option value="Contact">Contact</option>
   <option value="ContactCleanInfo">Contact Clean Info</option>
   <option value="ContactFeed">Contact Feed</option>
@@ -95,6 +99,9 @@
   <option value="ContentDocumentFeed">ContentDocument Feed</option>
   <option value="ContentDocumentHistory">Content Document History</option>
   <option value="ContentDocumentLink">Content Document Link</option>
+  <option value="ContentFolder">Content Folder</option>
+  <option value="ContentFolderLink">Content Folder Link</option>
+  <option value="ContentFolderMember">Content Folder Member</option>
   <option value="ContentVersion">Content Version</option>
   <option value="ContentVersionHistory">Content Version History</option>
   <option value="ContentWorkspace">Library</option>
@@ -115,6 +122,7 @@
   <option value="DashboardComponent">Dashboard Component</option>
   <option value="DashboardComponentFeed">Dashboard Component Feed</option>
   <option value="DashboardFeed">Dashboard Feed</option>
+  <option value="DataType">Data Type</option>
   <option value="DatacloudCompany">Data.com Company</option>
   <option value="DatacloudContact">Data.com Contact</option>
   <option value="DatacloudDandBCompany">D&amp;B Company</option>
@@ -136,6 +144,8 @@
   <option value="EmailServicesFunction">Email Service</option>
   <option value="EmailStatus">Email Status</option>
   <option value="EmailTemplate">Email Template</option>
+  <option value="EntityDefinition">Entity Definition</option>
+  <option value="EntityParticle">Field Definition</option>
   <option value="EntitySubscription">Entity Subscription</option>
   <option value="Event">Event</option>
   <option value="EventFeed">Event Feed</option>
@@ -148,11 +158,16 @@
   <option value="FeedLike">Feed Like</option>
   <option value="FeedPollChoice">Feed Poll Choice</option>
   <option value="FeedPollVote">Feed Poll Vote</option>
+  <option value="FeedRevision">Feed Revision</option>
   <option value="FeedTrackedChange">Feed Tracked Change</option>
+  <option value="FieldDefinition">Field Definition</option>
   <option value="FieldPermissions">Field Permissions</option>
   <option value="FiscalYearSettings">Fiscal Year Settings</option>
+  <option value="FlowInterview">Flow Interview</option>
+  <option value="FlowInterviewShare">Flow Interview Share</option>
   <option value="Folder">Folder</option>
   <option value="ForecastShare">Forecast Share</option>
+  <option value="GrantedByLicense">Setting Granted By License</option>
   <option value="Group">Group</option>
   <option value="GroupMember">Group Member</option>
   <option value="HashtagDefinition">Hashtag Definition</option>
@@ -168,6 +183,9 @@
   <option value="LeadShare">Lead Share</option>
   <option value="LeadStatus">Lead Status Value</option>
   <option value="ListView">List View</option>
+  <option value="ListViewChart">List View Chart</option>
+  <option value="ListViewChartInstance">List View Chart Instance</option>
+  <option value="LoginGeo">Login Geo Data</option>
   <option value="LoginHistory">Login History</option>
   <option value="LoginIp">Login IP</option>
   <option value="LookedUpFromActivity">Lookups from Activity</option>
@@ -175,9 +193,12 @@
   <option value="MacroHistory">Macro History</option>
   <option value="MacroShare">Macro Share</option>
   <option value="MailmergeTemplate">Mail Merge Template</option>
+  <option value="MatchingRule">Matching Rule</option>
+  <option value="MatchingRuleItem">Matching Rule Item</option>
   <option value="MobileDeviceRegistrar">Mobile Device Registrar</option>
   <option value="MusicAlbum__c">MusicAlbum</option>
   <option value="Name">Name</option>
+  <option value="NamedCredential">Named Credential</option>
   <option value="Note">Note</option>
   <option value="NoteAndAttachment">Note and Attachment</option>
   <option value="OauthToken">Oauth Token</option>
@@ -199,6 +220,7 @@
   <option value="OrderItem">Order Product</option>
   <option value="OrderItemFeed">Order Product Feed</option>
   <option value="OrderItemHistory">Order Product History</option>
+  <option value="OrderShare">Order Share</option>
   <option value="OrgWideEmailAddress">Organization-wide From Email Address</option>
   <option value="Organization">Organization</option>
   <option value="OwnedContentDocument">User Owned File</option>
@@ -210,6 +232,7 @@
   <option value="PermissionSetAssignment">Permission Set Assignment</option>
   <option value="PermissionSetLicense">Permission Set License</option>
   <option value="PermissionSetLicenseAssign">Permission Set License Assignment</option>
+  <option value="PicklistValueInfo">Picklist Value Info</option>
   <option value="PlatformAction">Platform Action</option>
   <option value="Pricebook2">Price Book</option>
   <option value="Pricebook2History">Price Book History</option>
@@ -223,11 +246,15 @@
   <option value="ProcessNode">Process Node</option>
   <option value="Product2">Product</option>
   <option value="Product2Feed">Product Feed</option>
+  <option value="Product2History">Product History</option>
   <option value="Profile">Profile</option>
+  <option value="Publisher">Publisher</option>
   <option value="PushTopic">Push Topic</option>
   <option value="QueueSobject">Queue Sobject</option>
   <option value="RecentlyViewed">Recently Viewed</option>
   <option value="RecordType">Record Type</option>
+  <option value="RelationshipDomain">Relationship Domain</option>
+  <option value="RelationshipInfo">Relationship</option>
   <option value="Report">Report</option>
   <option value="ReportFeed">Report Feed</option>
   <option value="SamlSsoConfig">SAML Single Sign-On Setting</option>
@@ -236,6 +263,7 @@
   <option value="SecureAgent">Secure Agent</option>
   <option value="SecureAgentPlugin">Secure Agent Plug-in</option>
   <option value="SecureAgentPluginProperty">Secure Agent Plug-in Property</option>
+  <option value="ServiceFieldDataType">Service Field Data Type</option>
   <option value="SetupAuditTrail">Setup Audit Trail Entry</option>
   <option value="SetupEntityAccess">Setup Entity Access</option>
   <option value="Site">Site</option>
@@ -259,13 +287,20 @@
   <option value="TopicFeed">Topic Feed</option>
   <option value="UndecidedEventRelation">Undecided Event Relation</option>
   <option value="User">User</option>
+  <option value="UserEntityAccess">User Entity Access</option>
   <option value="UserFeed">User Feed</option>
+  <option value="UserFieldAccess">User Field Access</option>
   <option value="UserLicense">User License</option>
   <option value="UserListView">User List View</option>
   <option value="UserListViewCriterion">User List View Criteria</option>
   <option value="UserLogin">User Login</option>
   <option value="UserPackageLicense">User Package License</option>
   <option value="UserPreference">User Preference</option>
+  <option value="UserProvAccount">User Provisioning Account</option>
+  <option value="UserProvAccountStaging">User Provisioning Account Staging</option>
+  <option value="UserProvMockTarget">User Provisioning Mock Target</option>
+  <option value="UserProvisioningConfig">User Provisioning Config</option>
+  <option value="UserProvisioningLog">User Provisioning Log</option>
   <option value="UserProvisioningRequest">User Provisioning Request</option>
   <option value="UserProvisioningRequestShare">User Provisioning Request Share</option>
   <option value="UserRecordAccess">User Record Access</option>
@@ -274,11 +309,11 @@
   <option value="Vote">Vote</option>
   <option value="WebLink">Custom Button or Link</option>
 </div>
-      </select>
-      Field: <input type="text" name="field" />
-      Search Key: <input type="text" name="searchKey" />
-      Search Value: <input type="text" name="searchValue" />
-      <input type="submit" name="Submit" value="Submit" id="submit"/>
-    </form>
-  </body>
+			</select>
+			Field: <input type="text" name="field" />
+			Search Key: <input type="text" name="searchKey" />
+			Search Value: <input type="text" name="searchValue" />
+			<input type="submit" name="Submit" value="Submit" id="submit"/>
+		</form>
+	</body>
 </html>
