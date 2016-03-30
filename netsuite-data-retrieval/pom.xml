@@ -14,52 +14,14 @@
 	</parent>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/api</directory>
-			</resource>
-			<resource>
-				<directory>src/main/app</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.mule.tools</groupId>
-				<artifactId>maven-mule-plugin</artifactId>
-				<configuration>
-					<copyToAppsDirectory>true</copyToAppsDirectory>
-					<inclusions>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-extensions-support</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-extensions-spring-support</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-netsuite</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-apikit</artifactId>
-						</inclusion>
-					</inclusions>
-				</configuration>
-			</plugin>
-
-			<plugin>
+		<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
 				<artifactId>munit-maven-plugin</artifactId>
 				<version>${munit.version}</version>
 				<executions>
 					<execution>
 						<id>test</id>
-						<phase>integration-test</phase>
+						<phase>test</phase>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -79,25 +41,19 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-spring-config</artifactId>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-http</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-apikit</artifactId>
-			<version>1.7.3</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.weave</groupId>
-			<artifactId>mule-plugin-weave_2.11</artifactId>
+			<artifactId>mule-module-spring-config</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -105,6 +61,12 @@
 			<groupId>com.mulesoft.munit</groupId>
 			<artifactId>mule-munit-support</artifactId>
 			<version>${mule.munit.support.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>${munit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -119,9 +81,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-json</artifactId>
+			<artifactId>mule-module-http</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-apikit</artifactId>
+			<version>${mule.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
