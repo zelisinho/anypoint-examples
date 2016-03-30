@@ -40,6 +40,13 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<argLine>-Xmx1024m -XX:MaxPermSize=768m</argLine>
+				</configuration>
+			</plugin>
 		</plugins>
 		<testResources>
 			<testResource>
