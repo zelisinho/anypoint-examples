@@ -13,6 +13,12 @@
 		<version>1.4.0-SNAPSHOT</version>
 	</parent>
 
+	<properties>
+		<mule.version>3.7.3</mule.version>
+		<munit.version>1.1.1</munit.version>
+		<mule.munit.support.version>3.7.1</mule.munit.support.version>
+	</properties>
+
 	<build>
 		<resources>
 			<resource>
@@ -87,7 +93,13 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-apikit</artifactId>
-			<version>1.7.2</version>
+			<version>1.7.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.weave</groupId>
@@ -125,11 +137,12 @@
 	</dependencies>
 
 	<repositories>
-        <repository>
-            <id>mule-ee-releases</id>
-            <name>Mule Release Repository</name>
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+		<repository>
+			<id>mule-ee-releases</id>
+			<name>Mule Release Repository</name>
+			<url>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/
+			</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 </project>
