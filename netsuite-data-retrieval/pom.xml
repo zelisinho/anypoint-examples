@@ -13,12 +13,6 @@
 		<version>1.4.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<munit.version>1.1.0</munit.version>
-		<mule.munit.support.version>3.7.1</mule.munit.support.version>
-		<mule.version>3.7.3</mule.version>
-	</properties>
-
 	<build>
 		<resources>
 			<resource>
@@ -93,8 +87,8 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-apikit</artifactId>
-			<version>1.7.3</version>
-		</dependency>		
+			<version>1.7.2</version>
+		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.weave</groupId>
 			<artifactId>mule-plugin-weave_2.11</artifactId>
@@ -105,12 +99,6 @@
 			<groupId>com.mulesoft.munit</groupId>
 			<artifactId>mule-munit-support</artifactId>
 			<version>${mule.munit.support.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>munit-runner</artifactId>
-			<version>${munit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -136,27 +124,4 @@
 		</dependency>
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/releases/
-			</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mule-ee-releases</id>
-			<name>MuleSoft Releases EE Repository</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/releases-ee/
-			</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-snapshots</id>
-			<name>MuleSoft Snapshots Repository</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/snapshots/
-			</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
 </project>
