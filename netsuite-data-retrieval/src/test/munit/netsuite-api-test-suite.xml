@@ -69,6 +69,6 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <netsuite:delete-record config-ref="NetSuite__Login_Authentication" doc:name="NetSuite">
             <netsuite:record-ref internalId="#[flowVars.customerId]" type="CUSTOMER"/>
         </netsuite:delete-record>
-        <logger message="Test customer with ID #[flowVars.customerId] was deleted." level="INFO" doc:name="Log the customer deletion."/>
+        <logger message="Test customer with ID #[flowVars.customerId] was deleted." level="INFO" doc:name="Log the customer deletion"/>
     </sub-flow>
 </mule>

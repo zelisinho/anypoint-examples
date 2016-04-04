@@ -59,7 +59,7 @@ payload map $]]></dw:set-payload>
 {
 	quantity: {
 		operator: inboundProperties."http.query.params"."operator",
-		searchValue: inboundProperties."http.query.params"."quatity" as :number
+		searchValue: inboundProperties."http.query.params"."quantity" as :number
 	}
 } as :object {
 	class : "com.netsuite.webservices.platform.common.ItemSupplyPlanSearchBasic"
