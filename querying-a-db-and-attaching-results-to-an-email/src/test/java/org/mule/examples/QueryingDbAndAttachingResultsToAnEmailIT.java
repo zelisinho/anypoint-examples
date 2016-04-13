@@ -34,10 +34,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 import com.sun.mail.imap.IMAPFolder;
 
@@ -55,6 +57,9 @@ public class QueryingDbAndAttachingResultsToAnEmailIT extends FunctionalTestCase
 	
 	private static final String MAPPINGS_FOLDER_PATH = "./mappings";
 	private static MySQLDbCreator DB = null;
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 
 	@Override
     protected String getConfigResources()
@@ -69,7 +74,7 @@ public class QueryingDbAndAttachingResultsToAnEmailIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         
-        client.dispatch("http://localhost:8081/", MESSAGE, props);
+        client.dispatch("http://localhost:" + port.getNumber() + "/", MESSAGE, props);
         Thread.sleep(15000);
         String attachmentContent = getAttachmentContent();
         assertNotNull(attachmentContent);

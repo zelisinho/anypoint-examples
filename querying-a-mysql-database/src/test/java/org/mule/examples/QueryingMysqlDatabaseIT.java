@@ -19,10 +19,12 @@ import java.util.Properties;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,6 +35,9 @@ public class QueryingMysqlDatabaseIT extends FunctionalTestCase
 	private static final Logger log = LogManager.getLogger(QueryingMysqlDatabaseIT.class); 
 	
 	private static MySQLDbCreator DB = null;
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	
     @Override
     protected String getConfigResources()
@@ -61,7 +66,7 @@ public class QueryingMysqlDatabaseIT extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://0.0.0.0:8081/?" + MESSAGE, "", props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/?" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals(REPLY, result.getPayloadAsString());

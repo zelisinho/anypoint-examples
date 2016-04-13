@@ -22,10 +22,12 @@ import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,14 +40,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HttpOauthProviderIT extends FunctionalTestCase
 {
 	private static final Logger log = LogManager.getLogger(HttpOauthProviderIT.class);
-	private static String HTTP_PROVIDER_PORT;
-	private static String HTTP_LISTENER_PORT;
 	private static final Object REPLY_NAME = "payroll";
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	
 	private static String USERNAME = "mule";
 	private static String PASSWORD = "mule";
 	private WebDriver driver;
+	
+	@Rule
+	public DynamicPort httpProviderPort = new DynamicPort("http.provider.port");
+	
+	@Rule
+	public DynamicPort httpListenerPort = new DynamicPort("http.listener.port");
 	
 	@Override
     protected String getConfigResources()
@@ -72,18 +78,14 @@ public class HttpOauthProviderIT extends FunctionalTestCase
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
     	}
-    	HTTP_PROVIDER_PORT = props.getProperty("http.provider.port");
-    	HTTP_LISTENER_PORT = props.getProperty("http.listener.port");
-    	System.setProperty("http.provider.port", props.getProperty("http.provider.port"));
-    	System.setProperty("http.listener.port", props.getProperty("http.listener.port"));
     }    
     
     @Test
     public void oauthTest() throws Exception
     {
-    	driver.get("http://localhost:"+ HTTP_PROVIDER_PORT + 
+    	driver.get("http://localhost:"+ httpProviderPort.getNumber() + 
     			"/authorize?response_type=code&client_id=myclientid&scope=READ_RESOURCE&redirect_uri=http://localhost:" + 
-    			HTTP_LISTENER_PORT + "/redirect");
+    			httpListenerPort.getNumber() + "/redirect");
     	WebDriverWait waitForScreen = new WebDriverWait(driver, 10);
 		waitForScreen.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
 
@@ -100,10 +102,10 @@ public class HttpOauthProviderIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         props.put("Authorization", "Bearer " + jso.get("access_token"));
-        MuleMessage result = client.send("http://localhost:" + HTTP_LISTENER_PORT + "/resources", "", props);
+        MuleMessage result = client.send("http://localhost:" + httpListenerPort.getNumber() + "/resources", "", props);
         jso = new JSONObject(result.getPayloadAsString());
         assertEquals(REPLY_NAME, jso.get("name"));
-        assertEquals("http://localhost:" + HTTP_LISTENER_PORT + "/resources/payroll", jso.get("uri"));
+        assertEquals("http://localhost:" + httpListenerPort.getNumber() + "/resources/payroll", jso.get("uri"));
     }
         
     @After

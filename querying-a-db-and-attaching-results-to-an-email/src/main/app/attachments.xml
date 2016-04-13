@@ -3,7 +3,7 @@
 
 	<smtp:gmail-connector doc:name="Gmail" name="Gmail" validateConnections="true"/>
     <db:generic-config doc:name="Generic Database Configuration" driverClassName="com.mysql.jdbc.Driver" name="MySQL_Configuration" url="${jdbc.url}"/>
-    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="${http.port}"/>
     <flow name="attachmentsFlow1">
         <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Recieve HTTP requests" path="/"/>
 

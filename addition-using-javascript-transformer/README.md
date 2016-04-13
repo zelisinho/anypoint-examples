@@ -13,15 +13,19 @@ In this example, we send a JSON message containing two numbers to an HTTP endpoi
 ### Set up and Run the Example
 
 
-1  Open this example project in studio and run it
+1  Open this example project in studio
 
-2  Use Postman, curl or REST console to make a **POST** request using JSON. The message body should contain the following data:
+2  In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+3  Run the example
+
+4  Use Postman, curl or REST console to make a **POST** request using JSON. The message body should contain the following data:
 
     { 
     "a": 3, "b": 4
     }
 
-3 If the project is running successfully you should get the following message on your studio console.
+5 If the project is running successfully you should get the following message on your studio console.
 
     INFO  2014-07-02 16:44:34,235 [[javascript-calculator].connector.http.mule.default.receiver.03] org.mule.api.processor.LoggerMessageProcessor: Sum is: 7.0
 
@@ -31,7 +35,7 @@ The request-response inbound [HTTP endpoint](http://www.mulesoft.org/documentati
 
 The following steps outline the process to build this application.
     
-1. 1. Drop an HTTP Connector to the flow. 
+1. Drop an HTTP Connector to the flow. 
 2. Click on the plus sign next to the Connector Configuration field. A dialogue for creating HTTP Listener Configuration will be displayed. Fill in:
 
 		Host 	localhost
