@@ -9,6 +9,7 @@ The XML data containing employee names is sent to the application using the HTTP
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). 
 
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
 2. Start the MySQL server on your machine and create a connection by navigating to your mysql home directory and using the following command:
                   
         mysql  -u root -p

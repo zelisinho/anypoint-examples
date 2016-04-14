@@ -54,6 +54,7 @@ public class ImportingAnEmailAttachmentUsingThePOP3ConnectorIT extends Functiona
 	private static String SMTP_PORT;
 	private static String IMAP_HOST;
 	private static String POP3_USER;
+	private static String POP3_PASSWORD;
 	
     @Override
     protected String getConfigResources()
@@ -76,6 +77,7 @@ public class ImportingAnEmailAttachmentUsingThePOP3ConnectorIT extends Functiona
     	USER = props.getProperty("smtp.user");
     	IMAP_HOST = props.getProperty("imap.host");
     	POP3_USER = props.getProperty("pop3.user");
+    	POP3_PASSWORD = props.getProperty("pop3.password");
 		
       	System.setProperty("pop3.host", props.getProperty("pop3.host"));
        	System.setProperty("pop3.password", props.getProperty("pop3.password"));
@@ -163,7 +165,7 @@ public class ImportingAnEmailAttachmentUsingThePOP3ConnectorIT extends Functiona
 	        Session session = Session.getDefaultInstance(props, null);
 	
 	        store = session.getStore("imaps");
-	        store.connect(IMAP_HOST, USER, PASSWORD);
+	        store.connect(IMAP_HOST, POP3_USER, POP3_PASSWORD);
 	        
 	        IMAPFolder folder = (IMAPFolder) store.getFolder("inbox");
 	        if(!folder.isOpen())

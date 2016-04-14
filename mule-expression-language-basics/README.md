@@ -10,43 +10,42 @@ If you aren't yet familiar with how to access information about the Mule message
 
 ###Set up and run the example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. ****Flow 1**** : Through a web browser, access the URL **http://localhost:8081/greet1?username=yourName** 
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+
+4. ****Flow 1**** : Through a web browser, access the URL **http://localhost:8081/greet1?username=yourName** 
 The response prints the words **Hello (yourName)** in your browser.
 
-3. ****Flow 2**** : Through a web browser, access the URL **http://localhost:8081/greet2?username=yourName**. This prints the words **Hello (yourName)** in your browser.
+5. ****Flow 2**** : Through a web browser, access the URL **http://localhost:8081/greet2?username=yourName**. This prints the words **Hello (yourName)** in your browser.
 Then, access the URL again, but this time do not include any parameters. Verify that the expected output is received.
 
-4. ****Flow 3**** : Through a web browser, access the URL **http://localhost:8081/greet3?username=yourName&age=22**. This will print the words **Hello (yourName)** in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
+6. ****Flow 3**** : Through a web browser, access the URL **http://localhost:8081/greet3?username=yourName&age=22**. This will print the words **Hello (yourName)** in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
 
-5. ****Flow 4**** : In a browser, access the URL **http://localhost:8081/greet4?username=yourName&age=22**. This will print the words **Hello (yourName)** in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
+7. ****Flow 4**** : In a browser, access the URL **http://localhost:8081/greet4?username=yourName&age=22**. This will print the words **Hello (yourName)** in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
  
 
-6. ****Flow 5**** : You must now send the HTTP endpoint an HTTP request that includes a body with an attached XML file. Send a POST request to **http://localhost:8081/greet5** attaching an XML to the body of the message. A sample XML is provided below.
+8. ****Flow 5**** : You must now send the HTTP endpoint an HTTP request that includes a body with an attached XML file. Send a POST request to **http://localhost:8081/greet5** attaching an XML to the body of the message. A sample XML is provided below.
 
 	The easiest way to do this is to send a POST via a browser extension such as Postman (for Google Chrome) or the curl command line utility.
 
-       < user >
-     
-       < username >
-       test
-       < /username >
-     
-       < age > 21 < /age >
-      
-       < /user >
+		< user >
+		< username > test < /username >
+		< age > 21 < /age >
+		< /user >
  
     This will print the words Hello yourName in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
 
 
-7. ****Flow 6**** : You must now send the HTTP endpoint an HTTP request that includes a body with an attached JSON file. Send a POST request to **http://localhost:8081/greet6**, attaching a JSON object the body of the message. A sample JSON is provided below.
+9. ****Flow 6**** : You must now send the HTTP endpoint an HTTP request that includes a body with an attached JSON file. Send a POST request to **http://localhost:8081/greet6**, attaching a JSON object the body of the message. A sample JSON is provided below.
 
-   The easiest way to do this is by sending a POST via a browser extension such as Postman (for Google Chrome) or the curl command line utility.
+	The easiest way to do this is by sending a POST via a browser extension such as Postman (for Google Chrome) or the curl command line utility.
 
-       { "username": "test", "age" : 21 }
+		{ "username": "test", "age" : 21 }
  
-   This will print the words Hello yourName in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
+	This will print the words Hello yourName in your browser and also save a csv file that contains this data, plus the value true for the boolean parameter.
  
 
 

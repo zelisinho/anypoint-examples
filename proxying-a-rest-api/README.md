@@ -49,15 +49,16 @@ Next, build your proxy application in Mule Studio. Your proxy application needs 
 
 The following steps describe how to obtain a token for the Box API and use it to test the proxy you have just built by simulating an API call from an application.
 
-1. Firstly, open proxying-a-rest-api.xml in Anypoint Studio. Replace the values *${keystore.key}* and *${keystore.password}* with the corresponding data you entered while creating keystore using the commandline - see the previous section.  
-2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
-2. In any Web browser, enter the following URL: 
+1. Firstly, open proxying-a-rest-api.xml in Anypoint Studio. Replace the values *${keystore.key}* and *${keystore.password}* with the corresponding data you entered while creating keystore using the commandline - see the previous section.
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081 
+3. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
+4. In any Web browser, enter the following URL: 
 
 		http://localhost:8081/oauth2/authorize?response_type=code&client_id=<CLIENT_ID>
 
 	Replace <CLIENT_ID> in the URL above with the client_id provided by Box when you registered your new app.
-3. Box will prompt you to log in with your username and password. You can use your personal credentials or create a new test account.
-4. Before you click **Grant access to Box**, you should be ready for the following steps, as the token code you will obtain will expire in only 30 seconds.
+5. Box will prompt you to log in with your username and password. You can use your personal credentials or create a new test account.
+6. Before you click **Grant access to Box**, you should be ready for the following steps, as the token code you will obtain will expire in only 30 seconds.
 Be ready to send **http://localhost:8081/oauth2/token** as an HTTP **POST** request that includes a body with the properties below:
 
 		Attribute		Value
@@ -68,21 +69,21 @@ Be ready to send **http://localhost:8081/oauth2/token** as an HTTP **POST** requ
 
 	To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. 
 
-5. Once you have prepared for the next step, go back to the browser page where you entered your Box credentials and click **Grant access to Box**.
-6. The browser is redirected to the page you set as the redirect on your Box app. For this exercise, the page itself is irrelevant, but the full URL will include an extra parameter named code. For example:
+7. Once you have prepared for the next step, go back to the browser page where you entered your Box credentials and click **Grant access to Box**.
+8. The browser is redirected to the page you set as the redirect on your Box app. For this exercise, the page itself is irrelevant, but the full URL will include an extra parameter named code. For example:
 
 		https://www.bing.com/?state=&code=<CODE>
 
-7. Copy the value of &lt;CODE&gt; from the URL and paste it into your POST request so that its properties are the following:
+9. Copy the value of &lt;CODE&gt; from the URL and paste it into your POST request so that its properties are the following:
 	
 		Attribute		Value
 		grant_type		authorization_code
 		code			<code provided by redirect URL>
 		client_id		<client_id provided by Box when you registered your app>
 		client_secret	<client_secret provided by Box when you registered your app>
-1. Send the request.
-1. This POST request returns a JSON object with several fields. Copy the value corresponding to *access_token*, as you will need it soon. The *access_token* lasts for an hour before expiring.
-1. Now you can make proper requests to your proxy. You must include *access_token* on every request as a header with the name Authorization.
+10. Send the request.
+11. This POST request returns a JSON object with several fields. Copy the value corresponding to *access_token*, as you will need it soon. The *access_token* lasts for an hour before expiring.
+12. Now you can make proper requests to your proxy. You must include *access_token* on every request as a header with the name Authorization.
 
 		Header			Value
 		Authorization	Bearer <access_token>

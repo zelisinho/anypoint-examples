@@ -22,16 +22,21 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
 	private static final String TEST_DIR = "./src/test/resources";
 	private static String HTML;
 	private static List<String> REPLY = new ArrayList<String>();
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	
 	@BeforeClass
 	public static void init() throws IOException{
@@ -59,7 +64,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 		MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081", "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber(), "", props);
         assertEquals(result.getPayloadAsString().replaceAll("\\s", ""), HTML.replaceAll("\\s", ""));
 	}
 	
@@ -73,7 +78,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         params.put("field", "email");
         params.put("searchKey", "name");
         params.put("searchValue", "mule");
-        MuleMessage result = client.send("http://localhost:8081/", params, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/", params, props);
         for (String line : REPLY){
         	assertTrue(result.getPayloadAsString().contains(line));
         }

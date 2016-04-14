@@ -23,8 +23,10 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the HTTP with JSON application.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-1. Send a POST request to **http://localhost:8081/person** with the body equals to:
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Send a POST request to **http://localhost:8081/person** with the body equals to:
 		
 		{
 		 	"firstname":"John",
@@ -38,16 +40,16 @@ Follow the procedure below to create, then run the HTTP with JSON application.
 		        "zipCode":"90401"
 			}
 		} 
-1. You should recieve a response saying a person was created successfully: 
+5. You should recieve a response saying a person was created successfully: 
 
 		{ "status": "success", "statusDescription": "person created successfully"}
-1. Send a GET request to **http://localhost:8081/person/1**
-1. You should recieve a response with the person data:
+6. Send a GET request to **http://localhost:8081/person/1**
+7. You should recieve a response with the person data:
 
 		{"firstname":"John","lastname":"Doe","address":{"streetAddress":"Lincoln St.","city":"San Francisco","state":"CA","zipCode":"90401"},"age":12}
 
-1. Send a GET request to **http://localhost:8081/person**
-2. You should recieve a response with all created persons. If you inserted only 1 person from Step 2, then you should get only that one. 
+8. Send a GET request to **http://localhost:8081/person**
+9. You should recieve a response with all created persons. If you inserted only 1 person from Step 2, then you should get only that one. 
 
 ### How it Works
 

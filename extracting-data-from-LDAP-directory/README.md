@@ -49,17 +49,19 @@ The example application connects to the LDAP directory and retrieves a list of L
 9. If you click on ROOT DSE in the panel LDAP browser, you should see the imported data structure.
 
 10. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
-11. Double-click on ldap.xml under src/main/app directory and open *Global Elements* tab. Open LDAP configuration and fill in these values if you strictly followed the instructions:
+11. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+12. Double-click on ldap.xml under src/main/app directory and open *Global Elements* tab. Open LDAP configuration and fill in these values if you strictly followed the instructions:
 
 		Principal DN	cn=Manager,dc=my-domain,dc=com
 		Password		root
 		URL 			ldap://localhost:389/dc=my-domain,dc=com
 
-12. Run it as Mule Application.
+13. Run it as Mule Application.
 
-11. Open your browser and type *http://localhost:8081/* in the address bar.
+14. Open your browser and type *http://localhost:8081/* in the address bar.
 
-12. You should see three user records logged in the console output similar to this one:
+15. You should see three user records logged in the console output similar to this one:
 
 		[dn: cn=mmc,ou=people
 		uid: mmc

@@ -19,6 +19,7 @@ This application employs Salesforce (OAuth) connector to enable OAuth authentica
 ### Set Up and Run the Example ###
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8082
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Build** heading, click to expand the **Create** folder. 
 1. Click **Apps**. Under **Connected Apps** click **New**.

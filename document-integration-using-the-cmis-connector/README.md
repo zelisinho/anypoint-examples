@@ -23,17 +23,18 @@ This application presents a simple use case scenario: by making an HTTP request 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). 
-2. In the **Package Explorer**, right-click the cmis-document-integration project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
-3. Open your Web browser.
-3. In the address bar, type the following URL: *http://localhost:8081/cmis*
-4. Press enter to elicit a response from the cmis-document-integration application. Notice the **id** in the response displayed in the browser window.
-5. Navigate to *http://demo.openkm.com/OpenKM/login*. Use following login data:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081 
+3. In the **Package Explorer**, right-click the cmis-document-integration project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.
+4. Open your Web browser.
+5. In the address bar, type the following URL: *http://localhost:8081/cmis*
+6. Press enter to elicit a response from the cmis-document-integration application. Notice the **id** in the response displayed in the browser window.
+7. Navigate to *http://demo.openkm.com/OpenKM/login*. Use following login data:
 
 		User Name: user3
 		Password:  pass3
 
-6. Click on the *okm:root* node in the left panel to verify that file with the generated name **id** was uploaded.
-7. Stop the Mule application by clicking the square, red terminate button in the **Console**.
+8. Click on the *okm:root* node in the left panel to verify that file with the generated name **id** was uploaded.
+9. Stop the Mule application by clicking the square, red terminate button in the **Console**.
 
 ### How it Works ###
 

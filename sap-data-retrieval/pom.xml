@@ -50,6 +50,9 @@
 					<systemPropertyVariables>   
 						<java.library.path>${project.basedir}/libraries/SAP.${sap.jco.version}</java.library.path>
 					</systemPropertyVariables>
+					<dynamicPorts>
+						<dynamicPort>http.port</dynamicPort>
+					</dynamicPorts>
 				</configuration>                
                 <executions>
                     <execution>

@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 public class HttpRestfulResourceIT extends FunctionalTestCase
@@ -31,6 +33,9 @@ public class HttpRestfulResourceIT extends FunctionalTestCase
     private static final String REPLY = "{ \"status\": \"success\", \"statusDescription\": \"person created successfully\"}";
 	private static String PERSON_JSON;
     
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @BeforeClass
     public static void init(){
     	try {
@@ -52,7 +57,7 @@ public class HttpRestfulResourceIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        client.send("http://0.0.0.0:8081/person", PERSON_JSON, props);		       
+        client.send("http://0.0.0.0:" + port.getNumber() + "/person", PERSON_JSON, props);		       
     }
 
     @Test
@@ -60,7 +65,7 @@ public class HttpRestfulResourceIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://0.0.0.0:8081/person/1", "", props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/person/1", "", props);
         assertEquals(result.getPayloadAsString(), PERSON_JSON);       
 	}
     
@@ -69,7 +74,7 @@ public class HttpRestfulResourceIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        MuleMessage result = client.send("http://0.0.0.0:8081/person", PERSON_JSON, props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/person", PERSON_JSON, props);
         assertEquals(result.getPayloadAsString(), REPLY);       
 	}
     
@@ -78,7 +83,7 @@ public class HttpRestfulResourceIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://0.0.0.0:8081/person", "", props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/person", "", props);
         assertTrue(result.getPayloadAsString().contains(PERSON_JSON));       
 	}
 }

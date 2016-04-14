@@ -15,10 +15,12 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 
 public class AdditionUsingJavascriptTransformerIT extends FunctionalTestCase
@@ -26,6 +28,9 @@ public class AdditionUsingJavascriptTransformerIT extends FunctionalTestCase
 
     private static String MESSAGE = "{ \"a\" : 1, \"b\": 2 }";
 
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @Override
     protected String getConfigResources()
     {
@@ -39,7 +44,7 @@ public class AdditionUsingJavascriptTransformerIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         
-        MuleMessage result = client.send("http://localhost:8081/", MESSAGE, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/", MESSAGE, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("Sum is: 3.0.", result.getPayloadAsString());

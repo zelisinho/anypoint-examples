@@ -18,10 +18,12 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
 {
@@ -30,7 +32,9 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
 	private static final Logger LOGGER = LogManager.getLogger(GetCustomersListFromNetsuiteIT.class); 	
 	private static final String LAST_NAME_VALUE = "a";
 	private static final CharSequence TEST_HTML = "<h1>Netsuite Customer List</h1>";
-	private static String HTTP_PORT;
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	 
     @Override
     protected String getConfigResources()
@@ -50,8 +54,6 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
 		System.setProperty("netsuite.password", props.getProperty("netsuite.password"));
 		System.setProperty("netsuite.account", props.getProperty("netsuite.account"));	
 		System.setProperty("netsuite.roleId", props.getProperty("netsuite.roleId"));	
-		System.setProperty("http.port", props.getProperty("http.port"));
-		HTTP_PORT = props.getProperty("http.port").toString();
 	}
           
     @Test
@@ -60,7 +62,7 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
     	Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage response = client.send("http://localhost:" + HTTP_PORT + "/customers?lastName=" + LAST_NAME_VALUE, "", props, 60000);
+        MuleMessage response = client.send("http://localhost:" + port.getNumber() + "/customers?lastName=" + LAST_NAME_VALUE, "", props, 60000);
         assertTrue(response.getPayloadAsString().contains(TEST_HTML));
     }
 }
