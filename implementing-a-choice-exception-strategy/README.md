@@ -8,9 +8,13 @@ JSON sales data is sent through the HTTP endpoint. The input data is validated a
 
 ### Set up and run the example
 
-1. Run the example project as a mule application
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. Use Postman to make the following JSON POST request:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+3. Run the example project as a mule application
+
+4. Use Postman to make the following JSON POST request:
  
         {
         "email": "aaa@aaa.aa", 
@@ -24,7 +28,7 @@ JSON sales data is sent through the HTTP endpoint. The input data is validated a
        
         Input data validation passed.
 
-3. Use Postman to make the following JSON POST request:
+5. Use Postman to make the following JSON POST request:
  
         {
         "item name": "aa", 
@@ -33,11 +37,11 @@ JSON sales data is sent through the HTTP endpoint. The input data is validated a
         "membership": "free"
         }
         
-   This message throws an exception as the email field is missing. Status code 400 is returned with the following message:
+	This message throws an exception as the email field is missing. Status code 400 is returned with the following message:
     
         Missing input data: {item name=aa, membership=free, item price per unit=1, item units=10}
 
-4. Use Postman to make the following JSON POST request:
+6. Use Postman to make the following JSON POST request:
 
         {
         "email": "aaa@aaa.aa", 
@@ -47,10 +51,9 @@ JSON sales data is sent through the HTTP endpoint. The input data is validated a
         "membership": "free"
         }
     
- 
-   This message throws an exception as the item price per unit is negative, and the following error message is returned. This applies to negative **item units** as well.
+ 	This message throws an exception as the item price per unit is negative, and the following error message is returned. This applies to negative **item units** as well.
    
-       Invalid input data: {item name=aa, membership=free, item price per unit=-1, email=aaa@aaa.aa, item units=10}
+       	Invalid input data: {item name=aa, membership=free, item price per unit=-1, email=aaa@aaa.aa, item units=10}
        
  
 ### Go further

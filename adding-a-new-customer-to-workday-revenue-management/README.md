@@ -17,16 +17,18 @@ The application accepts an XML code which containing the required customer infor
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application.
-1. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Connector global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** **tenant**and **hostname** fields to your account-specific values as follows:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 9090
+3. In your application in Studio, click the **Global Elements** tab. Double-click the Workday Connector global element to open its **Global Element Properties** panel. Change the contents of the **user**, **password** **tenant**and **hostname** fields to your account-specific values as follows:
 
 		user						<USER>
 		tenant						<TENANT ID> - It usually ends with _pt1
 		password					<PASSWORD>
 		hostname					<HOST NAME OF ONE OF THE WORKDAY CLOUD SERVERS> - for example impl-cc.workday.com
 
-Then click **OK** to save your changes. 
-1. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
-1. Make an HTTP POST request to *http://localhost:9090/* with the 'Content-Type' header set as 'application/xml' and the request body as follows:
+	Then click **OK** to save your changes.
+ 
+4. In the **Package Explorer**, right-click the adding-a-new-customer-to-workday-revenue-management project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
+5. Make an HTTP POST request to *http://localhost:9090/* with the 'Content-Type' header set as 'application/xml' and the request body as follows:
 
 		<?xml version="1.0" encoding="UTF-8"?>
 		<root>
@@ -41,7 +43,7 @@ Then click **OK** to save your changes.
 		</root>
 
 	To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. 
-8. Login to your Workday account. Navigate to View Customer Report and enter John Doe in the search field. Verify that the customer was added.
+6. Login to your Workday account. Navigate to View Customer Report and enter John Doe in the search field. Verify that the customer was added.
 
 ### How it Works ###
 

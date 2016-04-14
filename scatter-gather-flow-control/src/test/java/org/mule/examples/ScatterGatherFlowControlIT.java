@@ -27,11 +27,13 @@ import javax.mail.Session;
 import javax.mail.Store;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,7 +50,10 @@ public class ScatterGatherFlowControlIT extends FunctionalTestCase
 	private static String USER;
 	private static String USER_ENC;
 	private static String PASSWORD;
-	private static String HOST;    
+	private static String HOST;
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
     
     @Override
     protected String getConfigResources()
@@ -99,7 +104,7 @@ public class ScatterGatherFlowControlIT extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        MuleMessage result = client.send("http://0.0.0.0:8081/scatterGather", null, props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/scatterGather", null, props);
         Thread.sleep(10000);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);

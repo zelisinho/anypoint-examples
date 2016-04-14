@@ -6,7 +6,7 @@
         <apikit:flow-mapping action="put" flow-ref="put:/munit:api-config" resource="/munit"/>
         <apikit:flow-mapping action="delete" flow-ref="delete:/munit:api-config" resource="/munit"/>
     </apikit:config>
-    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="9090"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="${http.port}"/>
     <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping">
         <apikit:mapping statusCode="404">
             <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>

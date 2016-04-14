@@ -13,6 +13,7 @@ This example application illustrates how to use Anypoint DataWeave to process an
 #### Run the Example Application ####
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
 2. In the **Package Explorer**, under the *src/main/resources* folder create two new folders named **input** and **output**. Now, run the example as a Mule Application. 
 3. This project includes a sample XML file, called orders.xml, that you can use to witness end-to-end functionality of the application. In the **Package Explorer**, click the *src/main/resources* folder to expand it, then find the *orders.xml* file inside this folder.
 4. Click and drag the *orders.xml* file into the *input* folder in the same directory.

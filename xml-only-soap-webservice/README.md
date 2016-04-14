@@ -40,17 +40,19 @@ For example, if a family doctor wishes to schedule a surgical procedure for an e
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
-2. To simulate a request submission to the Mule application, use the soapUI interface available for free download at [www.soapui.org](www.soapui.org). This tool enables you to submit a request as though you were a family doctor in this example's use case. If you haven't already done so, download and launch soapUI.
+4. To simulate a request submission to the Mule application, use the soapUI interface available for free download at [www.soapui.org](www.soapui.org). This tool enables you to submit a request as though you were a family doctor in this example's use case. If you haven't already done so, download and launch soapUI.
 
-3. In soapUI, select File > Import Project. Browse to the AnypointStudio folder on your local drive to locate the sample request file: AnypointStudio > workspace > XML-only SOAP Web Service > src > main > resources > Hospital-Admission-Example-soapui-project.xml. Click Open.
+5. In soapUI, select File > Import Project. Browse to the AnypointStudio folder on your local drive to locate the sample request file: AnypointStudio > workspace > XML-only SOAP Web Service > src > main > resources > Hospital-Admission-Example-soapui-project.xml. Click Open.
 
-4. In the new Hospital Admission Example project in soapUI, expand the folders to reveal Request 3. Double-click Request 3 to open the request-response window.
+6. In the new Hospital Admission Example project in soapUI, expand the folders to reveal Request 3. Double-click Request 3 to open the request-response window.
 
-5. Click the submit request icon (green "play" button at upper left) to submit the request to the Mule application (see below, left). soapUI displays the response from the Mule application in the response pane (see below, right).
+7. Click the submit request icon (green "play" button at upper left) to submit the request to the Mule application (see below, left). soapUI displays the response from the Mule application in the response pane (see below, right).
 
-6. Review the contents of the SOAP response, to examine the details of your processed request. Note the response contains information about the patient's new episode and details about billing.
+8. Review the contents of the SOAP response, to examine the details of your processed request. Note the response contains information about the patient's new episode and details about billing.
  
 
 ###How it Works 

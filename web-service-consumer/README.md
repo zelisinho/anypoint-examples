@@ -26,8 +26,10 @@ Complete the following procedure to create, then run this example in your own in
 
 Skip ahead to the next section if you prefer to simply examine this example via code snippets.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-1. Send posts to your application via a browser extension such as Postman (for Google Chrome), or the curl command-line utility.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Send posts to your application via a browser extension such as Postman (for Google Chrome), or the curl command-line utility.
 	* Send your request to the address http://localhost:8081/orders
 	* Set the 'Content-Type' header as 'application/json'
 	* Append the following JSON code to it:

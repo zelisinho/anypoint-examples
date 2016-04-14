@@ -20,10 +20,12 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the Login form using the HTTP connector application.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-1. Open your browser and hit **http://localhost:8081/login**.
-2. Enter mule for username and mule for password. Hit submit button. 
-1. You should recieve this response:
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Open your browser and hit **http://localhost:8081/login**.
+5. Enter mule for username and mule for password. Hit submit button. 
+6. You should recieve this response:
 
 	User mule has been logged successfully! 
 
@@ -31,7 +33,7 @@ Follow the procedure below to create, then run the Login form using the HTTP con
 
 	Wrong password for username mule 
 
-2. If you hit **http://localhost:8081/requesterLogin**, you should see the successful message as the correct credentials are set by the flow and the login is always successful.
+7. If you hit **http://localhost:8081/requesterLogin**, you should see the successful message as the correct credentials are set by the flow and the login is always successful.
 
 ### How it Works
 

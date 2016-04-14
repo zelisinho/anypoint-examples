@@ -20,13 +20,15 @@ This API allows you to add, remove, and retrieve information about sports teams 
 
 Follow the procedure below to run and test the functionality of this example application in Anypoint Studio.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-1. Anypoint Studio starts the application and automatically opens an API console below the canvas.
-2. Click **GET** for the **/teams** resource.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8080
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Anypoint Studio starts the application and automatically opens an API console below the canvas.
+5. Click **GET** for the **/teams** resource.
 The console opens a details panel for the GET method for this resource that allows you to view details about the request format and expected responses, as well as a **Try It** section in the right.
-1. In the **Try It** section, enter "Madrid" as value for the **city** field, then click **GET**.
-1. Scroll down to view the response. The API returned a list of teams associated with the city Madrid. 
-2. Click through the other resources and methods to test out other API calls.
+6. In the **Try It** section, enter "Madrid" as value for the **city** field, then click **GET**.
+7. Scroll down to view the response. The API returned a list of teams associated with the city Madrid. 
+8. Click through the other resources and methods to test out other API calls.
 
 ### How It Works ###
 

@@ -15,10 +15,12 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 
 public class ContentBasedRoutingIT extends FunctionalTestCase
@@ -26,6 +28,9 @@ public class ContentBasedRoutingIT extends FunctionalTestCase
 
     private static String MESSAGE = "Spanish";
     private static String MESSAGE1 = "French";
+    
+    @Rule
+	public DynamicPort port = new DynamicPort("http.port");
 
     
     @Override
@@ -41,12 +46,12 @@ public class ContentBasedRoutingIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         
-        MuleMessage result = client.send("http://localhost:8081/?language=" + MESSAGE, "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/?language=" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("Hola!", result.getPayloadAsString());
         
-        result = client.send("http://localhost:8081/?language=" + MESSAGE1, "", props);
+        result = client.send("http://localhost:" + port.getNumber() + "/?language=" + MESSAGE1, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("Bonjour!", result.getPayloadAsString());

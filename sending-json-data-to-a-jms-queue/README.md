@@ -14,16 +14,18 @@ Complete the following procedure to create, then run this example in your own in
 
 1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application yet.
 
-2. Start the ActiveMQ server;  navigate to the activeMQ home directory in the command terminal and then   use the  bin/activemq start command to start the activeMQ server.   You should get a message that is similar to the one shown below when your activeMQ server is running
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+3. Start the ActiveMQ server;  navigate to the activeMQ home directory in the command terminal and then   use the  bin/activemq start command to start the activeMQ server.   You should get a message that is similar to the one shown below when your activeMQ server is running
 
        INFO: Using java '/System/Library/Frameworks/JavaVM.framework/Home/bin/java'
        INFO: Starting - inspect logfiles specified in logging.properties and  log4j.properties to get details
        INFO: pidfile created : . . . 
        
-3. Click on json-to-jms.xml in the Package Explorer and open its Global Elements tab. Doubleclick on Active MQ item and edit Broker URL to your Active MQ broker URL. The default installation value is **tcp://localhost:61616**. If blank, the JMS elements will act using vm protocol.    
-4. In the Package Explorer, right-click on the project, then select Run As > Mule Application. Studio runs the application on the embedded server and connects to the localhost on the port to which the HTTP end-point is configured.
+4. Click on json-to-jms.xml in the Package Explorer and open its Global Elements tab. Doubleclick on Active MQ item and edit Broker URL to your Active MQ broker URL. The default installation value is **tcp://localhost:61616**. If blank, the JMS elements will act using vm protocol.    
+5. In the Package Explorer, right-click on the project, then select Run As > Mule Application. Studio runs the application on the embedded server and connects to the localhost on the port to which the HTTP end-point is configured.
 
-5. Send JSON Data to the url using REST Console. You could even use curl to do so. Use the following screenshot as a guide to fill in the required details within the REST Console. Click on the Send button to send the JSON data as an HTTP request to your localhost server. 
+6. Send JSON Data to the url using REST Console. You could even use curl to do so. Use the following screenshot as a guide to fill in the required details within the REST Console. Click on the Send button to send the JSON data as an HTTP request to your localhost server. 
       
         Request URI: http://localhost:8081/sales
         Request method: POST

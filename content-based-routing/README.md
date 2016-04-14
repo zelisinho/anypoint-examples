@@ -14,8 +14,9 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
 ### Set Up and Run the Example
 
 1. **Open the example** project in studio.
-2. **Run this project** as a Mule Application.
-3. Open any Web browser and **go to**:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. **Run this project** as a Mule Application.
+4. Open any Web browser and **go to**:
       
         http://localhost:8081/?language=Spanish
 
@@ -25,7 +26,7 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
        
          INFO  2014-06-26 13:21:53,568 [[content-based-routing].connector.http.mule.default.receiver.02] org.mule.api.processor.LoggerMessageProcessor: The reply "Hola!" means "hello" in Spanish.
 
-4. In your browser’s address bar, **replace URL** with:
+5. In your browser’s address bar, **replace URL** with:
   
         http://localhost:8081/?language=French
         
@@ -35,7 +36,7 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
       
             INFO  2014-06-26 13:25:20,376 [[content-based-routing].connector.http.mule.default.receiver.03] org.mule.api.processor.LoggerMessageProcessor: The reply "Bonjour!" means "hello" in French.
             
-5. Try requesting the **URL without a query parameter**:
+6. Try requesting the **URL without a query parameter**:
  
         http://localhost:8081 
         

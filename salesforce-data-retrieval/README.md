@@ -19,17 +19,18 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 Follow the procedure below to create, then run the **Salesforce data retrieval** application.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
-1. Go to Global Elements and open Salesforce Connector element. Fill in your Salesforce credentials including the [security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm).
-1. Run the application.
-1. Open your browser and hit **http://localhost:8081**. The form will be provided to you, containing following values:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. Go to Global Elements and open Salesforce Connector element. Fill in your Salesforce credentials including the [security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm).
+4. Run the application.
+5. Open your browser and hit **http://localhost:8081**. The form will be provided to you, containing following values:
 
 	+	Object - specify Salesforce object type, e.g. User, Account, Contact, etc. 
 	+	Field - a valid field name for the given object you need, e.g. Email for Contact. **IMPORTANT**: Id and Name attributes are retrieved by default, so choosing these fields will result in an invalid query.
 	+	Search Key -  a valid field name for the given object you wil use for matching, e.g. Name for Contact.
 	+	Search Value - a value for the *Search Key* field that will be used for matching, e.g. *young* for Contact Name. All records that contain the *Search Value* value as a substring of the given *Search Key* field value are returned, i.e. contacts with names such as John Young or Michael Young will be returned. The more specific value, the less results you will obtain. 
-2. Click *Submit* button.
-3. You will see the retrieved data structure.
-3. In case of invalid input, the message: *Invalid Salesforce query*.
+6. Click *Submit* button.
+7. You will see the retrieved data structure.
+8. In case of invalid input, the message: *Invalid Salesforce query*.
 
 If you are unsure about valid object types and their attributes, please visit [Salesforce Documentation site - Standard Objects](https://www.salesforce.com/developer/docs/api/Content/sforce_api_objects_list.htm).
 

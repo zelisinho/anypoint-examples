@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,6 +40,9 @@ public class SalesforceOauthIT extends FunctionalTestCase
 	private static String PASSWORD;
 	
     private static String MESSAGE = "Salesforce query returned";
+    
+    @Rule
+	public DynamicPort port = new DynamicPort("http.port");
 
     @Override
     protected String getConfigResources()
@@ -65,7 +70,7 @@ public class SalesforceOauthIT extends FunctionalTestCase
     	loginToSalesforce();
     	// wait till the login process is complete
     	Thread.sleep(5000);                
-        driver.get("http://localhost:8082/");
+        driver.get("http://localhost:" + port.getNumber() + "/");
         assertTrue(driver.getPageSource().contains(MESSAGE));
         driver.quit();
     }
