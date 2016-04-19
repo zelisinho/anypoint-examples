@@ -12,9 +12,11 @@ This document describes the details of the example within the context of Anypoin
 In this example JSON data is sent to the mule application through an HTTP end point. This data is then converted to the XML format using the DataWeave transformer after which the message payload is uploaded to the FTP folder. 
 
 ###Set up and run the example
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
-2. Make a POST request using Postman to http://localhost:8081 with following JSON message body, and setting the 'Content-Type' header as 'application/json':
+4. Make a POST request using Postman to http://localhost:8081 with following JSON message body, and setting the 'Content-Type' header as 'application/json':
 
 	    {
 	    "employees": {
@@ -55,7 +57,7 @@ In this example JSON data is sent to the mule application through an HTTP end po
 	    }
 	    } 
 	
-3. Verify if the file was uploaded at ***http://ftp-server.demo.solarwinds.com/*** with the following credentials
+5. Verify if the file was uploaded at ***http://ftp-server.demo.solarwinds.com/*** with the following credentials
 ```	
 	login: demo
 	password: demo

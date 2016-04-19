@@ -19,8 +19,9 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 Follow the procedure below to create, then run the **SAP data retrieval** application.
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
-2. Go to Global Elements and open SAP Connector element. Fill in your SAP credentials.
-3. Run the application.
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. Go to Global Elements and open SAP Connector element. Fill in your SAP credentials.
+4. Run the application.
 The APIKit console should start and the user can choose which endpoint wants to hit. The main
 	+	GET /customers 	- return customers data from SAP instance according the specified parameters
 						- user are able to define 2 HTTP query parameters - max_count, name
@@ -35,8 +36,8 @@ The APIKit console should start and the user can choose which endpoint wants to 
 		+ customer_number 		- specifying the customer number for sales orders
       	+ sales_organization	- specifying the sales organuzation for sales orders 
 
-4. Click on the resource which yhou want to use, specify the parameters and click on *GET* button.
-5. You will see the retrieved data structure. If the data in SAP instance does not match your criteria, "No data found" message is returned,
+5. Click on the resource which yhou want to use, specify the parameters and click on *GET* button.
+6. You will see the retrieved data structure. If the data in SAP instance does not match your criteria, "No data found" message is returned,
 
 ### How it Works
 

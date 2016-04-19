@@ -18,7 +18,9 @@ This document describes the details of the example within the context of Anypoin
 This application employs APIKit Router component to route requests to exact flow by resource/method/content-type and generate the dummy message. MUnit is used to test, if the right status code and the dummy message was generated.
 ### Set Up and Run the Example ###
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select **Run As > Mule Application**. Studio runs the application and Mule is up and kicking!
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8080
+3. In the Package Explorer pane in Studio, right-click the project name, then select **Run As > Mule Application**. Studio runs the application and Mule is up and kicking!
 2. Anypoint Studio starts the application and automatically opens an API console below the canvas.
 3. Click **GET** for the **/munit** resource.
 The console opens a details panel for the GET method for this resource that allows you to view details about the request format and expected responses, as well as a **Try It** section in the right.

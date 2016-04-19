@@ -35,10 +35,12 @@ import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,7 +53,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProxyingRestApiIT extends FunctionalTestCase
 {
-	private static final String HTTP_ENDPOINT = "http://localhost:8081/oauth2/authorize?response_type=code&client_id=";
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(ProxyingRestApiIT.class); 
 	
@@ -60,6 +61,9 @@ public class ProxyingRestApiIT extends FunctionalTestCase
 	private static String CLIENT_ID;
 	private static String CLIENT_SECRET;
 	private WebDriver driver;
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	
 	@Override
     protected String getConfigResources()
@@ -100,7 +104,7 @@ public class ProxyingRestApiIT extends FunctionalTestCase
     @Test
     public void restAuthenticationTest() throws Exception
     {
-    	driver.get(HTTP_ENDPOINT + CLIENT_ID);    	
+    	driver.get("http://localhost:" + port.getNumber() + "/oauth2/authorize?response_type=code&client_id=" + CLIENT_ID);    	
     	WebDriverWait waitForScreen = new WebDriverWait(driver, 30);
 		waitForScreen.until(ExpectedConditions.visibilityOfElementLocated(By.id("login")));
 
@@ -122,7 +126,7 @@ public class ProxyingRestApiIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         props.put("Authorization", "Bearer " + token);
-        MuleMessage result = client.send("http://localhost:8081/2.0/folders/0", "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/2.0/folders/0", "", props);
         
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
@@ -149,7 +153,7 @@ public class ProxyingRestApiIT extends FunctionalTestCase
     private String getAccessToken(String code) throws ClientProtocolException, IOException{
 
 		DefaultHttpClient httpClient = new DefaultHttpClient(); 
-		HttpPost httpPost = new HttpPost("http://localhost:8081/oauth2/token"); 
+		HttpPost httpPost = new HttpPost("http://localhost:" + port.getNumber() + "/oauth2/token"); 
 		List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 		
 		formparams.add(new BasicNameValuePair("grant_type", "authorization_code")); 

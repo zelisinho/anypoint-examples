@@ -21,17 +21,22 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 
 public class WebServiceConsumerIT extends FunctionalTestCase
 {
 	private static String MESSAGE;
 		
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @Override
     protected String getConfigResources()
     {
@@ -70,12 +75,12 @@ public class WebServiceConsumerIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         props.put("Content-Type", "application/json");
-        MuleMessage result = client.send("http://localhost:8081/orders", MESSAGE, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/orders", MESSAGE, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertTrue(result.getPayloadAsString().contains("orderId"));
         
-        result = client.send("http://localhost:8081/inventory", null, props);
+        result = client.send("http://localhost:" + port.getNumber() + "/inventory", null, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertTrue(result.getPayloadAsString().contains("\"productCode\": \"1412\""));

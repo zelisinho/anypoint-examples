@@ -24,11 +24,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -38,10 +40,12 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(RestApiWithApiKitTest.class); 
-	private static String PORT;
     private static String MESSAGE = "teams/BAR";
     private static String REPLY;
     
+    @Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @Override
     protected String getConfigResources()
     {
@@ -62,8 +66,6 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
     	}
-    	PORT = props.getProperty("http.port");
-    	System.setProperty("http.port", props.getProperty("http.port"));
 	}
 
     @Override
@@ -82,7 +84,7 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:" + PORT + "/api/" + MESSAGE, "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/api/" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         ObjectMapper mapper = new ObjectMapper();
@@ -91,7 +93,7 @@ public class RestApiWithApiKitTest extends FunctionalTestCase
         assertTrue(tree1.equals(tree2));
         
         props.put("http.method", "DELETE");
-        result = client.send("http://localhost:" + PORT + "/api/" + MESSAGE, "", props);
+        result = client.send("http://localhost:" + port.getNumber() + "/api/" + MESSAGE, "", props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals("204", result.getInboundProperty("http.status"));

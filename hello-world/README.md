@@ -10,10 +10,12 @@ This document describes the details of the example within the context of Anypoin
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. You can create template applications straight out of the box in Anypoint Studio and tweak the configurations of the use case-based templates to create your own customized applications in Mule.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-2. Open your Web browser.
-3. In the address bar, type the following URL: http://localhost:8081/helloWorld
-4. Press enter to elicit a response from the Hello World application. 
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Open your Web browser.
+5. In the address bar, type the following URL: http://localhost:8081/helloWorld
+6. Press enter to elicit a response from the Hello World application. 
 
 ### How it Works
 The Hello World example consists of one simple [Mule flow](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture). This flow accepts an HTTP request, sets a static payload on the message, then returns a response to the end user. 

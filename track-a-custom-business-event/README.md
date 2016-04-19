@@ -10,6 +10,7 @@ Order data in JSON format is sent through an HTTP endpoint to a Ruby transformer
 
 1. Import the example project into your workspace
 
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
 2. **Export the project** in your workspace to a zip file using File -> Export -> Mule -> **Anypoint Studio Project to Mule Deployable Archive**
 
 3. Sign in to [https://anypoint.mulesoft.com/accounts/#/signin](https://anypoint.mulesoft.com/accounts/#/signin)
@@ -22,13 +23,13 @@ Order data in JSON format is sent through an HTTP endpoint to a Ruby transformer
 
 7. Use Postman to make a POST request using JSON to **http://(your domain).cloudhub.io/customBusinessEvents**:
 
-       {
-       "email": "aaa@abc.sk", 
-       "item name": "shoes", 
-       "item units": 2, 
-       "item price per unit": 10,
-       "membership": "free"
-       }
+		{
+		"email": "aaa@abc.sk", 
+		"item name": "shoes", 
+		"item units": 2, 
+		"item price per unit": 10,
+		"membership": "free"
+		}
 
     The response body should contain price per unit with the applied discount (-15% for shoes):
 

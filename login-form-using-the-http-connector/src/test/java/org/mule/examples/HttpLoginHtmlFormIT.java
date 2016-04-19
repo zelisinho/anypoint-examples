@@ -19,10 +19,12 @@ import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class HttpLoginHtmlFormIT extends FunctionalTestCase
 {
@@ -30,6 +32,9 @@ public class HttpLoginHtmlFormIT extends FunctionalTestCase
     private static final String REPLY = "User mule has been logged successfully!";
 	private static String HTML;
 
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @Override
     protected String getConfigResources()
     {
@@ -55,7 +60,7 @@ public class HttpLoginHtmlFormIT extends FunctionalTestCase
         Map<String, String> map = new HashMap<String, String>();
         map.put("username", "mule");
         map.put("password", "mule");
-        MuleMessage result = client.send("http://localhost:8081/login", map, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/login", map, props);
         assertTrue(result.getPayloadAsString().contains(REPLY));
             	       
 	}
@@ -65,7 +70,7 @@ public class HttpLoginHtmlFormIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081/login", "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/login", "", props);
         assertEquals(result.getPayloadAsString(), HTML);        
 	}
     
@@ -74,7 +79,7 @@ public class HttpLoginHtmlFormIT extends FunctionalTestCase
     	MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
-        MuleMessage result = client.send("http://localhost:8081/requesterLogin", "", props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/requesterLogin", "", props);
         assertTrue(result.getPayloadAsString().contains(REPLY));        
 	}    
 }

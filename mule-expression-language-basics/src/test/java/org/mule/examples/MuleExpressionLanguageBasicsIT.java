@@ -23,12 +23,14 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.NullPayload;
 
 public class MuleExpressionLanguageBasicsIT extends FunctionalTestCase
@@ -41,6 +43,9 @@ public class MuleExpressionLanguageBasicsIT extends FunctionalTestCase
 	private static final String REPLY_2 = "No username provided";
 	private static final String DIR = "Path_of_your_choice";
 	private static final String REPLY_1 = "Mule, 1, false";
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	
     @Override
     protected String getConfigResources()
@@ -106,7 +111,7 @@ public class MuleExpressionLanguageBasicsIT extends FunctionalTestCase
     private void testResponse(MuleClient client, String param, String reply, String body) throws Exception{
     	Map<String, Object> props = new HashMap<String, Object>();
     	props.put("http.method", "POST");
-        MuleMessage result = client.send("http://localhost:8081/" + param, body, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/" + param, body, props);
         assertNotNull(result);
         assertFalse(result.getPayload() instanceof NullPayload);
         assertEquals(reply, result.getPayloadAsString());

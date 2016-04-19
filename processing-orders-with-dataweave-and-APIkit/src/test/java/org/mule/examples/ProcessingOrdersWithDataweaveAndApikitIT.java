@@ -18,17 +18,22 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.DefaultMuleMessage;
 import org.mule.api.MuleMessage;
 import org.mule.api.config.MuleProperties;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.util.IOUtils;
 
 public class ProcessingOrdersWithDataweaveAndApikitIT extends FunctionalTestCase
 {
 	private static final Logger log = LogManager.getLogger(ProcessingOrdersWithDataweaveAndApikitIT.class); 
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
 	
     @Override
     protected String getConfigResources()
@@ -68,7 +73,7 @@ public class ProcessingOrdersWithDataweaveAndApikitIT extends FunctionalTestCase
         String expectedFileOrdersOutput = IOUtils.getResourceAsString("orders.json", this.getClass());
         String expectedFileReportOutput = IOUtils.getResourceAsString("report.csv", this.getClass());
         
-        assertEquals(expectedFileOrdersOutput, resultFileOrdersOutput);
-        assertEquals(expectedFileReportOutput, resultFileReportOutput);
+        assertEquals(expectedFileOrdersOutput.replaceAll("\\s", ""), resultFileOrdersOutput.replaceAll("\\s", ""));
+        assertEquals(expectedFileReportOutput.replaceAll("\\s", ""), resultFileReportOutput.replaceAll("\\s", ""));
 	}
 }

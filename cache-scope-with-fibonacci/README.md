@@ -20,22 +20,23 @@ records and returns the cost of the calculation, wherein each individual invocat
 
 ### Set Up and Run this Example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-
-2. Once the application is running, go to your localhost server and type in the following request:
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Once the application is running, go to your localhost server and type in the following request:
 
         http://localhost:8081/fibonacci?n=10
         
-   You should get a response similar to what is shown below:
+	You should get a response similar to what is shown below:
    
         Fibonacci(10) = 55
         COST: 11
         
-3. Now, change the value of n to 5
+5. Now, change the value of n to 5
         
         http://localhost:8081/fibonacci?n=5
    
-   You should get a response similar to what is shown below:
+	You should get a response similar to what is shown below:
         
         Fibonacci(5) = 5
         COST: 0

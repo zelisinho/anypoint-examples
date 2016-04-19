@@ -29,21 +29,23 @@ The database connector instructs the database server to run the SQL query, retri
         username: generatedata; password:generatedata
  
 4. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
-4. **Open database-to-json.xml file** located in src/main/app directory. Set **url** attribute of the **db:generic-config** element to:
+5. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+6. **Open database-to-json.xml file** located in src/main/app directory. Set **url** attribute of the **db:generic-config** element to:
 
 		jdbc:mysql://localhost:3306/company?user=generatedata&password=generatedata
 
-5. **Configuring the Database Connector for this Example**:
+7. **Configuring the Database Connector for this Example**:
 In this example, the database connector retrieves data from a MySQL database listening on port 3306, the default for MySQL. Ensure that MySQL_Configuration points to the local jdbc MySQL server on your machine. You may watch  [this](https://www.youtube.com/watch?v=9fqtSqngy1c) video for assistance with this step. 
  
 
-6. Run the example application in Anypoint Studio or Standalone
+8. Run the example application in Anypoint Studio or Standalone
 
-7. Got to your web browser and type in the following request:
+9. Got to your web browser and type in the following request:
              
         http://localhost:8081/?lastname=Puckett
        
-   and you should get the following JSON response:
+	and you should get the following JSON response:
        
         [{"first_name":"Chava"},{"first_name":"Quentin"}]
       

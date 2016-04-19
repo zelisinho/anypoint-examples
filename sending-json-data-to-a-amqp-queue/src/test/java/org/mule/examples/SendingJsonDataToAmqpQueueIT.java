@@ -24,9 +24,11 @@ import org.apache.qpid.server.BrokerOptions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -51,6 +53,9 @@ public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
 	private Connection connection;
 	protected String messagebody;
 	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
 	@Override
     protected String getConfigResources()
     {
@@ -63,7 +68,7 @@ public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
         MuleClient client = new MuleClient(muleContext);
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
-        client.dispatch("http://localhost:8081/", REPLY_OK, props);
+        client.dispatch("http://localhost:" + port.getNumber() + "/", REPLY_OK, props);
         recieveMessage();
         Thread.sleep(5000);
         assertNotNull(messagebody);

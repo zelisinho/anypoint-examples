@@ -21,25 +21,31 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(UploadToFtpAfterConvertingJsonToXmlIT.class); 
 	
-	private static String PASSWORD;
-	private static String USER;
-	private static String HOST;
-	private static String PORT;
-	private static String HOME;
-	private static String PATH;
+	private static String FTP_PASSWORD;
+	private static String FTP_USER;
+	private static String FTP_HOST;
+	private static String FTP_PORT;
+	private static String FTP_HOME;
+	private static String FTP_PATH;
 	
 	private static String MESSAGE = "";
 	private static String REPLY = "";
+	
+	@Rule
+	public DynamicPort port = new DynamicPort("http.port");
+	
     @Override
     protected String getConfigResources()
     {
@@ -60,19 +66,19 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    	    
-    	USER = props.getProperty("ftp.user");
-    	PASSWORD = props.getProperty("ftp.password");
-    	PORT = props.getProperty("ftp.port");
-    	HOME = props.getProperty("ftp.home");		
-    	PATH = props.getProperty("ftp.path");
-    	HOST = props.getProperty("ftp.host");
+    	FTP_USER = props.getProperty("ftp.user");
+    	FTP_PASSWORD = props.getProperty("ftp.password");
+    	FTP_PORT = props.getProperty("ftp.port");
+    	FTP_HOME = props.getProperty("ftp.home");		
+    	FTP_PATH = props.getProperty("ftp.path");
+    	FTP_HOST = props.getProperty("ftp.host");
     	
-    	System.setProperty("ftp.user", USER);
-    	System.setProperty("ftp.password", PASSWORD);
-    	System.setProperty("ftp.port", PORT);
-    	System.setProperty("ftp.path", PATH);
-    	System.setProperty("ftp.host", HOST);
-		File dataDirectory = new File(HOME);
+    	System.setProperty("ftp.user", FTP_USER);
+    	System.setProperty("ftp.password", FTP_PASSWORD);
+    	System.setProperty("ftp.port", FTP_PORT);
+    	System.setProperty("ftp.path", FTP_PATH);
+    	System.setProperty("ftp.host", FTP_HOST);
+		File dataDirectory = new File(FTP_HOME);
 		if (dataDirectory.exists()) {
 		    FileUtils.deleteDirectory(dataDirectory);
 		}
@@ -88,7 +94,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         props.put("Content-Type", "application/json");
-        MuleMessage result = client.send("http://0.0.0.0:8081/", MESSAGE, props);
+        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/", MESSAGE, props);
         assertEquals(REPLY.replaceAll("\\s",""), result.getPayloadAsString().replaceAll("\\s",""));
         
     }

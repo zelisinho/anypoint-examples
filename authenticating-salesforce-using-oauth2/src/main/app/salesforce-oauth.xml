@@ -3,7 +3,7 @@
     <sfdc:config-with-oauth consumerKey="${sfdc.key}" consumerSecret="${sfdc.secret}" doc:name="Salesforce (OAuth)" name="Salesforce__OAuth_">
         <sfdc:oauth-callback-config domain="localhost" localPort="8081" path="oauth2callback"/>
     </sfdc:config-with-oauth>
-    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8082"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="${http.port}"/>
 
     
     <flow name="salesforce-oauthFlow1">

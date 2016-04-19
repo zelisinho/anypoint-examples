@@ -23,13 +23,15 @@ In this example a message containing sample sales data in JSON is received throu
 
 4. Click on **sales__exchange** under the **Exchanges** tab and then go to the section titled **Add binding from this exchange**. In the **To queue** field type in ***sales_queue*** and then click on **Bind**.
     
-5. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+5. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+6. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+7. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
 
-6. Make a HTTP POST request using Postman, curl or the REST Console to send the following JSON data:
+8. Make a HTTP POST request using Postman, curl or the REST Console to send the following JSON data:
         
         {"ITEM_ID"= 001, "ITEM_NAME" = "Shirt", "QTY" = 1, "PRICE" = 20}
         
-7. Now, navigate back to the RabbbitMQ web admin console. You should notice an increase in the  number of messages in sales_queue. You may also **view the message** by clicking on sales_queue in the **Get messages** option.
+9. Now, navigate back to the RabbbitMQ web admin console. You should notice an increase in the  number of messages in sales_queue. You may also **view the message** by clicking on sales_queue in the **Get messages** option.
 
 ### Go Further
 

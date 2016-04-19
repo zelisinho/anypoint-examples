@@ -44,7 +44,9 @@ In this example a sample data is prepared using the Expression component, which 
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. Navigate to src/main/app/scatter-gather.xml and **edit Send an email via SMTP component** as follows:
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+
+3. Navigate to src/main/app/scatter-gather.xml and **edit Send an email via SMTP component** as follows:
  
         # Basic settings
         Host: smtp.gmail.com
@@ -57,15 +59,15 @@ In this example a sample data is prepared using the Expression component, which 
         From: senderemailid@gmail.com
         Subject: Processing Finished Report
     
-3. **Run** the project as a Mule application
+4. **Run** the project as a Mule application
 
-4. Open your Web browser.
+5. Open your Web browser.
 
-5. In the address bar, type the following URL: http://localhost:8081/scatterGather 
+6. In the address bar, type the following URL: http://localhost:8081/scatterGather 
 
-6. Press enter to elicit a response from the Scatter-Gather flow control example.
+7. Press enter to elicit a response from the Scatter-Gather flow control example.
 
-7. Login to receiveremailid@gmail.com to **verify** if the  data was received via email.
+8. Login to receiveremailid@gmail.com to **verify** if the  data was received via email.
 
 ### Go Further
 

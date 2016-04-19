@@ -37,7 +37,7 @@
     <vm:connector doc:name="VM" name="vmConnector">
         <dispatcher-threading-profile maxThreadsActive="200"/>
     </vm:connector>
-    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="8081"/>
+    <http:listener-config doc:name="HTTP Listener Configuration" host="localhost" name="HTTP_Listener_Configuration" port="${http.port}"/>
  
  
     <flow name="cache-exampleFlow1">

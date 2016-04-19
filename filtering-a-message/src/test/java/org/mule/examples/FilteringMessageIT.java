@@ -19,10 +19,12 @@ import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class FilteringMessageIT extends FunctionalTestCase
 {
@@ -30,6 +32,8 @@ public class FilteringMessageIT extends FunctionalTestCase
     private static String MESSAGE;
     private static String MESSAGE1;
 
+    @Rule
+	public DynamicPort port = new DynamicPort("http.port");
     
     @Override
     protected String getConfigResources()
@@ -54,11 +58,11 @@ public class FilteringMessageIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         
-        MuleMessage result = client.send("http://localhost:8081/", MESSAGE, props);
+        MuleMessage result = client.send("http://localhost:" + port.getNumber() + "/", MESSAGE, props);
         assertNotNull(result);
         assertEquals("the discount was granted.", result.getPayloadAsString());
         
-        result = client.send("http://localhost:8081/", MESSAGE1, props);
+        result = client.send("http://localhost:" + port.getNumber() + "/", MESSAGE1, props);
         assertNotNull(result);
         assertTrue(result.getPayloadAsString().isEmpty());       
     }

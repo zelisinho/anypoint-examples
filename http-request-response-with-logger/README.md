@@ -25,11 +25,13 @@ As with other [examples](https://www.mulesoft.com/exchange#!/?types=example), yo
 
 Follow the procedure below to create, then run the HTTP Request-Response with Logger application.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-1. Open your Web browser, type http://localhost:8084/echo in the address bar, then press **enter**.
-1. Your browser presents a message that reads, /echo.
-1. In your browser’s address bar, replace the word echo with the word moon, then press **enter**.
-1. Your browser presents a message that reads, /moon.
+1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8084
+3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
+4. Open your Web browser, type http://localhost:8084/echo in the address bar, then press **enter**.
+5. Your browser presents a message that reads, /echo.
+6. In your browser’s address bar, replace the word echo with the word moon, then press **enter**.
+7. Your browser presents a message that reads, /moon.
 
 ### How it Works
 

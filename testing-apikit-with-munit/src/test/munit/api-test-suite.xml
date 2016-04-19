@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <spring:beans>
         <spring:import resource="classpath:api.xml"/>
     </spring:beans>
-    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="9090" basePath="api" doc:name="HTTP Request Configuration">
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="${http.port}" basePath="api" doc:name="HTTP Request Configuration">
     </http:request-config>
 
     <munit:test name="api-test-get" description="Test">
