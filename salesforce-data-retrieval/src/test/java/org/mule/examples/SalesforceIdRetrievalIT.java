@@ -8,7 +8,6 @@
 
 package org.mule.examples;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -21,23 +20,26 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.mule.api.MuleMessage;
 import org.mule.module.client.MuleClient;
 import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
 	private static final String TEST_DIR = "./src/test/resources";
-	private static String HTML;
 	private static List<String> REPLY = new ArrayList<String>();
+	
+	@Rule
+ 	public DynamicPort port = new DynamicPort("http.port");
 	
 	@BeforeClass
 	public static void init() throws IOException{
 		REPLY = FileUtils.readLines(new File(TEST_DIR + "/reply.txt"));
-		
-		HTML = FileUtils.readFileToString(new File(TEST_DIR + "/index.html"));
 		
 		Properties props = new Properties();
 		props.load(new FileInputStream(TEST_DIR + "/mule.test.properties"));
@@ -60,7 +62,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         MuleMessage result = client.send("http://localhost:8081", "", props);
-        assertEquals(result.getPayloadAsString(), HTML);
+        assertTrue(StringUtils.countMatches(result.getPayloadAsString(), "option") > 0);
 	}
 	
 	@Test
