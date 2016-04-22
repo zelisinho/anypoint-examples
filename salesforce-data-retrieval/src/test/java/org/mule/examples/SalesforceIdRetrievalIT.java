@@ -18,9 +18,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,6 +34,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
 	private static final String TEST_DIR = "./src/test/resources";
 	private static List<String> REPLY = new ArrayList<String>();
+	private static final String OPTION_REGEX = "<option\\svalue=\\\".*\\\">.*<\\/option>";
 	
 	@Rule
 	public DynamicPort port = new DynamicPort("http.port");
@@ -62,7 +64,10 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "GET");
         MuleMessage result = client.send("http://localhost:" + port.getNumber(), "", props);
-        assertTrue(StringUtils.countMatches(result.getPayloadAsString(), "option") > 0);
+
+        Pattern p = Pattern.compile(OPTION_REGEX);
+        Matcher m = p.matcher(result.getPayloadAsString());
+        assertTrue("Payload should contain <option> tags", m.find());
 	}
 	
 	@Test
