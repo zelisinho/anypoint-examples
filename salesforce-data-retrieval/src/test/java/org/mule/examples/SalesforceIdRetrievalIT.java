@@ -67,7 +67,7 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 
         Pattern p = Pattern.compile(OPTION_REGEX);
         Matcher m = p.matcher(result.getPayloadAsString());
-        assertTrue("Payload should contain <option> tags", m.find());
+        assertTrue("Payload should contain at least one option tag", m.find());
 	}
 	
 	@Test
