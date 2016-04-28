@@ -107,7 +107,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-apikit</artifactId>
-			<version>${mule.version}</version>
+			<version>1.7.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
