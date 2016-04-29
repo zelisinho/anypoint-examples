@@ -11,6 +11,10 @@
 		<artifactId>examples-catalog</artifactId>
 		<version>1.4.0-SNAPSHOT</version>
 	</parent>
+	
+	<properties>
+		<nets.version>7.1.0</nets.version>
+	</properties>
 
 	<build>
 		<plugins>
@@ -33,7 +37,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-netsuite</artifactId>
-			<version>5.0.0</version>
+			<version>${nets.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
