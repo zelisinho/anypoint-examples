@@ -9,6 +9,7 @@
 package org.mule.examples;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +33,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 {
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
 	private static final Logger log = LogManager.getLogger(UploadToFtpAfterConvertingJsonToXmlIT.class); 
+	private static final String EMPTY_STRING = "";
 	
 	private static String FTP_PASSWORD;
 	private static String FTP_USER;
@@ -41,7 +43,6 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 	private static String FTP_PATH;
 	
 	private static String MESSAGE = "";
-	private static String REPLY = "";
 	
 	@Rule
 	public DynamicPort port = new DynamicPort("http.port");
@@ -62,7 +63,6 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
     	}
     	try {
 			MESSAGE = FileUtils.readFileToString(new File("./src/test/resources/message.json"));
-			REPLY = FileUtils.readFileToString(new File("./src/test/resources/reply.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    	    
@@ -83,8 +83,7 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
 		    FileUtils.deleteDirectory(dataDirectory);
 		}
 		dataDirectory.mkdirs();    			
-    }
-    
+    }    
     
 
     @Test
@@ -94,9 +93,13 @@ public class UploadToFtpAfterConvertingJsonToXmlIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         props.put("Content-Type", "application/json");
-        MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/", MESSAGE, props);
-        assertEquals(REPLY.replaceAll("\\s",""), result.getPayloadAsString().replaceAll("\\s",""));
-        
+        try {
+        	MuleMessage result = client.send("http://0.0.0.0:" + port.getNumber() + "/", MESSAGE, props);
+            //after upload, the payload should contain empty string
+            assertEquals(EMPTY_STRING, result.getPayloadAsString());  
+        } catch (Exception ex){
+        	fail("The FTP upload flow was not successful.");
+        }      
     }
 
 
