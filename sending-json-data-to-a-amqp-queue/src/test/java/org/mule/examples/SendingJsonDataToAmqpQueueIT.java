@@ -38,6 +38,8 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DefaultConsumer;
 
+import java.util.concurrent.TimeoutException;
+
 public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
 
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
@@ -76,7 +78,7 @@ public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
     }
     
     @Before
-    public void setUp() throws IOException{
+    public void setUp() throws IOException, TimeoutException{
     	connectToChannel();
     	channel.exchangeDeclare(EXCHNAGE_NAME, "topic");
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
@@ -84,14 +86,14 @@ public class SendingJsonDataToAmqpQueueIT extends FunctionalTestCase {
     }
     
     @After
-    public void tearDown() throws IOException{
+    public void tearDown() throws IOException, TimeoutException{
     	channel.exchangeDelete(EXCHNAGE_NAME);
     	channel.queueDelete(QUEUE_NAME);
     	channel.close();
     	connection.close();
     }
     
-    private void connectToChannel() throws IOException{
+    private void connectToChannel() throws IOException, TimeoutException{
     	ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(HOST);
         connection = factory.newConnection();
