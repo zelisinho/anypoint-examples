@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mule-project runtimeId="org.mule.tooling.server.3.8.0.ee" schemaVersion="3.5.0.0" xmlns="http://www.mulesoft.com/tooling/project">
-    <name>exposing-a-restful-resource-using-the-HTTP-connector_1.4.0-SNAPSHOT</name>
-    <description/>
-</mule-project>
