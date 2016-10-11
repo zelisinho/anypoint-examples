@@ -19,20 +19,13 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
     </tls:context>
     <flow name="rest-api-proxy">
         <httpn:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Receive HTTP requests from apps"/>
-        <flow-ref name="copy-headers" doc:name="Call copy-headers"/>
-        <set-property propertyName="Host" value="api.box.com" doc:name="Set host property"/>
         <httpn:request config-ref="HTTP_Request_config" path="#[message.attributes.requestPath]" method="#[message.attributes.method]" doc:name="Send requests to API" key="ANY" followRedirects="true">
-            <httpn:request-builder queryParams="#[message.attributes.queryParams]"/>
+            <httpn:request-builder queryParams="#[message.attributes.queryParams]">
+                <httpn:headers>
+                    <httpn:header key="Authorization" value="#[message.attributes.headers.get('authorization')]"/>
+                    <httpn:header key="Host" value="api.box.com"/>
+                </httpn:headers>
+            </httpn:request-builder>
         </httpn:request>
-        <flow-ref name="copy-headers" doc:name="Call copy-headers"/>
     </flow>
-    <sub-flow name="copy-headers">
-        <copy-properties propertyName="*" doc:name="Copy HTTP headers"/>
-        <remove-property propertyName="Host" doc:name="Remove host property"/>
-        <remove-property propertyName="Content-Length" doc:name="Remove Content Length Header"/>
-        <remove-property propertyName="http.*" doc:name="Remove HTTP synthetic properties"/>
-        <remove-property propertyName="MULE_*" doc:name="Remove MULE properties"/>
-        <remove-property propertyName="Connection" doc:name="Remove Connection Header"/>
-        <remove-property propertyName="transfer-encoding" doc:name="Remove Transfer-encoding Header"/>
-    </sub-flow>
 </mule>
