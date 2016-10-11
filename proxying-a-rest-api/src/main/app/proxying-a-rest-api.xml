@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+    <httpn:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+        <httpn:listener-connection host="0.0.0.0" port="8081"/>
+    </httpn:listener-config>
+    <httpn:request-config name="HTTP_Request_config" doc:name="HTTP Request config">
+        <httpn:request-connection host="api.box.com" port="443" tlsContext="TLS_Context" protocol="HTTPS"/>
+    </httpn:request-config>
+    <tls:context name="TLS_Context" doc:name="TLS Context">
+        <tls:key-store path="keystore.jks" keyPassword="yourGeneratedKeyPassword" password="yourGeneratedPassword"/>
+    </tls:context>
+    <flow name="rest-api-proxy">
+        <httpn:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Receive HTTP requests from apps"/>
+        <flow-ref name="copy-headers" doc:name="Call copy-headers"/>
+        <set-property propertyName="Host" value="api.box.com" doc:name="Set host property"/>
+        <httpn:request config-ref="HTTP_Request_config" path="#[message.attributes.requestPath]" method="#[message.attributes.method]" doc:name="Send requests to API" key="ANY" followRedirects="true">
+            <httpn:request-builder queryParams="#[message.attributes.queryParams]"/>
+        </httpn:request>
+        <flow-ref name="copy-headers" doc:name="Call copy-headers"/>
+    </flow>
+    <sub-flow name="copy-headers">
+        <copy-properties propertyName="*" doc:name="Copy HTTP headers"/>
+        <remove-property propertyName="Host" doc:name="Remove host property"/>
+        <remove-property propertyName="Content-Length" doc:name="Remove Content Length Header"/>
+        <remove-property propertyName="http.*" doc:name="Remove HTTP synthetic properties"/>
+        <remove-property propertyName="MULE_*" doc:name="Remove MULE properties"/>
+        <remove-property propertyName="Connection" doc:name="Remove Connection Header"/>
+        <remove-property propertyName="transfer-encoding" doc:name="Remove Transfer-encoding Header"/>
+    </sub-flow>
+</mule>
