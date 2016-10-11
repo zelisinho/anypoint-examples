@@ -105,7 +105,7 @@ public class ImportingAnEmailAttachmentUsingTheIMAPConnectorIT extends Functiona
 				}
 			};
 			attachmentPart.setDataHandler(new DataHandler(fileDataSource));
-			attachmentPart.setFileName("report");
+			attachmentPart.setFileName("report.csv");
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(attachmentPart);
 			message.setContent(multipart);
