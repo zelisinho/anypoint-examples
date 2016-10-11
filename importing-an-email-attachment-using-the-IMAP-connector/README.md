@@ -30,22 +30,20 @@ In this example a CSV file containing sample sales data which has been received 
 
          INFO  2014-07-07 10:39:43,897 [[imap-to-xml].imap-to-csvFlow1.stage1.02]          
          org.mule.api.processor.LoggerMessageProcessor: recieved: <?xml version="1.0" encoding="UTF-8"?>
-           < orders>
-           < order>
-           < orderId>1< /orderId>
-           < name>aaa< /name>
-           < units>2.0< /units>
-           < pricePerUnit>10< /pricePerUnit>
-           < /order>
-           < /orders>
-           < orders>
-           < order>
-           < orderId>2< /orderId>
-           < name>bbb< /name>
-           < units>4.15< /units>
-           < pricePerUnit>5< /pricePerUnit>
-           < /order>
-           < /orders>
+           <orders>
+	           <order>
+		           <orderId>1</orderId>
+		           <name>aaa</name>
+		           <units>2.0</units>
+		           <pricePerUnit>10</pricePerUnit>
+	           </order>
+	           <order>
+		           <orderId>2</orderId>
+		           <name>bbb</name>
+		           <units>4.15</units>
+		           <pricePerUnit>5</pricePerUnit>
+	           </order>
+           </orders>
 
 6. After processing the attachment, it will be saved in src/tests/resources/output folder with xml format.
 
