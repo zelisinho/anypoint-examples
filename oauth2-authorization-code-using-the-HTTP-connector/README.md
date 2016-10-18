@@ -29,16 +29,9 @@ If you're using HTTPS, as the Box API requires, you must create a keystore and a
 
 	keytool -genkey -alias replserver -keyalg RSA -keystore keystore.jks
 
-You will be prompted to create two passwords. Remember these and fill them in the configuration later on (parameters: *keystore.password, keystore.keyPassword*). The command creates a .jks file in the directory called keystore.jks. 
-Now you need to export the certificate so that it can be added to the truststore as the trusted certificate: 
+You will be prompted to create two passwords. Remember these and fill them in the configuration later on (parameters: *keystore.password, keystore.keyPassword*). The command creates a .jks file in the directory called keystore.jks.
 
-	keytool -export -alias replserver -file client.cer -keystore keystore.jks
-
-This has created a certificate file in client.cer that can now be used to populate your truststore. When added the certificate to the truststore, it must be identified as a trusted certificate to be valid. The password for the truststore must be provided, remember it (a parameter: *truststore.password*).
-
-	keytool -import -v -trustcacerts -alias replserver -file client.cer -keystore trust-store
-
-The two files, the keystore (keystore.jks), and truststore (trust-store), along with their corresponding passwords can be now be used. Move them into the */src/main/resources* directory in Mule Studio's Package Explorer.
+The keystore (keystore.jks) file along with its corresponding passwords can now be used. Move it into the */src/main/resources* directory in Mule Studio's Package Explorer.
 If you need more help doing this, feel free to use [this resource](http://docs.continuent.com/tungsten-replicator-2.1/deployment-ssl-stores.html#deployment-ssl-stores-own).
 
 #### Building the example in Studio ####
@@ -48,9 +41,8 @@ If you need more help doing this, feel free to use [this resource](http://docs.c
 2. Deploy your Mule Project to the embedded Mule server by right-clicking the project in the Package Explorer, then selecting **Run As... > Mule Application**.
 2. In any Web browser, enter the following URL: 
 
-		http://localhost:8081/web/{user-id}
+		http://localhost:8081/web
 
-	Replace {user-id} in the URL above with the user id.
 3. Box will prompt you to log in with your username and password. Click **Authorize**. You can use your personal credentials or create a new test account.
 4. Clicking **Grant access to Box** (or *Deny access to Box as well*) will redirect you to **http://localhost:8081/web/loginDone**.
 5. Then the example will try consume a resource using the recently obtained token (in this case, search for items containing the term "mule") and display the result.
