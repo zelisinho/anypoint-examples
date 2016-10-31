@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <mule xmlns:context="http://www.springframework.org/schema/context" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:sap="http://www.mulesoft.org/schema/mule/sap" xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
@@ -33,7 +34,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <http:request config-ref="HTTP_Request_Configuration" path="/customers?name=#[flowVars.name]" method="GET" doc:name="HTTP"/>
         <object-to-string-transformer doc:name="Object to String"/>
         <logger message="Response from server: #[payload]" level="INFO" doc:name="Log the response"/>
-        <munit:assert-true message="The payload should contain Customer name data!" condition="#[payload.contains(&quot;\&quot;FIELDVALUE\&quot;: \&quot;&quot;+ flowVars.name + &quot; &quot; + flowVars.name + &quot;\&quot;&quot;)]" doc:name="Assert True"/>
+        <munit:assert-true message="The payload should contain Customer name data!" condition="#[payload.contains(&quot;\&quot;FIELDVALUE\&quot;: \&quot;&quot;+ flowVars.name + &quot;*&quot; +&quot;\&quot;&quot;)]" doc:name="Assert True"/>
         <flow-ref name="deleteSAPCustomer" doc:name="Call deleteSAPCustomer"/>
     </munit:test>
     <sub-flow name="prepareSAPCustomer">
