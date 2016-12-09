@@ -12,36 +12,68 @@
 		<version>1.4.1-SNAPSHOT</version>
 	</parent>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-app-maven-plugin</artifactId>
+				<version>${mule.tools.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<inclusions>
+						<inclusion>
+							<groupId>org.mule.modules</groupId>
+							<artifactId>mule-module-mongo</artifactId>
+						</inclusion>
+					</inclusions>
+					<copyToAppsDirectory>true</copyToAppsDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
-		    <groupId>org.mule.modules</groupId>
-		    <artifactId>mule-module-devkit-support</artifactId>
-		    <version>${mule.version}</version>
-		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId> 
-			<artifactId>mule-module-mongo</artifactId> 
-			<version>3.6.1</version>
-			<scope>provided</scope> 			
-		</dependency>		
-		<dependency> 
-			<groupId>com.mulesoft.muleesb.modules</groupId> 
-			<artifactId>mule-module-boot-ee</artifactId> 
-			<version>${mule.version}</version> 
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-devkit-support</artifactId>
+			<version>${mule.version}</version>
 			<scope>provided</scope>
-		</dependency> 		
-		<dependency>
-		    <groupId>de.flapdoodle.embed</groupId>
-		    <artifactId>de.flapdoodle.embed.mongo</artifactId>
-		    <version>1.27</version>
-		    <scope>test</scope>
 		</dependency>
 		<dependency>
-            <groupId>com.mulesoft.weave</groupId>
-            <artifactId>mule-plugin-weave</artifactId>
-            <version>${mule.version}</version>
+			<groupId>com.mulesoft.muleesb.modules</groupId>
+			<artifactId>mule-module-boot-ee</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.27</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.weave</groupId>
+			<artifactId>mule-plugin-weave</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-mongo</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+	<dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.2</version>
             <scope>provided</scope>
         </dependency>
-	</dependencies>
+    </dependencies>
+	<repositories>
+		<repository>
+			<id>mule-ee-releases</id>
+			<name>MuleEE Releases Repository</name>
+			<url>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</url>
+		</repository>
+	</repositories>
 </project>
