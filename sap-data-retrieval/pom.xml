@@ -13,8 +13,8 @@
 	</parent>
 
 	<properties>
-		<sap.jco.version>3.0.13</sap.jco.version>
-		<sap.idoc.version>3.0.12</sap.idoc.version>
+		<sap.jco.version>3.0.15</sap.jco.version>
+		<sap.idoc.version>3.0.15</sap.idoc.version>
 		<sap.version>2.2.7</sap.version>
 	</properties>
 
@@ -122,7 +122,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.weave</groupId>
-			<artifactId>mule-plugin-weave_2.11</artifactId>
+			<artifactId>mule-plugin-weave</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>

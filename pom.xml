@@ -71,15 +71,15 @@
         <jdkName>JavaSE-1.8</jdkName>
         <jdk.version>1.8</jdk.version>
         <assembly-descriptor-version>1.0.16</assembly-descriptor-version>
-        <muleServerId>org.mule.tooling.server.3.8.1.ee</muleServerId>
-        <muleConfigVersion>EE-3.8.1</muleConfigVersion>
-        <mule.version>3.8.1</mule.version>
+        <muleServerId>org.mule.tooling.server.3.8.3.ee</muleServerId>
+        <muleConfigVersion>EE-3.8.3</muleConfigVersion>
+        <mule.version>3.8.3</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
 		<sfdc.version>7.2.0</sfdc.version>
 		<mule.tools.version>1.0</mule.tools.version>
 		<mule.test.timeoutSecs>60</mule.test.timeoutSecs>
 		<munit.version>1.2.1</munit.version>
-		<mule.munit.support.version>3.8.0</mule.munit.support.version>
+		<mule.munit.support.version>3.8.1</mule.munit.support.version>
     </properties>
 
     <build>

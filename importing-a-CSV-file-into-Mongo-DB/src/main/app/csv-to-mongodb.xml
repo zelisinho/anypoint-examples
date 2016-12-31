@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:mongo="http://www.mulesoft.org/schema/mule/mongo"  xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
-http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
-http://www.mulesoft.org/schema/mule/mongo http://www.mulesoft.org/schema/mule/mongo/current/mule-mongo.xsd">
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:mongo="http://www.mulesoft.org/schema/mule/mongo" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd http://www.mulesoft.org/schema/mule/mongo http://www.mulesoft.org/schema/mule/mongo/current/mule-mongo.xsd">
      
-    <mongo:config name="Mongo_DB__Configuration" username="${database.user}" password="${database.password}" database="${database.name}" doc:name="Mongo DB: Configuration"/>
+    <mongo:config database="${database.name}" doc:name="Mongo DB: Configuration" name="Mongo_DB__Configuration" password="${database.password}" username="${database.user}"/>
     <flow name="csv-to-mongodbFlow1">
     	<file:inbound-endpoint doc:name="Poll files" metadata:id="d465231a-3a94-4460-acce-174c73019323" path="src/main/resources/input" responseTimeout="10000"/>
         <dw:transform-message doc:name="CSV to Map" metadata:id="e1a94970-919a-4529-ac32-165c1b7b7486">
@@ -23,20 +17,20 @@ payload map
 }]]></dw:set-payload>
         </dw:transform-message>
 
-        <logger message="saving objects: #[payload]" level="INFO" doc:name="Log objects to save"/>
-        <enricher source="#[payload]" target="#[flowVars['existsCollection']]" doc:name="Save result to flowVars.existsCollection">
-            <mongo:exists-collection config-ref="Mongo_DB__Configuration" collection="customers" doc:name="Test if a collection exists"/>
+        <logger doc:name="Log objects to save" level="INFO" message="saving objects: #[payload]"/>
+        <enricher doc:name="Save result to flowVars.existsCollection" source="#[payload]" target="#[flowVars['existsCollection']]">
+            <mongo:exists-collection collection="customers" config-ref="Mongo_DB__Configuration" doc:name="Test if a collection exists"/>
         </enricher>
         <choice doc:name="Should a collection be created?">
             <when expression="!flowVars['existsCollection']">
-                <mongo:create-collection config-ref="Mongo_DB__Configuration" collection="customers" doc:name="Create collection"/>
+                <mongo:create-collection collection="customers" config-ref="Mongo_DB__Configuration" doc:name="Create collection"/>
             </when>
             <otherwise>
-                <logger message="Customer Collection already exists." level="INFO" doc:name="Log that a collection exists"/>
+                <logger doc:name="Log that a collection exists" level="INFO" message="Customer Collection already exists."/>
             </otherwise>
         </choice>
         <foreach doc:name="For Each">
-            <mongo:insert-document config-ref="Mongo_DB__Configuration" collection="customers" doc:name="Save customers to Mongo"/>
+            <mongo:insert-document collection="customers" config-ref="Mongo_DB__Configuration" doc:name="Save customers to Mongo"/>
         </foreach>
     </flow>
 </mule>
