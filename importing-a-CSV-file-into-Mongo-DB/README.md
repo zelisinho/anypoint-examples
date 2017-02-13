@@ -68,7 +68,7 @@ The output then shows the inserted objects similar to  what is below.
     { "_id" : ObjectId("53b2518b03643b83cf1cecde"), "firstname" : "aaa", "surname" :      "vbbb", "phone" : "ccc", "state" : "sss" }
 
 ### Go Further
-* Read more about the mongoDB connector [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
+* Read more about the mongoDB connector [here](https://docs.mulesoft.com/mule-user-guide/v/3.8/mongodb-connector)
 * Read more about the message enricher scope [here](http://www.mulesoft.org/documentation/display/current/Message+Enricher)
 * Read more about the For Each connector [here](http://www.mulesoft.org/documentation/display/current/Foreach)
 * Learn more about Anypoint DataWeave [here](https://developer.mulesoft.com/docs/display/current/DataWeave+Reference+Documentation)
