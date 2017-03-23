@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd">
+	 <httpn:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" parseRequest="false">
+        <httpn:listener-connection host="0.0.0.0" port="8084"/>
+    </httpn:listener-config>
+	<flow name="echoFlow">
+        <httpn:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Receive http request"/>
+		<set-payload doc:name="Set Payload" value=" #[attributes.requestPath]"/>
+		<logger level="INFO" doc:name="Logger" message='#["About to echo $(payload) "]'/>
+    
+</flow>
+</mule>
