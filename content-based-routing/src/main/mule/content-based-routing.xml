@@ -12,23 +12,23 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         <httpn:listener-connection host="0.0.0.0" port="8081"/>
     </httpn:listener-config>
     <flow name="content-based-routingFlow">
-        <httpn:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP (Streaming)"/>
-        <filter ref="Expression" doc:name="Filter favicon"/>
-        <set-variable variableName="language" value="#[message.attributes.queryParams.language]" doc:name="Set Language Variable"/>
-        <choice doc:name="Choice">
-            <when expression="#[flowVars['language'] == 'Spanish']">
+        <httpn:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP"/>
+		<set-variable variableName="language" value="#[attributes.queryParams.language]" doc:name="Variable" />
+		<choice doc:name="Choice">
+            <when expression="#[variables.language == 'Spanish']">
                 <set-payload value="Hola!" doc:name="Reply in Spanish"/>
             </when>
-            <when expression="#[flowVars['language'] == 'French']">
+            <when expression="#[variables.language == 'French']">
                 <set-payload value="Bonjour!" doc:name="Reply in French"/>
             </when>
             <otherwise>
-                <flow-ref name="replyInDefaultLanguage" doc:name="replyInDefaultLanguage"/>
-            </otherwise>
+				<flow-ref name="replyInDefaultLanguage" doc:name="replyInDefaultLanguage" />
+            
+</otherwise>
         </choice>
-        <logger message="The reply &quot;#[payload]&quot; means &quot;hello&quot; in #[flowVars.language]." level="INFO" doc:name="Log the reply"/>
+        <logger message='#["$(payload) means hello in $(language)"]' level="INFO" doc:name="Log the reply"/>
     </flow>
-    <sub-flow name="replyInDefaultLanguage">
+     <sub-flow name="replyInDefaultLanguage">
         <logger message="No language specified. Using English as a default. " level="INFO" doc:name="Logger"/>
         <set-variable variableName="language" value="English" doc:name="Set Language to English"/>
         <set-payload value="Hello!" doc:name="Reply in English"/>
