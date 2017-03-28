@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd">
+	     <httpn:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+        <httpn:listener-connection host="0.0.0.0" port="8081"/>
+    </httpn:listener-config>
+    <httpn:request-config name="HTTP_Request_config" doc:name="HTTP Request config">
+        <httpn:request-connection host="api.box.com" port="443" tlsContext="TLS_Context" protocol="HTTPS"/>
+		<httpn:api-configuration >
+			<httpn:raml-api-configuration location="" />
+		</httpn:api-configuration>
+    
+</httpn:request-config>
+    <tls:context name="TLS_Context" doc:name="TLS Context">
+        <tls:key-store path="keystore.jks" keyPassword="${keystore.key}" password="${keystore.password}"/>
+    </tls:context>
+    <flow name="rest-api-proxy">
+        <httpn:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Receive HTTP requests from apps">
+		</httpn:listener>
+        <httpn:request config-ref="HTTP_Request_config" path="#[attributes.requestPath]" method="#[attributes.method]" doc:name="Send requests to API" followRedirects="true">
+			<httpn:headers >#[ {&quot;Authorization&quot; : attributes.headers.authorization} ]</httpn:headers>
+			<httpn:query-params >#[attributes.queryParams]</httpn:query-params>
+        </httpn:request>
+    </flow>
+</mule>
