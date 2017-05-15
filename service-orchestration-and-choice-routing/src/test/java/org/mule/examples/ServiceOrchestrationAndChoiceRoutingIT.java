@@ -87,7 +87,6 @@ public class ServiceOrchestrationAndChoiceRoutingIT extends FunctionalTestCase
         Map<String, Object> props = new HashMap<String, Object>();
         props.put("http.method", "POST");
         MuleMessage res = client.send("http://localhost:1080/orders", MESSAGE, props);
-        logger.info("res: " + res.getPayloadAsString());
         assertEquals("200", res.getInboundProperty("http.status"));     
         assertEquals(REPLY, res.getPayloadAsString());        
     }
