@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns:salesforcen="http://www.mulesoft.org/schema/mule/salesforcen"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/salesforcen http://www.mulesoft.org/schema/mule/salesforcen/current/mule-salesforcen.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd">
+	<salesforcen:config name="Salesforce_Config" doc:name="Salesforce Config" >
+		<salesforcen:config-connection username="${sfdc.user}" password="${sfdc.password}" securityToken="${sfdc.securityToken}" url="https://login.salesforce.com/services/Soap/u/38.0" />
+	</salesforcen:config>
+	<!--  --><file:config name="File_Config1" doc:name="File Config" />
+	<httpn:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" >
+		<httpn:listener-connection host="0.0.0.0" port="8081" />
+	</httpn:listener-config>
+	<flow name="import-leads-into-salesforceFlow" >
+		<httpn:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" />
+		<set-payload doc:name="Set Payload" value="tom.james@delphi1.chemicals.com
+"/>
+		<salesforcen:query config-ref="Salesforce_Config" queryToExecute="SELECT Id FROM Lead" doc:name="Query" />
+		<foreach doc:name="For Each" >
+			<logger level="INFO" doc:name="Logger" message="#[payload]"/>
+		</foreach>
+	</flow>
+
+</mule>

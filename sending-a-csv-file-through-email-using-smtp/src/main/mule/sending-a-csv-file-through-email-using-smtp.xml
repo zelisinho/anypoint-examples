@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
+	xmlns:email="http://www.mulesoft.org/schema/mule/email"
+	xmlns:sockets="http://www.mulesoft.org/schema/mule/sockets" xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd 
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/sockets http://www.mulesoft.org/schema/mule/sockets/current/mule-sockets.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
+	<file:config name="File_Config" doc:name="File Config" >
+	</file:config>
+	<email:smtp name="Gmail" doc:name="Email SMTP" >
+		<email:smtp-connection host="${smtp.host}" user="${smtp.user}" password="${smtp.password}" port="${smtp.port}" />
+	</email:smtp>
+	<flow name="sending-a-csv-file-through-email-using-smtpFlow" >
+		<poll doc:name="Poll" >
+			<file:read config-ref="File_Config" path="C:\Users\ntb\AnypointStudio\MuleExample\sending-a-csv-file-through-email-using-smtp\src\main\resources\inputs\input.csv" doc:name="Read" outputMimeType="application/csv" outputEncoding="UTF-8" />
+		</poll>
+		<ee:transform doc:name="Transform Message" >
+			<ee:set-payload ><![CDATA[%dw 1.0
+%output application/java
+---
+payload map {
+	name: $.name, 
+	orderId: $.orderId, 
+	units: $.units as Number,
+	pricePerUnit: $.pricePerUnit as Number,
+	totalPrice: ($.units * $.pricePerUnit ) as Number
+	
+}
+]]></ee:set-payload>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" message="#[payload]"/>
+		<email:send config-ref="Gmail" doc:name="Send" >
+			<email:email-builder fromAddress="${mail.from}" >
+				<email:to-addresses >
+					<email:to-address value="${mail.to}" />
+				</email:to-addresses>
+			</email:email-builder>
+		</email:send>
+	</flow>
+</mule>
