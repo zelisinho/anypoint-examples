@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:httpn="http://www.mulesoft.org/schema/mule/httpn" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/httpn/current/mule-httpn.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+	<httpn:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" >
+		<httpn:listener-connection host="0.0.0.0" port="8081" >
+			<reconnect />
+		</httpn:listener-connection>
+	</httpn:listener-config>
+	<flow name="listInventory" >
+		<httpn:listener config-ref="HTTP_Listener_config" path="/inventory" doc:name="Listener" >
+			<httpn:response statusCode="200" >
+			</httpn:response>
+		</httpn:listener>
+		<wsc:consume config-ref="Web_Service_Consumer_Config" operation="ListInventory" doc:name="Consume" >
+		</wsc:consume>
+	</flow>
+	<wsc:config name="Web_Service_Consumer_Config" doc:name="Web Service Consumer Config" >
+		<wsc:connection wsdlLocation="C:\Users\ntb\AnypointStudio\MuleExample\web-service-consumer\src\main\resources\tshirt.wsdl" service="TshirtService" port="TshirtServicePort" address="http://tshirt-service.cloudhub.io" />
+	</wsc:config>
+	<flow name="orderTshirt" >
+		<httpn:listener config-ref="HTTP_Listener_config" path="/orders" doc:name="Listener" >
+			<httpn:response statusCode="200" >
+			</httpn:response>
+		</httpn:listener>
+		<ee:transform doc:name="Transform Message" >
+			<ee:set-payload ><![CDATA[%dw 1.0
+%output application/xml
+%namespace ns0 http://mulesoft.org/tshirt-service
+---
+ns0#OrderTshirt: payload]]></ee:set-payload>
+		</ee:transform>
+		<wsc:consume config-ref="Web_Service_Consumer_Config" operation="OrderTshirt" doc:name="Consume" />
+	</flow>
+</mule>
