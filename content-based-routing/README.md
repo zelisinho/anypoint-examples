@@ -9,7 +9,7 @@ This tutorial assumes that you have downloaded and installed Anypoint Studio. If
 
 ### Sample Use Case
 
-The application receives an HTTP request and then filters out any "favicon.ico" browser requests. It then transforms an inbound property into a flow variable. The message is routed according to the flow variable associated with the message. A new payload is set based on the routing logic, this payload is then sent as an HTTP response.
+The application receives an HTTP request. It then transforms a query parameter into a flow variable. The message is routed according to the flow variable associated with the message. A new payload is set based on the routing logic, this payload is then sent as an HTTP response.
 
 ### Set Up and Run the Example
 
@@ -24,7 +24,7 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
    Check the console log in Studio and look for a log message that reads
 
        
-         INFO  2014-06-26 13:21:53,568 [[content-based-routing].connector.http.mule.default.receiver.02] org.mule.api.processor.LoggerMessageProcessor: The reply "Hola!" means "hello" in Spanish.
+         INFO  2017-09-08 13:24:01,695 [[MuleRuntime].io.03] org.mule.runtime.core.api.processor.LoggerMessageProcessor: The reply "Hola!" means "hello" in Spanish.
 
 5. In your browser’s address bar, **replace URL** with:
   
@@ -34,7 +34,7 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
     
       Your browser presents a message that reads "Bonjour!" Check the console log in Studio again and look for a log message that reads
       
-            INFO  2014-06-26 13:25:20,376 [[content-based-routing].connector.http.mule.default.receiver.03] org.mule.api.processor.LoggerMessageProcessor: The reply "Bonjour!" means "hello" in French.
+            INFO  2017-09-08 13:26:01,695 [[MuleRuntime].io.03] org.mule.runtime.core.api.processor.LoggerMessageProcessor: The reply "Bonjour!" means "hello" in French.
             
 6. Try requesting the **URL without a query parameter**:
  
@@ -43,11 +43,10 @@ The application receives an HTTP request and then filters out any "favicon.ico" 
     Your browser presents a message that reads "Hello!"
 Check the console log in Studio again and look for a log message that reads
 
-        INFO  2014-06-26 13:30:22,720 [[content-based-routing].connector.http.mule.default.receiver.04] org.mule.transformer.simple.AddFlowVariableTransformer: Variable with key "language", not found on message using "#[message.inboundProperties.language]". Since the value was marked optional, nothing was set on the message for this variable
       
-        INFO  2014-06-26 13:30:22,721 [[content-based-routing].connector.http.mule.default.receiver.04] org.mule.api.processor.LoggerMessageProcessor: No language specified. Using English as a default. 
+        INFO  2017-09-08 13:27:01,691 [[MuleRuntime].io.03] org.mule.runtime.core.api.processor.LoggerMessageProcessor: No language specified. Using English as a default. 
 
-        INFO  2014-06-26 13:30:22,722 [[content-based-routing].connector.http.mule.default.receiver.04] org.mule.api.processor.LoggerMessageProcessor: The reply "Hello!" means "hello" in English.
+        INFO  2017-09-08 13:27:01,695 [[MuleRuntime].io.03] org.mule.runtime.core.api.processor.LoggerMessageProcessor: The reply Hello! means "hello" in English
  
 
 ### Go Further
@@ -55,8 +54,6 @@ Check the console log in Studio again and look for a log message that reads
 * Check out the tutorial for this example [here](http://www.mulesoft.org/documentation/display/current/Content-Based+Routing+Tutorial)
 
 * See a more complex example of content-based routing in the [Foreach Processing and Choice Routing Example](http://www.mulesoft.org/documentation/display/current/Foreach+Processing+and+Choice+Routing+Example) and the [Service Orchestration and Choice Routing Example](http://www.mulesoft.org/documentation/display/current/Service+Orchestration+and+Choice+Routing+Example).
-
-* Want to learn more about Mule Expression Language (MEL)? Check out the [complete reference](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL).
 
 * Get a deeper explanation about the [Mule message](http://www.mulesoft.org/documentation/display/current/Mule+Message+Structure) and anatomy of a [Mule application](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture).
          
