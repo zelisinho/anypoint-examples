@@ -66,7 +66,6 @@ Be ready to send **http://localhost:8081/oauth2/token** as an HTTP **POST** requ
 		code			<fill this in during the next step>
 		client_id		<client_id provided by Box when you registered your app>
 		client_secret	<client_secret provided by Box when you registered your app>
-		redirect_uri	<redirect_uri provided by Box when you registered your app>
 
 	To send this request, use a browser extension such as [Advanced Rest Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) (Google Chrome), or the [curl](http://curl.haxx.se/) command line utility. 
 
@@ -82,8 +81,6 @@ Be ready to send **http://localhost:8081/oauth2/token** as an HTTP **POST** requ
 		code			<code provided by redirect URL>
 		client_id		<client_id provided by Box when you registered your app>
 		client_secret	<client_secret provided by Box when you registered your app>
-		redirect_uri	<redirect_uri provided by Box when you registered your app>
-
 10. Send the request.
 11. This POST request returns a JSON object with several fields. Copy the value corresponding to *access_token*, as you will need it soon. The *access_token* lasts for an hour before expiring.
 12. Now you can make proper requests to your proxy. You must include *access_token* on every request as a header with the name Authorization.
