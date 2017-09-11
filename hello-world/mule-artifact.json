@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "hello-world.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "hello-world",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

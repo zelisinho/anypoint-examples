@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "proxying-a-soap-api.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "proxying-a-soap-api",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
