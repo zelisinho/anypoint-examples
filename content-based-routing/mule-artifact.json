@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "content-based-routing.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "content-based-routing",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

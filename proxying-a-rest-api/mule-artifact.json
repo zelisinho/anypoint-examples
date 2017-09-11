@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "proxying-a-rest-api.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "proxying-a-rest-api",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

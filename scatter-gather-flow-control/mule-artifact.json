@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "scatter-gather-flow-control.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "scatter-gather-flow-control",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
