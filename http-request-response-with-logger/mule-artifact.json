@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "http-request-response-with-logger.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "http-request-response-with-logger",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
