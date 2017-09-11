@@ -5,7 +5,7 @@
 
 	<groupId>org.mule.examples</groupId>
 	<artifactId>proxying-a-rest-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
 	<name>proxying-a-rest-api</name>
@@ -16,6 +16,7 @@
 
 		<app.runtime>4.0.0-rc.darkseid</app.runtime>
 		<mule.maven.plugin.version>3.0.0-rc-SNAPSHOT</mule.maven.plugin.version>
+		<mule.connectors.version>0.9.0-rc.darkseid</mule.connectors.version>
 	</properties>
 
 	<build>
@@ -35,13 +36,13 @@
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
-			<version>0.9.0-rc.darkseid</version>
+			<version>${mule.connectors.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-sockets-connector</artifactId>
-			<version>0.9.0-rc.darkseid</version>
+			<version>${mule.connectors.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
