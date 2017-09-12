@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "customers.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "rest-api-with-apikit",
+  "minMuleVersion": "4.0.0-rc-SNAPSHOT",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
