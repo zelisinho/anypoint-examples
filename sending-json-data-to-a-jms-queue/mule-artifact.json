@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "sending-json-to-a-jms-queue.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "sending-json-to-a-jms-queue",
+  "minMuleVersion": "4.0.0-rc-SNAPSHOT",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
