@@ -1,0 +1,21 @@
+{
+  "domain": "default",
+  "configs": [
+    "web-service-consumer.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "web-service-consumer",
+  "minMuleVersion": "4.0.0-rc.darkseid",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": [
+      	"tshirt.wsdl"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
