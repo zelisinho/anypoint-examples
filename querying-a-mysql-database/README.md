@@ -1,13 +1,13 @@
-#Querying a MySQL Database
+# Querying a MySQL Database
 
 This example illustrates how to use the database connector to connect to a MySQL database. After reading this document and creating and running the example in Mule, you should be able to leverage what you have learned to create an application that connects to a MySQL database.
 
 
-###Assumptions
+### Assumptions
 
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). Where appropriate, the XML configuration accompanies the Studio interface screenshots. This document assumes that you are familiar with Mule ESB, the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials), MySQL, the [database connector](http://www.mulesoft.org/documentation/display/current/Database+Connector) and [DataSense](http://www.mulesoft.org/documentation/display/current/Database+Connector).
 
-###Example Use Case
+### Example Use Case
 
 In the Mule application, an inbound HTTP connector listens for HTTP GET requests with the form: http://<host>:8081/?lastname=<parameter>. The HTTP connector passes the value of <parameter> as one of the message properties to a database connector. The database connector is configured to extract this value and use it for the SQL query listed below.
 
@@ -17,7 +17,7 @@ As you can see, we are using parameterized query with reference to the value of 
 
 The database connector instructs the database server to run the SQL query, retrieves the result of the query, and passes it to the Transform message processor which converts the result to JSON. Since the HTTP connector is configured as request-response, the result is returned to the originating HTTP client.
 
-###Set Up and Run the Example
+### Set Up and Run the Example
 
 1. **[Download and setup the MySQL driver](http://dev.mysql.com/doc/refman/5.7/en/installing.html)** in it's default location. You can even check out some of the YouTube videos for assistance with this step.
 
@@ -54,7 +54,7 @@ In this example, the database connector retrieves data from a MySQL database lis
         [{"first_name":"Chava"},{"first_name":"Quentin"}]
       
 
-###Go Further
+### Go Further
 
 * View this [document](http://www.mulesoft.org/documentation/display/current/Database+Connector) for more information on how to configure a database connector on your machine.
 * Access plain [Reference material](http://www.mulesoft.org/documentation/display/current/Database+Connector+Reference) for the Database Connector.
