@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "querying-a-mysql-database.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "querying-a-mysql-database",
+  "minMuleVersion": "4.0.0-rc-SNAPSHOT",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
