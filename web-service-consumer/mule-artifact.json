@@ -1,19 +1,21 @@
 {
-  "configs": [
-    "tshirt-service-consumer.xml"
-  ],
   "domain": "default",
+  "configs": [
+    "web-service-consumer.xml"
+  ],
   "redeploymentEnabled": true,
   "name": "web-service-consumer",
-  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "minMuleVersion": "4.0.0-rc.darkseid",
   "classLoaderModelLoaderDescriptor": {
-    "id": "maven",
+    "id": "mule",
     "attributes": {
-      "exportedResources": []
+      "exportedResources": [
+      	"tshirt.wsdl"
+      ]
     }
   },
   "bundleDescriptorLoader": {
-    "id": "maven",
+    "id": "mule",
     "attributes": {}
   }
 }
