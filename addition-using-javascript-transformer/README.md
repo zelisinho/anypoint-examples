@@ -1,8 +1,8 @@
-#Addition using JavaScript Transformer
+# Addition using JavaScript Transformer
 
 This example shows how to parse an incoming JSON message and process it using the JavaScript transformer.
 
-###Assumption
+### Assumption
 
 This document describes the details of the example within the context of Anypoint™ Studio, Mule ESB’s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture)
 
@@ -67,7 +67,7 @@ Studio includes a feature that enables you to easily export all the documentatio
 
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
 
-###Go Further
+### Go Further
 
 * Read more about Scripting in the Anypoint platform [here](http://www.mulesoft.org/documentation/display/33X/Scripting+Example)
 

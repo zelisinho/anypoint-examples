@@ -3,7 +3,7 @@
 
 This example shows Anypoint™ Studio's routing capablities based on the content. It routes messages according to the logic you supply in the Choice Router. Flow variables are then set and invoked using Mule Expression Language. 
 
-###Assumptions
+### Assumptions
 
 This tutorial assumes that you have downloaded and installed Anypoint Studio. If you do not have any previous experience with Eclipse or an Eclipse-based IDE, please review the brief introduction to the Anypoint Studio interface or complete the Basic Studio Tutorial. 
 

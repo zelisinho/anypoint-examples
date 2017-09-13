@@ -1,16 +1,15 @@
-#Sending JSON Data to a JMS Queue
+# Sending JSON Data to a JMS Queue
 
-Mule Studio offers easy-to-use components to connect to JMS Queues and Topics. In today’s example, we’re going to learn how to use ActiveMQ, a leading open source JMS implementation from Apache that supports JMS 1.1 specification.   
+Mule Studio offers easy-to-use components to connect to JMS Queues and Topics. In today’s example, we’re going to learn how to use ActiveMQ, a leading open source JMS implementation from Apache that supports JMS 1.1 specification.
 
-###Assumptions
+### Assumptions
 This document assumes that you are familiar with Mule and the Anypoint™ Studio interface. To increase your familiarity with Studio, consider completing one or more Anypoint Studio Tutorials. Further, this example assumes that you have Apache Maven and ActiveMQ running on your machine.
 
-###Sample Use Case
+### Sample Use Case
  In this example, an HTTP request holding the JSON sales data reaches the HTTP endpoint. A success message is logged and the string is added to a JMS queue. Once a message reaches the JMS queue it can be viewed through the activeMQ admin console.
 
-###Set Up and Run the Example
+### Set Up and Run the Example
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio.
-
 
 1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). Do not run the application yet.
 
@@ -36,7 +35,7 @@ Complete the following procedure to create, then run this example in your own in
 In the ActiveMQ queue, click on the sales link and then on the link under the message id column. On doing so, you will see details of the message that was added to the JMS queue:
 
 
-###Go Further
+### Go Further
 
 * [Blog](http://blogs.mulesoft.org/mule-school-jms-tutorial/)  post to understand the configuration of this example better
 * [Blog](http://blogs.mulesoft.org/jms-message-rollback-and-redelivery/) post on JMS message rollback and redelivery with Mule
