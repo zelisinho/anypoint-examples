@@ -21,6 +21,7 @@ import org.junit.Test;
 import com.mulesoft.module.batch.BatchTestHelper;
 
 
+
 public class SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT extends AbstractTemplateTestCase {
 	protected static final int TIMEOUT = 60;
 	private static final String PATH_TO_TEST_PROPERTIES = "./src/test/resources/mule.test.properties";
