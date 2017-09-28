@@ -39,5 +39,12 @@
 			<version>${sfdc.version}</version>
 		</dependency>
 	</dependencies>
-
+	<repositories>
+		<repository>
+			<id>mule-ee-releases</id>
+			<name>MuleSoft Releases EE Repository</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases-ee/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 </project>
