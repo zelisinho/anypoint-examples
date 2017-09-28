@@ -18,9 +18,7 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
-					<copyToAppsDirectory>true</copyToAppsDirectory>
 					<inclusions>
 						<inclusion>
 							<groupId>org.mule.modules</groupId>
