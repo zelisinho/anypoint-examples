@@ -38,6 +38,12 @@
 			<artifactId>mule-module-sfdc</artifactId>
 			<version>${sfdc.version}</version>
 		</dependency>
+ 		<dependency>
+		    <groupId>org.mule.modules</groupId>
+		    <artifactId>mule-module-devkit-support</artifactId>
+		    <version>${mule.version}</version>
+		    <scope>provided</scope>
+		</dependency>  
 	</dependencies>
 	<repositories>
 		<repository>
