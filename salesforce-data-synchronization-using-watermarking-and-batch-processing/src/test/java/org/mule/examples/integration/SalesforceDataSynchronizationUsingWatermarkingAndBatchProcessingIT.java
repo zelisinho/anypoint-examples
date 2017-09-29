@@ -36,7 +36,10 @@ public class SalesforceDataSynchronizationUsingWatermarkingAndBatchProcessingIT 
     	props.load(new FileInputStream(PATH_TO_TEST_PROPERTIES));
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
-    	}    	
+    	}
+
+		// Salesforce dropped TLS 1.0 as of 2017-09-23 and Java 7 uses TLS 1.0 by default
+		System.setProperty("https.protocols", "TLSv1.1,TLSv1.2");    	
     	System.setProperty("sfdc.user", props.getProperty("sfdc.user"));
 		System.setProperty("sfdc.password", props.getProperty("sfdc.password"));
 		System.setProperty("sfdc.securityToken", props.getProperty("sfdc.securityToken"));	

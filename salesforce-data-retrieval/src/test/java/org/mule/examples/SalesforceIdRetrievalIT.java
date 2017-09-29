@@ -45,7 +45,9 @@ public class SalesforceIdRetrievalIT extends FunctionalTestCase {
 		
 		Properties props = new Properties();
 		props.load(new FileInputStream(TEST_DIR + "/mule.test.properties"));
-		
+
+		// Salesforce dropped TLS 1.0 as of 2017-09-23 and Java 7 uses TLS 1.0 by default
+		System.setProperty("https.protocols", "TLSv1.1,TLSv1.2");
 		System.setProperty("sfdc.username", props.getProperty("sfdc.username"));
     	System.setProperty("sfdc.securityToken", props.getProperty("sfdc.securityToken"));
     	System.setProperty("sfdc.password", props.getProperty("sfdc.password"));

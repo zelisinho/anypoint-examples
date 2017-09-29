@@ -57,7 +57,9 @@ public class SalesforceOauthIT extends FunctionalTestCase
     	} catch (Exception e) {
     		log.error("Error occured while reading mule.test.properties", e);
     	}    	
-    	System.setProperty("sfdc.key", props.getProperty("sfdc.key"));
+		// Salesforce dropped TLS 1.0 as of 2017-09-23 and Java 7 uses TLS 1.0 by default 
+		System.setProperty("https.protocols", "TLSv1.1,TLSv1.2");
+		System.setProperty("sfdc.key", props.getProperty("sfdc.key"));
     	System.setProperty("sfdc.secret", props.getProperty("sfdc.secret"));
     	USERNAME = props.getProperty("sfdc.user");
     	PASSWORD = props.getProperty("sfdc.password");
