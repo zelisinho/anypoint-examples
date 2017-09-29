@@ -75,7 +75,7 @@
         <muleConfigVersion>EE-3.8.3</muleConfigVersion>
         <mule.version>3.8.3</mule.version>
         <muleSchemaVersion>3.5.0.0</muleSchemaVersion>
-		<sfdc.version>7.2.0</sfdc.version>
+		<sfdc.version>8.3.1</sfdc.version>
 		<mule.tools.version>1.0</mule.tools.version>
 		<mule.test.timeoutSecs>60</mule.test.timeoutSecs>
 		<munit.version>1.2.1</munit.version>
