@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "import-leads-into-salesforce.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "import-leads-into-salesforce",
+  "minMuleVersion": "4.0.0-rc",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
