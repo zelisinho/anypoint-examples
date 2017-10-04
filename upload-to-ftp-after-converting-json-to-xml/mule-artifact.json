@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "upload-to-ftp-after-converting-json-to-xml.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "upload-to-ftp-after-converting-json-to-xml",
+  "minMuleVersion": "4.0.0-rc",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
