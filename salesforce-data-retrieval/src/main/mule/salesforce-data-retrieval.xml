@@ -54,9 +54,9 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<logger level="INFO" doc:name="Log results" doc:id="3e17fbe1-6a08-4a01-b413-0b2de3f2d6ab" message="#['Result: ' ++ write(payload, 'application/json') replace /(\n)/ with &quot;&quot;]"/>
 		<error-handler>
-			<on-error-propagate type="SALESFORCE:INVALID_REQUEST_DATA, SALESFORCE:INVALID_STRUCTURE_FOR_INPUT_DATA, SALESFORCE:UNKNOWN" enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="2c2e3c76-efbc-48e0-b590-7134872a9e1a" >
+			<on-error-continue type="SALESFORCE:INVALID_REQUEST_DATA, SALESFORCE:INVALID_STRUCTURE_FOR_INPUT_DATA, SALESFORCE:UNKNOWN" enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="2c2e3c76-efbc-48e0-b590-7134872a9e1a" >
 				<set-payload value="Invalid Salesforce query." doc:name="Set Payload" mimeType="text/plain"/>
-			</on-error-propagate>
+			</on-error-continue>
 		</error-handler>
 	</flow>
 </mule>
