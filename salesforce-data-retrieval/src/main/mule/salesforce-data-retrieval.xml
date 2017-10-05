@@ -40,7 +40,11 @@ write(payload, 'application/xml')]]></ee:set-payload>
 		<set-payload value="#[payload]" doc:name="Set MIME type to text/html" doc:id="2c0c1131-f6e0-4297-bb43-276264b72b46" mimeType="text/html"/>
 	</flow>
 	<flow name="salesforceDataRetrievalFlow" doc:id="e8baa162-e0c3-441d-9167-a908c1700af9" >
-		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="d7129ae1-67bc-4b75-b0b9-c04726d2ecab" allowedMethods="POST"/>
+		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="d7129ae1-67bc-4b75-b0b9-c04726d2ecab" allowedMethods="POST">
+			<http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+            </http:error-response>
+        </http:listener>
 		<salesforce:query-all config-ref="Salesforce_Sfdc_config" doc:name="Query all" doc:id="15d35ca5-be04-47e5-a85e-2592046d0311" >
 			<salesforce:salesforce-query >#['SELECT id, name' ++ (if(isEmpty(payload.field)) &quot;&quot; else &quot;, &quot; ++ payload.field) ++ ' from ' ++ payload.object ++' where ' ++ payload.searchKey ++ ' like \'%' ++ payload.searchValue ++'%\'']</salesforce:salesforce-query>
 		</salesforce:query-all>
@@ -54,9 +58,10 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<logger level="INFO" doc:name="Log results" doc:id="3e17fbe1-6a08-4a01-b413-0b2de3f2d6ab" message="#['Result: ' ++ write(payload, 'application/json') replace /(\n)/ with &quot;&quot;]"/>
 		<error-handler>
-			<on-error-continue type="SALESFORCE:INVALID_REQUEST_DATA, SALESFORCE:INVALID_STRUCTURE_FOR_INPUT_DATA, SALESFORCE:UNKNOWN" enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="2c2e3c76-efbc-48e0-b590-7134872a9e1a" >
-				<set-payload value="Invalid Salesforce query." doc:name="Set Payload" mimeType="text/plain"/>
-			</on-error-continue>
+			<on-error-propagate type="SALESFORCE:INVALID_REQUEST_DATA, SALESFORCE:INVALID_STRUCTURE_FOR_INPUT_DATA, SALESFORCE:UNKNOWN" enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="2c2e3c76-efbc-48e0-b590-7134872a9e1a" >
+				<set-payload value="Invalid Salesforce query." doc:name="Set error message" mimeType="text/plain"/>
+				<set-variable variableName="httpStatus" value="400" doc:name="Set response status" doc:id="e1b42004-08e6-422a-9301-9a639fb3867b" />
+			</on-error-propagate>
 		</error-handler>
 	</flow>
 </mule>
