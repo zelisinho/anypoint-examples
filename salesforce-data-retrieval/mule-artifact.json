@@ -1,17 +1,15 @@
 {
   "domain": "default",
   "configs": [
-    "import-contacts-into-salesforce.xml"
+    "salesforce-data-retrieval.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "import-contacts-into-salesforce",
+  "name": "salesforce-data-retrieval",
   "minMuleVersion": "4.0.0-rc",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
-      "exportedResources": [
-      	"contacts.csv"
-      ]
+      "exportedResources": []
     }
   },
   "bundleDescriptorLoader": {
