@@ -42,9 +42,9 @@ write(payload, 'application/xml')]]></ee:set-payload>
 	<flow name="salesforceDataRetrievalFlow" doc:id="e8baa162-e0c3-441d-9167-a908c1700af9" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="d7129ae1-67bc-4b75-b0b9-c04726d2ecab" allowedMethods="POST">
 			<http:error-response statusCode="#[vars.httpStatus default 500]">
-                <http:body>#[payload]</http:body>
-            </http:error-response>
-        </http:listener>
+				<http:body>#[payload]</http:body>
+			</http:error-response>
+		</http:listener>
 		<salesforce:query-all config-ref="Salesforce_Sfdc_config" doc:name="Query all" doc:id="15d35ca5-be04-47e5-a85e-2592046d0311" >
 			<salesforce:salesforce-query >#['SELECT id, name' ++ (if(isEmpty(payload.field)) &quot;&quot; else &quot;, &quot; ++ payload.field) ++ ' from ' ++ payload.object ++' where ' ++ payload.searchKey ++ ' like \'%' ++ payload.searchValue ++'%\'']</salesforce:salesforce-query>
 		</salesforce:query-all>
