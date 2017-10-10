@@ -33,7 +33,7 @@ div: {
 				<ee:set-payload ><![CDATA[%dw 2.0
 output text/plain
 ---
-write(payload, 'application/xml')]]></ee:set-payload>
+write(payload, 'application/xml', {"writeDeclaration" : "false"})]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<parse-template location="C:\WORK\MULE\WS_ESB4\salesforce-data-retrieval\src\main\resources\retrieval\index.html" doc:name="Parse Template" doc:id="2969b84b-377d-4260-8833-468c7d91fe7e" />
@@ -56,7 +56,7 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Log results" doc:id="3e17fbe1-6a08-4a01-b413-0b2de3f2d6ab" message="#['Result: ' ++ write(payload, 'application/json') replace /(\n)/ with &quot;&quot;]"/>
+		<logger level="INFO" doc:name="Log results" doc:id="3e17fbe1-6a08-4a01-b413-0b2de3f2d6ab" message="#['Result: ' ++ write(payload, 'application/json',  {&quot;indent&quot; : &quot;false&quot;})]"/>
 		<error-handler>
 			<on-error-propagate type="SALESFORCE:INVALID_REQUEST_DATA, SALESFORCE:INVALID_STRUCTURE_FOR_INPUT_DATA, SALESFORCE:UNKNOWN" enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="2c2e3c76-efbc-48e0-b590-7134872a9e1a" >
 				<set-payload value="Invalid Salesforce query." doc:name="Set bad request error message" mimeType="text/plain"/>
