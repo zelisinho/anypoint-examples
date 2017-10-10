@@ -53,7 +53,7 @@ In this example we transform a sample CSV file containing sales data to JSON for
 
 1. **Run** the example project as a mule application
 
-1. **Go to the mongDB console** (the second command terminal window) and type:
+1. **Go to the mongoDB console** (the second command terminal window) and type:
 	
 	db.customers.find()
 	
