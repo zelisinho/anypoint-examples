@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "import-csv-into-mongodb.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "import-csv-into-mongodb",
+  "minMuleVersion": "4.0.0-rc",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
