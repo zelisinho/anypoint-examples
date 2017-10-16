@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "salesforce-sync-using-objectstore.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "salesforce-sync-using-objectstore",
+  "minMuleVersion": "4.0.0-rc",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
