@@ -15,27 +15,39 @@ In this example a CSV file containing sample sales data which is stored in the l
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. Create a folder called input under src/main/resources and **paste** the input.csv file in the input folder. Edit the path field in the file connector to:
-    
-        Path=src/main/resources/input
+2. Create a folder called input under src/main/resources and **paste** the input.csv file in the input folder. Edit the path field in the file connector to *yourPath/input/input.csv*
  
+3. Click on the mule-artifact.properties and **configure its properties** as follows:
 
-3. Click on the SMTP connector and **configure its properties** as follows:
+		smtp.user=senderemailid%40gmail.com
+		smtp.password=senderpassword
+		smtp.host=smtp.gmail.com
+		smtp.port=587
+		mail.from=senderemailid@gmail.com
+		mail.to=receiveremailid@gmail.com
+		mail.subject=Export from Excel
 
-        Host=smtp.gmail.com
-        Port=587
-        User=senderemailid%40gmail.com
-        Password=senderpassword
-
-        To=receiveremailid@gmail.com
-        From=senderemailid@gmail.com
-        Subject=Export from Excel
     
 4. **Run** the project as a Mule application
 
 5. Login to receiveremailid@gmail.com to **verify** if the sales data was received via email. You should get an email that has the following content:
 
-       [{name=aaa, orderId=1, pricePerUnit=10, units=2, totalPrice=20}, {name=bbb, orderId=2, pricePerUnit=5, units=4.15, totalPrice=20.75}]
+        [
+		  {
+		    "name": "aaa",
+		    "orderId": "1",
+		    "pricePerUnit": "10",
+		    "units": "2.0",
+		    "totalPrice": 20.0
+		  },
+		  {
+		    "name": "bbb",
+		    "orderId": "2",
+		    "pricePerUnit": "5",
+		    "units": "4.15",
+		    "totalPrice": 20.75
+		  }
+		]
 
 ### Go Further
 

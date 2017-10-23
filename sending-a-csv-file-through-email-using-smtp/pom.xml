@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
-	<artifactId>sending</artifactId>
-    <version>4.0-SNAPSHOT</version>
-    <packaging>mule</packaging>
+	<groupId>org.mule.examples</groupId>
+	<artifactId>Sending-a-CSV-file-through-Email-using-SMTP</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>mule-application</packaging>
 
 	<name>sending-a-csv-file-through-email-using-smtp</name>
 
@@ -13,8 +13,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.0.0-SNAPSHOT</app.runtime>
-    	<mule.tools.version>3.0.0-M1-HF1</mule.tools.version>
+		<app.runtime>4.0.0-rc</app.runtime>
+		<mule.maven.plugin.version>3.0.0-rc</mule.maven.plugin.version>
+		<mule.connectors.version>0.9.0</mule.connectors.version>
 	</properties>
 
 	<build>
@@ -22,93 +23,49 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.tools.version}</version>
+				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-                    <copyToAppsDirectory>true</copyToAppsDirectory>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>add-resource</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/app/</directory>
-								</resource>
-								<resource>
-									<directory>mappings/</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
 
-	<!-- Mule Dependencies -->
 	<dependencies>
-
-		<!-- Mule Modules -->
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-http-ext</artifactId>
-			<version>4.0.0-SNAPSHOT</version>
-			<classifier>mule-plugin</classifier>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-sockets</artifactId>
-			<version>4.0.0-SNAPSHOT</version>
-			<classifier>mule-plugin</classifier>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-email</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
+    	<dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-email-connector</artifactId>
+            <version>${mule.connectors.version}</version>
             <classifier>mule-plugin</classifier>
-            <scope>provided</scope>
         </dependency>
     	<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-file</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-file-connector</artifactId>
+            <version>${mule.connectors.version}</version>
             <classifier>mule-plugin</classifier>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
 	<repositories>
           <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
+            <id>anypoint-exchange</id>
+            <name>Anypoint Exchange</name>
+            <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
             <layout>default</layout>
         </repository>
         <repository>
             <id>mulesoft-releases</id>
             <name>MuleSoft Releases Repository</name>
-            <url>http://repository.mulesoft.org/releases/</url>
+            <url>https://repository.mulesoft.org/releases/</url>
             <layout>default</layout>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>mulesoft-release</id>
+            <id>mulesoft-releases</id>
             <name>mulesoft release repository</name>
             <layout>default</layout>
-            <url>http://repository.mulesoft.org/releases/</url>
+            <url>https://repository.mulesoft.org/releases/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
