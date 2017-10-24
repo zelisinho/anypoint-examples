@@ -1,4 +1,4 @@
-﻿# Salesforce to MySQL DB using Batch Processing #
+# Salesforce to MySQL DB using Batch Processing #
 
 This application illustrates how to use batch processing to synchronize Salesforce information with a database.
 
@@ -77,7 +77,7 @@ Skip ahead to the next section if you prefer to simply examine this example via 
 
 Unlike typical Mule projects that are organized into Flows, this project runs a [Batch Process](http://www.mulesoft.org/documentation/display/current/Batch+Processing). The process is divided into three stages where actions have different scopes:
 
-- Input Scheduler: Salesforce at regular intervals for new contacts.
+- Input Scheduler: Query Salesforce at regular intervals for new contacts.
 - On Complete:	Logs a success message.
 - Process Records:	Checks if record exists in DB, then updates/creates DB record.
 
