@@ -1,4 +1,4 @@
-# Salesforce to MySQL DB using Batch Processing #
+﻿# Salesforce to MySQL DB using Batch Processing #
 
 This application illustrates how to use batch processing to synchronize Salesforce information with a database.
 
@@ -62,9 +62,9 @@ Skip ahead to the next section if you prefer to simply examine this example via 
     If you are using the MySQL Workbench, first create the schema **company** , and then execute the above SQL statements from within the MySQL Workbench SQL Editor.
 
    Alternatively, you can use the MySQL command-line tool, as follows:
-        1. Execute this command: *CREATE DATABASE company;*. This will create the database schema.
-        2. Save the above SQL code-block to a text file, **SQL\_for_example.sql**
-        3. Then execute the SQL with this command: mysql *company < SQL\_for_example.sql*
+    1. Execute this command: *CREATE DATABASE company;*. This will create the database schema.
+    1. Save the above SQL code-block to a text file, **SQL\_for_example.sql**
+    1. Then execute the SQL with this command: mysql *company < SQL\_for_example.sql*
 
     In either case, you may need to assign a user for access to the schema as well. Please see [MySQL Documentation](http://dev.mysql.com/doc/) for more information on using the MySQL Workbench or the command-line tool.
 
