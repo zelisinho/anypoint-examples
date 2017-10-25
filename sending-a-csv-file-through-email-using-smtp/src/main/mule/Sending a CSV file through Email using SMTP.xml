@@ -23,8 +23,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<fixed-frequency frequency="10000"/>
 			</scheduling-strategy>
 		</scheduler>
-		<file:read config-ref="File_Config" path="C:\Users\ntb\AnypointStudio\mule4\Sending-a-CSV-file-through-Email-using-SMTP\src\main\resources\input\input.csv" doc:name="Read" doc:id="4f516e0b-4d07-4ea0-a90d-223648fa208e" outputMimeType="application/csv"/>
-		<ee:transform doc:name="Transform Message" doc:id="3a757861-dd31-4b9c-a6a6-84d937301872" >
+		<file:read config-ref="File_Config" path="yourPath\input\input.csv" doc:name="Read input.scv" doc:id="4f516e0b-4d07-4ea0-a90d-223648fa208e" outputMimeType="application/csv"/>
+		<ee:transform doc:name="Map to json" doc:id="3a757861-dd31-4b9c-a6a6-84d937301872" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json

@@ -13,9 +13,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.0.0-rc.darkseid</app.runtime>
-		<mule.maven.plugin.version>3.0.0-rc-SNAPSHOT</mule.maven.plugin.version>
-        <mule.connectors.version>0.9.0-rc.darkseid</mule.connectors.version>
+		<app.runtime>4.0.0-rc</app.runtime>
+		<mule.maven.plugin.version>3.0.0-rc</mule.maven.plugin.version>
+        <mule.connectors.version>0.9.0</mule.connectors.version>
 	</properties>
 
 	<build>
@@ -38,18 +38,6 @@
 			<version>${mule.connectors.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<dependency>
-			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-sockets-connector</artifactId>
-			<version>${mule.connectors.version}</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-spring-module</artifactId>
-            <version>${mule.connectors.version}</version>
-            <classifier>mule-plugin</classifier>
-        </dependency>
     </dependencies>
 
 	<repositories>

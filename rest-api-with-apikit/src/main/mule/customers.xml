@@ -6,7 +6,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
     </http:listener-config>
     <apikit:config name="customers-config" raml="customers.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <flow name="customers-main">
-        <http:listener config-ref="customers-httpListenerConfig" path="/api/*">
+        <http:listener config-ref="customers-httpListenerConfig" path="/api/*" doc:name="Listener">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:response>
