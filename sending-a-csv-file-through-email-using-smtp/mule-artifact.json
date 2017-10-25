@@ -1,7 +1,7 @@
 {
   "domain": "default",
   "configs": [
-    "Sending a CSV file through Email using SMTP.xml"
+    "sending a CSV file through email using SMTP.xml"
   ],
   "redeploymentEnabled": true,
   "name": "Sending-a-CSV-file-through-Email-using-SMTP",

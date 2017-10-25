@@ -19,7 +19,7 @@ In this example a CSV file containing sample sales data which is stored in the l
  
 3. Click on the mule-artifact.properties and **configure its properties** as follows:
 
-		smtp.user=senderemailid%40gmail.com
+		smtp.user=senderemailid@gmail.com
 		smtp.password=senderpassword
 		smtp.host=smtp.gmail.com
 		smtp.port=587
@@ -34,14 +34,14 @@ In this example a CSV file containing sample sales data which is stored in the l
 
         [
 		  {
-		    "name": "aaa",
+		    "name": "T-shirt",
 		    "orderId": "1",
 		    "pricePerUnit": "10",
 		    "units": "2.0",
 		    "totalPrice": 20.0
 		  },
 		  {
-		    "name": "bbb",
+		    "name": "Jacket",
 		    "orderId": "2",
 		    "pricePerUnit": "5",
 		    "units": "4.15",
