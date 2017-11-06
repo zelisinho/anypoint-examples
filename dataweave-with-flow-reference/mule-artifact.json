@@ -1,0 +1,20 @@
+{
+  "domain": "default",
+  "configs": [
+    "dataweave-with-flow-reference.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "dataweave-with-flow-reference",
+  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
