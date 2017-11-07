@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<file:config name="File_Config" doc:name="File Config" doc:id="9b81a137-752c-4e1d-a270-c18971ca6f81" />
 	<flow name="implementing-a-exception-strategyFlow" doc:id="60640692-470b-495b-abc6-e5c3f6ba558a" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="cb0f325d-9f00-4314-9e09-d817e1db077c" >
-			<http:response statusCode="200" />
+			<http:response statusCode="#[vars.httpStatus]" />
 		</http:listener>
 		<try doc:name="Try" doc:id="d415a842-8ea4-4ced-94a1-ff5a55866365" >
 			<file:read config-ref="File_Config" path="yourPath/input.csv" doc:name="Read input.csv" doc:id="52ce1117-9e26-4a6d-999b-583a3584bbbe" outputMimeType="application/csv" outputEncoding="UTF-8"/>
@@ -27,6 +27,9 @@ output application/json
 	message: "Your path is invalid"
 }]]></ee:set-payload>
 						</ee:message>
+						<ee:variables >
+							<ee:set-variable variableName="httpStatus" ><![CDATA[404]]></ee:set-variable>
+						</ee:variables>
 					</ee:transform>
 					<logger level="INFO" doc:name="Logger" doc:id="fd6c449d-eae8-4030-8825-5394060e3afc" message="#[payload]"/>
 				</on-error-continue>
@@ -40,6 +43,9 @@ output application/json
 	message: "Access to file denied"
 }]]></ee:set-payload>
 						</ee:message>
+						<ee:variables >
+							<ee:set-variable variableName="httpStatus" ><![CDATA[401]]></ee:set-variable>
+						</ee:variables>
 					</ee:transform>
 					<logger level="INFO" doc:name="Logger" doc:id="d86fc71c-bf75-4cad-bbea-d940dd3000e1" message="#[payload]"/>
 				</on-error-continue>
