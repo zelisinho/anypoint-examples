@@ -1,0 +1,19 @@
+{
+  "domain": "default",
+  "configs": [
+    "implementing-a-exception-strategy.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "implementing-a-exception-strategy",
+  "minMuleVersion": "4.0.0-rc",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
