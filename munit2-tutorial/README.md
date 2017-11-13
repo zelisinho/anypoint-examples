@@ -26,7 +26,7 @@ The sample code for this tutorial is fairly simple, uses some of Mule's most com
 	<configuration-properties file="mule-artifact.properties" doc:name="Configuration properties" />
 
 	<flow name="mainFlow" >
-		<http:listener config-ref="HTTP_Listener_config" path="/aaa" doc:name="HTTP Listener" allowedMethods="GET"/>
+		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP Listener" allowedMethods="GET"/>
 		<set-payload value="#[attributes.queryParams.url_key]" doc:name="Set query param 'url_key' to payload" />
 		<flow-ref name="secondaryFlow" doc:name="secondaryFlow" />
 		<choice doc:name="Choice" >
@@ -70,7 +70,7 @@ Let's analyze the above code by breaking it up into sections. The first section 
 
 ``` xml
 <flow name="mainFlow" >
-	<http:listener config-ref="HTTP_Listener_config" path="/aaa" doc:name="HTTP Listener" allowedMethods="GET"/>
+	<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP Listener" allowedMethods="GET"/>
 	<set-payload value="#[attributes.queryParams.url_key]" doc:name="Set query param 'url_key' to payload" />
 	<flow-ref name="secondaryFlow" doc:name="secondaryFlow" />
 	<choice doc:name="Choice" >
