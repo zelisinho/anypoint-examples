@@ -1,0 +1,19 @@
+{
+  "configs": [
+    "business-logic.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "munit-tutorial",
+  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
