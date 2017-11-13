@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<configuration-properties file="mule-artifact.properties" doc:name="Configuration properties" doc:id="a5fe17ed-f401-4f88-962b-959b7e1bed6d" />
 
 	<flow name="mainFlow" doc:id="5668ee11-94cf-4216-98cb-51586599e528" >
-		<http:listener config-ref="HTTP_Listener_config" path="/aaa" doc:name="HTTP Listener" doc:id="61b4d58f-bccd-485e-9361-5e2460ddad15" allowedMethods="GET"/>
+		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP Listener" doc:id="61b4d58f-bccd-485e-9361-5e2460ddad15" allowedMethods="GET"/>
 		<set-payload value="#[attributes.queryParams.url_key]" doc:name="Set query param 'url_key' to payload" doc:id="e5becfd2-8287-4d12-9945-0ae064ec8039" />
 		<flow-ref name="secondaryFlow" doc:name="secondaryFlow" doc:id="7417b2cf-033f-4e80-94e4-7e84dc070355" />
 		<choice doc:name="Choice" doc:id="8d3295f5-a412-4f4a-822e-184df4c0e175" >
