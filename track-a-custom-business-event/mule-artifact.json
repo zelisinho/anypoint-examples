@@ -1,0 +1,19 @@
+{
+  "configs": [
+    "track-a-custom-business-event.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "track-a-custom-business-event",
+  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
