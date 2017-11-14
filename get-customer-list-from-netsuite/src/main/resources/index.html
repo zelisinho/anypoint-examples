@@ -1,4 +1,5 @@
-#['<!--
+#[%dw 2.0 output text/plain ---
+'<!--
 
     MuleSoft Examples
     Copyright 2014 MuleSoft, Inc.
@@ -10,17 +11,18 @@
 
 <html>
 <body>
-	<h1>Netsuite Customer List</h1>
-	
-	<table>
-		<thead>
-			<tr>
-				<th>Last Name</th>
-				<th>First Name</th>
-				<th>Email</th>
-			</tr>
-		</thead>
-		<tbody>'++ payload ++'</tbody>
-	</table>
+<h1>Netsuite Customer List</h1>
+
+<table>
+	<thead>
+	<tr>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Email</th>
+	</tr>
+	</thead>
+	<tbody>'++ write(payload, 'application/xml',{"writeDeclaration":"false"}) ++'</tbody>
+</table>
 </body>
-</html>']
+</html>'
+]
