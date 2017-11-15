@@ -5,7 +5,7 @@
   ],
   "redeploymentEnabled": true,
   "name": "dataweave-with-flow-reference",
-  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
