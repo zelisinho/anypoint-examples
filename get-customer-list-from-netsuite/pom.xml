@@ -54,10 +54,6 @@
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>exchange-maven-facade</id>
-			<url>https://maven.qax.anypoint.mulesoft.com/api/v1/organizations/68ef9520-24e9-4cf2-b2f5-620025690913/maven</url>
-		</repository>
           <repository>
             <id>anypoint-exchange</id>
             <name>Anypoint Exchange</name>
