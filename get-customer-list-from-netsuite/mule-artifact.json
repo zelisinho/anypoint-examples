@@ -4,7 +4,7 @@
   ],
   "redeploymentEnabled": true,
   "name": "get-customer-list-from-netsuite",
-  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
