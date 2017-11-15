@@ -5,7 +5,8 @@
   ],
   "redeploymentEnabled": true,
   "name": "content-based-routing",
-  "minMuleVersion": "4.0.0-rc.darkseid",
+  "minMuleVersion": "4.0.0",
+  "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
