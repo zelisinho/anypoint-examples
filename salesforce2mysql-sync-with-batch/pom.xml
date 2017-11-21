@@ -16,7 +16,7 @@
 		<app.runtime>4.0.0</app.runtime>
 		<mule.maven.plugin.version>3.0.0</mule.maven.plugin.version>
 		<mule.connectors.version>1.0.0</mule.connectors.version>
-		<sfdc.connector.version>9.0.0-rc</sfdc.connector.version>
+		<sfdc.connector.version>9.0.0</sfdc.connector.version>
 		
 		<mysql.version>5.1.26</mysql.version>
 	</properties>
