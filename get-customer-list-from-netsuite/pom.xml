@@ -16,7 +16,7 @@
 		<app.runtime>4.0.0</app.runtime>
 		<mule.maven.plugin.version>3.0.0</mule.maven.plugin.version>
 		<mule.connectors.version>1.0.0</mule.connectors.version>
-		<mule.netsuite.connector.version>8.0.0-002-SNAPSHOT</mule.netsuite.connector.version>
+		<mule.netsuite.connector.version>8.0.0</mule.netsuite.connector.version>
 	</properties>
 
 	<build>
