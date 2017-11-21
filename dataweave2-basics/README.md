@@ -115,7 +115,3 @@ In this example, you will use DataWeave to:
 * set a flow variable in the message
 * generate an output based on evaluating the input
 * dynamically set the payload
-
-###Go further
-
-* Want to learn more about how to get information about the Mule message so that you can work with it using MEL? Try out this [tutorial](http://www.mulesoft.org/documentation/display/current/Mule+Message+Tutorial). 
