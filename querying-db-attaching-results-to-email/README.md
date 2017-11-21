@@ -2,7 +2,7 @@
 
 This example application shows you how to query a MySQL database, aggregate the query results, transform the result into CSV format and send it as an attachment via email.
 
-###Example use case
+### Example use case
 The XML data containing employee names is sent to the application using the HTTP POST method. The ForEach component then queries the MySQL DB individually for employee details. The result of each query is aggregated into a List. This List is then transformed to a CSV format and attached as a CSV file to an email which is sent using SMTP.
 
 ### Set up and run the example
