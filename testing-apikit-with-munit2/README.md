@@ -43,7 +43,6 @@ This application is based on a RAML specification file, which you can find in th
 
 For example this flow will be called when we hit **"/munit"** path by **GET** method.
 
-	xml
 	<flow name="get:\munit:api-config">
 	    <set-payload value="GET RESPONSE" doc:name="Set Payload" mimeType="text/plain"/>
 	</flow>
@@ -51,21 +50,20 @@ For example this flow will be called when we hit **"/munit"** path by **GET** me
    
 The sample flow above is tested by MUnit2 through this code:
 
-```xml
-<munit:test name="test-suite-get" description="Test" >
-	<munit:execution >
-		<http:request method="GET" doc:name="Request" config-ref="HTTP_Request_configuration" path="/munit"/>
-	</munit:execution>
-	<munit:validation >
-		<ee:transform doc:name="Stream -&gt; String" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0 output application/java --- payload]]></ee:set-payload>
-			</ee:message>
-        	</ee:transform>
-		<munit-tools:assert-that doc:name="Assert that" expression="#[attributes.statusCode]" is="#[equalTo(200)]" message="The HTTP Status code is not correct!"/>
-		<munit-tools:assert-that doc:name="Assert that" expression="#[payload]" is="#[equalTo('GET RESPONSE')]" message="The response payload is not correct!"/>
-	</munit:validation>
-</munit:test>```
+	<munit:test name="test-suite-get" description="Test" >
+		<munit:execution >
+			<http:request method="GET" doc:name="Request" config-ref="HTTP_Request_configuration" path="/munit"/>
+		</munit:execution>
+		<munit:validation >
+			<ee:transform doc:name="Stream -&gt; String" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0 output application/java --- payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<munit-tools:assert-that doc:name="Assert that" expression="#[attributes.statusCode]" is="#[equalTo(200)]" message="The HTTP Status code is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" expression="#[payload]" is="#[equalTo('GET RESPONSE')]" message="The response payload is not correct!"/>
+		</munit:validation>
+	</munit:test>
 
 1. As an execution step in MUnit2 we hit HTTP endpoint by **"/munit"** path and **GET** method through HTTP request (via HTTP connector).
 This enables you to use the HTTP request to define everything you need in order to hit a resource of your API (HTTP verbs, headers, paths, MIME types, etc.).
@@ -77,8 +75,7 @@ This enables you to use the HTTP request to define everything you need in order 
 
 Each MUnit2 test for APIKit _must_ contain the following beans _MUnit2 config_ as shown in the following snippet:
 
-```xml
-<munit:config name="test-suite.xml" doc:name="MUnit configuration"/>```
+	<munit:config name="test-suite.xml" doc:name="MUnit configuration"/>
 
 
 #### RAML File ####
