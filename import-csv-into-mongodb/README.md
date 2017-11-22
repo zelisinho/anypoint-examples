@@ -15,18 +15,19 @@ In this example we transform a sample CSV file containing sales data to JSON for
 
 1.  **Run mongoDB**             
    
-   *  Make sure that you have created */data/db* in your filesystem according to  installation instructions
-   * Now open two instances of the command terminal. In the first window start the mongoDB server by navigating to *mongodb install path/bin* and then typing in *mongod*. You should get the following message when your server is up and running:
+   1.  Make sure that you have created */data/db* in your filesystem according to  installation instructions
+   1. Now open two instances of the command terminal. In the first window start the mongoDB server by navigating to *mongodb install path/bin* and then typing in *mongod*. You should get the following message when your server is up and running:
    
         2014-07-01T16:15:25.282-0700 [initandlisten] waiting for connections on port 27017
 
-   * In the second window run mongoDB by navigating to *mongodb install path/bin* and typing in *mongo*. You should get the following message when you are connected.
+   1. In the second window run mongoDB by navigating to *mongodb install path/bin* and typing in *mongo*. You should get the following message when you are connected.
          
          MongoDB shell version v3.4.9
 
 
 1.  Stay in the second command terminal window and use the following commands to **create a database** and a user called mule who is granted permission to access the database:  
 	     
+	```
 	use customers
     db.createUser
     (

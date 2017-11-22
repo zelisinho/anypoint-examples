@@ -34,7 +34,9 @@ payload map
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Log objects to save" doc:id="efc027eb-74cf-458b-b514-c9dd134388a5" message="#['Saving objects: ' ++ write(payload, 'application/json', {&quot;indent&quot;: &quot;false&quot;})]"/>
-		<mongo:exists-collection config-ref="MongoDB_Config" doc:name="Test if a collection exists" doc:id="dcb3ccd9-2f6d-42cb-8b1e-0a34781ab2fc" collectionName="customers" target="collectionExists"/>
+		<mongo:exists-collection config-ref="MongoDB_Config" doc:name="Test if a collection exists" doc:id="dcb3ccd9-2f6d-42cb-8b1e-0a34781ab2fc" target="collectionExists">
+			<mongo:collection-name ><![CDATA[customers]]></mongo:collection-name>
+		</mongo:exists-collection>
 		<choice doc:name="Choice" doc:id="57ddea5d-ce0f-447f-9a42-e22bf069a48f" >
 			<when expression="#[not vars.collectionExists]" >
 				<mongo:create-collection config-ref="MongoDB_Config" collectionName="customers" doc:name="Create collection" doc:id="86f7f8de-be9e-47cb-b339-3548edfa9608" />
@@ -45,6 +47,7 @@ payload map
 		</choice>
 		<foreach doc:name="For Each" doc:id="3077bc6a-5688-4545-9497-b734dcebe278" >
 			<mongo:insert-document config-ref="MongoDB_Config" doc:name="Save customers to Mongo" doc:id="98e57ca3-1c51-4b3d-9c26-6dfdc09dd232" collectionName="customers"/>
+			<logger level="INFO" doc:name="Log the customer" doc:id="502531d9-aa94-496b-9a6a-0979d6a14492" message="#['Customer has been stored, ID: ' ++ payload]"/>
 		</foreach>
 	</flow>
 </mule>
