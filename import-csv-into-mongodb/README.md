@@ -2,13 +2,13 @@
 
 This example illustrates how to use the mongoDB connector to import data in a CSV format from a local directory into mongoDB. This examples also covers other important components in the studio including DataWeave, Choice and Foreach.
 
-###Assumption
-This document describes the details of the example within the context of Anypoint Studio, Mule ESB™s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials).
+### Assumption
+This document describes the details of the example within the context of Anypoint Studio, Mule ESBâ„¢s graphical user interface (GUI). This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials).
 
-###Example Use Case
+### Example Use Case
 In this example we transform a sample CSV file containing sales data to JSON format. We use the DataWeave transformer to do so. This JSON contains basically a collection called customers. We now use the mongoDB connector to check if such a collection exists in the database. The result is stored in variable *collectionExists*. This variable is consequently used by the choice router to decide whether to route to a mongoDB connector that creates a collection or just use the default option. The last mongoDB connector embedded in the For Each scope, saves the object from the map, iteratively for each of the elements in the collection.
 
-###Set Up and Run the Example
+### Set Up and Run the Example
 
 
 1.  **Download** [mongoDB](http://www.mongodb.org/downloads) and [install](http://docs.mongodb.org/manual/installation/) it. If you are are running a linux based OS, Homebrew is an easy way to install mongoDB.
