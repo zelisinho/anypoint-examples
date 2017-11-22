@@ -55,7 +55,7 @@ output application/java
 		</netsuite:search>
 				<ee:transform doc:name="Prepare HTML table of customers" doc:id="18bd79b3-48f1-4296-bea3-3f075d212485">
 			<ee:message>
-				<ee:set-payload><![CDATA[%dw 2.0
+				<ee:set-payload><![CDATA[%dw 2.0 
 output application/xml
 ---
 div: if (sizeOf(payload) > 0 ) {
@@ -78,14 +78,7 @@ div: if (sizeOf(payload) > 0 ) {
 ]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-				<ee:transform doc:name="Object to String" doc:id="2fd4d907-1a73-4b73-ad23-1f667edf7686" >
-					<ee:message >
-						<ee:set-payload ><![CDATA[%dw 2.0
-output text/plain
----
-write(payload, 'application/xml')]]></ee:set-payload>
-					</ee:message>
-				</ee:transform>
+				
 				<parse-template location="index.html" doc:name="Build html with table of customers" doc:id="bebc3dc6-09d2-4abe-a705-b552e9fbc470" />
 			</when>
 			<otherwise>

@@ -28,14 +28,6 @@ div: {
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<ee:transform doc:name="Transform object to String" doc:id="e7c176a3-e5a1-4aea-a6ba-273fa1f8c0b6" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output text/plain
----
-write(payload, 'application/xml', {"writeDeclaration" : "false"})]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
 		<parse-template location="retrieval\index.html" doc:name="Parse Template" doc:id="2969b84b-377d-4260-8833-468c7d91fe7e" />
 		<set-payload value="#[payload]" doc:name="Set MIME type to text/html" doc:id="2c0c1131-f6e0-4297-bb43-276264b72b46" mimeType="text/html"/>
 	</flow>

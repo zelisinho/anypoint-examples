@@ -4,7 +4,7 @@
   ],
   "redeploymentEnabled": true,
   "name": "testing-apikit-with-munit2",
-  "minMuleVersion": "4.0.0-SNAPSHOT",
+  "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",

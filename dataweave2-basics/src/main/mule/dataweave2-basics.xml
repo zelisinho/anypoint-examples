@@ -62,7 +62,7 @@ output application/csv header=false
 		<file:write config-ref="File_Config" path="${file.txt.name}" doc:name="Write to file" doc:id="b7a66af9-1d08-4290-bb17-4df49b279b7b">
 			<file:content><![CDATA[#[output text/plain --- "Username: " ++ vars.username ++ " Age: " ++ payload.user.age]]]></file:content>
 		</file:write>
-		<set-payload value='#["Hello " ++ attributes.queryParams.username]' doc:name="Prepare greeting" doc:id="bd0135c4-02ce-4075-a169-83a728af3dcb" mimeType="text/plain" />
+		<set-payload value='#["Hello " ++ vars.username]' doc:name="Prepare greeting" doc:id="bd0135c4-02ce-4075-a169-83a728af3dcb" mimeType="text/plain" />
 	</flow>
 	<flow name="dataweave2-basicsFlow5" doc:id="151eaa3e-c64c-49d0-bd32-f7f5057f6a9f" >
 		<http:listener config-ref="HTTP_Listener_config" path="/greet6" doc:name="/greet6" doc:id="660fa715-90f7-40f5-bc61-757856ab3249" />
@@ -70,6 +70,6 @@ output application/csv header=false
 		<file:write config-ref="File_Config" path="${file.txt.name}" doc:name="Write to file" doc:id="b7a66af9-1d08-4290-bb17-4df49b279b7b" >
 			<file:content ><![CDATA[#["Username: " ++ vars.username ++ " Age: " ++ payload.age]]]></file:content>
 		</file:write>
-		<set-payload value='#[output text/plain --- "Hello " ++ attributes.queryParams.username]' doc:name="Prepare greeting" doc:id="bd0135c4-02ce-4075-a169-83a728af3dcb"/>
+		<set-payload value='#[output text/plain --- "Hello " ++ vars.username]' doc:name="Prepare greeting" doc:id="bd0135c4-02ce-4075-a169-83a728af3dcb"/>
 	</flow>
 </mule>

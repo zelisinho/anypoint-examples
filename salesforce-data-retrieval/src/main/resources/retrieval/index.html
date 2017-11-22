@@ -1,5 +1,5 @@
-#['<!--
-
+#[%dw 2.0 output text/plain ---
+'<!--
     MuleSoft Examples
     Copyright 2014 MuleSoft, Inc.
 
@@ -14,7 +14,7 @@
 		<h1>Salesforce data retrieval</h1>
 		<form action="/" method="POST">
 			Object: <select name="object" >'
-				++ payload ++
+				++ write(payload, 'application/xml', {"writeDeclaration" : "false"}) ++
 			'</select>
 			Field: <input type="text" name="field" />
 			Search Key: <input type="text" name="searchKey" />

@@ -1,14 +1,14 @@
-#DataWeave 2 basics
+# DataWeave 2 basics
 
 This example application contains few simple flows that introduce most of the basic implementations of DataWeave 2 in different components.
 
-###Assumptions
+### Assumptions
 
 This document assumes you are familiar with DataWeave 2 Language's basic syntax and are comfortable building and running Mule applications using Mule Studio or XML.
 
 If you aren't yet familiar with how to access information about the Mule messages that pass through your applications, consider following this tutorial, which walks you through both examining your Mule message and its data structure and writing DataWeave 2 expressions.
 
-###Set up and run the example
+### Set up and run the example
 
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
@@ -49,7 +49,7 @@ Then, access the URL again, but this time do not include any parameters. Verify 
  
 
 
-#####Flow 1 – Accessing Properties
+##### Flow 1 – Accessing Properties
 
 This flow creates a simple web service that takes an HTTP request that includes a username parameter and returns a greeting using that username.
 
@@ -58,7 +58,7 @@ In this example, you use DataWeave to:
 * access query parameter
 * dynamically set the payload
  
-#####Flow 2 – Dynamic Routing by Evaluating a Condition
+##### Flow 2 – Dynamic Routing by Evaluating a Condition
 
 In the previous flow, if your call to the service doesn't include a username parameter, it results in an error. You can prevent this from happening by adding some flow control components. This example includes a Choice Router that verifies if the required parameter is being passed.
 
@@ -68,7 +68,7 @@ In this flow, you use DataWeave to:
 * access query parameter
 * dynamically set the payload
  
-#####Flow 3 – Variable Assignment and Evaluating Conditions
+##### Flow 3 – Variable Assignment and Evaluating Conditions
 
 In this flow, the service saves a CSV file with user data besides just returning a greeting. The call to the service will now include two parameters, username and age. The service stores these two parameters.
 
@@ -91,7 +91,7 @@ In this example, you will use DataWeave to:
 * access query parameter
 * dynamically set the payload
 
-#####Flow 5 – XML request
+##### Flow 5 – XML request
 
 In all the previous flows, calls to the service were made via GET requests that included query parameters. In this example, the service you create is an API that accepts POST requests with XML bodies. The required XML includes two parameters, username and age. The service stores these two parameters.
 
@@ -104,7 +104,7 @@ In this flow, you use DataWeave to:
 
  
 
-#####Flow 6 – JSON request
+##### Flow 6 – JSON request
 
 This flow is just like flow 5, except that the service now receives JSON inputs rather than of XML.
 
@@ -115,11 +115,3 @@ In this example, you will use DataWeave to:
 * set a flow variable in the message
 * generate an output based on evaluating the input
 * dynamically set the payload
-
-###Go further
-
-* Read about how to build this example [here](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+Examples).
-
-* Access the Mule Expression Language [Reference](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+Reference) and [Tips](http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+Tips).
-
-* Want to learn more about how to get information about the Mule message so that you can work with it using MEL? Try out this [tutorial](http://www.mulesoft.org/documentation/display/current/Mule+Message+Tutorial). 

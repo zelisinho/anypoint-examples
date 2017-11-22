@@ -5,7 +5,8 @@
   ],
   "redeploymentEnabled": true,
   "name": "upload-to-ftp-after-converting-json-to-xml",
-  "minMuleVersion": "4.0.0-rc",
+  "minMuleVersion": "4.0.0",
+  "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
