@@ -27,6 +27,7 @@ In this example we transform a sample CSV file containing sales data to JSON for
 
 1.  Stay in the second command terminal window and use the following commands to **create a database** and a user called mule who is granted permission to access the database:  
 	     
+	```
 	use customers
     db.createUser
     (
@@ -41,7 +42,7 @@ In this example we transform a sample CSV file containing sales data to JSON for
        }
       ]
      }
-    )
+    )```
 
 
 1.  Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
