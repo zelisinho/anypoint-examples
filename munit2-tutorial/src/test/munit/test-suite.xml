@@ -17,7 +17,7 @@
 			<flow-ref name="secondaryFlow" doc:name="secondaryFlow" doc:id="a14514f4-6ba7-4651-ac33-890e0a053aa8" />
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[equalTo('flowValue_1')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
+			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[MunitTools::equalTo('flowValue_1')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
 			<munit-tools:verify-call processor="mule:flow-ref" doc:name="Verify call" doc:id="eaf4d885-0618-4008-bf87-0351fcbf4b77" times="1">
 				<munit-tools:with-attributes>
 					<munit-tools:with-attribute attributeName="name" whereValue="#['firstSubFlow']" />
@@ -33,7 +33,7 @@
 			<flow-ref name="secondaryFlow" doc:name="secondaryFlow" doc:id="a14514f4-6ba7-4651-ac33-890e0a053aa8" />		
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[equalTo('flowValue_2')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
+			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[MunitTools::equalTo('flowValue_2')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
 			<munit-tools:verify-call processor="mule:flow-ref" doc:name="Verify call" doc:id="eaf4d885-0618-4008-bf87-0351fcbf4b77" times="1">
 				<munit-tools:with-attributes >
 					<munit-tools:with-attribute attributeName="name" whereValue="#['secondSubFlow']" />
@@ -50,7 +50,7 @@
 			<flow-ref name="mainFlow" doc:name="mainFlow" doc:id="a14514f4-6ba7-4651-ac33-890e0a053aa8" />
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[equalTo('flowValue_1')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
+			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[MunitTools::equalTo('flowValue_1')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
 		</munit:validation>
 	</munit:test>
 	<munit:test name="functionalTest_mainFlow_2" description="MUnit Test" doc:id="0dad4c80-9a2a-450f-9ea1-e919c1ed281f" >
@@ -62,7 +62,7 @@
 			<flow-ref name="mainFlow" doc:name="mainFlow" doc:id="a14514f4-6ba7-4651-ac33-890e0a053aa8" />
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[equalTo('flowValue_2')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
+			<munit-tools:assert-that expression="#[vars.flowValue]" is="#[MunitTools::equalTo('flowValue_2')]" doc:name="Assert payload" doc:id="ddd63cd5-0ce8-4d4d-b652-3d0cd7aa81c0" />
 		</munit:validation>	
 	</munit:test>
 	<munit:test name="test_withMock_1" description="MUnit Test" doc:id="c42413a3-2456-4567-966e-3eb866846158" >
@@ -91,7 +91,7 @@
 			<flow-ref name="mainFlow" doc:name="mainFlow" doc:id="60dcd64e-0876-447a-b754-d87f6e2e36ab" />
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[payload]" is="#[equalTo('responsePayload_1')]" doc:name="Assert that" doc:id="d1d00f4e-972b-4e60-8285-faa0205b73f5" />
+			<munit-tools:assert-that expression="#[payload]" is="#[MunitTools::equalTo('responsePayload_1')]" doc:name="Assert that" doc:id="d1d00f4e-972b-4e60-8285-faa0205b73f5" />
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test_withMock_2" description="MUnit Test" doc:id="c42413a3-2456-4567-966e-3eb866846158" >
@@ -120,7 +120,7 @@
 			<flow-ref name="mainFlow" doc:name="mainFlow" doc:id="60dcd64e-0876-447a-b754-d87f6e2e36ab" />
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that expression="#[payload]" is="#[equalTo('responsePayload_2')]" doc:name="Assert that" doc:id="d1d00f4e-972b-4e60-8285-faa0205b73f5" />
+			<munit-tools:assert-that expression="#[payload]" is="#[MunitTools::equalTo('responsePayload_2')]" doc:name="Assert that" doc:id="d1d00f4e-972b-4e60-8285-faa0205b73f5" />
 		</munit:validation>
 	</munit:test>
 </mule>
