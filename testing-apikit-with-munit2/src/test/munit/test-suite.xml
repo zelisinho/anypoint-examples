@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" doc:name="MUnit configuration"/>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="67364da2-3b1c-46b2-b2fa-285183a1120e" basePath="api" >
-		<http:request-connection host="localhost" port="${http.port}" />
+		<http:request-connection host="localhost" port="8081" />
 	</http:request-config>
 	<munit:test name="test-suite-put" description="Test" doc:id="03d9cad4-1f5f-4780-8d43-facbb0533751" >
 		<munit:execution >
@@ -26,8 +26,8 @@ output application/java
 payload]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[equalTo(201)]" message="The HTTP Status code is not correct!"/>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[equalTo('PUT RESPONSE')]" message="The response payload is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(201)]" message="The HTTP Status code is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[MunitTools::equalTo('PUT RESPONSE')]" message="The response payload is not correct!"/>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-delete" description="Test" doc:id="f48486d9-cb5d-4a6b-91ff-fa0f12c37ed7" >
@@ -43,8 +43,8 @@ output application/java
 payload]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[equalTo(200)]" message="The HTTP Status code is not correct!"/>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[equalTo('DELETE RESPONSE')]" message="The response payload is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="The HTTP Status code is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[MunitTools::equalTo('DELETE RESPONSE')]" message="The response payload is not correct!"/>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-get" description="Test" doc:id="e3448a78-f22d-4490-8db5-5585e37031d7" >
@@ -60,8 +60,8 @@ output application/java
 payload]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[equalTo(200)]" message="The HTTP Status code is not correct!"/>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[equalTo('GET RESPONSE')]" message="The response payload is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="The HTTP Status code is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[MunitTools::equalTo('GET RESPONSE')]" message="The response payload is not correct!"/>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-post" description="Test" doc:id="04634994-deac-4b20-a6ff-023abc2ba968" >
@@ -77,8 +77,8 @@ output application/java
 payload]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[equalTo(201)]" message="The HTTP Status code is not correct!"/>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[equalTo('POST RESPONSE')]" message="The response payload is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="76c72835-5d19-4019-adfc-5cf16778b322" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(201)]" message="The HTTP Status code is not correct!"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="62934e5a-e527-4fe0-a76c-496b562d4fbd" expression="#[payload]" is="#[MunitTools::equalTo('POST RESPONSE')]" message="The response payload is not correct!"/>
 		</munit:validation>
 	</munit:test>
 </mule>
