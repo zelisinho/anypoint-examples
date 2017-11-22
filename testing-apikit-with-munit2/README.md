@@ -43,10 +43,10 @@ This application is based on a RAML specification file, which you can find in th
 
 For example this flow will be called when we hit **"/munit"** path by **GET** method.
 
-```xml
-<flow name="get:\munit:api-config">
-    <set-payload value="GET RESPONSE" doc:name="Set Payload" mimeType="text/plain"/>
-</flow>```
+	xml
+	<flow name="get:\munit:api-config">
+	    <set-payload value="GET RESPONSE" doc:name="Set Payload" mimeType="text/plain"/>
+	</flow>
  
    
 The sample flow above is tested by MUnit2 through this code:
