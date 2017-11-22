@@ -1,5 +1,5 @@
 # Import contacts into Salesforce
-#### Enterprise, CloudHub ####
+### Enterprise, CloudHub ####
 
 This application uses pre-packaged tools to intelligently connect with Salesforce. Based on a simple use case, the application takes a CSV file of contacts and uploads the contact information to an active Salesforce user account. It uses DataSense and Anypoint DataWeave to map and transform data, thereby facilitating quick integration with this Software as a Service (SaaS) provider.
 
