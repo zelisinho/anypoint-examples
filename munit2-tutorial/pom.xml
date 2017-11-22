@@ -16,7 +16,7 @@
 		<app.runtime>4.0.0</app.runtime>
 		<mule.maven.plugin.version>3.0.0</mule.maven.plugin.version>
 		<mule.connectors.version>1.0.0</mule.connectors.version>
-		<munit.version>2.0.0-rc</munit.version>
+		<munit.version>2.0.0</munit.version>
     </properties>
 
 	<build>
