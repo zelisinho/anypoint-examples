@@ -34,7 +34,7 @@ Complete the following procedure to create, then run this example in your own in
 1. In the **Package Explorer**, right-click the connect-with-salesforce project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
 1. The File connector in the application polls the input folder every ten seconds. It picks up the CSV file, processes it, then deposits it into the output folder in the same directory. (Hit **F5** to refresh the contents of the input and output folders.)
 1. In your browser, access your Salesforce account, then navigate to the **Contacts** tab.
-1. Use the drop-down menu to display **All Contacts**, then scan your contacts for three new entries:  
+1. Use the drop-down menu to display **All Contacts**, then scan your contacts for two new entries:  
 	- John Doe
 	- Jane Doe
 1. Stop the Mule application by clicking the square, red terminate button in the **Console**.
