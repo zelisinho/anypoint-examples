@@ -1,0 +1,19 @@
+{
+  "configs": [
+    "import-contacts-asynchronously.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "import-contacts-asynchronously",
+  "minMuleVersion": "4.0.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
