@@ -39,7 +39,7 @@ Complete the following procedure to create, then run this example in your own in
 1. Send GET request to the URL from Location header and check the status of the processing. When the status is ```IN PROGRESS``` the asynchronous processing isn't finished yet and you should try it again later.
 1. Once the status is ```COMPLETED``` the asynchronous job is done and the data has been imported into Salesforce.
 1. In your browser, access your Salesforce account, then navigate to the **Contacts** tab.
-1. Use the drop-down menu to display **All Contacts**, then scan your contacts for three new entries:  
+1. Use the drop-down menu to display **All Contacts**, then scan your contacts for two new entries:  
 	- John Doe
 	- Jane Doe
 1. Stop the Mule application by clicking the square, red terminate button in the **Console**.
