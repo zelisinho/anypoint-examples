@@ -1,4 +1,4 @@
-#Proxying a SOAP API #
+# Proxying a SOAP API #
 
 This example shows how to proxy your API. Applications send service requests to your proxy, which in turn calls the real API.
 
