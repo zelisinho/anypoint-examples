@@ -7,13 +7,13 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>hello-world</artifactId>
+	<artifactId>implementing-a-choice-exception-strategy</artifactId>
     <packaging>mule-application</packaging>
 
-	<name>hello-world</name>
+	<name>implementing-a-choice-exception-strategy</name>
 
     <properties>
-        <mule.connectors.version>1.0.0</mule.connectors.version>
+		<mule.connectors.version>1.0.0</mule.connectors.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +23,18 @@
 			<version>${mule.connectors.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sockets-connector</artifactId>
+			<version>${mule.connectors.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-file-connector</artifactId>
+            <version>${mule.connectors.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
     </dependencies>
 
 </project>

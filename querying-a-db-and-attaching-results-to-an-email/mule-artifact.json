@@ -1,10 +1,10 @@
 {
   "domain": "default",
   "configs": [
-    "implementing-a-exception-strategy.xml"
+    "querying-db-attaching-results-to-email.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "implementing-a-exception-strategy",
+  "name": "querying-a-db-and-attaching-results-to-an-email",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {

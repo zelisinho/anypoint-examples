@@ -1,10 +1,10 @@
 {
   "domain": "default",
   "configs": [
-    "salesforce2mysql-sync-with-batch.xml"
+    "salesforce-to-mysql-sync-with-batch.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "salesforce2mysql-sync-with-batch",
+  "name": "salesforce-to-MySQL-DB-using-Batch-Processing",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {

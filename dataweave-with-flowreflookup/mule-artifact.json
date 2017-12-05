@@ -1,10 +1,10 @@
 {
   "domain": "default",
   "configs": [
-    "querying-db-attaching-results-to-email.xml"
+    "dataweave-with-flow-reference.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "querying-db-attaching-results-to-email",
+  "name": "dataweave-with-flowreflookup",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {

@@ -1,15 +1,17 @@
 {
   "configs": [
-    "dataweave2-basics.xml"
+    "api.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "dataweave2-basics",
+  "name": "testing-apikit-with-munit",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
-      "exportedResources": []
+      "exportedResources": [
+        "api\\api.raml"
+      ]
     }
   },
   "bundleDescriptorLoader": {
