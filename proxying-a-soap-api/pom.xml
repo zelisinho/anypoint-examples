@@ -32,7 +32,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-<properties>
-        <mule.version>3.9.0</mule.version>
-    </properties>
 </project>
