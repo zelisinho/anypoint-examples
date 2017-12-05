@@ -33,7 +33,7 @@ Complete the following procedure to create, then run this example in your own in
 1. In your application in Studio, click the **Global Elements** tab. 
 1. This project includes a sample CSV file, called *contacts.csv*, that you can use to witness end-to-end functionality of the application. In the **Package Explorer**, click the *src/main/resources* folder to expand it, then find the *contacts.csv* file inside this folder.
 1. Double-click the **File config** tab in the **Global Elements** tab and set the Working Directory field to point to *src/main/resources* folder.
-1. In the **Package Explorer**, right-click the connect-with-salesforce project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
+1. In the **Package Explorer**, right-click the import-contacts-asynchronously project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
 1. In the REST client e.g. Postman trigger the following request: ```POST localhost:{http.port}/import/trigger```
 1. In the HTTP response you can find the Location header containing the URL of the ```GET /import/status``` endpoint
 1. Send GET request to the URL from Location header and check the status of the processing. When the status is ```IN PROGRESS``` the asynchronous processing isn't finished yet and you should try it again later.

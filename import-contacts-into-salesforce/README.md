@@ -31,7 +31,7 @@ Complete the following procedure to create, then run this example in your own in
 1. Change the contents of the **Username** and **Password** fields to your account-specific values, then click **OK** to save your changes. 
 1. This project includes a sample CSV file, called *contacts.csv*, that you can use to witness end-to-end functionality of the application. In the **Package Explorer**, click the *src/main/resources* folder to expand it, then find the *contacts.csv* file inside this folder.
 1. Double-click the **File config** tab in the **Global Elements** tab and set the Working Directory field to point to *src/main/resources* folder.
-1. In the **Package Explorer**, right-click the connect-with-salesforce project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
+1. In the **Package Explorer**, right-click the import-contacts-into-salesforce project name, then select **Run As > Mule Application**. Studio runs the application on the embedded server.  
 1. The File connector in the application polls the input folder every ten seconds. It picks up the CSV file, processes it, then deposits it into the output folder in the same directory. (Hit **F5** to refresh the contents of the input and output folders.)
 1. In your browser, access your Salesforce account, then navigate to the **Contacts** tab.
 1. Use the drop-down menu to display **All Contacts**, then scan your contacts for two new entries:  
