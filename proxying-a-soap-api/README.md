@@ -12,7 +12,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case ###
 
-In this simple example, an application serves as a minimum proxy that can routes request and response to and from a SOAP API. After receiving request, it calls SOAP API of service described in wsdl (resources/tshirt.wsdl) and lists inventories.
+In this simple example, an application serves as a minimum proxy that can routes request and response to and from a SOAP API. After receiving request, it calls SOAP API of service described in wsdl (resources/tshirt.wsdl).
 
 ### Set Up and Run the Example ###
 
@@ -21,15 +21,57 @@ Complete the following procedure to create, then run this example in your own in
 1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081. 
 3. In the Package Explorer pane in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-5. Send the following POST request with xml body to your API via the proxy URL: http://localhost:8081/listInventory.
+4. Send one of the following POST request for different services (a, b or c) with xml body to your API via the proxy URL: http://localhost:8081/.
 
-		<s11:Envelope xmlns:s11='http://schemas.xmlsoap.org/soap/envelope/'>
-		  <s11:Body>
-		    <ns1:ListInventory xmlns:ns1='http://mulesoft.org/tshirt-service' />
-		  </s11:Body>
-		</s11:Envelope>	
-
-You can use a browser extension such as Postman or the curl command line utility. As a response to this request, you should receive a list of inventories.
+a)
+	
+	<s11:Envelope xmlns:s11='http://schemas.xmlsoap.org/soap/envelope/'>
+		 <s11:Body>
+		   <ns1:ListInventory xmlns:ns1='http://mulesoft.org/tshirt-service' />
+		 </s11:Body>
+	</s11:Envelope>
+	
+b)
+	
+	<s11:Envelope xmlns:s11='http://schemas.xmlsoap.org/soap/envelope/'>
+	  <s11:Header>
+	    <ms:AuthenticationHeader xmlns:ms='http://mulesoft.org/tshirt-service'>
+	      <apiKey>1234</apiKey>
+	    </ms:AuthenticationHeader>
+	  </s11:Header>
+	  <s11:Body>
+	    <ms:TrackOrder xmlns:ms='http://mulesoft.org/tshirt-service'>
+	      <email>Jose@email.com</email>
+	      <orderId>123456</orderId>
+	    </ms:TrackOrder>
+	  </s11:Body>
+	</s11:Envelope>
+	
+c)
+	
+	<s11:Envelope xmlns:s11='http://schemas.xmlsoap.org/soap/envelope/'>
+	  <s11:Header>
+	    <ms:AuthenticationHeader xmlns:ms='http://mulesoft.org/tshirt-service'>
+	      <apiKey>1234</apiKey>
+	    </ms:AuthenticationHeader>
+	  </s11:Header>
+	  <s11:Body>
+	    <ms:OrderTshirt xmlns:ms='http://mulesoft.org/tshirt-service'>
+	      <size>L</size>
+	      <email>Jose@gmail.com</email>
+	      <name>Jose</name>
+	      <address1>Main street 44</address1>
+	      <address2>Colonian street 30</address2>
+	      <city>Kosice</city>
+	      <stateOrProvince>Kosice</stateOrProvince>
+	      <postalCode>04001</postalCode>
+	      <country>Slovakia</country>
+	    </ms:OrderTshirt>
+	  </s11:Body>
+	</s11:Envelope>
+	
+	
+You can use a browser extension such as Postman or the curl command line utility. You should receive one of the following response: ListInventoryResponse (a), TrackOrderResponse (b) or OrderTshirtResponse (c).
 
 ### How it Works ###
 

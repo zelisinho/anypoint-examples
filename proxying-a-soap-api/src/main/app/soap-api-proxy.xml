@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <http:listener-config doc:name="HTTP Listener Configuration" host="0.0.0.0" name="HTTP_Listener_Configuration" port="8081" />
     <http:request-config doc:name="HTTP Request Configuration" host="tshirt-service.cloudhub.io" name="HTTP_Request_Configuration" port="80"  />
     <flow name="main">
-        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Receive HTTP Requests From Apps" path="/listInventory" allowedMethods="POST"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" doc:name="Receive HTTP Requests From Apps" path="/" allowedMethods="POST"/>
         <cxf:proxy-service doc:name="Check WSDL"   payload="envelope" port="TshirtServicePortTypePort" service="TshirtServicePortTypeService" wsdlLocation="http://tshirt-service.cloudhub.io/TshirtService?wsdl" namespace="http://mulesoft.org/tshirt-service" />
         <flow-ref doc:name="Copy HTTP Headers" name="copy-headers"/>
         <cxf:proxy-client doc:name="Proxy Client" enableMuleSoapHeaders="false" payload="envelope"/>
