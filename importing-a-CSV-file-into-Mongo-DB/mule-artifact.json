@@ -4,7 +4,7 @@
     "import-csv-into-mongodb.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "import-csv-into-mongodb",
+  "name": "importing-a-CSV-file-into-Mongo-DB",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {

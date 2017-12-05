@@ -9,9 +9,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>import-csv-into-mongodb</artifactId>
+    <artifactId>importing-a-CSV-file-into-Mongo-DB</artifactId>
     <packaging>mule-application</packaging>
-    <name>import-csv-into-mongodb</name>
+    <name>importing-a-CSV-file-into-Mongo-DB</name>
 
     <properties>
         <mule.connectors.version>1.0.0</mule.connectors.version>

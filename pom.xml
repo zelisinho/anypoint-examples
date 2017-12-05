@@ -18,7 +18,7 @@
         <module>http-request-response-with-logger</module>
         <module>implementing-a-choice-exception-strategy</module>
         <module>import-contacts-into-salesforce</module>
-        <module>import-csv-into-mongodb</module>
+        <module>importing-a-CSV-file-into-Mongo-DB</module>
         <module>import-leads-into-salesforce</module>
         <module>login-form-using-the-http-connector</module>
         <module>munit-2-tutorial</module>
