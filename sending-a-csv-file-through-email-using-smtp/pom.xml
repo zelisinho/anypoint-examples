@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<parent>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
         <groupId>org.mule.examples</groupId>
-		<artifactId>examples-catalog</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
-	</parent>
+        <artifactId>examples-catalog</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
 
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>Sending-a-CSV-file-through-Email-using-SMTP</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Sending-a-CSV-file-through-Email-using-SMTP</artifactId>
     <packaging>mule-application</packaging>
-
-	<name>sending-a-CSV-file-through-email-using-SMTP</name>
+    <name>sending-a-CSV-file-through-email-using-SMTP</name>
 
     <properties>
-		<mule.connectors.version>1.0.0</mule.connectors.version>
-	</properties>
+        <mule.connectors.version>1.0.0</mule.connectors.version>
+    </properties>
 
-	<dependencies>
-    	<dependency>
+    <dependencies>
+        <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-email-connector</artifactId>
             <version>${mule.connectors.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-    	<dependency>
+        <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-file-connector</artifactId>
             <version>${mule.connectors.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
-
 </project>
