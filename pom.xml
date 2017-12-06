@@ -30,6 +30,7 @@
         <module>querying-a-mysql-database</module>
         <module>querying-a-db-and-attaching-results-to-an-email</module>
         <module>rest-api-with-apikit</module>
+        <module>retry-mechanism-example</module>
         <module>salesforce-data-retrieval</module>
         <module>salesforce-sync-using-objectstore</module>
         <module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
