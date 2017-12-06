@@ -58,6 +58,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <classifier>mule-application-example</classifier>
+                    <!-- Fix until MMP-305 is solved -->
+                    <onlyMuleSources>true</onlyMuleSources>
                 </configuration>
             </plugin>
             <plugin>
