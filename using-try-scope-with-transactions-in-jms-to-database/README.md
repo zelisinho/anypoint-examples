@@ -1,4 +1,5 @@
 # Using try scope with transactions in JMS to Database 
+
 Mule applies the concept of transactions to operations in application for which the result cannot remain indeterminate. This example illustrates the concept of try scope with transactions (transactional scope in old versions) and rollback error handling strategy in a use case where data is sent from JMS to a MySQL DB.
 
 ### Example Use Case 
