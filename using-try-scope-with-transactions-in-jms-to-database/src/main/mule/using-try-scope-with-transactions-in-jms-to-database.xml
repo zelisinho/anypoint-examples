@@ -30,14 +30,6 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 				<jms:queue-consumer />
 			</jms:consumer-type>
 		</jms:listener>
-		<ee:transform doc:name="Convert XML to Order" doc:id="d677f8ac-c117-4edb-b46c-bd4fda8c33e2">
-			<ee:message>
-				<ee:set-payload><![CDATA[%dw 2.0
-output application/java
----
-payload]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
 		<try doc:name="Try" doc:id="eb785d75-c616-4dcd-8a9f-2744efb45e64" transactionalAction="ALWAYS_BEGIN">
 			<db:insert doc:name="Insert into Database" doc:id="8aa2371d-2586-4744-b207-0e6a077e7463" config-ref="Database_Config">
 				<db:sql>INSERT INTO orders (item_id, item_units, customer_id) values ( :itemId, :itemUnits, :customerId)</db:sql>
