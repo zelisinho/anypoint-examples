@@ -5,7 +5,7 @@ This example shows how to implement jms rollback and redelivery within the Anypo
 This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). Further, this example assumes that you have [Apache Maven](http://maven.apache.org/download.cgi) and [ActiveMQ](http://activemq.apache.org/getting-started.html) running on your machine.
 
 ### Example Use Case
-In this example there is a JMS message in transaction inside Anypoint Studio which throws an exception. This message is then handled by the Error Propagate Component, which rollbacks and retries to deliver the same message. After an specific number of unsuccessful attempts to commit (4 in this case), it sends the message successfully.
+In this example there is a JMS message in transaction inside Anypoint Studio which throws an exception. This message is then handled by the On Error Propagate Component, which rollbacks and retries to deliver the same message. After an specific number of unsuccessful attempts to commit (4 in this case), it sends the message successfully.
 
 ### Set Up and Run the Example
 
