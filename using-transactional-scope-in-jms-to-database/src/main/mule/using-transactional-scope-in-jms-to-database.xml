@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 				<jms:queue-consumer />
 			</jms:consumer-type>
 		</jms:listener>
-		<try doc:name="Try" doc:id="eb785d75-c616-4dcd-8a9f-2744efb45e64" transactionalAction="ALWAYS_BEGIN">
+		<try doc:name="Try Scope" doc:id="eb785d75-c616-4dcd-8a9f-2744efb45e64" transactionalAction="ALWAYS_BEGIN">
 			<db:insert doc:name="Insert into Database" doc:id="8aa2371d-2586-4744-b207-0e6a077e7463" config-ref="Database_Config">
 				<db:sql>INSERT INTO orders (item_id, item_units, customer_id) values ( :itemId, :itemUnits, :customerId)</db:sql>
 				<db:input-parameters><![CDATA[#[{ 'itemId' : payload.order.itemId, 'itemUnits' : payload.order.itemUnits, 'customerId' : payload.order.customerId}]]]></db:input-parameters>
