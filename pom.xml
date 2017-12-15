@@ -12,7 +12,7 @@
         <module>content-based-routing</module>
         <module>dataweave-with-flowreflookup</module>
         <module>dataweave-2-basics</module>
-        <module>exposing-a-restful-resource-using-the-HTTP-connector</module>
+        <module>exposing-a-restful-resource-using-the-http-connector</module>
         <module>get-customer-list-from-netsuite</module>
         <module>hello-world</module>
         <module>http-request-response-with-logger</module>
@@ -23,8 +23,8 @@
         <module>login-form-using-the-http-connector</module>
         <module>munit-2-tutorial</module>
         <module>netsuite-data-retrieval</module>
-        <module>oauth2-authorization-code-using-the-HTTP-connector</module>
-        <module>processing-orders-with-dataweave-and-APIkit</module>
+        <module>oauth2-authorization-code-using-the-http-connector</module>
+        <module>processing-orders-with-dataweave-and-apikit</module>
         <module>proxying-a-rest-api</module>
         <module>proxying-a-soap-api</module>
         <module>querying-a-mysql-database</module>
