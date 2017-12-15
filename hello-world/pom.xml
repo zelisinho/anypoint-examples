@@ -19,6 +19,12 @@
   </properties>
 
 	<build>
+        <testResources>
+            <testResource>
+                <directory>src/test/munit</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>	
 		<plugins>
 			<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
