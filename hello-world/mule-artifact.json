@@ -1,6 +1,7 @@
 {
   "configs": [
-    "hello-world.xml"
+    "hello-world.xml",
+	"test-suite.xml"
   ],
   "redeploymentEnabled": true,
   "name": "hello-world",

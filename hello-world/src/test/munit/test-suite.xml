@@ -11,6 +11,8 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" />
+	<import file="hello-world.xml" doc:name="Import" doc:id="ac606452-a91c-44ff-8451-dca7b5002e5d" />
+
 
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="6b5aa625-f970-4771-866b-20389dd54c67">
 		<http:request-connection host="localhost" port="8081" />
