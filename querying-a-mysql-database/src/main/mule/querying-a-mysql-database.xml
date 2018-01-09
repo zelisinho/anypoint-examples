@@ -12,8 +12,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="1cedb1c0-ebbb-4065-b42e-ddf03e5e5dba" >
-		<db:my-sql-connection host="localhost" port="3306" user="generatedata" password="generatedata" database="company" />
+		<db:my-sql-connection host="${database.host}" port="${database.port}" user="${database.user}" password="${database.password}" database="${database.name}" />
 	</db:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="8a0970f7-7cd2-42c6-9041-9806dff7b6a4" file="mule-artifact.properties" />
 	<flow name="querying-a-mysql-databaseFlow" doc:id="83a86419-adbe-4f6d-9c7f-ec9440c51b12" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="5648830f-9c42-40c7-9dc2-037d4d4ae546" />
 		<db:select config-ref="Database_Config" doc:name="Perform a query in MySQL" doc:id="39e586c3-6b0c-4974-aa14-c99d68d490da" >
