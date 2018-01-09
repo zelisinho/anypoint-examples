@@ -21,7 +21,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 				</when>
 				<otherwise>
 					<logger level="INFO" doc:name="Log successful" doc:id="44fdd183-4a32-4c84-938e-9172c4574ff8" message="Processing successfully completed." />
-					<set-payload value="Processing successfully completed." doc:name="Set Response" doc:id="a44b1811-7e9c-4a2d-adae-caf5479cb451" />
+					<set-payload value="Processing successfully completed." doc:name="Set Response" doc:id="a44b1811-7e9c-4a2d-adae-caf5479cb451" mimeType="text/plain"/>
 				</otherwise>
 			</choice>
 		</until-successful>
