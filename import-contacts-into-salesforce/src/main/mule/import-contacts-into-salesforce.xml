@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
 	<file:config name="File_Config" doc:name="File Config" doc:id="2aa1d13c-af9e-4482-b05f-0bea3f018181" >
-		<file:connection workingDir="${file.working.dir}" />
+		<file:connection workingDir="src/main/resources" />
 	</file:config>
 	<salesforce:sfdc-config name="Salesforce" doc:name="Salesforce Sfdc config" doc:id="61d167ee-4d69-40b5-afb8-b8c739030ce7" >
 		<salesforce:basic-connection username="${sfdc.user}" password="${sfdc.password}" securityToken="${sfdc.securityToken}" />
