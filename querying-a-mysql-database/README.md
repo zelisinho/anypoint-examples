@@ -31,7 +31,7 @@ The database connector instructs the database server to run the SQL query, retri
 4. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 5. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
 
-6. **Open querying-a-mysql-database.xml file** located in src/main/app directory. Open Database Configuration in Global Elements tab and configure the connection attributes:
+6. **Open querying-a-mysql-database.xml file** located in src/main/mule directory. Open Database Configuration in Global Elements tab and configure the connection attributes:
 
 		Host: localhost
 		Port: 3306
