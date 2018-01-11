@@ -14,7 +14,7 @@ The example represents reading CSV file with error handling for invalid path or 
 
 3. Run the example project as a mule application
 
-4. Through a web browser, access the URL **http://localhost:8081** 
+4. Through a web browser, access the URL **http://localhost:8081/?filePath=invalidPath** 
 	
 	This message throws an exception as invalid path and returns the following message:
 		
@@ -22,7 +22,7 @@ The example represents reading CSV file with error handling for invalid path or 
 		  "message": "Your path is invalid"
 		}
 
-5. Go to the src/main/app folder and change relative path in xml file from **yourPath/input.csv** to absolute path for the **input.csv** file which is located to src/main/resources folder . Through a web browser, access the URL **http://localhost:8081** 
+5. Through a web browser, access the URL **http://localhost:8081/?filePath=path** with correct path to input.csv file.
        
     This message throws no error and returns the following messsage:
 
@@ -41,7 +41,7 @@ The example represents reading CSV file with error handling for invalid path or 
 		  }
 		]
 
-6. Go to the src/main/resources folder in File Explorer and change access to the **input.csv** file. Through a web browser, access the URL **http://localhost:8081** 
+6. Through a web browser, access the URL **http://localhost:8081/?filePath=path** with correct path to file without read access.
 	
 	This message throws an exception as access denied and returns the following message:
        
