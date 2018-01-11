@@ -4,7 +4,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
     <http:listener-config name="customers-httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
-    <apikit:config name="customers-config" raml="customers.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <apikit:config name="customers-config" raml="customers.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" doc:name="Router"/>
     <flow name="customers-main">
         <http:listener config-ref="customers-httpListenerConfig" path="/api/*" doc:name="Listener">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:error-response>
         </http:listener>
-        <apikit:router config-ref="customers-config" />
+        <apikit:router config-ref="customers-config" doc:name="APIkit Router"/>
         <error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
                 <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
@@ -98,7 +98,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="customers-console">
-        <http:listener config-ref="customers-httpListenerConfig" path="/console/*">
+        <http:listener config-ref="customers-httpListenerConfig" path="/console/*" doc:name="Listener">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:response>
@@ -107,7 +107,7 @@ output application/json
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:error-response>
         </http:listener>
-        <apikit:console config-ref="customers-config" />
+        <apikit:console config-ref="customers-config" doc:name="APIkit Console"/>
         <error-handler>
             <on-error-propagate type="APIKIT:NOT_FOUND">
                 <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
@@ -125,7 +125,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="put:\customers\(customerId):application\json:customers-config">
-        <logger level="INFO" message="put:\customers\(customerId):application\json:customers-config" />
+        <logger level="INFO" message="put:\customers\(customerId):application\json:customers-config" doc:name="Logger"/>
 		<ee:transform doc:name="Create response" doc:id="59977511-bd30-497b-861b-6a13a486622e" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -138,7 +138,7 @@ output application/json
 		</ee:transform>
     </flow>
     <flow name="get:\customers\(customerId):customers-config">
-        <logger level="INFO" message="get:\customers\(customerId):customers-config" />
+        <logger level="INFO" message="get:\customers\(customerId):customers-config" doc:name="Logger"/>
 		<ee:transform doc:name="Create response" doc:id="fec15fe9-071c-4176-9ab5-a35c4c427742" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
