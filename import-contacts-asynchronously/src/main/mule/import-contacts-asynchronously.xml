@@ -18,17 +18,22 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 	</salesforce:sfdc-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="6cf432c1-4eac-4572-96f9-612c8aaa0f49" file="mule-artifact.properties" />
 	<file:config name="File_Config" doc:name="File Config" doc:id="777b1f3d-d5b9-416b-8158-641ffe815efc" >
-		<file:connection workingDir="C:\!MULE\WS-7.0.0-201711181740\import-contacts-asynchronously\src\main\resources" />
+		<file:connection workingDir="src\main\resources" />
 	</file:config>
 	<os:object-store name="Object_store" doc:name="Object store" doc:id="ee0a6457-b1b8-4dc7-9336-3ad326ecdd94" />
 	<flow name="import-trigger" doc:id="1ccede27-29c6-45e1-9f90-dada5a6954cb" >
 		<http:listener doc:name="Listener" doc:id="1ac661df-7735-417e-9d1c-da3824a90bb3" config-ref="HTTP_Listener_config" path="/import/trigger" allowedMethods="POST">
 			<http:response statusCode="#[vars.httpStatus default 201]">
+				<http:headers ><![CDATA[#[output applicaton/java
+---
+{
+	"Location" : vars.locationHeader
+}]]]></http:headers>
 			</http:response>
 		</http:listener>
 		<set-variable value="#[uuid()]" doc:name="Generate process ID" doc:id="8c2077e4-9687-4a1e-b2ee-4c647c7eed12" variableName="processId"/>
 		<async doc:name="Async" doc:id="8e49c739-f6fe-48e8-b559-c92a6b74fba5" >
-		<os:store doc:name="Initialize status" doc:id="bca798e2-7ef1-4333-b324-709c7de76300" key="#[vars.processId]" objectStore="Object_store">
+			<os:store doc:name="Initialize status" doc:id="bca798e2-7ef1-4333-b324-709c7de76300" key="#[vars.processId]" objectStore="Object_store">
 				<os:value ><![CDATA[IN PROGRESS]]></os:value>
 			</os:store>
 			<file:read config-ref="File_Config" path="contacts.csv" doc:name="Read contacts.csv" doc:id="5c95b634-404b-4837-a0a1-6e5cbc2078aa" />
@@ -55,7 +60,7 @@ payload map {
 				<os:value ><![CDATA[COMPLETED]]></os:value>
 			</os:store>
 		</async>
-		<set-variable variableName="outboundHeaders" value="#[{ 'Location':'http://${api.domain}:${http.port}/import/status/' ++ vars.processId }]" doc:name="Set Location header" doc:id="c9ba022c-5e45-4dca-a353-e5df91ce3625" />
+		<set-variable variableName="locationHeader" value="#['http://${api.domain}:${http.port}/import/status/' ++ vars.processId]" doc:name="Set Location header" doc:id="c9ba022c-5e45-4dca-a353-e5df91ce3625" />
 		<set-payload value="#['Synchronization triggered at ' ++ now()]" doc:name="Set response message" doc:id="310aab6c-9f3a-48ea-aa52-8f8aa195d99e" mimeType="text/plain"/>
 	</flow>
 	<flow name="get-import-status" doc:id="30368c96-5c22-48a7-af88-f94a1e5ccf70" >
