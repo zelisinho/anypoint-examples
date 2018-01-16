@@ -72,6 +72,6 @@ vars.dbEntries map
 			</email:body>
 			<email:attachments ><![CDATA[#[{'employees.csv': payload}]]]></email:attachments>
 		</email:send>
-		<set-payload value="Report has been successfully processed and sent to email." doc:name="Set Response" doc:id="1803d178-5efd-4426-8c8a-b8fa2531f559" />
+		<set-payload value="Report has been successfully processed and sent to email." doc:name="Set Response" doc:id="1803d178-5efd-4426-8c8a-b8fa2531f559" mimeType="text/plain"/>
 	</flow>
 </mule>
