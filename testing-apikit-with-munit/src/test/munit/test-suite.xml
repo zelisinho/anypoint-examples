@@ -14,6 +14,10 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:request-connection host="localhost" port="8081" />
 	</http:request-config>
 	<munit:test name="test-suite-put" description="Test" doc:id="03d9cad4-1f5f-4780-8d43-facbb0533751" >
+		<munit:enable-flow-sources>	        
+	        <munit:enable-flow-source value="api-main"/>
+	        <munit:enable-flow-source value="put:\munit:api-config"/>	        
+    	</munit:enable-flow-sources>
 		<munit:execution >
 			<http:request method="PUT" doc:name="Request" doc:id="ddf62d27-4de0-4f11-9f94-d71845a17388" config-ref="HTTP_Request_configuration" path="/munit"/>
 		</munit:execution>
@@ -31,6 +35,10 @@ payload]]></ee:set-payload>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-delete" description="Test" doc:id="f48486d9-cb5d-4a6b-91ff-fa0f12c37ed7" >
+		<munit:enable-flow-sources>	        
+	        <munit:enable-flow-source value="api-main"/>
+	        <munit:enable-flow-source value="delete:\munit:api-config"/>
+    	</munit:enable-flow-sources>
 		<munit:execution >
 			<http:request method="DELETE" doc:name="Request" doc:id="ddf62d27-4de0-4f11-9f94-d71845a17388" config-ref="HTTP_Request_configuration" path="/munit"/>
 		</munit:execution>
@@ -48,6 +56,10 @@ payload]]></ee:set-payload>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-get" description="Test" doc:id="e3448a78-f22d-4490-8db5-5585e37031d7" >
+		<munit:enable-flow-sources>	        
+	        <munit:enable-flow-source value="api-main"/>
+	        <munit:enable-flow-source value="get:\munit:api-config"/>
+    	</munit:enable-flow-sources>
 		<munit:execution >
 			<http:request method="GET" doc:name="Request" doc:id="ddf62d27-4de0-4f11-9f94-d71845a17388" config-ref="HTTP_Request_configuration" path="/munit"/>
 		</munit:execution>
@@ -65,6 +77,10 @@ payload]]></ee:set-payload>
 		</munit:validation>
 	</munit:test>
 	<munit:test name="test-suite-post" description="Test" doc:id="04634994-deac-4b20-a6ff-023abc2ba968" >
+		<munit:enable-flow-sources>	        
+	        <munit:enable-flow-source value="api-main"/>
+	        <munit:enable-flow-source value="post:\munit:api-config"/>
+    	</munit:enable-flow-sources>
 		<munit:execution >
 			<http:request method="POST" doc:name="Request" doc:id="ddf62d27-4de0-4f11-9f94-d71845a17388" config-ref="HTTP_Request_configuration" path="/munit"/>
 		</munit:execution>
