@@ -9,7 +9,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="93953157-5907-4893-ac21-85ded3af61ea" >
 		<http:listener-connection host="0.0.0.0" port="8082" />
 	</http:listener-config>
-	<file:config name="File_Config" doc:name="File Config" doc:id="9b81a137-752c-4e1d-a270-c18971ca6f81" />
+	<file:config name="File_Config" doc:name="File Config" doc:id="9b81a137-752c-4e1d-a270-c18971ca6f81" >
+		<file:connection workingDir="${file.working.dir}" />
+	</file:config>
 	<configuration-properties doc:name="Configuration properties" doc:id="d5ea1c7b-077b-4f33-b9c1-5d38e1202b90" file="mule-artifact.properties" />
 	<flow name="implementing-a-exception-strategyFlow" doc:id="60640692-470b-495b-abc6-e5c3f6ba558a" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="cb0f325d-9f00-4314-9e09-d817e1db077c" >
