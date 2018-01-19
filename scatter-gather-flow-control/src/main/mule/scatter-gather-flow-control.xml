@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<file:config name="File_Config" doc:name="File Config" doc:id="4ad78715-a858-40ba-a018-5c7aea9cef16" >
-		<file:connection workingDir="src\main\resources" />
+		<file:connection workingDir="src/main/resources" />
 	</file:config>
 	<flow name="scatter-gather-flow-controlFlow" doc:id="bb9f9e82-e197-476d-a409-74d52d713a74" >
 		<http:listener config-ref="HTTP_Listener_config" path="/scatterGather" doc:name="Listener" doc:id="39ada237-f860-4c6c-873f-f1f17f2d0b69" />
