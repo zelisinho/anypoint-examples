@@ -18,6 +18,7 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 			</tls:context>
 		</http:request-connection>
 	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="651d1b4e-b119-47f9-88ac-c6a97647a2f8" file="mule-artifact.properties" />
 	<flow name="proxying-a-rest-apiFlow" doc:id="d9b6c345-8030-44fc-a262-56598bfebd4e" >
 		<http:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Receive HTTP requests from apps" doc:id="eaa84388-bf48-48a8-8c7c-8b041b57b408" />
 		<http:request config-ref="HTTP_Request_configuration" path="#[attributes.requestPath]" method="#[attributes.method]" doc:name="Send requests to API" followRedirects="true">
