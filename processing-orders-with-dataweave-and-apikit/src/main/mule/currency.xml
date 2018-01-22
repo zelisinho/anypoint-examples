@@ -125,5 +125,6 @@ output application/json
     </flow>
     <flow name="get:\currencies:currency-config">
 		<parse-template location="currency.json" doc:name="Parse Template" doc:id="a162c9f9-bd15-4201-baac-82ab3d5eb4d4" />
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="dd66e38e-c47a-45cc-b62b-edae7642a46c" mimeType="application/json"/>
     </flow>
 </mule>
