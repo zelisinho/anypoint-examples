@@ -28,7 +28,7 @@ div: {
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<parse-template location="retrieval/index.html" doc:name="Parse Template" doc:id="2969b84b-377d-4260-8833-468c7d91fe7e" />
+		<parse-template location="retrieval/page_template.dw" doc:name="Parse Template" doc:id="2969b84b-377d-4260-8833-468c7d91fe7e" />
 		<set-payload value="#[payload]" doc:name="Set MIME type to text/html" doc:id="2c0c1131-f6e0-4297-bb43-276264b72b46" mimeType="text/html"/>
 	</flow>
 	<flow name="salesforceDataRetrievalFlow" doc:id="e8baa162-e0c3-441d-9167-a908c1700af9" >
