@@ -45,8 +45,8 @@ payload]]></ee:set-payload>
     	</munit:enable-flow-sources>
 		<munit:execution >
 			<try doc:name="Try" doc:id="982736d2-9363-4129-8408-2820c9b87721" >
-				<file:delete doc:name="Delete orders.json" doc:id="ba86f1fc-24da-43a2-91b8-3864f3249d6b" config-ref="File_Config" path="output\orders.json" />
-				<file:delete doc:name="Delete report.csv" doc:id="b7f1bd36-e754-4fd0-a969-d349911a3a2f" config-ref="File_Config" path="output\report.csv" />
+				<file:delete doc:name="Delete orders.json" doc:id="ba86f1fc-24da-43a2-91b8-3864f3249d6b" config-ref="File_Config" path="output/orders.json" />
+				<file:delete doc:name="Delete report.csv" doc:id="b7f1bd36-e754-4fd0-a969-d349911a3a2f" config-ref="File_Config" path="output/report.csv" />
 				<error-handler >
 					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="3a782c46-6629-4a4e-9af9-03507cbf17cb" >
 						<logger level="INFO" doc:name="Log output files not found" doc:id="b56ec93d-6668-40c7-9bef-a47f21769481" message="Output files can't be deleted as they does not exist."/>
@@ -56,7 +56,7 @@ payload]]></ee:set-payload>
 			<flow-ref doc:name="booksFlow" doc:id="ff128909-9ab4-4b59-9b08-ae02ec67ab2b" name="booksFlow"/>
 		</munit:execution>
 		<munit:validation >
-			<file:read doc:name="Read orders.json" doc:id="55c6b096-0661-4727-997d-b8abbad7b6c8" config-ref="File_Config" path="output\orders.json" outputMimeType="application/json"/>
+			<file:read doc:name="Read orders.json" doc:id="55c6b096-0661-4727-997d-b8abbad7b6c8" config-ref="File_Config" path="output/orders.json" outputMimeType="application/json"/>
 			<ee:transform doc:name="Transform Message" doc:id="33c18ee7-2c6b-4efd-98b7-75ee525f48af" >
 				<ee:message >
 					<ee:set-payload ><![CDATA[%dw 2.0
@@ -66,10 +66,10 @@ payload]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>
 			<munit-tools:assert-that doc:name="Assert orders.json" doc:id="edd292fa-8a8c-41e4-817f-a7cda2d91cf1" expression="#[write(payload, 'application/json', {'indent': false})]" is="#[MunitTools::equalTo('{&quot;orders&quot;: [{&quot;title&quot;: &quot;Everyday Italian&quot;,&quot;prices&quot;: [{&quot;price&quot;: 27.6,&quot;currency&quot;: &quot;EUR&quot;},{&quot;price&quot;: 262.8,&quot;currency&quot;: &quot;ARS&quot;},{&quot;price&quot;: 19.8,&quot;currency&quot;: &quot;GBP&quot;}],&quot;authors&quot;: {&quot;author&quot;: &quot;Giada De Laurentiis&quot;}},{&quot;title&quot;: &quot;Harry Potter&quot;,&quot;prices&quot;: [{&quot;price&quot;: 27.5908,&quot;currency&quot;: &quot;EUR&quot;},{&quot;price&quot;: 262.7124,&quot;currency&quot;: &quot;ARS&quot;},{&quot;price&quot;: 19.7934,&quot;currency&quot;: &quot;GBP&quot;}],&quot;authors&quot;: {&quot;author&quot;: &quot;J K. Rowling&quot;}}]}')]" message="Incorect content in file orders.json!"/>
-			<file:read doc:name="Read report.csv" doc:id="55c6b096-0661-4727-997d-b8abbad7b6c8" config-ref="File_Config" path="output\report.csv" outputMimeType="application/csv"/>
+			<file:read doc:name="Read report.csv" doc:id="55c6b096-0661-4727-997d-b8abbad7b6c8" config-ref="File_Config" path="output/report.csv" outputMimeType="application/csv"/>
 			<munit-tools:assert-that doc:name="Assert report.csv" doc:id="edd292fa-8a8c-41e4-817f-a7cda2d91cf1" expression="#[write(payload, 'application/json', {'indent': false})]" is="#[MunitTools::equalTo('[{&quot;totalNumberOfItems&quot;: &quot;4&quot;,&quot;totalAmount&quot;: &quot;149.93&quot;,&quot;averageSellingPrice&quot;: &quot;37.4825&quot;}]')]" message="Incorect content in file report.csv!"/>
-			<file:delete doc:name="Delete orders.json" doc:id="ba86f1fc-24da-43a2-91b8-3864f3249d6b" config-ref="File_Config" path="output\orders.json"/>
-			<file:delete doc:name="Delete report.csv" doc:id="b7f1bd36-e754-4fd0-a969-d349911a3a2f" config-ref="File_Config" path="output\report.csv"/>
+			<file:delete doc:name="Delete orders.json" doc:id="ba86f1fc-24da-43a2-91b8-3864f3249d6b" config-ref="File_Config" path="output/orders.json"/>
+			<file:delete doc:name="Delete report.csv" doc:id="b7f1bd36-e754-4fd0-a969-d349911a3a2f" config-ref="File_Config" path="output/report.csv"/>
 		</munit:validation>
 	</munit:test>
 
