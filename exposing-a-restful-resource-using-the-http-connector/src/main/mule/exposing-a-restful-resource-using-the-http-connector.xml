@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f21137c7-0d68-4a39-968b-3d1618568589" >
-		<http:listener-connection host="0.0.0.0" port="{http.port}" />
+		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<os:object-store name="Object_store" doc:name="Object store" doc:id="c721e8e0-3599-4c29-acc7-4bbb30013cec" />
 	<flow name="storePersonFlow" doc:id="2d611c4c-edec-4b75-aa94-25474d145040" >
