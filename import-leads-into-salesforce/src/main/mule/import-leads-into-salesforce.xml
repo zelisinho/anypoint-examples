@@ -12,17 +12,18 @@ http://www.mulesoft.org/schema/mule/httpn http://www.mulesoft.org/schema/mule/ht
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
 http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
 	<file:config name="File_Config" doc:name="File Config" doc:id="4a9e0d8e-1fc9-4b2b-b48b-542b1f34ad72" >
-		<file:connection workingDir="yourPath\src\main\resources\input" />
+		<file:connection workingDir="src/main/resources/input" />
 	</file:config>
 	<salesforce:sfdc-config name="Salesforce_Sfdc_config" doc:name="Salesforce Sfdc config" doc:id="7c8e9d22-582f-49a9-86b4-73d206301356" >
 		<salesforce:basic-connection username="${sfdc.user}" password="${sfdc.password}" securityToken="${sfdc.securityToken}" >
 			<pooling-profile />
 		</salesforce:basic-connection>
 	</salesforce:sfdc-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="65b5711c-4116-41f1-92a9-43c6c0f026bb" file="mule-artifact.properties" />
 	<flow name="import-leads-into-salesforceFlow" >
 		<scheduler doc:name="Schedule every 10 seconds" doc:id="ff8ab6d9-35be-48cf-8d4d-3c0b98e71bda">
 			<scheduling-strategy>
-				<fixed-frequency frequency="10000"/>
+				<fixed-frequency frequency="${scheduler.frequency}" startDelay="${scheduler.startDelay}"/>
 			</scheduling-strategy>
 		</scheduler>
 		<file:read config-ref="File_Config" path="leads.csv" doc:name="Read the CSV file" doc:id="4125fe03-8277-4562-8de3-497b05669913" outputMimeType="text/csv"/>
