@@ -1,0 +1,19 @@
+{
+  "configs": [
+    "cache-scope-with-salesforce-contacts.xml"
+  ],
+  "redeploymentEnabled": true,
+  "name": "cache-scope-with-salesforce-contacts",
+  "minMuleVersion": "4.1.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
