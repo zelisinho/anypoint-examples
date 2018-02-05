@@ -9,9 +9,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>munit-2-tutorial</artifactId>
+    <artifactId>munit-short-tutorial</artifactId>
     <packaging>mule-application</packaging>
-    <name>munit-2-tutorial</name>
+    <name>munit-short-tutorial</name>
 
     <properties>
         <mule.connectors.version>1.0.0</mule.connectors.version>

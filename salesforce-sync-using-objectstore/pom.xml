@@ -9,9 +9,9 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>salesforce-sync-using-objectstore</artifactId>
+	<artifactId>salesforce-data-synchronization-using-watermarking-and-batch-processing</artifactId>
 	<packaging>mule-application</packaging>
-	<name>salesforce-sync-using-objectstore</name>
+	<name>salesforce-data-synchronization-using-watermarking-and-batch-processing</name>
 
 	<properties>
 		<mule.connectors.version>1.0.0</mule.connectors.version>
