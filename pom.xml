@@ -18,6 +18,7 @@
         <module>hello-world</module>
         <module>http-request-response-with-logger</module>
         <module>implementing-a-choice-exception-strategy</module>
+        <!-- <module>import-contacts-asynchronously</module> -->
         <module>import-contacts-into-salesforce</module>
         <module>importing-a-CSV-file-into-Mongo-DB</module>
         <module>jms-message-rollback-and-redelivery</module>
