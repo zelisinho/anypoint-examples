@@ -13,6 +13,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<salesforce:basic-connection username="${sfdc.username}" password="${sfdc.password}" securityToken="${sfdc.securityToken}" />
 	</salesforce:sfdc-config>
 	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="b4a79596-68ac-448c-bc62-39d736d0e451" />
+	<configuration-properties doc:name="Configuration properties" doc:id="e2c3f4e2-226c-48a6-aab1-dd36e6e4cc56" file="mule-artifact.properties" />
 	<flow name="cache-scope-with-salesforce-contactsFlow" doc:id="11b733e7-3084-4090-94c9-c5205914346d" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="HTTP Listener" doc:id="c1511930-2eab-4a88-9041-6d0e17127400" />
 		<ee:cache doc:name="Cache" doc:id="4eb127f5-cb3a-4af1-8b1c-05346077d512" cachingStrategy-ref="Caching_Strategy">
