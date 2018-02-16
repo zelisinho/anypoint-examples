@@ -14,10 +14,6 @@
 
 	<name>http-multipart-request</name>
 
-	<properties>
-		<mule.connectors.version>1.1.0</mule.connectors.version>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
