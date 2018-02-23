@@ -58,14 +58,14 @@ The sections below elaborate further on the configurations of the application an
 
 This flow is responsible for displaying a customers data from SAP system. 
 At the beginning, using the [DataWeave transformer](http://www.mulesoft.org/documentation/display/current/dataweave)the XML request from the input parameters is prepared. 
-Next, the [SAP connector](https://docs.mulesoft.com/mule-user-guide/v/3.7/sap-connector) is used to retrieve the data using the standart BAPI - BAPI_CUSTOMER_FIND. 
+Next, the [SAP connector](http://www.mulesoft.org/documentation/display/current/SAP+Connector) is used to retrieve the data using the standart BAPI - BAPI_CUSTOMER_FIND. 
 Finally, he response from SAP system is transformed by DataWeave transformer into JSON structure and sent back to end user. 
 
 ### get:/salesOrders:sap-api-config
 
 This flow is responsible for displaying a sales orders data from SAP system. 
 At the beginning, using the [DataWeave transformer](http://www.mulesoft.org/documentation/display/current/dataweave) the XML request from the input parameters is prepared. 
-Next, the [SAP connector]http://www.mulesoft.org/documentation/display/current/SAP+Connector) is used to retrieve the data using the standart BAPI - BAPI_SALESORDER_GETLIST.
+Next, the [SAP connector](http://www.mulesoft.org/documentation/display/current/SAP+Connector) is used to retrieve the data using the standart BAPI - BAPI_SALESORDER_GETLIST.
 Finally, he response from SAP system is transformed by DataWeave transformer into JSON structure and sent back to end user. 
 
 ### get:/materials:sap-api-config
