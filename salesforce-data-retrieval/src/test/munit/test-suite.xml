@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>	
 	<munit:test name="test-suite-showFormFlowTest" description="Test" doc:id="bcb495f5-e778-4ed2-8d53-09ccc8961066" >
 		<munit:enable-flow-sources>
