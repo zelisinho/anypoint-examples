@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>org.mule.examples</groupId>
+		<artifactId>examples-catalog</artifactId>
+		<version>2.1.0-SNAPSHOT</version>
+	</parent>
+	
+	
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sap-data-retrieval</artifactId>
+    <packaging>mule-application</packaging>
+	<name>sap-data-retrieval</name>
+
+    <properties>
+		<mule.sap.connector.version>4.0.0</mule.sap.connector.version>
+		<mule.apikit.version>1.1.0</mule.apikit.version>
+		<sapjco3.version>3.0.15</sapjco3.version>
+		<sapidoc3.version>3.0.12</sapidoc3.version>
+		<libsapjco3.version>3.0.15</libsapjco3.version>
+		
+    </properties>
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <sharedLibraries>
+                        <sharedLibrary>
+                            <groupId>com.sap.conn.jco</groupId>
+                            <artifactId>com.sap.conn.jco.sapjco3</artifactId>
+                        </sharedLibrary>
+                        <sharedLibrary>
+                            <groupId>com.sap.conn.idoc</groupId>
+                            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
+                        </sharedLibrary>
+                        <sharedLibrary>
+                            <groupId>com.sap.conn.jco</groupId>
+                            <artifactId>com.sap.conn.jco.libsapjco3</artifactId>
+                        </sharedLibrary>
+                    </sharedLibraries>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-http-connector</artifactId>
+            <version>${mule.connectors.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-sockets-connector</artifactId>
+            <version>${mule.connectors.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-sap-connector</artifactId>
+            <version>${mule.sap.connector.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>com.sap.conn.jco.sapjco3</artifactId>
+            <version>${sapjco3.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>com.sap.conn.idoc</groupId>
+            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
+            <version>${sapidoc3.version}</version>
+        </dependency>
+        
+        <!-- Mac OSX 64 bit Dependency -->
+<!--         <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>com.sap.conn.jco.libsapjco3</artifactId>
+            <version>${libsapjco3.version}</version>
+            <classifier>darwinintel64</classifier>
+            <type>jnilib</type>
+        </dependency>
+ --> 
+        <!-- Linux 64 bit Dependency -->
+<!-- 
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>com.sap.conn.jco.libsapjco3</artifactId>
+            <version>${libsapjco3.version}</version>
+            <classifier>linuxx86_64</classifier>
+            <type>so</type>
+        </dependency>
+ -->        
+        <!-- Windows 64 bit Dependencies -->
+
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>com.sap.conn.jco.libsapjco3</artifactId>
+            <version>${libsapjco3.version}</version>
+            <classifier>NTAMD64</classifier>
+            <type>dll</type>
+        </dependency>
+<!--         
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>com.sap.conn.jco.libsapjco3</artifactId>
+            <version>3.0.15</version>
+            <classifier>NTAMD64</classifier>
+            <type>pdb</type>
+        </dependency>
+ -->        
+               
+    	<dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-apikit-module</artifactId>
+            <version>${mule.apikit.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    </dependencies>
+</project>
