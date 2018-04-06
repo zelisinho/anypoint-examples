@@ -53,7 +53,8 @@ public class GetCustomersListFromNetsuiteIT extends FunctionalTestCase
     	System.setProperty("netsuite.email", props.getProperty("netsuite.email"));
 		System.setProperty("netsuite.password", props.getProperty("netsuite.password"));
 		System.setProperty("netsuite.account", props.getProperty("netsuite.account"));	
-		System.setProperty("netsuite.roleId", props.getProperty("netsuite.roleId"));	
+		System.setProperty("netsuite.roleId", props.getProperty("netsuite.roleId"));
+		System.setProperty("netsuite.applicationId", props.getProperty("netsuite.applicationId"));
 	}
           
     @Test
