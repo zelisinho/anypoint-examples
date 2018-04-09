@@ -8,7 +8,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule/netsuite/current/mule-netsuite.xsd">
-    <http:listener-config name="netsuite-api-httpListenerConfig" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="netsuite-api-httpListenerConfig" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
     <apikit:config name="netsuite-api-config" raml="netsuite-api.raml" consoleEnabled="true" consolePath="console" doc:name="Router">
         <apikit:flow-mapping resource="/customers" action="get" flow-ref="get:/customers:netsuite-api-config"/>
         <apikit:flow-mapping resource="/items" action="get" flow-ref="get:/items:netsuite-api-config"/>

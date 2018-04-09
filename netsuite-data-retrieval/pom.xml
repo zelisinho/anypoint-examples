@@ -56,6 +56,11 @@
 						<goals>
 							<goal>test</goal>
 						</goals>
+						<configuration>
+							<dynamicPorts>
+								<dynamicPort>http.port</dynamicPort>
+							</dynamicPorts>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
