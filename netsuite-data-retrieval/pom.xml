@@ -12,6 +12,10 @@
 		<artifactId>examples-catalog</artifactId>
 		<version>1.5.1-SNAPSHOT</version>
 	</parent>
+	
+	<properties>
+		<netsuite.version>7.6.1</netsuite.version>
+	</properties>
 
 	<build>
 		<resources>
@@ -26,6 +30,21 @@
 			</resource>
 		</resources>
 		<plugins>
+		<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-app-maven-plugin</artifactId>
+				<version>${mule.tools.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+                    <copyToAppsDirectory>true</copyToAppsDirectory>
+                    <inclusions>
+                        <inclusion>
+                            <groupId>org.mule.modules</groupId>
+                            <artifactId>mule-module-netsuite</artifactId>
+                        </inclusion>
+                    </inclusions>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
 				<artifactId>munit-maven-plugin</artifactId>
@@ -88,16 +107,8 @@
 			<version>${munit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-extensions-support</artifactId>
-			<version>${mule.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-extensions-spring-support</artifactId>
-			<version>${mule.version}</version>
-		</dependency>
+
+
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-http</artifactId>
@@ -112,7 +123,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-netsuite</artifactId>
-			<version>7.1.0</version>
+			<version>${netsuite.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.weave</groupId>

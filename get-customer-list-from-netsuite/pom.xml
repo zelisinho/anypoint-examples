@@ -13,7 +13,7 @@
 	</parent>
 	
 	<properties>
-		<nets.version>7.1.0</nets.version>
+		<nets.version>7.6.1</nets.version>
 	</properties>
 
 	<build>
@@ -21,13 +21,16 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
+				<version>${mule.tools.version}</version>
+				<extensions>true</extensions>
 				<configuration>
-					<inclusions>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-netsuite</artifactId>
-						</inclusion>
-					</inclusions>
+                    <copyToAppsDirectory>true</copyToAppsDirectory>
+                    <inclusions>
+                        <inclusion>
+                            <groupId>org.mule.modules</groupId>
+                            <artifactId>mule-module-netsuite</artifactId>
+                        </inclusion>
+                    </inclusions>
 				</configuration>
 			</plugin>
 		</plugins>
