@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule
     <spring:beans>
         <spring:import resource="classpath:netsuite-api.xml"/>
     </spring:beans>
-    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8081" basePath="/api" connectionIdleTimeout="3000000" doc:name="HTTP Request Configuration">
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="${http.port}" basePath="/api" connectionIdleTimeout="3000000" doc:name="HTTP Request Configuration">
         <http:raml-api-configuration location="netsuite-api.raml"/>
     </http:request-config>
     <munit:test name="netsuite-api-test-suite-get:/customers:netsuite-api-configTest" description="Test">
