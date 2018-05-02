@@ -16,11 +16,7 @@
 
     <properties>
 		<sap.connector.version>4.0.0</sap.connector.version>
-		<mule.apikit.version>1.1.0</mule.apikit.version>
-		<sapjco3.version>3.0.15</sapjco3.version>
-		<sapidoc3.version>3.0.12</sapidoc3.version>
-		<libsapjco3.version>3.0.15</libsapjco3.version>
-		
+		<mule.apikit.version>1.1.0</mule.apikit.version>	
     </properties>
    <build>
         <plugins>
