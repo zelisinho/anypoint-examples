@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-email-connector</artifactId>
-			<version>${mule.connectors.version}</version>
+			<version>1.0.1</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
