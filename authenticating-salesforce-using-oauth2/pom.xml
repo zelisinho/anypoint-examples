@@ -14,7 +14,7 @@
     <name>authenticating-salesforce-using-oauth2</name>
     
     <properties>
-        <mule.connectors.version>1.0.0</mule.connectors.version>
+        <mule.connectors.version>1.1.0</mule.connectors.version>
         <sfdc.connector.version>9.0.0</sfdc.connector.version>
     </properties>
 

@@ -14,7 +14,7 @@
 	<name>sending-json-data-to-a-jms-queue</name>
 
 	<properties>
-		<mule.connectors.version>1.0.0</mule.connectors.version>
+		<mule.connectors.version>1.1.0</mule.connectors.version>
 	</properties>
 
 	<build>

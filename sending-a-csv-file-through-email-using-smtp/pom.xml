@@ -14,7 +14,7 @@
     <name>sending-a-CSV-file-through-email-using-SMTP</name>
 
     <properties>
-        <mule.connectors.version>1.0.0</mule.connectors.version>
+        <mule.connectors.version>1.1.0</mule.connectors.version>
     </properties>
 
     <dependencies>

@@ -5,7 +5,7 @@
   ],
   "redeploymentEnabled": true,
   "name": "authenticating-salesforce-using-oauth2",
-  "minMuleVersion": "4.0.0",
+  "minMuleVersion": "4.1.1",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",

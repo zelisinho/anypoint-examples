@@ -14,7 +14,7 @@
     <name>munit-short-tutorial</name>
 
     <properties>
-        <mule.connectors.version>1.0.0</mule.connectors.version>
+        <mule.connectors.version>1.1.0</mule.connectors.version>
         <munit.version>2.0.0</munit.version>
     </properties>
 

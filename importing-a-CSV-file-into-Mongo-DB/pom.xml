@@ -14,7 +14,7 @@
     <name>importing-a-CSV-file-into-Mongo-DB</name>
 
     <properties>
-        <mule.connectors.version>1.0.0</mule.connectors.version>
+        <mule.connectors.version>1.1.0</mule.connectors.version>
         <mongodb.connector.version>5.0.0</mongodb.connector.version>
     </properties>
 
