@@ -85,7 +85,7 @@ The following steps outline the process to build an application for validation o
 
 1. Create a new Mule Project by going to **File > New... > Mule Project** and name it **Filtering a Message**.
 2. Drop an HTTP Listener to the flow. 
-3. Create configuration for HTP listener with the port you want.
+3. Create configuration for HTTP listener with the port you want.
 4. Add Validation module to the Anypoint Studio palette. 
 5. Validation module contains a lot of components - drop some of them you want to try to your flow with the HTTP listener in the beginning.
 6. Run the example!
