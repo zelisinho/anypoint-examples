@@ -18,7 +18,7 @@ In this example a CSV file containing sample sales data which has been received 
 2. Navigate to *src/main/resources/mule-artifact.properties* and edit its properties:
 
 	**Email Connector configuration**			
-	imap.server 'imap.googlemail.com'
+	imap.host 'imap.googlemail.com'
 	imap.port '993'
 	imap.user 'receiveremailaddress@gmail.com'
 	imap.password 'receiver_password'
