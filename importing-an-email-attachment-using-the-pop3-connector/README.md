@@ -1,7 +1,7 @@
 # Importing an attached csv file using the POP3 connector
 
 
-This example shows you how to use the POP3 connector to facilitate information transfer through email. It also illustrates how you can use DataWeave to transform a CSV file to XML.
+This example shows you how to use the POP3 connector to facilitate information transfer through email. It also illustrates how you can use DataWeave to transform a CSV to XML format.
 
 ### Assumptions
 
@@ -9,7 +9,7 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case
 
-In this example a CSV file containing sample sales data which has been received as an attachment in a mail inbox is imported using the POP3 connector. The DataWeave transformer then converts the CSV file to the XML format.
+In this example a CSV file containing sample sales data which has been received as an attachment in a mail inbox is imported using the POP3 connector. The DataWeave transformer then converts the CSV file to the XML format. The logger then logs this data on the studio console and the output is stored to xml file by write component.
 
 ### Set Up and Run this Example
 
@@ -26,7 +26,6 @@ In this example a CSV file containing sample sales data which has been received 
 3. **Run** the project as a Mule application
 
 4. Navigate to src/main/resources and use any email address to **send the 'input.csv' file as an attachement**  to receiveremailaddress@gmail.com
-
 
 5. If you have configured and run this example correctly, the csv file should appear in XML format in the studio console. The log message should be similar to what is shown below:
 
