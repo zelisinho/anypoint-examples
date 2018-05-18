@@ -12,7 +12,6 @@
     <name>importing-a-CSV-file-into-Mongo-DB</name>
 
     <properties>
-        <mule.connectors.version>1.1.0</mule.connectors.version>
         <mongodb.connector.version>5.0.0</mongodb.connector.version>
     </properties>
 
@@ -20,7 +19,7 @@
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-file-connector</artifactId>
-            <version>${mule.connectors.version}</version>
+            <version>${file.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
@@ -30,4 +29,12 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+    <repositories>
+         <repository>
+             <id>mulesoft-releases</id>
+             <name>MuleSoft Releases Repository</name>
+             <url>https://repository.mulesoft.org/releases/</url>
+             <layout>default</layout>
+         </repository>
+     </repositories>
 </project>

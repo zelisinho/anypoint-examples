@@ -48,4 +48,12 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+         <repository>
+             <id>mulesoft-releases</id>
+             <name>MuleSoft Releases Repository</name>
+             <url>https://repository.mulesoft.org/releases/</url>
+             <layout>default</layout>
+         </repository>
+     </repositories>
 </project>

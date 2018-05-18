@@ -12,7 +12,6 @@
     <name>querying-a-mysql-database</name>
 
     <properties>
-        <mule.connectors.version>1.1.0</mule.connectors.version>
         <munit.version>2.0.0</munit.version>
     </properties>
 
@@ -63,13 +62,13 @@
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-http-connector</artifactId>
-            <version>${mule.connectors.version}</version>
+            <version>${http.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-db-connector</artifactId>
-            <version>${mule.connectors.version}</version>
+            <version>${db.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
@@ -91,4 +90,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <repositories>
+         <repository>
+             <id>mulesoft-releases</id>
+             <name>MuleSoft Releases Repository</name>
+             <url>https://repository.mulesoft.org/releases/</url>
+             <layout>default</layout>
+         </repository>
+     </repositories>
 </project>

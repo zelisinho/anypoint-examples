@@ -48,7 +48,7 @@
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-objectstore-connector</artifactId>
-			<version>${mule.connectors.version}</version>
+			<version>${objectstore.connector.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
@@ -73,8 +73,16 @@
 		<dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-scripting-module</artifactId>
-            <version>${mule.connectors.version}</version>
+            <version>${scripting.module.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+    <repositories>
+         <repository>
+             <id>mulesoft-releases</id>
+             <name>MuleSoft Releases Repository</name>
+             <url>https://repository.mulesoft.org/releases/</url>
+             <layout>default</layout>
+         </repository>
+     </repositories>
 </project>
