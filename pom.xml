@@ -15,7 +15,7 @@
         <module>dataweave-2-basics</module>
         <module>exposing-a-restful-resource-using-the-http-connector</module>
         <module>extracting-data-from-LDAP-directory</module>
-        <module>filtering-a-message</module>
+        <!--<module>filtering-a-message</module>-->
         <module>get-customer-list-from-netsuite</module>
         <module>hello-world</module>
         <module>http-multipart-request</module>
