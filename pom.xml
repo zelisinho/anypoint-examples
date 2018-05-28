@@ -34,7 +34,7 @@
         <module>munit-short-tutorial</module>
         <module>netsuite-data-retrieval</module>
         <module>oauth2-authorization-code-using-the-HTTP-connector</module>
-        <module>processing-orders-with-dataweave-and-APIkit</module>
+        <!-- <module>processing-orders-with-dataweave-and-APIkit</module> -->
         <module>proxying-a-rest-api</module>
         <module>proxying-a-soap-api</module>
         <module>querying-a-mysql-database</module>
