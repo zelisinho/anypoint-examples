@@ -15,7 +15,7 @@
 		<sfdc.connector.version>9.0.0</sfdc.connector.version>
 		<db.connector.version>1.2.0</db.connector.version>
 		<mysql.version>5.1.26</mysql.version>
-	<munit.version>2.1.0</munit.version>
+	<munit.version>2.1.2</munit.version>
 	</properties>
 
 	<build>

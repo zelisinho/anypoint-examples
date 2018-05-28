@@ -12,7 +12,7 @@
 	<name>exposing-a-restful-resource-using-the-HTTP-connector</name>
 
 	<properties>
-		<munit.version>2.1.0</munit.version>
+		<munit.version>2.1.2</munit.version>
     </properties>
 
 	<build>

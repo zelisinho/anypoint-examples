@@ -13,7 +13,7 @@
 
 	<properties>
 		<mule.netsuite.connector.version>8.0.0</mule.netsuite.connector.version>
-		<munit.version>2.0.0</munit.version>
+		<munit.version>2.1.2</munit.version>
 	</properties>
 	
 	<build>

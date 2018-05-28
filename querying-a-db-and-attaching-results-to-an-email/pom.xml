@@ -13,7 +13,7 @@
 
 	<properties>
 		<mysql.version>5.1.26</mysql.version>
-		<munit.version>2.0.0</munit.version>
+		<munit.version>2.1.2</munit.version>
 	</properties>
 
 	<build>
