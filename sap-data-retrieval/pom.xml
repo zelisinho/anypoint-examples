@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<parent>
-		<groupId>org.mule.examples</groupId>
-		<artifactId>examples-catalog</artifactId>
-		<version>2.1.2-SNAPSHOT</version>
-	</parent>
-	
-	
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>sap-data-retrieval</artifactId>
+    <parent>
+        <groupId>org.mule.examples</groupId>
+        <artifactId>examples-catalog</artifactId>
+        <version>2.1.2-SNAPSHOT</version>
+    </parent>
+
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>sap-data-retrieval</artifactId>
     <packaging>mule-application</packaging>
     <version>2.1.2-SNAPSHOT</version>
-	<name>sap-data-retrieval</name>
+    <name>sap-data-retrieval</name>
 
     <properties>
-		<sap.connector.version>4.0.0</sap.connector.version>
-		<mule.apikit.version>1.1.0</mule.apikit.version>	
+        <sap.connector.version>4.0.0</sap.connector.version>
+        <mule.apikit.version>1.1.0</mule.apikit.version>
     </properties>
-   <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.mule.tools.maven</groupId>
@@ -27,9 +28,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <sharedLibraries>
-                       <!-- Please Add shared SAP libraries -->
+                        <!-- Please Add shared SAP libraries -->
                     </sharedLibraries>
-                <classifier>mule-application</classifier>
+                    <classifier>mule-application</classifier>
                 </configuration>
             </plugin>
         </plugins>
@@ -48,7 +49,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
 
-    	<dependency>
+        <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-apikit-module</artifactId>
             <version>${mule.apikit.version}</version>
@@ -60,14 +61,20 @@
             <version>${sap.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-        <!-- Please Add dependencies for SAP libraries --> 
+        <!-- Please Add dependencies for SAP libraries -->
     </dependencies>
     <repositories>
-         <repository>
-             <id>mulesoft-releases</id>
-             <name>MuleSoft Releases Repository</name>
-             <url>https://repository.mulesoft.org/releases/</url>
-             <layout>default</layout>
-         </repository>
-     </repositories>
+        <repository>
+            <id>anypoint-exchange</id>
+            <name>Anypoint Exchange</name>
+            <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
+            <url>https://repository.mulesoft.org/releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 </project>

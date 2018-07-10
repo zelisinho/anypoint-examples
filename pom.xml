@@ -86,112 +86,112 @@
     </properties>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>${mule.maven.plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <classifier>mule-application-example</classifier>
-                    <!-- Fix until MMP-305 is solved -->
-                    <attachMuleSources>true</attachMuleSources>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
-                    <pushChanges>false</pushChanges>
-                    <autoversionsubmodules>true</autoversionsubmodules>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <version>1.8.0</version>
-                <configuration>
-                    <header>NOTICE</header>
-                    <strictChecking>true</strictChecking>
-                    <excludes>
-                        <exclude>target/**</exclude>
-                        <exclude>src/main/java/com/sforce/**</exclude>
-                        <exclude>**/.gitignore</exclude>
-						<exclude>**/*.dw</exclude>
-                        <exclude>**/*.txt</exclude>
-                        <exclude>**/*.ftl</exclude>
-                        <exclude>**/*.xml</exclude>
-                        <exclude>**/*.properties</exclude>
-                        <exclude>**/*.sample</exclude>
-                        <exclude>**/*.md</exclude>
-                        <exclude>**/build-number.txt</exclude>
-                        <exclude>**/*.sql</exclude>
-                        <exclude>**/*.css</exclude>
-                        <exclude>**/*.js</exclude>
-                        <exclude>LICENSE</exclude>
-                        <exclude>NOTICE</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+           <plugin>
+               <groupId>org.mule.tools.maven</groupId>
+               <artifactId>mule-maven-plugin</artifactId>
+               <version>${mule.maven.plugin.version}</version>
+               <extensions>true</extensions>
+               <configuration>
+                   <classifier>mule-application-example</classifier>
+                   <!-- Fix until MMP-305 is solved -->
+                   <attachMuleSources>true</attachMuleSources>
+               </configuration>
+           </plugin>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-release-plugin</artifactId>
+               <version>2.5</version>
+               <configuration>
+                   <tagNameFormat>v@{project.version}</tagNameFormat>
+                   <pushChanges>false</pushChanges>
+                   <autoversionsubmodules>true</autoversionsubmodules>
+               </configuration>
+           </plugin>
+           <plugin>
+               <groupId>com.mycila.maven-license-plugin</groupId>
+               <artifactId>maven-license-plugin</artifactId>
+               <version>1.8.0</version>
+               <configuration>
+                   <header>NOTICE</header>
+                   <strictChecking>true</strictChecking>
+                   <excludes>
+                       <exclude>target/**</exclude>
+                       <exclude>src/main/java/com/sforce/**</exclude>
+                       <exclude>**/.gitignore</exclude>
+                       <exclude>**/*.dw</exclude>
+                       <exclude>**/*.txt</exclude>
+                       <exclude>**/*.ftl</exclude>
+                       <exclude>**/*.xml</exclude>
+                       <exclude>**/*.properties</exclude>
+                       <exclude>**/*.sample</exclude>
+                       <exclude>**/*.md</exclude>
+                       <exclude>**/build-number.txt</exclude>
+                       <exclude>**/*.sql</exclude>
+                       <exclude>**/*.css</exclude>
+                       <exclude>**/*.js</exclude>
+                       <exclude>LICENSE</exclude>
+                       <exclude>NOTICE</exclude>
+                   </excludes>
+               </configuration>
+               <executions>
+                   <execution>
+                       <goals>
+                           <goal>check</goal>
+                       </goals>
+                   </execution>
+               </executions>
+           </plugin>
         </plugins>
     </build>
     <repositories>
         <repository>
-            <id>anypoint-exchange</id>
-            <name>Anypoint Exchange</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
-            <layout>default</layout>
+           <id>anypoint-exchange</id>
+           <name>Anypoint Exchange</name>
+           <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
+           <layout>default</layout>
         </repository>
         <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>https://repository.mulesoft.org/releases/</url>
-            <layout>default</layout>
+           <id>mulesoft-releases</id>
+           <name>MuleSoft Releases Repository</name>
+           <url>https://repository.mulesoft.org/releases/</url>
+           <layout>default</layout>
         </repository>
         <repository>
-            <id>mulesoft-snapshots</id>
-            <name>MuleSoft Snapshots Repository</name>
-            <url>https://repository.mulesoft.org/snapshots/</url>
-            <layout>default</layout>
+           <id>mulesoft-snapshots</id>
+           <name>MuleSoft Snapshots Repository</name>
+           <url>https://repository.mulesoft.org/snapshots/</url>
+           <layout>default</layout>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>mulesoft-releases</id>
-            <name>mulesoft release repository</name>
-            <layout>default</layout>
-            <url>http://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+           <id>mulesoft-releases</id>
+           <name>mulesoft release repository</name>
+           <layout>default</layout>
+           <url>http://repository.mulesoft.org/releases/</url>
+           <snapshots>
+               <enabled>false</enabled>
+           </snapshots>
         </pluginRepository>
         <pluginRepository>
-            <id>mulesoft-snapshots</id>
-            <name>mulesoft snapshots repository</name>
-            <layout>default</layout>
-            <url>http://repository.mulesoft.org/snapshots/</url>
+           <id>mulesoft-snapshots</id>
+           <name>mulesoft snapshots repository</name>
+           <layout>default</layout>
+           <url>http://repository.mulesoft.org/snapshots/</url>
         </pluginRepository>
     </pluginRepositories>
     <distributionManagement>
         <repository>
-            <id>anypoint-exchange</id>
-            <name>Anypoint Exchange</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
-            <layout>default</layout>
+           <id>anypoint-exchange</id>
+           <name>Anypoint Exchange</name>
+           <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
+           <layout>default</layout>
         </repository>
         <snapshotRepository>
-            <id>mulesoft-snapshots</id>
-            <name>MuleSoft Snapshot Repository</name>
-            <url>https://repository-master.mulesoft.org/snapshots/</url>
-            <uniqueVersion>false</uniqueVersion>
+           <id>mulesoft-snapshots</id>
+           <name>MuleSoft Snapshot Repository</name>
+           <url>https://repository-master.mulesoft.org/snapshots/</url>
+           <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
     </distributionManagement>
     <scm>
