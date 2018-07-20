@@ -50,5 +50,5 @@ Finally, Mule moves the message back to the [HTTP Inbound Endpoint](http://www.m
 ### Go Further
 
 - Learn more about the [HTTP endpoint](http://www.mulesoft.org/documentation/display/current/HTTP+Connector).
-- Learn more about the [Set Payload Transformer](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
+- Learn more about the [Set Payload transformer](http://www.mulesoft.org/documentation/display/current/Set+Payload+Transformer+Reference).
 - Learn more about the [Logger component](http://www.mulesoft.org/documentation/display/current/Logger+Component+Reference).
