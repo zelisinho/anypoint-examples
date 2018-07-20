@@ -1,4 +1,4 @@
-# Implementing a Exception Strategy
+# Implementing an Exception Strategy
 
 This example illustrates the concept of error handling in Mule. This particular example deals with exception strategy.
 
