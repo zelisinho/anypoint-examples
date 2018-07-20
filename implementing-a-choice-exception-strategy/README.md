@@ -1,30 +1,29 @@
 # Implementing a Exception Strategy
 
-This example illustrates the concept of error handling in mule. This particular example deals with exception strategy.
+This example illustrates the concept of error handling in Mule. This particular example deals with exception strategy.
 
 ### Example use case
 
-The example represents reading CSV file with error handling for invalid path or denied access to the file using by appropriate exception.
+The Mule application reads a CSV file and returns exception messages for two types of error: 
+
+* The request specifies an invalid path.
+* The request specifies a file that read permissions are not granted on.
 
 ### Set up and run the example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+1. Open the Implementing a Exception Strategy example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port (e.g., 8081).
 
-3. Run the example project as a mule application
+3. Run the example project as a Mule application
 
-4. Through a web browser, access the URL **http://localhost:8081/?filePath=invalidPath** 
-	
-	This message throws an exception as invalid path and returns the following message:
+4. In your browser, access the URL `http://localhost:8081/?filePath=invalidPath`. This message specifies an invalid path, and the application returns this error message:
 		
 		{
 		  "message": "Your path is invalid"
 		}
 
-5. Through a web browser, access the URL **http://localhost:8081/?filePath=path** with correct path to input.csv file.
-       
-    This message throws no error and returns the following messsage:
+5. In your browser, access the URL `http://localhost:8081/?filePath=path`, substituing the path to the file `input.csv` for the `path` variable. The application returns the following payload:
 
 		[
 		  {
@@ -41,9 +40,7 @@ The example represents reading CSV file with error handling for invalid path or 
 		  }
 		]
 
-6. Through a web browser, access the URL **http://localhost:8081/?filePath=path** with correct path to file without read access.
-	
-	This message throws an exception as access denied and returns the following message:
+6. In your browser, access the URL `http://localhost:8081/?filePath=path`, replacing the `path` variable this time with the path to a file that does not allow read access. The application returns the following error message:
        
 		{
 		  "message": "Access to file denied"
@@ -51,7 +48,7 @@ The example represents reading CSV file with error handling for invalid path or 
 
 ### Go further
        
- * Read the documentation about exception strategy [here](http://www.mulesoft.org/documentation/display/current/Choice+Exception+Strategy)
+* Read the documentation about exception strategy [here](http://www.mulesoft.org/documentation/display/current/Choice+Exception+Strategy).
    
    
 
