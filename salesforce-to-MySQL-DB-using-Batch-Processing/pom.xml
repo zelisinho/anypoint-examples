@@ -26,6 +26,7 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <classifier>mule-application-example</classifier>
                     <sharedLibraries>
                         <sharedLibrary>
                             <groupId>mysql</groupId>

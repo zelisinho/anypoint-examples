@@ -14,11 +14,22 @@
 
     <name>legacy-modernization</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application-example</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <http.connector.version>1.2.0</http.connector.version>
         <soapkit.module.version>1.1.2</soapkit.module.version>
-        <java.module.version>1.0.0</java.module.version>
-        <file.connector.version>1.1.2</file.connector.version>
     </properties>
 
     <dependencies>

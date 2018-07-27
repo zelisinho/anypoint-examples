@@ -13,20 +13,21 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application-example</classifier>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>org.apache.activemq</groupId>
 							<artifactId>activemq-all</artifactId>
 						</sharedLibrary>
 					</sharedLibraries>
-				</configuration>
-			</plugin>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 

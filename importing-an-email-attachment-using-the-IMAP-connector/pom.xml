@@ -14,11 +14,6 @@
     <packaging>mule-application</packaging>
     <name>importing-an-email-attachment-using-the-imap-connector</name>
 
-    <properties>
-        <email.connector.version>1.0.2</email.connector.version>
-        <file.connector.version>1.1.2</file.connector.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -27,7 +22,7 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <classifier>mule-application</classifier>
+                    <classifier>mule-application-example</classifier>
                 </configuration>
             </plugin>
         </plugins>

@@ -12,7 +12,6 @@
 	<name>track-a-custom-business-event</name>
 
 	<properties>
-		<mule.connectors.version>1.1.0</mule.connectors.version>
 		<munit.version>2.1.2</munit.version>
 	</properties>
 
@@ -24,6 +23,15 @@
 			</testResource>
 		</testResources>
 		<plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application-example</classifier>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
 				<artifactId>munit-maven-plugin</artifactId>

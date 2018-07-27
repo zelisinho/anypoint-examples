@@ -27,10 +27,10 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <classifier>mule-application-example</classifier>
                     <sharedLibraries>
                         <!-- Please Add shared SAP libraries -->
                     </sharedLibraries>
-                    <classifier>mule-application</classifier>
                 </configuration>
             </plugin>
         </plugins>

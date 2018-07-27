@@ -11,6 +11,20 @@
     <packaging>mule-application</packaging>
     <name>importing-a-CSV-file-into-Mongo-DB</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application-example</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <mongodb.connector.version>5.0.0</mongodb.connector.version>
     </properties>

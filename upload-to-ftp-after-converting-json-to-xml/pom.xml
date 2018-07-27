@@ -11,6 +11,20 @@
 	<packaging>mule-application</packaging>
 	<name>upload-to-ftp-after-converting-json-to-xml</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application-example</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
