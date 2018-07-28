@@ -78,7 +78,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
-            <groupId>org.mule.connectors</groupId>
+            <groupId>com.mulesoft.connectors</groupId>
             <artifactId>mule-netsuite-connector</artifactId>
             <version>${netsuite.connector.version}</version>
             <classifier>mule-plugin</classifier>

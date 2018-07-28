@@ -12,7 +12,6 @@
 	<name>get-customer-list-from-netsuite</name>
 
 	<properties>
-		<mule.netsuite.connector.version>8.0.0</mule.netsuite.connector.version>
 		<munit.version>2.1.2</munit.version>
 	</properties>
 
@@ -73,9 +72,9 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.mule.connectors</groupId>
+			<groupId>com.mulesoft.connectors</groupId>
 			<artifactId>mule-netsuite-connector</artifactId>
-			<version>${mule.netsuite.connector.version}</version>
+			<version>${netsuite.connector.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>

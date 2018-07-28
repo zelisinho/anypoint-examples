@@ -72,7 +72,7 @@
         <netsuite.connector.version>8.1.0</netsuite.connector.version>
         <oauth.module.version>1.1.1</oauth.module.version>
         <objectstore.connector.version>1.1.0</objectstore.connector.version>
-        <sfdc.connector.version>9.1.0</sfdc.connector.version>
+        <sfdc.connector.version>9.3.0</sfdc.connector.version>
         <scripting.module.version>1.1.1</scripting.module.version>
         <servicenow.connector.version>6.2.0</servicenow.connector.version>
         <sftp.connector.version>1.1.2</sftp.connector.version>

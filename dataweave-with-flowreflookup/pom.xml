@@ -12,7 +12,6 @@
 	<name>dataweave-with-flowreflookup</name>
 
 	<properties>
-		<sfdc.connector.version>9.0.0</sfdc.connector.version>
 		<munit.version>2.1.2</munit.version>
 	</properties>
 
@@ -55,8 +54,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-sfdc-connector</artifactId>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
 			<version>${sfdc.connector.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
