@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cache-scope-with-salesforce-contacts</artifactId>
     <packaging>mule-application</packaging>
-    <name>Cache scope with Salesforce Contacts</name>
+    <name>cache-scope-with-salesforce-contacts</name>
 
     <properties>
         <munit.version>2.1.2</munit.version>
