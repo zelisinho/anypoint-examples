@@ -1,7 +1,7 @@
 # Scatter Gather flow control to email
 
 
-This example shows us the usage of the scatter-gather flow to aggregate data in parallel and response the result in JSON. The example uses prepared data as an input for two resources, which should be aggregated. The data represents contacts information with structure as follows:
+This example shows the usage of the scatter-gather control flow to aggregate data in parallel and return the result in JSON. The example uses prepared data as input for two resources that should be aggregated. The data represents contacts information with the following structure:
 
 Example data structure(contacts-1.csv, contacts-2.csv) in:
 		firstname;surname;phone;email
@@ -9,9 +9,9 @@ Example data structure(contacts-1.csv, contacts-2.csv) in:
 		Jane;Doe;091558780;jane.doe@texasComp.com
 		...		
 
-For the aggregation is used [DataWeave](https://docs.mulesoft.com/mule-user-guide/v/current/dataweave).
+[DataWeave](https://docs.mulesoft.com/mule-user-guide/v/current/dataweave) is used to aggregate the data.
 
-Contacts will be aggregated to the JSON structure representing the same data from both sources (contacts-1.csv and contacts-2.csv).
+Contacts are aggregated to a JSON structure that represents data from both sources (`contacts-1.csv` and `contacts-2.csv`).
 
 	
 ### Assumptions
@@ -20,15 +20,15 @@ This document describes the details of the example within the context of Anypoin
 
 ### Example Use Case
 
-In this example a sample data is prepared using the Expression component, which serve as a input for aggregation of the Scatter-Gather component. Then the report is transformed to the CSV format  and it is also sent to an email address using the SMTP connector. This example has been configured for gmail.
+In this example, sample data is prepared with the Expression component, and the prepared data serves as input for aggregation in the Scatter-Gather component. Then, the report is transformed to the CSV format and sent to an email address via the SMTP connector. This example has been configured for gmail.
 
-### Set Up and Run this Example
+#### Set Up and Run this Example
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
+1. Open the Scatter Gather Flow Control project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange).
 
-2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **port** field to required HTTP port e.g. 8081
+2. In your application in Studio, click the **Global Elements** tab. Double-click the HTTP Listener global element to open its **Global Element Properties** panel. Change the contents of the **Port** field to required HTTP port e.g. 8081
 
-3. Navigate to src/main/app/scatter-gather-flow-control.xml and **check "Read contacts-1.csv" and "Read contacts-2.csv" file components** and in File Path field point to the attributable files located in src/main/resources folder. 
+3. Navigate to `src/main/app/scatter-gather-flow-control.xml` and **check "Read contacts-1.csv" and "Read contacts-2.csv" file components** and in File Path field point to the attributable files located in src/main/resources folder. 
     
 4. **Run** the project as a Mule application
 
