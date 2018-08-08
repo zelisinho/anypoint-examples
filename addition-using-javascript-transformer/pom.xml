@@ -14,9 +14,6 @@
     <packaging>mule-application</packaging>
 	<name>addition-using-javascript-transformer</name>
 
-    <properties>
-        <scripting.module.version>1.1.2</scripting.module.version>
-    </properties>
 
 	<build>
         <plugins>
