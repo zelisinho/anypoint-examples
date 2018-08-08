@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>adding-a-new-customer-to-workday-revenue-management</module>
+		<module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
         <module>cache-scope-with-salesforce-contacts</module>
         <module>content-based-routing</module>
@@ -73,7 +74,7 @@
         <oauth.module.version>1.1.1</oauth.module.version>
         <objectstore.connector.version>1.1.0</objectstore.connector.version>
         <sfdc.connector.version>9.3.0</sfdc.connector.version>
-        <scripting.module.version>1.1.1</scripting.module.version>
+        <scripting.module.version>1.1.2</scripting.module.version>
         <servicenow.connector.version>6.2.0</servicenow.connector.version>
         <sftp.connector.version>1.1.2</sftp.connector.version>
         <sap.connector.version>4.0.0</sap.connector.version>
