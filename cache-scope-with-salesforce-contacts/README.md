@@ -1,26 +1,27 @@
-# Cache scope with Salesforce Contacts
+# Cache Scope with Salesforce Contacts
 
 This example illustrates the basic concept of data caching using Salesforce.
 
-### Caching ###
+### Caching 
 
 The very basic concept of caching consists of temporary storing a result of some operations, in our use case it is caching fetched data from Salesforce. The example illustrates caching when we ask for a data once again, the result is returned directly from cache instead of making a new call to Salesforce.  
 
-### Assumptions ###
+### Prerequisites 
 
-This document describes the details of the example within the context of **Anypoint™ Studio**, Mule ESB’s graphical user interface (GUI). Where appropriate, the XML configuration is provided.
+This document describes the details of the example within Anypoint Studio. Where appropriate, the XML configuration is provided.
 
-This document assumes that you are familiar with Mule ESB and the [Anypoint Studio interface](http://www.mulesoft.org/documentation/display/current/Anypoint+Studio+Essentials). To increase your familiarity with Mule Studio, consider completing one or more [Anypoint Studio Tutorials](http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial). Further, this example assumes that you have a basic understanding of [Mule flows](http://www.mulesoft.org/documentation/display/current/Mule+Application+Architecture) and [Mule Global Elements](http://www.mulesoft.org/documentation/display/current/Global+Elements).
+This document assumes that you are familiar with Mule runtime and the [About Anypoint Studio](https://docs.mulesoft.com/anypoint-studio/v/7.2/). Further, this example assumes that you have a basic understanding of [Flow and Subflow Components
+](https://docs.mulesoft.com/mule4-user-guide/v/4.1/flow-component) and [Global Elements](https://docs.mulesoft.com/mule4-user-guide/v/4.1/global-elements).
 
-### Example Use Case ###
+### Example Use Case 
 
 In this example, the Salesforce querying operation is encapsulated within cache scope component. Firstly the query to Salesforce is performed to fetch Contacts, next calls to Salesforce are avoided and data are returned from cache and result is printed. When the cache is used check the Anypoint Studio console while running the example.
 
-### Set Up and Run the Example ###
+### Set Up and Run the Example 
 
 Complete the following procedure to create, then run this example in your own instance of Anypoint Studio. Skip ahead to the next section if you prefer to simply examine this example.
 
-1. Open the Example project in Anypoint Studio from [Anypoint Exchange](http://www.mulesoft.org/documentation/display/current/Anypoint+Exchange). *Do not run the application*.
+1. Open the Example project in Anypoint Studio. *Do not run the application*.
 1. Log in to your Salesforce account. From your account menu (your account is labeled with your name), select **Setup**.
 1. In the left navigation bar, under the **Personal Setup** heading, click to expand the **My Personal Information** folder. 
 1. Click **Reset My Security Token**. Salesforce resets the token and emails you the new one.
@@ -39,14 +40,14 @@ Complete the following procedure to create, then run this example in your own in
 1. Stop the Mule application by clicking the square, red terminate button in the **Console**.
 
 
-### How it Works ###
+### How it Works
 
 Using a single flow, this application queries Salesforce CRM for contacts and prints them in browser. From the console log you can simply check when caching is performed and you are able to play with it and experiment.
 
 **Salesforce Connector** performs a query in your Salesforce Account: to get *Id, FirstName, LastName, Email, Phone*  attributes of Contact objects with limit set to 200 records. To keep the example simple, the caching is illustrated via logs in console and Contacts are displayed in JSON format in a browser .
 
 
-### Documentation ###
+### Documentation
 
 Studio includes a feature that enables you to easily export all the documentation you have recorded for your project. Whenever you want to share your project with others outside the Studio environment, you can export the project's documentation to print, email or share online. Studio's auto-generated documentation includes:
 
@@ -56,7 +57,7 @@ Studio includes a feature that enables you to easily export all the documentatio
 
 Follow [the procedure](http://www.mulesoft.org/documentation/display/current/Importing+and+Exporting+in+Studio#ImportingandExportinginStudio-ExportingStudioDocumentation) to export auto-generated Studio documentation.
 
-### Go Further ###
+### See Also
 
-- For more information on the Salesforce Connector, see [Salesforce Connector Reference](http://www.mulesoft.org/documentation/display/current/Salesforce+Connector+Reference).
+- For more information on the Salesforce Connector, see [Connectors and Modules (for Mule 4)](Connectors and Modules (for Mule 4)).
 - For more information on Batch processing, see [Batch processing](http://www.mulesoft.org/documentation/display/current/Batch+Processing+Reference).
