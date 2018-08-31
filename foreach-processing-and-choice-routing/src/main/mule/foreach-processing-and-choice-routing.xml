@@ -11,6 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="e0390887-7c90-42eb-a2e7-0217b532e107" basePath="/api">
 		<http:request-connection host="localhost" port="9090" />
 	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="57b0eebc-5185-484f-b7bf-a7c2e02b93ce" file="mule-artifact.properties" />
 	<flow name="foreach-processing-and-choice-routingFlow" doc:id="3db112d4-3f0e-4cbe-9954-1afa5b45b380" >
 		<http:listener doc:name="Receive HTTP request" doc:id="650e96a5-38dc-4b28-90fd-b858ba6c25c9" config-ref="HTTP_Listener_config" path="/" />
 		<ee:transform doc:name="Save query params" doc:id="79f25225-f5b9-44ae-bd87-4ffde2adc873" >
