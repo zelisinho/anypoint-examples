@@ -27,7 +27,7 @@ This example application exposes a service that processes end user requests for 
 - term of the loan
 - customer's social security number (SSN)
 
-The application processes the request, then responds to the end user. The response identifies the banks which can provide a loan for customer on approved amount with term of load and calculate payment per month.
+The application processes the request, then responds to the end user. The response identifies the banks which can provide a loan for customer with approved amount and term with calculated payment per month.
 
 ### Set Up and Run the Example ###
 
@@ -41,9 +41,9 @@ Follow the procedure below to create, then run the application in Mule ESB.
 ### How it Works 
 
 This example application consists of triggerFlow which start the process to inform end user about possibility of loan from different banks:
-1. Calling mocked API (GET/customerprofile endpoint) with required parameters where response provides list of banks for the loads.
+1. Calling mocked API (GET/customerprofile endpoint) with required parameters where response provides list of banks with loads.
 2. Calculating the amount of the payment for providing the load from all banks which are obtained in previous step.
-3. Aggregating the result from all banks to one message for customer.    
+3. Aggregating the result from all banks to one message.    
     
 
 #### Go Further ####
