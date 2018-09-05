@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.mule.examples</groupId>
         <artifactId>examples-catalog</artifactId>
-        <version>2.1.3-SNAPSHOT</version>
+        <version>2.1.4-SNAPSHOT</version>
     </parent>
 
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sap-data-retrieval</artifactId>
     <packaging>mule-application</packaging>
-    <version>2.1.3-SNAPSHOT</version>
+    <version>2.1.4-SNAPSHOT</version>
     <name>sap-data-retrieval</name>
 
     <properties>
