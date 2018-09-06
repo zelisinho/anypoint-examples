@@ -7,9 +7,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>Sending-a-CSV-file-through-Email-using-SMTP</artifactId>
+    <artifactId>sending-a-csv-file-through-email-using-smtp</artifactId>
     <packaging>mule-application</packaging>
-    <name>sending-a-CSV-file-through-email-using-SMTP</name>
+    <name>sending-a-csv-file-through-email-using-smtp</name>
 
     <build>
         <plugins>

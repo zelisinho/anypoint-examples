@@ -1,10 +1,10 @@
 {
   "domain": "default",
   "configs": [
-    "sending a CSV file through email using SMTP.xml"
+    "sending-a-csv-file-through-email-using-smtp.xml"
   ],
   "redeploymentEnabled": true,
-  "name": "Sending-a-CSV-file-through-Email-using-SMTP",
+  "name": "sending-a-csv-file-through-email-using-smtp",
   "minMuleVersion": "4.1.1",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
