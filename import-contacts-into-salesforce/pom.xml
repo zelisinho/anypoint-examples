@@ -7,7 +7,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>import-contracts-into-salesforce</artifactId>
+    <artifactId>import-contacts-into-salesforce</artifactId>
     <packaging>mule-application</packaging>
     <name>import-contacts-into-salesforce</name>
 
