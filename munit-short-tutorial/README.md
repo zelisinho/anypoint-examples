@@ -1,8 +1,8 @@
-# MUnit 2 Short Tutorial
+# MUnit 2.x Short Tutorial
 
 ## Overview
 
-This simple, short tutorial takes you through the process of creating a series of MUnit tests that validate the behavior of a simple code example.
+This simple, short tutorial takes you through the process of creating a series of MUnit 2.x tests that validate the behavior of a simple code example.
 
 This tutorial uses only core components of Mule Runtime 4. No Anypoint Connectors are used; however, you can easily apply what you learn here to applications that use Anypoint Connectors.
 
@@ -136,9 +136,9 @@ We'll start by testing `secondaryFlow`.
 
 Ideally, you should test each and every flow and subflow in your application in order to validate that each one of them behaves as expected. Because we've complicated things a little in order to show you more scenarios, we'll skip testing the subflows. If we meant to deploy this application to production, we would start by testing those two subflows.
 
-### Two Requirements for MUnit Test Suites
+### Two Requirements for MUnit 2.x Test Suites
 
-Each MUnit test file _must_ contain the following elements:
+Each MUnit 2.x test file _must_ contain the following elements:
 
 * `munit:config`
 * An `import` element
@@ -188,7 +188,7 @@ The first thing we do is to create an input message. This is a very common scena
 
 For the purposes of this test, we can be confident that the code works properly by simply ensuring the variable that was supposed to be set is set to correct value and the correct message processor was called.
 
-**WARNING**: In MUnit 2, you mock or verify `flow-ref`, not the `flow` and `sub-flow`, as in MUnit.
+**WARNING**: In MUnit 2.x, you mock or verify `flow-ref`, not the `flow` and `sub-flow`, as in MUnit 1.x.
 
 
 ### Testing: `mainFlow`
@@ -244,7 +244,7 @@ Notice that we are not actually returning a payload. The payload in the `set-pay
 
 **TIP**: When doing unit tests, you isolate your flow from third-party systems and other flows and trust they will work as expected. In turn, you must test each third-party system or flow with its own, specific test.
 
-If you've been reading this tutorial from the beginning, you already know that in MUnit 2, you mock `flow-ref` message processors. That's what we're doing here, mocking the `secondaryFlow`  flow reference which was called from `mainFlow`.
+If you've been reading this tutorial from the beginning, you already know that in MUnit 2.x, you mock `flow-ref` message processors. That's what we're doing here, mocking the `secondaryFlow`  flow reference which was called from `mainFlow`.
 
 The purpose of `secondaryFlow` was to set the value of the invocation variable `flowValue`. If you look closely at this mock, you'll see that we are telling the mocked flow to return a message that contains an invocation variable named `flowValue` with a value of `flowValue_1`. This is what should happen in the first test scenario.
 
@@ -309,11 +309,11 @@ The code below shows how to create such a message:
 
 In this tutorial, we've seen:
 
-* How to create MUnit 2 tests
+* How to create MUnit 2.x tests
 * How to create Mule messages
 * How to create mocks
 * How to run verifications and assertions
 
-In short, we've covered a great deal of the MUnit 2 features.
+In short, we've covered a great deal of the MUnit 2.x features.
 
-As you code, your tests may become as large and complex as your production code. The tools provided by MUnit 2 will help you create great tests while maintaining the quality of your code.
+As you code, your tests may become as large and complex as your production code. The tools provided by MUnit 2.x will help you create great tests while maintaining the quality of your code.
