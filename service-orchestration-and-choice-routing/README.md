@@ -31,47 +31,49 @@ As with the other example templates, you can create a fully-functioning applicat
 The approach to running this example is using raw SOAP that bypasses the ordering process via the GUI. To achieve this, follow the procedure bellow:
 
 1. Open the Example project in Anypoint Studio. *Do not run the application*. 
-2. Now, run order_audits.sql and orders.sql which is placed under src/main/resources to create a DB tables and set properties for DB in *mule.artifact.properties* file [Properties to be configured].
+2. Now, run order_audits.sql and orders.sql which is placed under src/main/resources to create a DB tables and set properties for DB in *mule.artifact.properties* file [Properties to be configured](#propertiestobeconfigured).
 3. In the Package Explorer panel in Studio, right-click the project name, then select Run As > Mule Application. Studio runs the application and Mule is up and kicking!
-3. In Postman send request to the following URL: [http://localhost:8081/IProcessOrderService/IProcessOrderPort) with this body:  
+4. In Postman send request to the following URL: [http://localhost:8081/IProcessOrderService/IProcessOrderPort) with this body:  
 
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ord="http://orders.se.mulesoft.com/">
-	   <soapenv:Header/>
-	   <soapenv:Body>
-	      <ord:processOrder>
-	            <order>
-	            <orderId>12</orderId>
-	            <customer>
-	               <address>Main Street 123</address>
-	               <firstName>John</firstName>
-	               <lastName>Doe</lastName>
-	            </customer>
-               <item>
-                  <manufacturer>Samsung</manufacturer>
-                  <name>s-1</name>
-                  <productId>AX02</productId>
-                  <quantity>5</quantity>
-               </item>          
-               <item>
-                  <manufacturer>Manufacture2</manufacturer>
-                  <name>s-4</name>
-                  <productId>AX06</productId>
-                  <quantity>2</quantity>
-               </item>              
-	         </order>
-	      </ord:processOrder>
-	   </soapenv:Body>
-	</soapenv:Envelope>
+		<soapenv:Envelope 
+			xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+			xmlns:ord="http://orders.se.mulesoft.com/">
+		   <soapenv:Header/>
+		   <soapenv:Body>
+		      <ord:processOrder>
+		            <order>
+		            <orderId>12</orderId>
+		            <customer>
+		               <address>Main Street 123</address>
+		               <firstName>John</firstName>
+		               <lastName>Doe</lastName>
+		            </customer>
+	               <item>
+	                  <manufacturer>Samsung</manufacturer>
+	                  <name>s-1</name>
+	                  <productId>AX02</productId>
+	                  <quantity>5</quantity>
+	               </item>          
+	               <item>
+	                  <manufacturer>Manufacture2</manufacturer>
+	                  <name>s-4</name>
+	                  <productId>AX06</productId>
+	                  <quantity>2</quantity>
+	               </item>              
+		         </order>
+		      </ord:processOrder>
+		   </soapenv:Body>
+		</soapenv:Envelope>
 		
 4. The result of successfully processing the order represent a message in Postman:  
 	
-	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-	    <soap:Body>
-	        <soap:Response xmlns:soap="http://schemas.xmlsoap.org/soap/envelope">
-	            <message>Order 12 was processed successfully</message>
-	        </soap:Response>
-	    </soap:Body>
-	</soap:Envelope>
+		<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		    <soap:Body>
+		        <soap:Response xmlns:soap="http://schemas.xmlsoap.org/soap/envelope">
+		            <message>Order 12 was processed successfully</message>
+		        </soap:Response>
+		    </soap:Body>
+		</soap:Envelope>
 	
 ### How It Works
 
@@ -103,11 +105,11 @@ The auditService flow, which is invoked asynchronously by the processOrder flow,
 In order to use this Mule Anypoint Example you need to configure properties (Credentials, configurations, etc.) either in properties file or in CloudHub as Environment Variables. Detail list with examples:
 
 #### Application configuration
-+db.host `localhost`
-+db.port `3306`
-+db.name `dbnameA`
-+db.user `user-nameA`
-+db.password `user-passwordA`
++ db.host `localhost`
++ db.port `3306`
++ db.name `dbnameA`
++ db.user `user-nameA`
++ db.password `user-passwordA`
 
 ### Go Further 
 
