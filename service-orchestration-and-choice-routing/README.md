@@ -101,7 +101,7 @@ The inhouse RESTful priceService flow returns the price of non-Samsung products.
 #### auditService Flow 
 The auditService flow, which is invoked asynchronously by the processOrder flow, audits the item requests, which have been enriched with the responses from the inhouseOrder flow and the samsungOrder flow. Result from audit is stored to DB.
 
-### Properties to be configured (With examples)
+### Properties to be configured (With examples) <a name="propertiestobeconfigured"/>
 In order to use this Mule Anypoint Example you need to configure properties (Credentials, configurations, etc.) either in properties file or in CloudHub as Environment Variables. Detail list with examples:
 
 #### Application configuration
