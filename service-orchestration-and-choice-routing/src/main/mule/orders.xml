@@ -78,14 +78,14 @@ output application/java
 payload.body.processOrder.order.orderId]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="ee14b0f9-4cfd-4bfb-a194-155cfea423fe" message="#[output application/json --- payload]"/>
+		<logger level="INFO" doc:name="Log input" doc:id="ee14b0f9-4cfd-4bfb-a194-155cfea423fe" message="#[output application/json --- payload]"/>
 		<foreach doc:name="For each Order Item" doc:id="051d1d17-fabb-4ef4-8f24-83a079b1fb03" collection="#[payload.orderItems]">
 			<choice doc:name="samsung manufacturer?" doc:id="7b6dde88-24ad-4cc7-9732-dbb1729d9a4a">
 			<when expression="#[payload.manufacturer == 'Samsung']">
-					<vm:publish-consume doc:name="Dispatch to samsungOrder" doc:id="33488148-ab4d-49fc-8cfa-0741cddb8637" config-ref="VM_Config" queueName="samsungOrder" timeout="30"/>
+					<vm:publish-consume doc:name="Dispatch to samsungOrder" doc:id="33488148-ab4d-49fc-8cfa-0741cddb8637" config-ref="VM_Config" queueName="samsungOrder" timeoutUnit="MINUTES"/>
 			</when>
 				<otherwise>
-					<vm:publish-consume queueName="inhouseOrder" doc:name="Dispatch to inhouseOrder" doc:id="ea072a5a-6d3f-4230-9a2a-b133523e49c6" config-ref="VM_Config" timeout="30"/>
+					<vm:publish-consume queueName="inhouseOrder" doc:name="Dispatch to inhouseOrder" doc:id="ea072a5a-6d3f-4230-9a2a-b133523e49c6" config-ref="VM_Config" timeoutUnit="MINUTES"/>
 				</otherwise>
 		</choice>
 			<ee:transform doc:name="Calculate totalValue" doc:id="acb150f4-28b4-4d6d-af78-16c4aee06119" >
@@ -114,8 +114,8 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<vm:publish-consume queueName="audit" doc:name="Dispatch to audit" doc:id="1fd8c9db-7ee3-4c7b-8073-3b51bb471c2b" config-ref="VM_Config" timeoutUnit="MINUTES"/>
-		<ee:transform doc:id="85f00aae-0a58-4c4e-9b1e-6f9095ebf02f" doc:name="Message Response">
+		<vm:publish-consume queueName="audit" doc:name="Dispatch to audit" doc:id="1fd8c9db-7ee3-4c7b-8073-3b51bb471c2b" config-ref="VM_Config" timeoutUnit="MINUTES" timeout="10"/>
+		<ee:transform doc:id="85f00aae-0a58-4c4e-9b1e-6f9095ebf02f" doc:name="Response Message">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/java
@@ -132,7 +132,7 @@ ns soap http://schemas.xmlsoap.org/soap/envelope
         </ee:transform> 
     </flow>
 	<flow name="samsungOrder" doc:id="bdd81355-0cc1-4799-a18c-3e5384c84687" >
- 		<vm:listener queueName="samsungOrder" doc:name="Listener" doc:id="641baf58-129b-4885-b849-3975e720f82e" config-ref="VM_Config"/>
+ 		<vm:listener queueName="samsungOrder" doc:name="samsungOrder" doc:id="641baf58-129b-4885-b849-3975e720f82e" config-ref="VM_Config"/>
 
 		<ee:transform doc:name="Prepare request" doc:id="1cbdfc38-5425-44ae-95ca-e33797a1e5f3" >
 			<ee:message >
@@ -183,7 +183,7 @@ output application/java
 		</ee:transform>
 	</flow> 
 	<flow name="inhouseOrder" doc:id="3ed68035-257c-4e5c-a5ce-5db0170e8247" >
-		<vm:listener queueName="inhouseOrder" doc:name="Listener" doc:id="9b49e6f0-0b75-4ed7-8c15-7db959a9117e" config-ref="VM_Config"/>
+		<vm:listener queueName="inhouseOrder" doc:name="inhouseOrder" doc:id="9b49e6f0-0b75-4ed7-8c15-7db959a9117e" config-ref="VM_Config"/>
 		<http:request method="GET" doc:name="GET prices/{productId}" doc:id="f5daf9fa-4f34-4dbf-a55e-d45abb12802a" path="/prices/{productId}" config-ref="Inhouse_Request_configuration" target="inhouseData">
 			<http:uri-params ><![CDATA[#[output applicaton/java
 ---
@@ -243,7 +243,7 @@ output application/java
 		</ee:transform> 
 	</flow>
 	<flow name="priceService" doc:id="8864cacf-5a53-4c35-bf06-39d2f68d019b" >
-		<http:listener doc:name="Listener" doc:id="97177d43-d23d-4c45-98f4-e9368dda9919" config-ref="Price_Listener_config" path="/prices/{productId}"/>
+		<http:listener doc:name="/prices/{productId}" doc:id="97177d43-d23d-4c45-98f4-e9368dda9919" config-ref="Price_Listener_config" path="/prices/{productId}"/>
 		<ee:transform doc:name="Price Response" doc:id="721c6792-46f9-457c-a39b-b079aaf6e0bf" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -256,7 +256,7 @@ output application/json
 		</ee:transform>
 	</flow>
 	<flow name="auditService" doc:id="7bb6deac-47c6-43f0-ab29-32463417f8bc" >
-		<vm:listener queueName="audit" doc:name="Listener" doc:id="53fa2967-38c8-4664-bc9a-da913e58efc5" config-ref="VM_Config" transactionalAction="ALWAYS_BEGIN"/>
+		<vm:listener queueName="audit" doc:name="audit" doc:id="53fa2967-38c8-4664-bc9a-da913e58efc5" config-ref="VM_Config"/>
 		<ee:transform doc:name="Prepare request to DB" doc:id="b46a0418-9c83-476c-94d6-5307c00904de">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
@@ -269,7 +269,7 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="456ff636-02cf-4827-86f5-f9256450ff73" message="#[output application/json --- payload]"/>
+		<logger level="INFO" doc:name="Log DB request" doc:id="456ff636-02cf-4827-86f5-f9256450ff73" message="#[output application/json --- payload]"/>
 		<db:insert doc:name="Save Order Summary" doc:id="cc9720e7-4034-45bd-9ca6-5d1efae5dc5f" config-ref="Database_Config">
 			<db:sql >INSERT INTO order_audits (
 								id,

@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
         </apikit-soap:router>
     </flow>
     <flow name="purchase:\samsung-soapkit-config">
-        <ee:transform doc:id="43ec9db2-3c7e-48a6-888d-5f207761c5dc">
+        <ee:transform doc:id="43ec9db2-3c7e-48a6-888d-5f207761c5dc" doc:name="Response Message">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/java
