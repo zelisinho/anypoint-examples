@@ -1,22 +1,24 @@
-# MUnit2 Short Tutorial
+# MUnit 2.x Short Tutorial
 
 ## Overview
 
-This simple, short tutorial takes you through the process of creating a series of MUnit2 tests, which are aimed at validating the behavior of a simple code example.
+This simple, short tutorial takes you through the process of creating a series of MUnit 2.x tests that validate the behavior of a simple code example.
 
-This tutorial uses only core components of Mule ESB. No Anypoint Connectors are used; however, you can easily apply what you learn here to Anypoint Connectors.
+This tutorial uses only core components of Mule Runtime 4. No Anypoint Connectors are used; however, you can easily apply what you learn here to applications that use Anypoint Connectors.
 
-## Sample Business Logic Code
+## Sample Code
 
-The sample code for this tutorial is fairly simple, uses some of Mule's most common message processors. It implements the following basic use case:
+The sample code for this tutorial is fairly simple and uses some of Mule's most common message processors. It implements the following basic use case:
 
 1. It receives an HTTP request.
-1. It extracts data from the request to route a message through the application.
+1. It extracts data from the request and uses the data to determine how to route a message through the application.
 1. It decides how to create a response.
 
-*business-logic.xml*
+The code is located in the file `src/main/mule/business-logic.xml` in the project.
 
-``` xml
+*Figure 1: The content of `business-logic.xml`*
+
+```xml
 <mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" ... >
 
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" >
@@ -49,7 +51,7 @@ The sample code for this tutorial is fairly simple, uses some of Mule's most com
 			</otherwise>
 		</choice>
 	</flow>
-	
+
 	<sub-flow name="firstSubFlow" >
 		<set-variable variableName="flowValue" value="flowValue_1" doc:name="Set Variable"  />
 	</sub-flow>
@@ -60,13 +62,16 @@ The sample code for this tutorial is fairly simple, uses some of Mule's most com
 </mule>
 ```
 
-Let's analyze the above code by breaking it up into sections. The first section is the entry point of the application containing the HTTP listener. Here's how it works:
+Let's analyze this XML by looking at the two flows and then at the two subflows.
 
-1. Receiving data from the HTTP request.
-1. Calling the `secondaryFlow` for further processing
-1. Based on the value of the invocation variable `flowValue` set by `secondaryFlow` returns either `responsePayload_1` or `responsePayload_2`
+### The `mainFlow` Flow ###
+The first flow is the entry point of the application because it contains the HTTP listener. Here's how it works:
 
-*mainFlow*
+1. Receives data from the HTTP request.
+1. Calls the `secondaryFlow` flow for further processing.
+1. Depending on the value of the invocation variable `flowValue` set by `secondaryFlow`, returns either `responsePayload_1` or `responsePayload_2`.
+
+*Figure 2: The XML for the flow `mainFlow`*
 
 ``` xml
 <flow name="mainFlow" >
@@ -84,15 +89,15 @@ Let's analyze the above code by breaking it up into sections. The first section 
 </flow>
 ```
 
+### The `secondaryFlow` Flow ###
 
+The second flow in the app, `secondaryFlow`, routes the message to one of two subflows, based on the payload received as input. It works as follows:
 
-The second part of the app, `secondaryFlow`, is basically for routing. It does not perform any real action over the message or its payload. Rather, it delegates that to two other subflows, based on the payload received as input. It works as follows:
+1. Evaluates whether the payload that enters `secondaryFlow` meets a condition.
+1. Calls `firstSubFlow`, if the condition is fulfilled. If the condition is not fulfilled, the flow moves to the next step.
+1. Calls `secondSubFlow`, if the condition is not fulfilled.
 
-1. Evaluate the payload that enters the flow
-1. Make call to `firstSubFlow` if condition is fulfilled
-1. Make call to `secondSubFlow` otherwise
-
-*secondaryFlow*
+*Figure 3: The XML for the flow `secondaryFlow`*
 
 ``` xml
 <flow name="secondaryFlow" >
@@ -107,9 +112,11 @@ The second part of the app, `secondaryFlow`, is basically for routing. It does n
 </flow>
 ```
 
-Finally we have two subflows whose only task is to set a value for an _invocation_ variable named `flowValue`.
+### The Two Subflows ###
 
-*sub_Flow(s)*
+Finally, we have two subflows, each of which sets a value for an invocation variable named `flowValue`.
+
+*Figure 4: The XML for the two subflows*
 
 ``` xml
 <sub-flow name="firstSubFlow" >
@@ -123,23 +130,20 @@ Finally we have two subflows whose only task is to set a value for an _invocatio
 
 ## Creating Tests
 
-When performing unit tests, it's always better to take a ground-up approach, first testing the building blocks of the code.
-
-**TIP**: Always test the building blocks of your code first, then test the more complex code. You can compare this to setting the pillars and ensuring that they'll hold, before building the rest of the bridge.
+When performing unit tests, it's always better to take a ground-up approach, first testing the building blocks of the code, then testing the more complex code. You can compare this sequence to setting pillars and ensuring that they'll hold, before building the rest of the bridge across them.
 
 We'll start by testing `secondaryFlow`.
 
-Ideally, you should test each and every flow and sub-flow in your application, in order to validate that each one of them behaves as expected. Since we've complicated things a little in order to show you more scenarios, we'll skip testing the sub-flows. In a real application, we should start by testing those two sub-flows.
+Ideally, you should test each and every flow and subflow in your application in order to validate that each one of them behaves as expected. Because we've complicated things a little in order to show you more scenarios, we'll skip testing the subflows. If we meant to deploy this application to production, we would start by testing those two subflows.
 
+### Two Requirements for MUnit 2.x Test Suites
 
-### MUnit Test Suit "Musts"
+Each MUnit 2.x test file _must_ contain the following elements:
 
-Each MUnit test file _must_ contain the following beans:
+* `munit:config`
+* An `import` element
 
-* `MUnit config`
-* The _import section_
-
-In the _import_ section, we define the files needed for this test to run. This section usually includes the file containing the flows we want to test, and additional files required for the first file to work. These are shown in the snippet below:
+In the _import_ section, we define the files needed for this suite of tests to run. This section usually includes the file containing the flows we want to test and additional files required for the first file to work. These are shown in the snippet below:
 
 ``` xml
 <munit:config name="test-suite.xml" doc:name="MUnit configuration"/>
@@ -173,23 +177,23 @@ This flow contains a `choice` router, which provides two different paths that th
 
 Here's how it works:
 
-1. Define input message to be sent to the production flow `secondaryFlow`.
-1. Make call to production code.
-1. Verify the value of variable _flowValue_ is correct.
-1. Verify the sub-flow 'firstSubFlow' was called exactly once.
+1. Define the input message to be sent to the production flow `secondaryFlow`.
+1. Make a call to production code.
+1. Verify that the value of variable _flowValue_ is correct.
+1. Verify that the subflow 'firstSubFlow' was called exactly once.
 
 This test looks fairly simple, but it has a few points to highlight.
 
-The first thing we do is to create an input message. This is a very common scenario; you will probably have to create input messages for the flows that you'll test. In this example it was only necessary to define a payload, but further down in this tutorial we'll see how to create more complex messages.
+The first thing we do is to create an input message. This is a very common scenario; you will probably have to create input messages for the flows that you'll test. In this example, it was only necessary to define a payload, but further down in this tutorial we'll see how to create more complex messages.
 
 For the purposes of this test, we can be confident that the code works properly by simply ensuring the variable that was supposed to be set is set to correct value and the correct message processor was called.
 
-**WARNING**: In MUnit2 you mock or verify `flow-ref` not the `flow` and `sub-flow` as in MUnit1.
+**WARNING**: In MUnit 2.x, you mock or verify `flow-ref`, not the `flow` and `sub-flow`, as in MUnit 1.x.
 
 
 ### Testing: `mainFlow`
 
-This flow contains an `http-listener`, but in order to show you different scenarios we are not going to call it. Since we are not calling the HTTP listener, we need to take a few other actions for this test to work properly.
+This flow contains an `http-listener`, but in order to show you different scenarios, we are not going to call it. Because we are not calling the HTTP listener, we need to take a few other actions for this test to work properly.
 
 *mainFlow - Test case*
 
@@ -227,9 +231,9 @@ This flow contains an `http-listener`, but in order to show you different scenar
 
 Here's how it works:
 
-1. Define mock for the set-payload message processor in `exampleFlow`.
-1. Define mock for the call to `exampleFlow2`.
-1. Make call to production code.
+1. Define a mock for the set-payload message processor in `exampleFlow`.
+1. Define a mock for the call to `exampleFlow2`.
+1. Make a call to production code.
 1. Validate success of the test by asserting the returned payload.
 
 The first thing to notice in this test is that we are defining _mocks_. Mocks are what allow you to isolate your flow, distinguishing it from third-party systems and any other flows in your application.
@@ -240,7 +244,7 @@ Notice that we are not actually returning a payload. The payload in the `set-pay
 
 **TIP**: When doing unit tests, you isolate your flow from third-party systems and other flows and trust they will work as expected. In turn, you must test each third-party system or flow with its own, specific test.
 
-If you've been reading this tutorial from the beginning, you already know that in MUnit2 you mock `flow-ref` message processors. That's what we're doing here, mocking `secondaryFlow`  flow reference which was called from `mainFlow`.
+If you've been reading this tutorial from the beginning, you already know that in MUnit 2.x, you mock `flow-ref` message processors. That's what we're doing here, mocking the `secondaryFlow`  flow reference which was called from `mainFlow`.
 
 The purpose of `secondaryFlow` was to set the value of the invocation variable `flowValue`. If you look closely at this mock, you'll see that we are telling the mocked flow to return a message that contains an invocation variable named `flowValue` with a value of `flowValue_1`. This is what should happen in the first test scenario.
 
@@ -264,7 +268,7 @@ The other branches could be tested similarly.
 
 All of the tests explained so far were unit tests, which try to isolate each flow as much as possible from the other flows.
 
-You may also want to do a _functional test_, i.e. an end-to-end test. In our example, this means that we are not going to mock any message processor. To implement a test in this way, we need to correctly define the message that we'll send to the production code.
+You might also want to do a _functional test_, i.e. an end-to-end test. In our example, this means that we are not going to mock any message processor. To implement a test in this way, we need to correctly define the message that we'll send to the production code.
 
 In previous tests, we mocked the first message processor of `mainFlow` because it needed the message to contain specific values. Since we are not mocking anything now, we will have to create that message.
 
@@ -305,11 +309,11 @@ The code below shows how to create such a message:
 
 In this tutorial, we've seen:
 
-* How to create MUnit2 tests
+* How to create MUnit 2.x tests
 * How to create Mule messages
 * How to create mocks
 * How to run verifications and assertions
 
-In short, we've covered a great deal of the MUnit2 features.
+In short, we've covered a great deal of the MUnit 2.x features.
 
-As you code, your tests may become as large and complex as your production code. The tools provided by MUnit2 will help you create great tests while maintaining the quality of your code.
+As you code, your tests may become as large and complex as your production code. The tools provided by MUnit 2.x will help you create great tests while maintaining the quality of your code.
