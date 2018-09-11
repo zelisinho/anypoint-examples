@@ -23,9 +23,8 @@ When the application receives a list-inventory request, it forwards the request 
 2. In your application in Studio, click the **Global Elements** tab. Then, dDouble-click the **HTTP Listener config** global element to open its **Global Element Properties** dialog. Change the value of the **Port** field to `8081`.
 3. In the Package Explorer view in Studio, right-click the project name and then select **Run As > Mule Application**.  
 **Result:** You can now send posts to your application via a browser extension such as Postman (for Google Chrome), or the `curl` command-line utility.
-1. Send your request to the address http://localhost:8081/orders
-2. Set the 'Content-Type' header as 'application/json'
-3. Append the following JSON code to it:
+1. To get an inventory list for the retailer, send a GET request to http://localhost:8081/inventory.
+1. To send an order, set the `Content-Type` header to `application/json`, append the following JSON, and send a PUT request to the address http://localhost:8081/orders.
 
 ```
 {
