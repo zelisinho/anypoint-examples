@@ -47,6 +47,7 @@
                             <format>html</format>
                         </formats>
                     </coverage>
+				<runtimeVersion>${app.runtime}</runtimeVersion>
                 </configuration>
             </plugin>
         </plugins>
