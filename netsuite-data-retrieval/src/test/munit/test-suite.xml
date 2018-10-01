@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule/netsuite/current/mule-netsuite.xsd">
 	<munit:config name="test-suite.xml" />
 	<configuration-properties doc:name="Configuration properties"
-		doc:id="a1b4406a-8a63-4268-88d0-8f42c570744b" file="test.properties" />
+		doc:id="a1b4406a-8a63-4268-88d0-8f42c570744b" file="mule.test.properties" />
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="0dc11f13-58b2-4402-b562-ed2b2eab295a">
 		<http:request-connection host="localhost" port="${http.port}"
