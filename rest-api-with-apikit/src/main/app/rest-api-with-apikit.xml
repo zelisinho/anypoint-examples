@@ -76,7 +76,7 @@
         <set-payload doc:name="Set Payload to Null Payload" value="#[NullPayload.getInstance()]"/>
     </flow>
     <flow name="post:/teams:leagues-config">
-        <custom-transformer class="org.mule.module.apikit.transform.PayloadNormalizerTransformer" doc:name="Java"/>
+        <custom-transformer class="org.mule.module.apikit.transform.PayloadNormalizerTransformer" doc:name="Java" returnClass="org.mule.examples.leagues.request.Team"/>
         <set-property doc:name="Property" propertyName="Location" value="http://localhost:${http.port}/api/teams/#[payload.id]"/>
         <expression-component doc:name="Call API"><![CDATA[app.registry['league-api'].addTeam(payload);]]></expression-component>
         <set-payload doc:name="Set Payload to Null Payload" value="#[NullPayload.getInstance()]"/>
