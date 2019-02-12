@@ -52,6 +52,9 @@
                             <format>html</format>
                         </formats>
                     </coverage>
+					<dynamicPorts>
+						<dynamicPort>http.port</dynamicPort>
+					</dynamicPorts>
                 </configuration>
             </plugin>
         </plugins>

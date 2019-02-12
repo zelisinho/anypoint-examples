@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 
 
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="6b5aa625-f970-4771-866b-20389dd54c67">
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 
 	<munit:test name="hello-worldFlowTest" description="Test" doc:id="267cfccb-8f25-4a05-a916-42fe4457eb5d" >
