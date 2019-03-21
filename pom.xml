@@ -86,6 +86,7 @@
         <vm.module.version>1.1.1</vm.module.version>
         <wsc.connector.version>1.1.1</wsc.connector.version>
         <workday.connector.version>9.2.0</workday.connector.version>
+		<mongodb.connector.version>5.3.0</mongodb.connector.version>
     </properties>
     <build>
         <plugins>

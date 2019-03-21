@@ -25,10 +25,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <mongodb.connector.version>5.0.0</mongodb.connector.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
