@@ -8,8 +8,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c468d936-1dbf-4e4d-af72-4555a2cf19d0" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<file:config name="File_Config" doc:name="File Config" doc:id="4ad78715-a858-40ba-a018-5c7aea9cef16" >
 		<file:connection workingDir="src/main/resources" />

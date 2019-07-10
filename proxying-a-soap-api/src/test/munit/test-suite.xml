@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="0dc11f13-58b2-4402-b562-ed2b2eab295a">
-		<http:request-connection host="0.0.0.0" port="8081"
+		<http:request-connection host="0.0.0.0" port="${http.port}"
 			connectionIdleTimeout="300000" />
 	</http:request-config>
 

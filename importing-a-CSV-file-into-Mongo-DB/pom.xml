@@ -25,10 +25,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <mongodb.connector.version>5.0.0</mongodb.connector.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
@@ -37,8 +33,8 @@
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-mongo-connector</artifactId>
+            <groupId>com.mulesoft.connectors</groupId>
+            <artifactId>mule-mongodb-connector</artifactId>
             <version>${mongodb.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
